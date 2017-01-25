@@ -1,9 +1,15 @@
 class Team < ApplicationRecord
+  has_many :members
+  has_many :owners,
+    -> { where(role: Member.roles['owner']) },
+    class_name: 'Member'
+
   validates :domain,
     format: { with: /\A[a-z0-9]+(-[a-z0-9]+)*\z/ },
     length: { in: 3..64 },
-    presence: true
-  validates :status, numericality: { only_integer: true }, presence: true
+    presence: true,
+    uniqueness: { case_sensitive: false }
+  validates :status, presence: true
 
   enum status: { closed: 0, open: 10 }
 end
