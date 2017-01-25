@@ -1,4 +1,4 @@
-class Comment < ApplicationRecord
+class Reaction < ApplicationRecord
   belongs_to :post
   belongs_to :member
 
@@ -6,6 +6,6 @@ class Comment < ApplicationRecord
 
   validates :post, presence: true
   validates :member, presence: true
-  validates :content, presence: true
+  validates :name, presence: true, uniqueness: { scope: [:post, :member] }
   validates_with TeammateValidator
 end

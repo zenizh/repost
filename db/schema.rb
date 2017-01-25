@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170125092223) do
+ActiveRecord::Schema.define(version: 20170125093725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,18 @@ ActiveRecord::Schema.define(version: 20170125092223) do
     t.index ["member_id"], name: "index_posts_on_member_id", using: :btree
   end
 
+  create_table "reactions", force: :cascade do |t|
+    t.integer  "post_id",    null: false
+    t.integer  "member_id",  null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_reactions_on_member_id", using: :btree
+    t.index ["post_id", "member_id", "name"], name: "index_reactions_on_post_id_and_member_id_and_name", unique: true, using: :btree
+    t.index ["post_id", "name"], name: "index_reactions_on_post_id_and_name", using: :btree
+    t.index ["post_id"], name: "index_reactions_on_post_id", using: :btree
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string   "domain",                 null: false
     t.string   "name"
@@ -93,4 +105,6 @@ ActiveRecord::Schema.define(version: 20170125092223) do
   add_foreign_key "members", "teams"
   add_foreign_key "members", "users"
   add_foreign_key "posts", "members"
+  add_foreign_key "reactions", "members"
+  add_foreign_key "reactions", "posts"
 end
