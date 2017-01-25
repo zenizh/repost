@@ -1,4 +1,5 @@
 class Team < ApplicationRecord
+  has_many :channels
   has_many :members
   has_many :owners,
     -> { where(role: Member.roles['owner']) },
