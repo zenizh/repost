@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170125091015) do
+ActiveRecord::Schema.define(version: 20170125092223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 20170125091015) do
     t.datetime "updated_at", null: false
     t.index ["team_id", "name"], name: "index_channels_on_team_id_and_name", unique: true, using: :btree
     t.index ["team_id"], name: "index_channels_on_team_id", using: :btree
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "post_id",    null: false
+    t.integer  "member_id",  null: false
+    t.text     "content",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_comments_on_member_id", using: :btree
+    t.index ["post_id", "member_id"], name: "index_comments_on_post_id_and_member_id", using: :btree
+    t.index ["post_id"], name: "index_comments_on_post_id", using: :btree
   end
 
   create_table "members", force: :cascade do |t|
@@ -77,6 +88,8 @@ ActiveRecord::Schema.define(version: 20170125091015) do
   add_foreign_key "channel_members", "channels"
   add_foreign_key "channel_members", "members"
   add_foreign_key "channels", "teams"
+  add_foreign_key "comments", "members"
+  add_foreign_key "comments", "posts"
   add_foreign_key "members", "teams"
   add_foreign_key "members", "users"
   add_foreign_key "posts", "members"
