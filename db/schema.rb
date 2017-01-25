@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170125093725) do
+ActiveRecord::Schema.define(version: 20170125111617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,16 @@ ActiveRecord::Schema.define(version: 20170125093725) do
     t.index ["post_id"], name: "index_reactions_on_post_id", using: :btree
   end
 
+  create_table "stocks", force: :cascade do |t|
+    t.integer  "post_id",    null: false
+    t.integer  "member_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_stocks_on_member_id", using: :btree
+    t.index ["post_id", "member_id"], name: "index_stocks_on_post_id_and_member_id", unique: true, using: :btree
+    t.index ["post_id"], name: "index_stocks_on_post_id", using: :btree
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string   "domain",                 null: false
     t.string   "name"
@@ -107,4 +117,6 @@ ActiveRecord::Schema.define(version: 20170125093725) do
   add_foreign_key "posts", "members"
   add_foreign_key "reactions", "members"
   add_foreign_key "reactions", "posts"
+  add_foreign_key "stocks", "members"
+  add_foreign_key "stocks", "posts"
 end
