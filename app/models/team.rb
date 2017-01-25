@@ -14,4 +14,8 @@ class Team < ApplicationRecord
   validates :status, presence: true
 
   enum status: { closed: 0, open: 10 }
+
+  def name
+    super.presence || domain
+  end
 end
