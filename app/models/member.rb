@@ -3,6 +3,7 @@ class Member < ApplicationRecord
   has_many :posts
   has_many :stocks
   has_many :stocked_posts, through: :stocks, source: :post
+  has_many :templates
 
   belongs_to :team
   belongs_to :user
