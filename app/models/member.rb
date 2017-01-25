@@ -1,5 +1,6 @@
 class Member < ApplicationRecord
   has_many :channels, class_name: 'ChannelMember'
+  has_many :posts
 
   belongs_to :team
   belongs_to :user

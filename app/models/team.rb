@@ -4,6 +4,7 @@ class Team < ApplicationRecord
   has_many :owners,
     -> { where(role: Member.roles['owner']) },
     class_name: 'Member'
+  has_many :posts, through: :members
 
   validates :domain,
     format: { with: /\A[a-z0-9]+(-[a-z0-9]+)*\z/ },

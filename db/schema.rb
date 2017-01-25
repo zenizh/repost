@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170125075207) do
+ActiveRecord::Schema.define(version: 20170125091015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(version: 20170125075207) do
     t.index ["user_id"], name: "index_members_on_user_id", using: :btree
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.integer  "member_id",              null: false
+    t.text     "content",                null: false
+    t.integer  "status",     default: 0, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["member_id", "status"], name: "index_posts_on_member_id_and_status", using: :btree
+    t.index ["member_id"], name: "index_posts_on_member_id", using: :btree
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string   "domain",                 null: false
     t.string   "name"
@@ -69,4 +79,5 @@ ActiveRecord::Schema.define(version: 20170125075207) do
   add_foreign_key "channels", "teams"
   add_foreign_key "members", "teams"
   add_foreign_key "members", "users"
+  add_foreign_key "posts", "members"
 end
