@@ -18,4 +18,8 @@ class Member < ApplicationRecord
     uniqueness: { scope: :team }
 
   enum role: { member: 0, owner: 10 }
+
+  def name
+    super.presence || screen_name
+  end
 end
