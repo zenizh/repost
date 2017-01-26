@@ -6,4 +6,9 @@ class User < ApplicationRecord
     email_format: true,
     presence: true,
     uniqueness: { case_sensitive: false }
+  validates :password,
+    length: { minimum: 8 },
+    if: -> { new_record? || changes[:crypted_password] }
+
+  authenticates_with_sorcery!
 end
