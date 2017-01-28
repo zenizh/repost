@@ -19,6 +19,8 @@ class Member < ApplicationRecord
 
   enum role: { member: 0, owner: 10 }
 
+  default_value_for :screen_name, SecureRandom.hex(3)
+
   def name
     super.presence || screen_name
   end

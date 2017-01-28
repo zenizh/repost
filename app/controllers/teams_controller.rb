@@ -10,6 +10,7 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
 
     if @team.save
+      @team.members.create(user: current_user, role: :owner)
       redirect_to account_path
     else
       render :new
