@@ -18,6 +18,7 @@ class TeamsController < ApplicationController
   end
 
   def show
+    @post = current_member.posts.new
   end
 
   private

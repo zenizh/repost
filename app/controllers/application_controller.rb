@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   before_action :continue_trial
   before_action :authorize_member, if: :current_team
 
-  helper_method :current_team
+  helper_method :current_team,
+    :current_member
 
   private
 
@@ -25,8 +26,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_member
+    if current_team && current_user
+      @current_member ||= Member.find_by(team: current_team, user: current_user)
+    end
+  end
+
   def authorize_member
-    if !current_user || !current_user.teams.exists?(current_team)
+    unless current_member
       raise ActionController::RoutingError.new('Not Found')
     end
   end
