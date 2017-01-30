@@ -18,6 +18,7 @@ class TeamsController < ApplicationController
   end
 
   def show
+    @posts = current_team.posts.order(created_at: :desc)
     @post = current_member.posts.new
   end
 

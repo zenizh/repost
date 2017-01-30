@@ -1,12 +1,26 @@
 <%= current_team.name %>
 
-<%= form_for(@post) do |f| %>
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-  <%= f.submit %>
+<ul>
+  <% current_team.channels.each do |channel| %>
+    <li><%= link_to channel.name, channel %></li>
+  <% end %>
+</ul>
+
+<% if @channel %>
+  <% @channel.members.each do |member| %>
+    <%= member.name %>
+  <% end %>
 <% end %>
 
-<% current_team.posts.order(created_at: :desc).each do |post| %>
+<% if @post %>
+  <%= form_for(@post) do |f| %>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <%= f.submit %>
+  <% end %>
+<% end %>
+
+<% @posts.each do |post| %>
   <%= post.member.name %> (@<%= post.member.screen_name %>)
   <%= post.content %>
   <%= post.created_at %>
