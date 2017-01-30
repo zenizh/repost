@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :teams, only: [:new, :create]
   resources :users, only: [:new, :create]
 
+  constraints subdomain: /\A[a-z0-9]+(-[a-z0-9]+)*\z/ do
+    get '/', to: 'teams#show'
+  end
+
   delete :logout, to: 'sessions#destroy'
 
   root 'static_pages#index'

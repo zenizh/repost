@@ -17,6 +17,9 @@ class TeamsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
 
   def team_params
@@ -24,6 +27,6 @@ class TeamsController < ApplicationController
   end
 
   def store_team_domain
-    session[:team_domain] = params[:team][:domain]
+    session[:team_domain] = params.dig(:team, :domain)
   end
 end

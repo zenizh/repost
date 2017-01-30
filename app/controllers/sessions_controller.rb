@@ -14,6 +14,6 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to new_session_path
+    redirect_to root_url(subdomain: false)
   end
 end

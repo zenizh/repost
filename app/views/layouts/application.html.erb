@@ -11,10 +11,10 @@
   <body>
     <%= link_to 'Home', root_path %>
     <% if current_user %>
-      <%= link_to 'Account', account_path %>
+      <%= link_to 'Account', account_url(subdomain: false) %>
       <%= link_to 'Logout', logout_path, method: :delete %>
     <% else %>
-      <%= link_to 'Register', new_user_path %>
+      <%= link_to 'Register', new_user_url(subdomain: false) %>
       <%= link_to 'Login', new_session_path %>
     <% end %>
     <%= yield %>
