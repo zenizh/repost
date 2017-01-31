@@ -24,4 +24,8 @@ class Member < ApplicationRecord
   def name
     super.presence || screen_name
   end
+
+  def to_param
+    screen_name
+  end
 end

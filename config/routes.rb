@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   constraints subdomain: /\A[a-z0-9]+(-[a-z0-9]+)*\z/ do
     resources :channels, only: :show
+    resources :members, only: :show
     resources :posts, only: :create
 
     get '/', to: 'teams#show', as: :team
