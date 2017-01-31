@@ -5,6 +5,9 @@ class Team < ApplicationRecord
     -> { where(role: Member.roles['owner']) },
     class_name: 'Member'
   has_many :posts, through: :members
+  has_many :services
+
+  has_one :slack_service
 
   validates :domain,
     format: { with: /\A[a-z0-9]+(-[a-z0-9]+)*\z/ },
@@ -17,5 +20,11 @@ class Team < ApplicationRecord
 
   def name
     super.presence || domain
+  end
+
+  def notify_to_services(scope, data)
+    services.send(scope).each do |service|
+      service.notify(scope, data)
+    end
   end
 end

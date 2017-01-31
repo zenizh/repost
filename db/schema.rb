@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170125112820) do
+ActiveRecord::Schema.define(version: 20170131081204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,18 @@ ActiveRecord::Schema.define(version: 20170125112820) do
     t.index ["post_id"], name: "index_reactions_on_post_id", using: :btree
   end
 
+  create_table "services", force: :cascade do |t|
+    t.integer  "team_id",                      null: false
+    t.string   "type",                         null: false
+    t.string   "webhook_url",                  null: false
+    t.string   "channel"
+    t.boolean  "on_posted",    default: false, null: false
+    t.boolean  "on_commented", default: false, null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["team_id"], name: "index_services_on_team_id", using: :btree
+  end
+
   create_table "stocks", force: :cascade do |t|
     t.integer  "post_id",    null: false
     t.integer  "member_id",  null: false
@@ -128,6 +140,7 @@ ActiveRecord::Schema.define(version: 20170125112820) do
   add_foreign_key "posts", "members"
   add_foreign_key "reactions", "members"
   add_foreign_key "reactions", "posts"
+  add_foreign_key "services", "teams"
   add_foreign_key "stocks", "members"
   add_foreign_key "stocks", "posts"
   add_foreign_key "templates", "members"
