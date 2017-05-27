@@ -13,5 +13,7 @@
 !/log/.keep
 !/tmp/.keep
 
-# Ignore Byebug command history file.
 .byebug_history
+/public/packs
+/node_modules
+/yarn-error.log
