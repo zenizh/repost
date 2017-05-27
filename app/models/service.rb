@@ -7,8 +7,8 @@ class Service < ApplicationRecord
   validates :on_posted, presence: true
   validates :on_commented, presence: true
 
-  default_value_for :on_posted, true
-  default_value_for :on_commented, true
+  attribute :on_posted, :boolean, default: true
+  attribute :on_commented, :boolean, default: true
 
   scope :on_posted, -> { where(on_posted: true) }
   scope :on_commented, -> { where(on_commented: true) }

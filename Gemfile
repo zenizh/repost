@@ -52,6 +52,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'validates_email_format_of'
 gem 'sorcery'
-gem 'default_value_for'
 gem 'faker'
 gem 'slack-notifier'
