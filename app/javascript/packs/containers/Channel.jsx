@@ -28,11 +28,11 @@ class Channel extends Component {
       match,
       fetchPosts,
       fetchChannelUsers,
-      fetchCurrentUserChannels
+      fetchChannels
     } = props
 
     fetchPosts(currentUser, endpoints.channelPosts(match.params.id))
-    fetchCurrentUserChannels(currentUser)
+    fetchChannels(currentUser)
     fetchChannelUsers(currentUser, endpoints.channelUsers(match.params.id))
   }
 
@@ -54,7 +54,7 @@ Channel.propTypes = {
   currentUser: PropTypes.object.isRequired,
   posts: PropTypes.array.isRequired,
   fetchChannelUsers: PropTypes.func.isRequired,
-  fetchCurrentUserChannels: PropTypes.func.isRequired,
+  fetchChannels: PropTypes.func.isRequired,
   fetchPosts: PropTypes.func.isRequired
 }
 

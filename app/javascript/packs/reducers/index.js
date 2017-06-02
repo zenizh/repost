@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
+import { reducer as formReducer } from 'redux-form'
 import channels from './channels'
 import currentUser from './currentUser'
 import posts from './posts'
@@ -11,6 +12,7 @@ const appReducer = combineReducers({
   currentUser,
   posts,
   users,
+  form: formReducer,
   router: routerReducer
 })
 

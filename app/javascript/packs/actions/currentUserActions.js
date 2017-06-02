@@ -21,7 +21,7 @@ export function fetchCurrentUser(email, password) {
   }
 }
 
-export function requestSignUp(email, password) {
+export function createUser(email, password) {
   const options = {
     method: 'POST',
     headers: {

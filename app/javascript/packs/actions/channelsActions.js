@@ -2,7 +2,7 @@ import endpoints from '../lib/endpoints'
 
 export const SET_CHANNELS = 'SET_CHANNELS'
 
-export function fetchCurrentUserChannels(currentUser) {
+export function fetchChannels(currentUser) {
   const options = {
     headers: {
       'USER_EMAIL': currentUser.email,

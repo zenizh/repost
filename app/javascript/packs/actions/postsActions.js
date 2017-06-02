@@ -17,7 +17,7 @@ export function fetchPosts(currentUser, url) {
   }
 }
 
-export function registerPost(currentUser, content) {
+export function createPost(currentUser, content) {
   const options = {
     method: 'POST',
     headers: {

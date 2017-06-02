@@ -11,17 +11,22 @@ import endpoints from '../lib/endpoints'
 
 class Home extends Component {
   componentWillMount() {
-    const { currentUser, fetchCurrentUserChannels, fetchPosts } = this.props
+    const { currentUser, fetchChannels, fetchPosts } = this.props
     fetchPosts(currentUser, endpoints.posts)
-    fetchCurrentUserChannels(currentUser)
+    fetchChannels(currentUser)
+  }
+
+  onSubmit(values) {
+    const { currentUser, createPost } = this.props
+    createPost(currentUser, values.content)
   }
 
   render() {
-    const { channels, currentUser, posts, registerPost } = this.props
+    const { channels, currentUser, posts } = this.props
     return (
       <div>
         <Channels channels={channels} />
-        <PostForm currentUser={currentUser} registerPost={registerPost} />
+        <PostForm currentUser={currentUser} onSubmit={this.onSubmit.bind(this)} />
         <Posts posts={posts} />
       </div>
     )
@@ -32,8 +37,9 @@ Home.propTypes = {
   channels: PropTypes.array.isRequired,
   currentUser: PropTypes.object.isRequired,
   posts: PropTypes.array.isRequired,
-  fetchPosts: PropTypes.func.isRequired,
-  registerPost: PropTypes.func.isRequired
+  createPost: PropTypes.func.isRequired,
+  fetchChannels: PropTypes.func.isRequired,
+  fetchPosts: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {

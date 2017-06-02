@@ -2,23 +2,24 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Field, reduxForm } from 'redux-form'
 
-class PostForm extends Component {
+class UserForm extends Component {
   render() {
     return (
       <form onSubmit={this.props.handleSubmit}>
-        <Field component="textarea" name="content" />
+        <Field component="input" type="email" name="email" />
+        <Field component="input" type="password" name="password" />
         <input type="submit" />
       </form>
     )
   }
 }
 
-PostForm.propTypes = {
+UserForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired
 }
 
-PostForm = reduxForm({
-  form: 'post'
-})(PostForm)
+UserForm = reduxForm({
+  form: 'user'
+})(UserForm)
 
-export default PostForm
+export default UserForm
