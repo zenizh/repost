@@ -6,6 +6,7 @@ import * as channelsActions from '../actions/channelsActions'
 import * as postsActions from '../actions/postsActions'
 import Channels from '../components/Channels'
 import Posts from '../components/Posts'
+import endpoints from '../lib/endpoints'
 
 class Channel extends Component {
   componentWillMount() {
@@ -23,11 +24,11 @@ class Channel extends Component {
     const {
       currentUser,
       match,
-      fetchChannelPosts,
+      fetchPosts,
       fetchCurrentUserChannels,
     } = props
 
-    fetchChannelPosts(currentUser, match.params.id)
+    fetchPosts(currentUser, endpoints.channelPosts(match.params.id))
     fetchCurrentUserChannels(currentUser)
   }
 
@@ -47,8 +48,7 @@ Channel.propTypes = {
   channels: PropTypes.array.isRequired,
   currentUser: PropTypes.object.isRequired,
   posts: PropTypes.array.isRequired,
-  fetchChannelPosts: PropTypes.func.isRequired,
-  fetchCurrentUserPosts: PropTypes.func.isRequired
+  fetchPosts: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {

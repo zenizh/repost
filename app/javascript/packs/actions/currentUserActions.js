@@ -1,3 +1,5 @@
+import endpoints from '../lib/endpoints'
+
 export const SET_CURRENT_USER = 'SET_CURRENT_USER'
 export const UNSET_CURRENT_USER = 'UNSET_CURRENT_USER'
 
@@ -13,7 +15,7 @@ export function fetchCurrentUser(email, password) {
     })
   }
   return (dispatch) => {
-    return fetch('/api/session', options)
+    return fetch(endpoints.session, options)
       .then(response => response.json())
       .then(response => dispatch(setCurrentUser(response)))
   }
@@ -31,7 +33,7 @@ export function requestSignUp(email, password) {
     })
   }
   return (dispatch) => {
-    return fetch('/api/users', options)
+    return fetch(endpoints.users, options)
       .then(response => response.json())
       .then(response => dispatch(setCurrentUser(response)))
   }
@@ -46,7 +48,7 @@ export function requestSignOut(currentUser) {
     }
   }
   return (dispatch) => {
-    return fetch('/api/session', options)
+    return fetch(endpoints.session, options)
       .then(() => dispatch(unsetCurrentUser()))
   }
 }

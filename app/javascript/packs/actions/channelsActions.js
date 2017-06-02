@@ -1,3 +1,5 @@
+import endpoints from '../lib/endpoints'
+
 export const SET_CHANNELS = 'SET_CHANNELS'
 
 export function fetchCurrentUserChannels(currentUser) {
@@ -8,7 +10,7 @@ export function fetchCurrentUserChannels(currentUser) {
     }
   }
   return (dispatch) => {
-    return fetch('/api/me/channels', options)
+    return fetch(endpoints.meChannels, options)
       .then(response => response.json())
       .then(response => dispatch(receiveChannels(response)))
   }

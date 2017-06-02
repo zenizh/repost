@@ -4,11 +4,12 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as postsActions from '../actions/postsActions'
 import Posts from '../components/Posts'
+import endpoints from '../lib/endpoints'
 
 class Account extends Component {
   componentWillMount() {
-    const { currentUser, fetchCurrentUserPosts } = this.props
-    fetchCurrentUserPosts(currentUser)
+    const { currentUser, fetchPosts } = this.props
+    fetchPosts(currentUser, endpoints.mePosts)
   }
 
   render() {
@@ -25,7 +26,7 @@ class Account extends Component {
 Account.propTypes = {
   currentUser: PropTypes.object.isRequired,
   posts: PropTypes.array.isRequired,
-  fetchCurrentUserPosts: PropTypes.func.isRequired
+  fetchPosts: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {

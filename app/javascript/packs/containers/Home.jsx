@@ -7,11 +7,12 @@ import * as postsActions from '../actions/postsActions'
 import Channels from '../components/Channels'
 import PostForm from '../components/PostForm'
 import Posts from '../components/Posts'
+import endpoints from '../lib/endpoints'
 
 class Home extends Component {
   componentWillMount() {
-    const { currentUser, fetchCurrentUserChannels, fetchHomePosts } = this.props
-    fetchHomePosts(currentUser)
+    const { currentUser, fetchCurrentUserChannels, fetchPosts } = this.props
+    fetchPosts(currentUser, endpoints.posts)
     fetchCurrentUserChannels(currentUser)
   }
 
@@ -31,8 +32,7 @@ Home.propTypes = {
   channels: PropTypes.array.isRequired,
   currentUser: PropTypes.object.isRequired,
   posts: PropTypes.array.isRequired,
-  fetchCurrentUserPosts: PropTypes.func.isRequired,
-  fetchHomePosts: PropTypes.func.isRequired,
+  fetchPosts: PropTypes.func.isRequired,
   registerPost: PropTypes.func.isRequired
 }
 
