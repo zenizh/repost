@@ -4,11 +4,9 @@ class Api::PostsController < Api::ApplicationController
   end
 
   def create
-    post = current_user.posts.new(post_params)
+    @post = current_user.posts.new(post_params)
 
-    if post.save
-      head :ok
-    else
+    unless @post.save
       head :bad_request
     end
   end
