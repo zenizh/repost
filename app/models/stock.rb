@@ -1,10 +1,7 @@
 class Stock < ApplicationRecord
   belongs_to :post
-  belongs_to :member
-
-  delegate :team, to: :post
+  belongs_to :user
 
   validates :post, presence: true
-  validates :member, presence: true, uniqueness: { scope: :post }
-  validates_with TeammateValidator
+  validates :user, presence: true, uniqueness: { scope: :post }
 end

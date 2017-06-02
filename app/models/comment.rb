@@ -1,11 +1,8 @@
 class Comment < ApplicationRecord
   belongs_to :post
-  belongs_to :member
-
-  delegate :team, to: :post
+  belongs_to :user
 
   validates :post, presence: true
-  validates :member, presence: true
+  validates :user, presence: true
   validates :content, presence: true
-  validates_with TeammateValidator
 end

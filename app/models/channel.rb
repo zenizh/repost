@@ -1,10 +1,7 @@
 class Channel < ApplicationRecord
-  has_many :channel_members
-  has_many :members, through: :channel_members
-  has_many :posts, through: :members
+  has_many :channel_users
+  has_many :users, through: :channel_users
+  has_many :posts, through: :users
 
-  belongs_to :team
-
-  validates :team, presence: true
-  validates :name, presence: true, uniqueness: { scope: :team }
+  validates :name, presence: true, uniqueness: true
 end

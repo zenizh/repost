@@ -3,20 +3,8 @@
   <head>
     <title>Repoem</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= link_to 'Home', root_path %>
-    <% if current_user %>
-      <%= link_to 'Account', account_url(subdomain: false) %>
-      <%= link_to 'Logout', logout_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Register', new_user_url(subdomain: false) %>
-      <%= link_to 'Login', new_session_path %>
-    <% end %>
-    <%= yield %>
+    <%= javascript_pack_tag('application') %>
   </body>
 </html>

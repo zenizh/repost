@@ -1,6 +1,0 @@
-<%= current_user.email %>
-<ul>
-  <% current_user.teams.each do |team| %>
-  <li><%= link_to team.name, team_url(subdomain: team.domain) %></li>
-  <% end %>
-</ul>

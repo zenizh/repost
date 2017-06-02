@@ -1,21 +1,22 @@
 Rails.application.routes.draw do
-  resource :account, only: :show
+  namespace :api do
+    resource :session, only: [:create, :destroy]
+    resources :posts, only: [:index, :create]
+    resources :users, only: :create
 
-  resources :sessions, only: [:new, :create]
-  resources :teams, only: [:new, :create]
-  resources :users, only: [:new, :create]
+    resources :channels, only: [] do
+      resources :posts, only: :index, controller: 'channels/posts'
+    end
 
-  constraints subdomain: /\A[a-z0-9]+(-[a-z0-9]+)*\z/ do
-    resources :channels, only: :show
-    resources :members, only: :show
-    resources :posts, only: :create
-
-    get '/', to: 'teams#show', as: :team
+    namespace :me do
+      resources :channels, only: :index
+      resources :posts, only: :index
+    end
   end
 
-  delete :logout, to: 'sessions#destroy'
+  get '*path', to: 'application#root'
 
-  root 'static_pages#index'
+  root 'application#root'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

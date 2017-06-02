@@ -1,7 +1,7 @@
 class Template < ApplicationRecord
-  belongs_to :member
+  belongs_to :user
 
-  validates :member, presence: true
+  validates :user, presence: true
   validates :content, presence: true
 
   def name
