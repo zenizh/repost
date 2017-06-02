@@ -5,35 +5,50 @@ import { bindActionCreators } from 'redux'
 import * as channelsActions from '../actions/channelsActions'
 import * as postsActions from '../actions/postsActions'
 import Channels from '../components/Channels'
-import PostForm from '../components/PostForm'
 import Posts from '../components/Posts'
 
-class Home extends Component {
+class Channel extends Component {
   componentWillMount() {
-    const { currentUser, fetchCurrentUserChannels, fetchHomePosts } = this.props
-    fetchHomePosts(currentUser)
+    this.fetch(this.props)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.id == nextProps.match.params.id) {
+      return
+    }
+    this.fetch(nextProps)
+  }
+
+  fetch(props) {
+    const {
+      currentUser,
+      match,
+      fetchChannelPosts,
+      fetchCurrentUserChannels,
+    } = props
+
+    fetchChannelPosts(currentUser, match.params.id)
     fetchCurrentUserChannels(currentUser)
   }
 
   render() {
-    const { channels, currentUser, posts, registerPost } = this.props
+    const { channels, posts } = this.props
     return (
       <div>
         <Channels channels={channels} />
-        <PostForm currentUser={currentUser} registerPost={registerPost} />
         <Posts posts={posts} />
       </div>
     )
   }
 }
 
-Home.propTypes = {
+Channel.propTypes = {
+  match: PropTypes.object.isRequired,
   channels: PropTypes.array.isRequired,
   currentUser: PropTypes.object.isRequired,
   posts: PropTypes.array.isRequired,
-  fetchCurrentUserPosts: PropTypes.func.isRequired,
-  fetchHomePosts: PropTypes.func.isRequired,
-  registerPost: PropTypes.func.isRequired
+  fetchChannelPosts: PropTypes.func.isRequired,
+  fetchCurrentUserPosts: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -51,4 +66,4 @@ function mapDispatchToProps(dispatch) {
   }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Channel)
