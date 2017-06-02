@@ -3,12 +3,14 @@ import { routerReducer } from 'react-router-redux'
 import channels from './channels'
 import currentUser from './currentUser'
 import posts from './posts'
+import users from './users'
 import { UNSET_CURRENT_USER } from '../actions/currentUserActions'
 
 const appReducer = combineReducers({
   channels,
   currentUser,
   posts,
+  users,
   router: routerReducer
 })
 

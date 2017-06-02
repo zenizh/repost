@@ -4,7 +4,9 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as channelsActions from '../actions/channelsActions'
 import * as postsActions from '../actions/postsActions'
+import * as usersActions from '../actions/usersActions'
 import Channels from '../components/Channels'
+import ChannelUsers from '../components/ChannelUsers'
 import Posts from '../components/Posts'
 import endpoints from '../lib/endpoints'
 
@@ -25,18 +27,21 @@ class Channel extends Component {
       currentUser,
       match,
       fetchPosts,
-      fetchCurrentUserChannels,
+      fetchChannelUsers,
+      fetchCurrentUserChannels
     } = props
 
     fetchPosts(currentUser, endpoints.channelPosts(match.params.id))
     fetchCurrentUserChannels(currentUser)
+    fetchChannelUsers(currentUser, endpoints.channelUsers(match.params.id))
   }
 
   render() {
-    const { channels, posts } = this.props
+    const { channels, posts, users } = this.props
     return (
       <div>
         <Channels channels={channels} />
+        <ChannelUsers users={users} />
         <Posts posts={posts} />
       </div>
     )
@@ -48,6 +53,8 @@ Channel.propTypes = {
   channels: PropTypes.array.isRequired,
   currentUser: PropTypes.object.isRequired,
   posts: PropTypes.array.isRequired,
+  fetchChannelUsers: PropTypes.func.isRequired,
+  fetchCurrentUserChannels: PropTypes.func.isRequired,
   fetchPosts: PropTypes.func.isRequired
 }
 
@@ -55,14 +62,16 @@ function mapStateToProps(state) {
   return {
     channels: state.channels,
     currentUser: state.currentUser,
-    posts: state.posts
+    posts: state.posts,
+    users: state.users
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     ...channelsActions,
-    ...postsActions
+    ...postsActions,
+    ...usersActions
   }, dispatch)
 }
 
