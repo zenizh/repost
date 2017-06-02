@@ -4,7 +4,9 @@ class Api::UsersController < Api::ApplicationController
   def create
     @user = User.new(user_params)
 
-    unless @user.save
+    if @user.save
+      @user.set_token
+    else
       head :bad_request
     end
   end
