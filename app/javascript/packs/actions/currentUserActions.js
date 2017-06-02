@@ -60,7 +60,6 @@ function setCurrentUser(currentUser) {
 
 function unsetCurrentUser() {
   return {
-    type: UNSET_CURRENT_USER,
-    currentUser: {}
+    type: UNSET_CURRENT_USER
   }
 }

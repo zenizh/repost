@@ -14,8 +14,6 @@ function currentUser(state = initialState, action) {
   switch (action.type) {
     case SET_CURRENT_USER:
       return action.currentUser
-    case UNSET_CURRENT_USER:
-      return action.currentUser
     default:
       return state
   }
