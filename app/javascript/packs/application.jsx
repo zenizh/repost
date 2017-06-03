@@ -9,6 +9,7 @@ import thunk from 'redux-thunk'
 import persistState from 'redux-localstorage'
 
 import rootReducer from './reducers'
+import './application.global.scss'
 import Header from './containers/Header'
 import Home from './containers/Home'
 import SignUp from './containers/SignUp'

@@ -1,0 +1,7 @@
+@import '~bootstrap/scss/variables';
+
+.col {
+  @media (min-width: map-get($grid-breakpoints, sm)) {
+    max-width: 320px;
+  }
+}
