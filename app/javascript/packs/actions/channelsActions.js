@@ -1,4 +1,4 @@
-import endpoints from '../lib/endpoints'
+import endpoints from '../config/endpoints'
 
 export const SET_CHANNELS = 'SET_CHANNELS'
 

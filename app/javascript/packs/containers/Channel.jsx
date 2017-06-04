@@ -8,7 +8,7 @@ import * as usersActions from '../actions/usersActions'
 import Channels from '../components/Channels'
 import ChannelUsers from '../components/ChannelUsers'
 import Posts from '../components/Posts'
-import endpoints from '../lib/endpoints'
+import endpoints from '../config/endpoints'
 
 class Channel extends Component {
   componentWillMount() {

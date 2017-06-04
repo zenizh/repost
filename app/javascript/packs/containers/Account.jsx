@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as postsActions from '../actions/postsActions'
 import Posts from '../components/Posts'
-import endpoints from '../lib/endpoints'
+import endpoints from '../config/endpoints'
 
 class Account extends Component {
   componentWillMount() {

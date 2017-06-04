@@ -1,4 +1,4 @@
-export default {
+const endpoints = {
   channelPosts: (id) => `/api/channels/${id}/posts`,
   channelUsers: (id) => `/api/channels/${id}/users`,
   meChannels: '/api/me/channels',
@@ -7,3 +7,5 @@ export default {
   session: '/api/session',
   users: '/api/users'
 }
+
+export default endpoints

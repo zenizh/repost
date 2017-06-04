@@ -1,4 +1,4 @@
-import endpoints from '../lib/endpoints'
+import endpoints from '../config/endpoints'
 
 export const SET_POSTS = 'SET_POSTS'
 export const PUSH_POST = 'PUSH_POST'

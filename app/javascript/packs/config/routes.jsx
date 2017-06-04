@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router'
-import Header from './containers/Header'
-import Home from './containers/Home'
-import SignUp from './containers/SignUp'
-import SignIn from './containers/SignIn'
-import SignOut from './containers/SignOut'
-import Account from './containers/Account'
-import Channel from './containers/Channel'
-import { Authenticated, NotAuthenticated } from './lib/auth'
+import { Authenticated, NotAuthenticated } from './auth'
+import Header from '../containers/Header'
+import Home from '../containers/Home'
+import SignUp from '../containers/SignUp'
+import SignIn from '../containers/SignIn'
+import SignOut from '../containers/SignOut'
+import Account from '../containers/Account'
+import Channel from '../containers/Channel'
 
 class Routes extends Component {
   render() {

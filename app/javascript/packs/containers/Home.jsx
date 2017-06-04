@@ -7,7 +7,7 @@ import * as postsActions from '../actions/postsActions'
 import Channels from '../components/Channels'
 import PostForm from '../components/PostForm'
 import Posts from '../components/Posts'
-import endpoints from '../lib/endpoints'
+import endpoints from '../config/endpoints'
 
 class Home extends Component {
   componentWillMount() {
