@@ -8,8 +8,7 @@ import endpoints from '../config/endpoints'
 
 class Account extends Component {
   componentWillMount() {
-    const { currentUser, fetchPosts } = this.props
-    fetchPosts(currentUser, endpoints.mePosts)
+    this.props.fetchPosts(endpoints.mePosts)
   }
 
   render() {
@@ -24,14 +23,12 @@ class Account extends Component {
 }
 
 Account.propTypes = {
-  currentUser: PropTypes.object.isRequired,
   posts: PropTypes.array.isRequired,
   fetchPosts: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.currentUser,
     posts: state.posts
   }
 }

@@ -1,7 +1,4 @@
-import {
-  SET_CURRENT_USER,
-  UNSET_CURRENT_USER
-} from '../actions/currentUserActions'
+import { FETCH_CURRENT_USER, CREATE_USER } from '../actions/currentUserActions'
 
 const initialState = {
   id: null,
@@ -12,8 +9,10 @@ const initialState = {
 
 function currentUser(state = initialState, action) {
   switch (action.type) {
-    case SET_CURRENT_USER:
-      return action.currentUser
+    case FETCH_CURRENT_USER + '_SUCCESS':
+      return action.payload.data
+    case CREATE_USER + '_SUCCESS':
+      return action.payload.data
     default:
       return state
   }

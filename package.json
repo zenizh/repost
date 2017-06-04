@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "autoprefixer": "^7.1.1",
+    "axios": "^0.16.2",
     "babel-core": "^6.24.1",
     "babel-loader": "7.x",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
@@ -37,6 +38,7 @@
     "reactstrap": "^4.6.2",
     "redux": "^3.6.0",
     "redux-auth-wrapper": "^1.1.0",
+    "redux-axios-middleware": "^4.0.0",
     "redux-form": "^6.7.0",
     "redux-localstorage": "^0.4.1",
     "redux-thunk": "^2.2.0",

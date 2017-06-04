@@ -1,16 +1,13 @@
-import {
-  PUSH_POST,
-  SET_POSTS
-} from '../actions/postsActions'
+import { FETCH_POSTS, CREATE_POST } from '../actions/postsActions'
 
 const initialState = []
 
 function posts(state = initialState, action) {
   switch (action.type) {
-    case PUSH_POST:
-      return [action.post, ...state]
-    case SET_POSTS:
-      return action.posts
+    case FETCH_POSTS + '_SUCCESS':
+      return action.payload.data
+    case CREATE_POST + '_SUCCESS':
+      return [action.payload.data, ...state]
     default:
       return state
   }

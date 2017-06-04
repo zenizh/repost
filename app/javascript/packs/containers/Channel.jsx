@@ -23,17 +23,10 @@ class Channel extends Component {
   }
 
   fetch(props) {
-    const {
-      currentUser,
-      match,
-      fetchPosts,
-      fetchChannelUsers,
-      fetchChannels
-    } = props
-
-    fetchPosts(currentUser, endpoints.channelPosts(match.params.id))
-    fetchChannels(currentUser)
-    fetchChannelUsers(currentUser, endpoints.channelUsers(match.params.id))
+    const { match, fetchPosts, fetchChannelUsers, fetchChannels } = props
+    fetchPosts(endpoints.channelPosts(match.params.id))
+    fetchChannels()
+    fetchChannelUsers(endpoints.channelUsers(match.params.id))
   }
 
   render() {
@@ -51,17 +44,15 @@ class Channel extends Component {
 Channel.propTypes = {
   match: PropTypes.object.isRequired,
   channels: PropTypes.array.isRequired,
-  currentUser: PropTypes.object.isRequired,
   posts: PropTypes.array.isRequired,
-  fetchChannelUsers: PropTypes.func.isRequired,
   fetchChannels: PropTypes.func.isRequired,
+  fetchChannelUsers: PropTypes.func.isRequired,
   fetchPosts: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
   return {
     channels: state.channels,
-    currentUser: state.currentUser,
     posts: state.posts,
     users: state.users
   }

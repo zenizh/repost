@@ -1,22 +1,12 @@
-export const SET_USERS = 'SET_USERS'
+export const FETCH_CHANNEL_USERS = 'FETCH_CHANNEL_USERS'
 
-export function fetchChannelUsers(currentUser, url) {
-  const options = {
-    headers: {
-      'USER_EMAIL': currentUser.email,
-      'USER_TOKEN': currentUser.token
-    }
-  }
-  return (dispatch) => {
-    return fetch(url, options)
-      .then(response => response.json())
-      .then(response => dispatch(setChannelUsers(response)))
-  }
-}
-
-function setChannelUsers(users) {
+export function fetchChannelUsers(url) {
   return {
-    type: SET_USERS,
-    users
+    type: FETCH_CHANNEL_USERS,
+    payload: {
+      request: {
+        url: url
+      }
+    }
   }
 }

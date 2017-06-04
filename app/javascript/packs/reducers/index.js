@@ -5,7 +5,7 @@ import channels from './channels'
 import currentUser from './currentUser'
 import posts from './posts'
 import users from './users'
-import { UNSET_CURRENT_USER } from '../actions/currentUserActions'
+import { SIGN_OUT_USER } from '../actions/currentUserActions'
 
 const appReducer = combineReducers({
   channels,
@@ -17,7 +17,7 @@ const appReducer = combineReducers({
 })
 
 const rootReducer = (state, action) => {
-  if (action.type === UNSET_CURRENT_USER) {
+  if (action.type === SIGN_OUT_USER) {
     state = undefined
   }
   return appReducer(state, action)

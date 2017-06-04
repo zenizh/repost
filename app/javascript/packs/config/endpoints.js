@@ -1,11 +1,11 @@
 const endpoints = {
-  channelPosts: (id) => `/api/channels/${id}/posts`,
-  channelUsers: (id) => `/api/channels/${id}/users`,
-  meChannels: '/api/me/channels',
-  mePosts: '/api/me/posts',
-  posts: '/api/posts',
-  session: '/api/session',
-  users: '/api/users'
+  channelPosts: (id) => `/api/channels/${id}/posts.json`,
+  channelUsers: (id) => `/api/channels/${id}/users.json`,
+  meChannels: '/api/me/channels.json',
+  mePosts: '/api/me/posts.json',
+  posts: '/api/posts.json',
+  session: '/api/session.json',
+  users: '/api/users.json'
 }
 
 export default endpoints

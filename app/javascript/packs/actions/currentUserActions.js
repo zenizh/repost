@@ -1,67 +1,43 @@
 import endpoints from '../config/endpoints'
 
-export const SET_CURRENT_USER = 'SET_CURRENT_USER'
-export const UNSET_CURRENT_USER = 'UNSET_CURRENT_USER'
+export const FETCH_CURRENT_USER = 'FETCH_CURRENT_USER'
+export const CREATE_USER = 'CREATE_USER'
+export const SIGN_OUT_USER = 'SIGN_OUT_USER'
 
 export function fetchCurrentUser(email, password) {
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      email,
-      password
-    })
-  }
-  return (dispatch) => {
-    return fetch(endpoints.session, options)
-      .then(response => response.json())
-      .then(response => dispatch(setCurrentUser(response)))
+  return {
+    type: FETCH_CURRENT_USER,
+    payload: {
+      request: {
+        url: endpoints.session,
+        method: 'post',
+        data: {
+          email,
+          password
+        }
+      }
+    }
   }
 }
 
 export function createUser(email, password) {
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      email,
-      password
-    })
-  }
-  return (dispatch) => {
-    return fetch(endpoints.users, options)
-      .then(response => response.json())
-      .then(response => dispatch(setCurrentUser(response)))
-  }
-}
-
-export function requestSignOut(currentUser) {
-  const options = {
-    method: 'DELETE',
-    headers: {
-      'USER_EMAIL': currentUser.email,
-      'USER_TOKEN': currentUser.token
+  return {
+    type: CREATE_USER,
+    payload: {
+      request: {
+        url: endpoints.users,
+        method: 'post',
+        data: {
+          email,
+          password
+        }
+      }
     }
   }
-  return (dispatch) => {
-    return fetch(endpoints.session, options)
-      .then(() => dispatch(unsetCurrentUser()))
-  }
 }
 
-function setCurrentUser(currentUser) {
+export function signOutUser() {
   return {
-    type: SET_CURRENT_USER,
-    currentUser
-  }
-}
-
-function unsetCurrentUser() {
-  return {
-    type: UNSET_CURRENT_USER
+    type: SIGN_OUT_USER
   }
 }
