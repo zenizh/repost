@@ -1,5 +1,5 @@
 {
-  "name": "repoem",
+  "name": "repose",
   "private": true,
   "dependencies": {
     "autoprefixer": "^7.1.1",
