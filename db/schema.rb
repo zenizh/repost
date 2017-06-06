@@ -75,14 +75,14 @@ ActiveRecord::Schema.define(version: 20170131081204) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "stocks", id: :serial, force: :cascade do |t|
+  create_table "stars", id: :serial, force: :cascade do |t|
     t.integer "post_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id", "user_id"], name: "index_stocks_on_post_id_and_user_id", unique: true
-    t.index ["post_id"], name: "index_stocks_on_post_id"
-    t.index ["user_id"], name: "index_stocks_on_user_id"
+    t.index ["post_id", "user_id"], name: "index_stars_on_post_id_and_user_id", unique: true
+    t.index ["post_id"], name: "index_stars_on_post_id"
+    t.index ["user_id"], name: "index_stars_on_user_id"
   end
 
   create_table "templates", id: :serial, force: :cascade do |t|
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 20170131081204) do
   add_foreign_key "posts", "users"
   add_foreign_key "reactions", "posts"
   add_foreign_key "reactions", "users"
-  add_foreign_key "stocks", "posts"
-  add_foreign_key "stocks", "users"
+  add_foreign_key "stars", "posts"
+  add_foreign_key "stars", "users"
   add_foreign_key "templates", "users"
 end

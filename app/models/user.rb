@@ -4,8 +4,8 @@ class User < ApplicationRecord
   has_many :channel_users, class_name: 'ChannelUser'
   has_many :channels, through: :channel_users
   has_many :posts
-  has_many :stocks
-  has_many :stocked_posts, through: :stocks, source: :post
+  has_many :stars
+  has_many :starred_posts, through: :stars, source: :post
   has_many :templates
 
   validates :email,
