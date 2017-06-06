@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { Button } from 'reactstrap'
 import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { Link } from 'react-router-dom'
+import Icon from 'react-fontawesome'
 import CSSModules from 'react-css-modules'
 import * as channelsActions from '../actions/channelsActions'
 import Channels from '../components/Channels'
@@ -20,9 +21,11 @@ class Nav extends Component {
     return (
       <div className="bg-inverse" styleName="container">
         <span className="d-block mb-4 px-3" styleName="brand">Repose</span>
-        <Button type="submit" color="primary" className="d-block mx-3 mb-4">New Post</Button>
+        <Button type="submit" color="primary" className="d-block mx-3 mb-4">
+          <Icon name="pencil" /> New Post
+        </Button>
         <div styleName="content">
-          <span className="d-inline-block mx-3 mb-1 small text-uppercase" styleName="heading">Channels</span>
+          <span className="d-inline-block mx-3 mb-2 small text-uppercase" styleName="heading">Channels</span>
           <Channels channels={channels} />
         </div>
         <div className="px-3" styleName="menu">

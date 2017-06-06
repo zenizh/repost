@@ -1,7 +1,8 @@
-$font-size-base: .9rem;
+$font-size-base: .85rem;
 $small-font-size: 90%;
 
 @import '~bootstrap/scss/bootstrap';
+@import '~font-awesome/scss/font-awesome';
 
 body {
   overflow: hidden;
