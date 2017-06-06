@@ -4,6 +4,7 @@ const endpoints = {
   meChannels: '/api/me/channels.json',
   mePosts: '/api/me/posts.json',
   posts: '/api/posts.json',
+  postStars: (id) => `/api/posts/${id}/stars`,
   session: '/api/session.json',
   users: '/api/users.json'
 }

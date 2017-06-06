@@ -30,6 +30,10 @@ class User < ApplicationRecord
     super.presence || screen_name
   end
 
+  def starred?(post)
+    starred_posts.exists?(id: post)
+  end
+
   def set_token
     update(token: SecureRandom.hex)
   end

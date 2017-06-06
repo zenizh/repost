@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   namespace :api do
     resource :session, only: [:create, :destroy]
-    resources :posts, only: [:index, :create]
     resources :users, only: :create
+
+    resources :posts, only: [:index, :create] do
+      resources :stars, only: :create, controller: 'posts/stars' do
+        delete :destroy, on: :collection
+      end
+    end
 
     resources :channels, only: [] do
       resources :posts, only: :index, controller: 'channels/posts'

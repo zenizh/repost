@@ -29,12 +29,12 @@ class Channel extends Component {
   }
 
   render() {
-    const { post, posts, setPost } = this.props
+    const { post, posts, setPost, setStar, unsetStar } = this.props
     return (
       <div className="d-flex" styleName="container">
         <Nav />
         <Posts post={post} posts={posts} setPost={setPost} />
-        <Post post={post} />
+        <Post post={post} setStar={setStar} unsetStar={unsetStar} />
       </div>
     )
   }
@@ -46,7 +46,9 @@ Channel.propTypes = {
   posts: PropTypes.array.isRequired,
   fetchPosts: PropTypes.func.isRequired,
   setPost: PropTypes.func.isRequired,
-  unsetPost: PropTypes.func.isRequired
+  unsetPost: PropTypes.func.isRequired,
+  setStar: PropTypes.func.isRequired,
+  unsetStar: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
