@@ -4,3 +4,17 @@
   flex-grow: 1;
   background-color: $white;
 }
+
+.content {
+  max-width: 580px;
+}
+
+.post {
+  &-content {
+    font-size: $font-size-base;
+  }
+
+  &-created_at {
+    font-size: $font-size-lg;
+  }
+}

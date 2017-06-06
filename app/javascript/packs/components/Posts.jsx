@@ -5,9 +5,19 @@ import CSSModules from 'react-css-modules'
 import styles from '../styles/Posts.scss'
 
 class Posts extends Component {
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.post.content) {
+      this.props.setPost(nextProps.posts[0])
+    }
+  }
+
+  handleClick(post) {
+    this.props.setPost(post)
+  }
+
   post(post, key) {
     return (
-      <Card key={key} className="mb-2" styleName="card">
+      <Card key={key} onClick={() => this.handleClick(post)} className="mb-2" styleName="card">
         <CardBlock>
           <span>{post.user.name}(@{post.user.screenName})</span>
           <p>{post.content}</p>
@@ -29,7 +39,9 @@ class Posts extends Component {
 }
 
 Posts.propTypes = {
-  posts: PropTypes.array.isRequired
+  post: PropTypes.object.isRequired,
+  posts: PropTypes.array.isRequired,
+  setPost: PropTypes.func.isRequired
 }
 
 Posts = CSSModules(Posts, styles)

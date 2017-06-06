@@ -1,9 +1,18 @@
+@import '~bootstrap/scss/variables';
+
 .container {
   flex-basis: 360px;
+  flex-shrink: 0;
   overflow: scroll;
 }
 
 .card {
   overflow: hidden;
   height: 130px;
+  cursor: pointer;
+  transition: $transition-base;
+
+  &:hover {
+    background-color: transparent;
+  }
 }
