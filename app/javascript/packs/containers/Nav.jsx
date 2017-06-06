@@ -1,0 +1,65 @@
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { Button } from 'reactstrap'
+import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Link } from 'react-router-dom'
+import CSSModules from 'react-css-modules'
+import * as channelsActions from '../actions/channelsActions'
+import Channels from '../components/Channels'
+import styles from '../styles/Nav.scss'
+
+class Nav extends Component {
+  componentWillMount() {
+    this.props.fetchChannels()
+  }
+
+  render() {
+    const { channels, currentUser } = this.props
+    return (
+      <div className="bg-inverse" styleName="container">
+        <span className="d-block mb-4 px-3" styleName="brand">Repose</span>
+        <Button type="submit" color="primary" className="d-block mx-3 mb-4">New Post</Button>
+        <div styleName="content">
+          <span className="d-inline-block mx-3 mb-1 small text-uppercase" styleName="heading">Channels</span>
+          <Channels channels={channels} />
+        </div>
+        <div className="px-3" styleName="menu">
+          <UncontrolledDropdown dropup>
+            <DropdownToggle caret color="link" className="btn-block text-white" styleName="toggle">
+              {currentUser.name}
+            </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem header>Menu</DropdownItem>
+              <Link to="/account" className="dropdown-item">Account</Link>
+              <DropdownItem divider />
+              <Link to="/sign_out" className="dropdown-item">Sign Out</Link>
+            </DropdownMenu>
+          </UncontrolledDropdown>
+        </div>
+      </div>
+    )
+  }
+}
+
+Nav.propTypes = {
+  channels: PropTypes.array.isRequired,
+  currentUser: PropTypes.object.isRequired,
+  fetchChannels: PropTypes.func.isRequired
+}
+
+function mapStateToProps(state) {
+  return {
+    channels: state.channels,
+    currentUser: state.currentUser
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(channelsActions, dispatch)
+}
+
+Nav = CSSModules(Nav, styles)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav)

@@ -2,3 +2,7 @@ $font-size-base: .9rem;
 $small-font-size: 90%;
 
 @import '~bootstrap/scss/bootstrap';
+
+body {
+  overflow: hidden;
+}

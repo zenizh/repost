@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as channelsActions from '../actions/channelsActions'
+import CSSModules from 'react-css-modules'
 import * as postsActions from '../actions/postsActions'
-import * as usersActions from '../actions/usersActions'
-import Channels from '../components/Channels'
-import ChannelUsers from '../components/ChannelUsers'
+import Nav from './Nav'
 import Posts from '../components/Posts'
+import Post from '../components/Post'
 import endpoints from '../config/endpoints'
+import styles from '../styles/Channel.scss'
 
 class Channel extends Component {
   componentWillMount() {
@@ -23,19 +23,15 @@ class Channel extends Component {
   }
 
   fetch(props) {
-    const { match, fetchPosts, fetchChannelUsers, fetchChannels } = props
-    fetchPosts(endpoints.channelPosts(match.params.id))
-    fetchChannels()
-    fetchChannelUsers(endpoints.channelUsers(match.params.id))
+    this.props.fetchPosts(endpoints.channelPosts(this.props.match.params.id))
   }
 
   render() {
-    const { channels, posts, users } = this.props
     return (
-      <div>
-        <Channels channels={channels} />
-        <ChannelUsers users={users} />
-        <Posts posts={posts} />
+      <div className="d-flex" styleName="container">
+        <Nav />
+        <Posts posts={this.props.posts} />
+        <Post />
       </div>
     )
   }
@@ -43,27 +39,20 @@ class Channel extends Component {
 
 Channel.propTypes = {
   match: PropTypes.object.isRequired,
-  channels: PropTypes.array.isRequired,
   posts: PropTypes.array.isRequired,
-  fetchChannels: PropTypes.func.isRequired,
-  fetchChannelUsers: PropTypes.func.isRequired,
   fetchPosts: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
   return {
-    channels: state.channels,
-    posts: state.posts,
-    users: state.users
+    posts: state.posts
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-    ...channelsActions,
-    ...postsActions,
-    ...usersActions
-  }, dispatch)
+  return bindActionCreators(postsActions, dispatch)
 }
+
+Channel = CSSModules(Channel, styles)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Channel)

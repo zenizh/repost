@@ -1,0 +1,33 @@
+@import '~bootstrap/scss/variables';
+
+.container {
+  display: flex;
+  flex-basis: 220px;
+  flex-direction: column;
+}
+
+.brand {
+  background-color: $black;
+  color: $gray-lighter;
+  line-height: 64px;
+
+}
+
+.content {
+  flex-grow: 1;
+  overflow: scroll;
+}
+
+.heading {
+  color: $gray-light;
+}
+
+.menu {
+  flex-basis: 48px;
+  border-top: 1px solid $gray;
+}
+
+.toggle {
+  padding: 0;
+  line-height: 48px;
+}
