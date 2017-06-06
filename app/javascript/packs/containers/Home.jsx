@@ -2,18 +2,19 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import CSSModules from 'react-css-modules'
 import * as channelsActions from '../actions/channelsActions'
 import * as postsActions from '../actions/postsActions'
-import Channels from '../components/Channels'
-import PostForm from '../components/PostForm'
+import Nav from '../containers/Nav'
+import Post from '../components/Post'
 import Posts from '../components/Posts'
 import endpoints from '../config/endpoints'
+import styles from '../styles/Home.scss'
 
 class Home extends Component {
   componentWillMount() {
-    const { fetchChannels, fetchPosts } = this.props
-    fetchPosts(endpoints.posts)
-    fetchChannels()
+    this.props.fetchPosts(endpoints.posts)
+    this.props.fetchChannels()
   }
 
   onSubmit(values) {
@@ -21,19 +22,17 @@ class Home extends Component {
   }
 
   render() {
-    const { channels, posts } = this.props
     return (
-      <div>
-        <Channels channels={channels} />
-        <PostForm onSubmit={this.onSubmit.bind(this)} />
-        <Posts posts={posts} />
+      <div className="d-flex" styleName="container">
+        <Nav />
+        <Posts posts={this.props.posts} />
+        <Post />
       </div>
     )
   }
 }
 
 Home.propTypes = {
-  channels: PropTypes.array.isRequired,
   posts: PropTypes.array.isRequired,
   createPost: PropTypes.func.isRequired,
   fetchChannels: PropTypes.func.isRequired,
@@ -42,7 +41,6 @@ Home.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    channels: state.channels,
     posts: state.posts
   }
 }
@@ -53,5 +51,7 @@ function mapDispatchToProps(dispatch) {
     ...postsActions
   }, dispatch)
 }
+
+Home = CSSModules(Home, styles)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
