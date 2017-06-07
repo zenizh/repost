@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Link } from 'react-router-dom'
 import CSSModules from 'react-css-modules'
 import styles from '../styles/Brand.scss'
 
