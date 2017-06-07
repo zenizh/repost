@@ -17,7 +17,7 @@ class Posts extends Component {
 
   post(post, key) {
     return (
-      <Card key={key} onClick={() => this.handleClick(post)} className="mb-2" styleName="card">
+      <Card key={key} onClick={() => this.handleClick(post)} className="mb-2" styleName={'card' + (post.starred ? ' starred' : '')}>
         <CardBlock>
           <span>{post.user.name}(@{post.user.screenName})</span>
           <p>{post.content}</p>
@@ -44,6 +44,6 @@ Posts.propTypes = {
   setPost: PropTypes.func.isRequired
 }
 
-Posts = CSSModules(Posts, styles)
+Posts = CSSModules(Posts, styles, { allowMultiple: true })
 
 export default Posts
