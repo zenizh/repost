@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Card, CardBlock } from 'reactstrap';
+import { Card, CardBlock } from 'reactstrap'
+import classNames from 'classnames'
 import CSSModules from 'react-css-modules'
 import styles from '../styles/Posts.scss'
 
@@ -15,15 +16,8 @@ class Posts extends Component {
     this.props.setPost(post)
   }
 
-  styleName(post) {
-    let name = 'card'
-    name += (post.selected) ? ' selected' : ''
-    name += (post.starred) ? ' starred' : ''
-    return name
-  }
-
   post(post, key) {
-    const styleName = this.styleName(post)
+    const styleName = classNames('card', { selected: post.selected, starred: post.starred })
     return (
       <Card key={key} onClick={() => this.handleClick(post)} className="mb-2" styleName={styleName}>
         <CardBlock>
