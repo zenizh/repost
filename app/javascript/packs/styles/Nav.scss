@@ -7,13 +7,6 @@
   flex-shrink: 0;
 }
 
-.brand {
-  background-color: $black;
-  color: $gray-lighter;
-  line-height: 64px;
-
-}
-
 .content {
   flex-grow: 1;
   overflow: scroll;

@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import Icon from 'react-fontawesome'
 import CSSModules from 'react-css-modules'
 import * as channelsActions from '../actions/channelsActions'
+import Brand from '../components/Brand'
 import Channels from '../components/Channels'
 import styles from '../styles/Nav.scss'
 
@@ -20,7 +21,7 @@ class Nav extends Component {
     const { channels, currentUser } = this.props
     return (
       <div className="bg-inverse" styleName="container">
-        <span className="d-block mb-4 px-3" styleName="brand">Repose</span>
+        <Brand />
         <Button type="submit" color="primary" className="d-block mx-3 mb-4">
           <Icon name="pencil" /> New Post
         </Button>
@@ -34,7 +35,7 @@ class Nav extends Component {
               {currentUser.name}
             </DropdownToggle>
             <DropdownMenu>
-              <DropdownItem header>Menu</DropdownItem>
+              <DropdownItem header>User Menu</DropdownItem>
               <Link to="/account" className="dropdown-item">Account</Link>
               <DropdownItem divider />
               <Link to="/sign_out" className="dropdown-item">Sign Out</Link>
