@@ -4,6 +4,7 @@ const initialState = {
   id: null,
   content: null,
   createdAt: null,
+  selected: false,
   starred: false,
   user: {
     screenName: null,

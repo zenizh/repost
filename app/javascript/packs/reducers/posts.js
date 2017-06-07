@@ -1,5 +1,5 @@
 import { FETCH_POSTS, CREATE_POST } from '../actions/postsActions'
-import { SET_STAR, UNSET_STAR } from '../actions/postActions'
+import { SET_POST, SET_STAR, UNSET_STAR } from '../actions/postActions'
 
 const initialState = []
 
@@ -9,6 +9,14 @@ function posts(state = initialState, action) {
       return action.payload.data
     case CREATE_POST + '_SUCCESS':
       return [action.payload.data, ...state]
+    case SET_POST:
+      return state.map((post) => {
+        if (post.id == action.post.id) {
+          return { ...post, selected: true }
+        } else {
+          return { ...post, selected: false }
+        }
+      })
     case SET_STAR + '_SUCCESS':
       return state.map((post) => {
         if (post.id == action.payload.data.id) {

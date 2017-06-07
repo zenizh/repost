@@ -15,9 +15,17 @@ class Posts extends Component {
     this.props.setPost(post)
   }
 
+  styleName(post) {
+    let name = 'card'
+    name += (post.selected) ? ' selected' : ''
+    name += (post.starred) ? ' starred' : ''
+    return name
+  }
+
   post(post, key) {
+    const styleName = this.styleName(post)
     return (
-      <Card key={key} onClick={() => this.handleClick(post)} className="mb-2" styleName={'card' + (post.starred ? ' starred' : '')}>
+      <Card key={key} onClick={() => this.handleClick(post)} className="mb-2" styleName={styleName}>
         <CardBlock>
           <span>{post.user.name}(@{post.user.screenName})</span>
           <p>{post.content}</p>
