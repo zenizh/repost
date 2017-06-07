@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import { Button, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import Icon from 'react-fontawesome'
 import CSSModules from 'react-css-modules'
 import EditTeam from './EditTeam'
