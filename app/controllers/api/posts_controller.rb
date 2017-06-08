@@ -6,7 +6,9 @@ class Api::PostsController < Api::ApplicationController
   def create
     @post = current_user.posts.new(post_params)
 
-    unless @post.save
+    if @post.save
+      Service.notify(:on_posted, @post) if @post.published?
+    else
       head :bad_request
     end
   end
@@ -14,6 +16,6 @@ class Api::PostsController < Api::ApplicationController
   private
 
   def post_params
-    params.permit(:content)
+    params.permit(:content, :status)
   end
 end

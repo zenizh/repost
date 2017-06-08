@@ -14,7 +14,7 @@ class Service < ApplicationRecord
     raise NotImplementedError
   end
 
-  def self.notify
+  def self.notify(scope, data)
     send(scope).each { |service| service.notify(scope, data) }
   end
 
