@@ -6,6 +6,7 @@ const endpoints = {
   posts: '/api/posts.json',
   postStars: (id) => `/api/posts/${id}/stars`,
   session: '/api/session.json',
+  team: '/api/team.json',
   users: '/api/users.json'
 }
 

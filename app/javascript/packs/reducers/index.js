@@ -5,6 +5,7 @@ import channels from './channels'
 import currentUser from './currentUser'
 import post from './post'
 import posts from './posts'
+import team from './team'
 import users from './users'
 import { SIGN_OUT_USER } from '../actions/currentUserActions'
 
@@ -13,6 +14,7 @@ const appReducer = combineReducers({
   currentUser,
   post,
   posts,
+  team,
   users,
   form: formReducer,
   router: routerReducer

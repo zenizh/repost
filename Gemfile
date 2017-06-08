@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'faker'
 gem 'validates_email_format_of'
+gem 'seed-fu'
 gem 'sorcery'
 gem 'slack-notifier', '= 2.1.0'
 
