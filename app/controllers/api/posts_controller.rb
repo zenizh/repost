@@ -7,7 +7,7 @@ class Api::PostsController < Api::ApplicationController
     @post = current_user.posts.new(post_params)
 
     if @post.save
-      Service.notify(:on_posted, @post) if @post.published?
+      Service.notify(:on_post, @post) if @post.published?
     else
       head :bad_request
     end

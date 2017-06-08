@@ -69,8 +69,8 @@ ActiveRecord::Schema.define(version: 20170608011009) do
     t.string "type", null: false
     t.string "webhook_url", null: false
     t.string "channel"
-    t.boolean "on_posted", default: false, null: false
-    t.boolean "on_commented", default: false, null: false
+    t.boolean "on_post", default: false, null: false
+    t.boolean "on_comment", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

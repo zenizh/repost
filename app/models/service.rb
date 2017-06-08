@@ -1,14 +1,22 @@
 class Service < ApplicationRecord
   validates :type, presence: true
   validates :webhook_url, presence: true
-  validates :on_posted, presence: true
-  validates :on_commented, presence: true
+  validates :on_post, inclusion: { in: [true, false] }
+  validates :on_comment, inclusion: { in: [true, false] }
 
-  attribute :on_posted, :boolean, default: true
-  attribute :on_commented, :boolean, default: true
+  attribute :on_post, :boolean, default: true
+  attribute :on_comment, :boolean, default: true
 
-  scope :on_posted, -> { where(on_posted: true) }
-  scope :on_commented, -> { where(on_commented: true) }
+  scope :on_post, -> { where(on_post: true) }
+  scope :on_comment, -> { where(on_comment: true) }
+
+  def name
+    raise NotImplementedError
+  end
+
+  def icon_name
+    raise NotImplementedError
+  end
 
   def notify(scope, data)
     raise NotImplementedError
@@ -22,9 +30,9 @@ class Service < ApplicationRecord
 
   def content(scope, data)
     case scope
-    when :on_posted
+    when :on_post
       "#{data.user.name}さんが#{data.created_at.to_date}の日報を投稿しました。"
-    when :on_commented
+    when :on_comment
       'commented'
     end
   end

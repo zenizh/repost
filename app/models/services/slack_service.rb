@@ -1,4 +1,12 @@
 class SlackService < Service
+  def name
+    'Slack'
+  end
+
+  def icon_name
+    'slack'
+  end
+
   def channel
     super || 'general'
   end

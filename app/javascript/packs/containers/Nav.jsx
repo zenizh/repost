@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import Icon from 'react-fontawesome'
 import CSSModules from 'react-css-modules'
 import * as channelsActions from '../actions/channelsActions'
+import * as servicesActions from '../actions/servicesActions'
 import * as teamActions from '../actions/teamActions'
 import Brand from '../components/Brand'
 import Channels from '../components/Channels'
@@ -17,13 +18,14 @@ class Nav extends Component {
   componentWillMount() {
     this.props.fetchChannels()
     this.props.fetchTeam()
+    this.props.fetchServices()
   }
 
   render() {
-    const { channels, currentUser, team, setTeam } = this.props
+    const { channels, currentUser, team, services, setTeam } = this.props
     return (
       <div className="bg-inverse" styleName="container">
-        <Brand team={team} setTeam={setTeam} />
+        <Brand team={team} services={services} setTeam={setTeam} />
         <Button type="submit" color="primary" className="d-block mx-3 mb-4">
           <Icon name="pencil" /> New Post
         </Button>
@@ -54,6 +56,7 @@ Nav.propTypes = {
   currentUser: PropTypes.object.isRequired,
   fetchChannels: PropTypes.func.isRequired,
   fetchTeam: PropTypes.func.isRequired,
+  fetchServices: PropTypes.func.isRequired,
   setTeam: PropTypes.func.isRequired
 }
 
@@ -61,12 +64,13 @@ function mapStateToProps(state) {
   return {
     channels: state.channels,
     currentUser: state.currentUser,
-    team: state.team
+    team: state.team,
+    services: state.services
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ ...channelsActions, ...teamActions }, dispatch)
+  return bindActionCreators({ ...channelsActions, ...servicesActions, ...teamActions }, dispatch)
 }
 
 Nav = CSSModules(Nav, styles)

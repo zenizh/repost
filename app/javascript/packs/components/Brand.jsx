@@ -22,7 +22,7 @@ class Brand extends Component {
   }
 
   render() {
-    const { team } = this.props
+    const { team, services } = this.props
     return (
       <div className="mb-4 px-3" styleName="container">
         <UncontrolledDropdown>
@@ -36,7 +36,7 @@ class Brand extends Component {
         </UncontrolledDropdown>
         <Modal isOpen={this.state.modal} toggle={this.toggle} backdrop="static">
           <ModalHeader toggle={this.toggle}>Manage a Team</ModalHeader>
-          <EditTeam team={team} toggleModal={this.toggle} onSubmit={this.onSubmit} />
+          <EditTeam team={team} services={services} toggleModal={this.toggle} onSubmit={this.onSubmit} />
         </Modal>
       </div>
     )
@@ -45,6 +45,7 @@ class Brand extends Component {
 
 Brand.propTypes = {
   team: PropTypes.object.isRequired,
+  services: PropTypes.array.isRequired,
   setTeam: PropTypes.func.isRequired
 }
 

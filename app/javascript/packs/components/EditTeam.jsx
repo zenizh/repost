@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Button, Form, FormGroup, Label, ModalBody, ModalFooter, Nav as NavContainer, NavItem, NavLink, TabContent, TabPane } from 'reactstrap'
+import PropTypes from 'prop-types'
+import { Button, Form, FormGroup, Label, ModalBody, ModalFooter, Nav as NavContainer, NavItem, NavLink, TabContent, TabPane, Table } from 'reactstrap'
 import { Field, reduxForm } from 'redux-form'
 import Icon from 'react-fontawesome'
 import classNames from 'classnames'
@@ -19,7 +20,7 @@ class EditTeam extends Component {
   }
 
   render() {
-    const { handleSubmit, toggleModal } = this.props
+    const { services, handleSubmit, toggleModal } = this.props
     return (
       <Form onSubmit={handleSubmit}>
         <ModalBody>
@@ -47,7 +48,30 @@ class EditTeam extends Component {
               </FormGroup>
             </TabPane>
             <TabPane tabId="webhook">
-              WebHook
+              <Table bordered>
+                <thead>
+                  <tr>
+                    <th>Service</th>
+                    <th>Channel</th>
+                    <th>Post</th>
+                    <th>Comment</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {services.map((service, key) => {
+                    return (
+                      <tr key={key}>
+                        <td><Icon name={service.iconName} /> {service.name}</td>
+                        <td>#{service.channel}</td>
+                        <td className="text-center">{service.onPost ? <Icon name="check" /> : '-'}</td>
+                        <td className="text-center">{service.onComment ? <Icon name="check" /> : '-'}</td>
+                        <td><Button color="secondary"><Icon name="eraser" /> Edit</Button></td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </Table>
             </TabPane>
           </TabContent>
         </ModalBody>
@@ -58,6 +82,12 @@ class EditTeam extends Component {
       </Form>
     )
   }
+}
+
+EditTeam.propTypes = {
+  services: PropTypes.array.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired
 }
 
 EditTeam = reduxForm({ form: 'team' })(EditTeam)
