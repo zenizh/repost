@@ -1,3 +1,3 @@
 class Team < ApplicationRecord
-  attribute :name, :string, default: 'Repose'
+  attribute :name, :string, default: 'Repost'
 end
