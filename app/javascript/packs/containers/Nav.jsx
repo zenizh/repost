@@ -18,12 +18,12 @@ class Nav extends Component {
   }
 
   render() {
-    const { channels, currentUser, team } = this.props
+    const { channels, currentChannel, currentUser, team } = this.props
     return (
       <div styleName="container">
         <Header team={team} />
         <NewPostButton />
-        <ChannelList channels={channels} />
+        <ChannelList channels={channels} currentChannel={currentChannel} />
         <Footer currentUser={currentUser} />
       </div>
     )
@@ -32,6 +32,7 @@ class Nav extends Component {
 
 Nav.propTypes = {
   channels: PropTypes.array.isRequired,
+  currentChannel: PropTypes.string,
   currentUser: PropTypes.object.isRequired,
   team: PropTypes.object.isRequired,
   fetchChannels: PropTypes.func.isRequired,

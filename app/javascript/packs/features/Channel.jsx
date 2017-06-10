@@ -31,7 +31,7 @@ class Channel extends Component {
   render() {
     return (
       <div styleName="container">
-        <Nav />
+        <Nav currentChannel={this.props.match.params.id} />
         <PostList />
         <Post />
       </div>

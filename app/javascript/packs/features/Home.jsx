@@ -20,7 +20,7 @@ class Home extends Component {
   render() {
     return (
       <div styleName="container">
-        <Nav />
+        <Nav currentChannel="all" />
         <PostList />
         <Post />
       </div>

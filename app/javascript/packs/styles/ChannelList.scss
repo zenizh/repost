@@ -28,4 +28,10 @@
   a {
     color: $gray-light;
   }
+
+  .active {
+    a {
+      color: $white;
+    }
+  }
 }
