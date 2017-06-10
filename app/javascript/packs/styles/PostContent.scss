@@ -1,0 +1,16 @@
+@import '~bootstrap/scss/variables';
+
+.container {
+  max-width: 580px;
+  margin: auto;
+}
+
+.content {
+  font-size: $font-size-base;
+}
+
+.created_at {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: $font-size-lg;
+}

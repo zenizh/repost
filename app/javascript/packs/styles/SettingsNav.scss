@@ -1,0 +1,26 @@
+@import 'variables';
+
+.container {
+  flex-basis: 220px;
+  flex-shrink: 0;
+  overflow: scroll;
+  padding: 64px 1rem 0;
+  text-align: right;
+
+  h3 {
+    display: inline-block;
+    margin-top: 1.5rem;
+    margin-bottom: .5rem;
+    font-size: $small-font-size;
+    text-transform: uppercase;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    margin-bottom: .25rem;
+  }
+}

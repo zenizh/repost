@@ -1,26 +1,26 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Route } from 'react-router'
 import { Authenticated, NotAuthenticated } from './auth'
-import Account from '../containers/Account'
-import Channel from '../containers/Channel'
-import Home from '../containers/Home'
-import SignUp from '../containers/SignUp'
-import SignIn from '../containers/SignIn'
-import SignOut from '../containers/SignOut'
+import SignIn from '../features/SignIn'
+import SignUp from '../features/SignUp'
+import Home from '../features/Home'
+import Channel from '../features/Channel'
+import Services from '../features/Services'
+import TeamSettings from '../features/TeamSettings'
+import SignOut from '../features/SignOut'
 
-class Routes extends Component {
-  render() {
-    return (
-      <div>
-        <Route path="/sign_in" component={NotAuthenticated(SignIn)} />
-        <Route path="/sign_up" component={NotAuthenticated(SignUp)} />
-        <Route exact path="/" component={Authenticated(Home)} />
-        <Route path="/account" component={Authenticated(Account)} />
-        <Route path="/channels/:id" component={Authenticated(Channel)} />
-        <Route path="/sign_out" component={Authenticated(SignOut)} />
-      </div>
-    )
-  }
+const Routes = (props) => {
+  return (
+    <div>
+      <Route path="/sign_in" component={NotAuthenticated(SignIn)} />
+      <Route path="/sign_up" component={NotAuthenticated(SignUp)} />
+      <Route exact path="/" component={Authenticated(Home)} />
+      <Route path="/channels/:id" component={Authenticated(Channel)} />
+      <Route path="/team/services" component={Authenticated(Services)} />
+      <Route path="/team/settings" component={Authenticated(TeamSettings)} />
+      <Route path="/sign_out" component={Authenticated(SignOut)} />
+    </div>
+  )
 }
 
 export default Routes

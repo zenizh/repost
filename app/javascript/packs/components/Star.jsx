@@ -1,34 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Icon from 'react-fontawesome'
-import endpoints from '../config/endpoints'
+import CSSModules from 'react-css-modules'
+import styles from '../styles/Star.scss'
 
-class Star extends Component {
-  constructor(props) {
-    super(props)
-    this.set = this.set.bind(this)
-    this.unset = this.unset.bind(this)
+const Star = (props) => {
+  const { post, setStar, unsetStar } = props
+
+  let star = null
+
+  if (post.starred) {
+    star = <Icon name="star" onClick={() => unsetStar(post)} />
+  } else {
+    star = <Icon name="star-o" onClick={() => setStar(post)} />
   }
 
-  set() {
-    this.props.setStar(endpoints.postStars(this.props.post.id))
-  }
-
-  unset() {
-    this.props.unsetStar(endpoints.postStars(this.props.post.id))
-  }
-
-  render() {
-    let star = null
-
-    if (this.props.post.starred) {
-      star = <Icon name="star" onClick={this.unset} />
-    } else {
-      star = <Icon name="star-o" onClick={this.set} />
-    }
-
-    return star
-  }
+  return (
+    <span styleName="container">
+      {star}
+    </span>
+  )
 }
 
 Star.propTypes = {
@@ -37,4 +28,4 @@ Star.propTypes = {
   unsetStar: PropTypes.func.isRequired
 }
 
-export default Star
+export default CSSModules(Star, styles)

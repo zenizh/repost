@@ -1,0 +1,31 @@
+@import 'variables';
+@import '~bootstrap/scss/variables';
+
+.container {
+  flex-grow: 1;
+  overflow: scroll;
+  margin-right: 1rem;
+  margin-left: 1rem;
+
+  h3 {
+    display: inline-block;
+    margin-bottom: .5rem;
+    color: $gray-light;
+    font-size: $small-font-size;
+    text-transform: uppercase;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    color: $gray-light;
+  }
+
+  li {
+    margin-bottom: .25rem;
+  }
+
+  a {
+    color: $gray-light;
+  }
+}

@@ -26,6 +26,4 @@ const config = {
   }
 }
 
-const middleware = axiosMiddleware(client, config)
-
-export default middleware
+export default axiosMiddleware(client, config)

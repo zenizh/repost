@@ -1,7 +1,19 @@
 @import '~bootstrap/scss/variables';
 
+.container {
+  margin-top: 3rem;
+}
+
+.row {
+  justify-content: center;
+}
+
 .col {
   @media (min-width: map-get($grid-breakpoints, sm)) {
     max-width: 320px;
   }
+}
+
+.footer {
+  text-align: right;
 }

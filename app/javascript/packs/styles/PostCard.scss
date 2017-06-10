@@ -1,0 +1,22 @@
+@import '~bootstrap/scss/variables';
+
+.card {
+  overflow: hidden;
+  height: 130px;
+  margin-bottom: .5rem;
+  cursor: pointer;
+  transition: $transition-base;
+
+  &:hover {
+    background-color: transparent;
+  }
+
+  &.selected{
+    border-color: rgba($black, .25);
+    background-color: transparent;
+  }
+
+  &.starred {
+    border-left: 2px solid $orange;
+  }
+}

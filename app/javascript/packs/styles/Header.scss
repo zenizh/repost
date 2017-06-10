@@ -1,0 +1,17 @@
+@import '~bootstrap/scss/variables';
+
+.container {
+  flex-basis: 64px;
+  margin-bottom: 1.5rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  background-color: $black;
+  color: $gray-lighter;
+
+  button {
+    padding: 0;
+    color: $white;
+    line-height: 64px;
+    text-align: left;
+  }
+}
