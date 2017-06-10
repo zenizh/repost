@@ -13,7 +13,7 @@ import styles from '../styles/Home.scss'
 
 class Home extends Component {
   componentWillMount() {
-    this.props.fetchPosts(endpoints.mePosts)
+    this.props.fetchPosts(endpoints.posts)
     this.props.unsetPost()
   }
 
