@@ -1,5 +1,5 @@
 class Api::ServicesController < Api::ApplicationController
-  before_action :set_service, only: [:show, :update]
+  before_action :set_service, only: [:show, :update, :destroy]
 
   def index
     @services = Service.all
@@ -12,6 +12,11 @@ class Api::ServicesController < Api::ApplicationController
     unless @service.update(service_params)
       head :bad_request
     end
+  end
+
+  def destroy
+    @service.destroy
+    render status: :ok, json: { id: @service.id }
   end
 
   private

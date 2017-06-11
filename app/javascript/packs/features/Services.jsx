@@ -3,15 +3,28 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import CSSModules from 'react-css-modules'
+import * as serviceActions from '../actions/serviceActions'
 import * as servicesActions from '../actions/servicesActions'
 import Nav from '../containers/Nav'
 import SettingsNav from '../components/SettingsNav'
 import ServiceList from '../components/ServiceList'
 import styles from '../styles/Services.scss'
+import endpoints from '../config/endpoints'
 
 class Services extends Component {
+  constructor(props) {
+    super(props)
+    this.onClick = this.onClick.bind(this)
+  }
+
   componentWillMount() {
     this.props.fetchServices()
+  }
+
+  onClick(id) {
+    if (window.confirm('Are you sure?')) {
+      this.props.deleteService(endpoints.service(id))
+    }
   }
 
   render() {
@@ -19,7 +32,7 @@ class Services extends Component {
       <div styleName="container">
         <Nav />
         <SettingsNav />
-        <ServiceList services={this.props.services} />
+        <ServiceList services={this.props.services} onClick={this.onClick} />
       </div>
     )
   }
@@ -36,9 +49,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(servicesActions, dispatch)
+  return bindActionCreators({ ...serviceActions, ...servicesActions }, dispatch)
 }
 
-Services  = CSSModules(Services, styles)
+Services = CSSModules(Services, styles)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Services)
