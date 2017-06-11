@@ -5,6 +5,7 @@ const endpoints = {
   mePosts: '/api/me/posts.json',
   posts: '/api/posts.json',
   postStars: (id) => `/api/posts/${id}/stars`,
+  service: (id) => `/api/services/${id}.json`,
   services: '/api/services.json',
   session: '/api/session.json',
   team: '/api/team.json',

@@ -7,13 +7,14 @@ import CSSModules from 'react-css-modules'
 import styles from '../styles/ServiceList.scss'
 
 const service = (service, key) => {
+  const to = `/team/services/${service.id}/edit`
   return (
     <tr key={key}>
       <td><Icon name={service.iconName} /> {service.name}</td>
       <td>#{service.channel}</td>
       <td>{service.onPost ? <Icon name="check" /> : '-'}</td>
       <td>{service.onComment ? <Icon name="check" /> : '-'}</td>
-      <td><Link to="#">Edit</Link></td>
+      <td><Link to={to}>Edit</Link></td>
     </tr>
   )
 }

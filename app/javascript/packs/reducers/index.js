@@ -5,6 +5,7 @@ import channels from './channels'
 import currentUser from './currentUser'
 import post from './post'
 import posts from './posts'
+import service from './service'
 import services from './services'
 import team from './team'
 import users from './users'
@@ -15,6 +16,7 @@ const appReducer = combineReducers({
   currentUser,
   post,
   posts,
+  service,
   services,
   team,
   users,
