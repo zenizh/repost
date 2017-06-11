@@ -1,4 +1,5 @@
 export const SET_SERVICE = 'SET_SERVICE'
+export const UPDATE_SERVICE = 'UPDATE_SERVICE'
 
 export function fetchService(url) {
   return {
@@ -13,7 +14,7 @@ export function fetchService(url) {
 
 export function updateService(url, service) {
   return {
-    type: SET_SERVICE,
+    type: UPDATE_SERVICE,
     payload: {
       request: {
         url: url,

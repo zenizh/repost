@@ -20,6 +20,12 @@ class EditService extends Component {
     this.props.fetchService(endpoints.service(this.props.match.params.id))
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.service.saved) {
+      this.props.history.push('/team/services')
+    }
+  }
+
   onSubmit(values) {
     this.props.updateService(endpoints.service(this.props.match.params.id), values)
   }
