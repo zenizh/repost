@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { Table } from 'reactstrap'
+import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, Table } from 'reactstrap'
 import Icon from 'react-fontawesome'
 import CSSModules from 'react-css-modules'
 import styles from '../styles/ServiceList.scss'
@@ -9,7 +9,13 @@ import styles from '../styles/ServiceList.scss'
 class ServiceList extends Component {
   constructor(props) {
     super(props)
+    this.state = { isOpen: false }
     this.service = this.service.bind(this)
+    this.toggle = this.toggle.bind(this)
+  }
+
+  toggle() {
+    this.setState({ isOpen: !this.state.isOpen })
   }
 
   service(service, key) {
@@ -49,6 +55,14 @@ class ServiceList extends Component {
               {this.props.services.map(this.service)}
             </tbody>
           </Table>
+          <ButtonDropdown isOpen={this.state.isOpen} toggle={this.toggle}>
+            <DropdownToggle caret>
+              Add a service
+            </DropdownToggle>
+            <DropdownMenu>
+              <Link to="/team/services/new" className="dropdown-item"><Icon name="slack" /> Slack</Link>
+            </DropdownMenu>
+          </ButtonDropdown>
         </div>
       </div>
     )

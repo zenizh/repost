@@ -1,4 +1,5 @@
 import { SET_SERVICE, UPDATE_SERVICE } from '../actions/serviceActions'
+import { CREATE_SERVICE } from '../actions/servicesActions'
 
 const initialState = {
   name: null,
@@ -15,6 +16,8 @@ export default function service(state = initialState, action) {
     case SET_SERVICE + '_SUCCESS':
       return action.payload.data
     case UPDATE_SERVICE + '_SUCCESS':
+      return { ...action.payload.data, saved: true }
+    case CREATE_SERVICE + '_SUCCESS':
       return { ...action.payload.data, saved: true }
     default:
       return state

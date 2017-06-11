@@ -1,4 +1,5 @@
 json.id service.id
+json.type service.type
 json.name service.name
 json.icon_name service.icon_name
 json.webhook_url service.webhook_url

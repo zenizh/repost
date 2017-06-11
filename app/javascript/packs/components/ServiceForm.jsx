@@ -34,6 +34,7 @@ let ServiceForm = (props) => {
               <Field component="input" type="checkbox" name="onComment" className="form-check-input" /> On Comment
             </Label>
           </FormGroup>
+          <Field component="input" type="hidden" name="type" />
           <Button type="submit" color="success"><Icon name="check" /> Save</Button>
         </Form>
       </div>

@@ -5,6 +5,14 @@ class Api::ServicesController < Api::ApplicationController
     @services = Service.all
   end
 
+  def create
+    @service = Service.new(service_params)
+
+    unless @service.save
+      head :bad_request
+    end
+  end
+
   def show
   end
 
@@ -22,7 +30,7 @@ class Api::ServicesController < Api::ApplicationController
   private
 
   def service_params
-    params.permit(:webhook_url, :channel, :on_post, :on_comment)
+    params.permit(:type, :webhook_url, :channel, :on_post, :on_comment)
   end
 
   def set_service
