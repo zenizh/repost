@@ -16,7 +16,6 @@ export default function service(state = initialState, action) {
     case SET_SERVICE + '_SUCCESS':
       return action.payload.data
     case UPDATE_SERVICE + '_SUCCESS':
-      return { ...action.payload.data, saved: true }
     case CREATE_SERVICE + '_SUCCESS':
       return { ...action.payload.data, saved: true }
     default:

@@ -4,6 +4,7 @@ import { Authenticated, NotAuthenticated } from './auth'
 import SignIn from '../features/SignIn'
 import SignUp from '../features/SignUp'
 import Home from '../features/Home'
+import EditAccount from '../features/EditAccount'
 import Channel from '../features/Channel'
 import Services from '../features/Services'
 import NewService from '../features/NewService'
@@ -17,6 +18,7 @@ const Routes = (props) => {
       <Route path="/sign_in" component={NotAuthenticated(SignIn)} />
       <Route path="/sign_up" component={NotAuthenticated(SignUp)} />
       <Route exact path="/" component={Authenticated(Home)} />
+      <Route path="/account/edit" component={Authenticated(EditAccount)} />
       <Route path="/channels/:id" component={Authenticated(Channel)} />
       <Route path="/team/services/new" component={Authenticated(NewService)} />
       <Route path="/team/services/:id/edit" component={Authenticated(EditService)} />
