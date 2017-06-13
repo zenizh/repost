@@ -1,3 +1,4 @@
+@import 'variables';
 @import '~bootstrap/scss/variables';
 
 .container {
@@ -12,5 +13,28 @@
 
   h2 {
     margin-bottom: 1.5rem;
+  }
+}
+
+.dropzone {
+  p,
+  img {
+    width: 128px;
+    height: 128px;
+    border-width: 1px;
+    border-color: $input-border-color;
+    border-radius: $input-border-radius;
+  }
+
+  p {
+    margin: 0;
+    padding: .5rem;
+    border-style: dashed;
+    color: $gray;
+    font-size: $small-font-size;
+  }
+
+  img {
+    border-style: solid;
   }
 }

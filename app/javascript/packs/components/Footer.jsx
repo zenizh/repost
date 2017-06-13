@@ -9,6 +9,7 @@ const Footer = (props) => {
   return (
     <UncontrolledDropdown dropup styleName="container">
       <DropdownToggle caret color="link" className="btn-block">
+        <img src={props.currentUser.avatar} />
         {props.currentUser.name}
       </DropdownToggle>
       <DropdownMenu>

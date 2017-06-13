@@ -14,6 +14,7 @@ gem 'webpacker'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
+gem 'paperclip'
 gem 'faker'
 gem 'validates_email_format_of'
 gem 'seed-fu'

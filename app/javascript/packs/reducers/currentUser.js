@@ -3,6 +3,9 @@ import { FETCH_CURRENT_USER, CREATE_USER, UPDATE_CURRENT_USER } from '../actions
 const initialState = {
   id: null,
   email: null,
+  screenName: null,
+  name: null,
+  avatar: null,
   token: null,
   signedIn: false
 }

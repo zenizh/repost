@@ -6,9 +6,17 @@
   padding-left: 1rem;
   border-top: 1px solid $gray;
 
+  img {
+    width: 32px;
+    height: 32px;
+    margin-right: .5rem;
+    border-radius: $border-radius;
+  }
+
   button {
     padding: 0;
     color: #fff;
     line-height: 48px;
+    text-align: left;
   }
 }

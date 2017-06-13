@@ -15,5 +15,6 @@
 
 .byebug_history
 /public/packs
+/public/system
 /node_modules
 /yarn-error.log

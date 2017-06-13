@@ -8,6 +8,6 @@ class Api::MesController < Api::ApplicationController
   private
 
   def me_params
-    params.permit(:email, :screen_name, :name)
+    params.permit(:email, :screen_name, :name, :avatar)
   end
 end

@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :screen_name, null: false
       t.integer :role, null: false, default: 0
+      t.attachment :avatar
       t.timestamps
     end
     add_index :users, :email, unique: true
