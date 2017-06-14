@@ -2,10 +2,13 @@
 @import '~bootstrap/scss/variables';
 
 .container {
+  margin-right: 1rem;
+  margin-left: 1rem;
+
   h3 {
     display: inline-block;
     margin-bottom: .75rem;
-    color: $gray-light;
+    color: rgba($gray-lighter, .5);
     font-size: $small-font-size;
     text-transform: uppercase;
   }

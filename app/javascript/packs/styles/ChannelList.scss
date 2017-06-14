@@ -3,11 +3,13 @@
 
 .container {
   margin-bottom: 1.5rem;
+  margin-right: 1rem;
 
   h3 {
     display: inline-block;
     margin-bottom: .5rem;
-    color: $gray-light;
+    margin-left: 1rem;
+    color: rgba($gray-lighter, .5);
     font-size: $small-font-size;
     text-transform: uppercase;
   }
@@ -15,20 +17,25 @@
   ul {
     list-style: none;
     padding-left: 0;
-    color: $gray-light;
-  }
-
-  li {
-    margin-bottom: .25rem;
   }
 
   a {
-    color: $gray-light;
+    display: block;
+    padding: .25rem 0 .25rem 1rem;
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    color: rgba($gray-lighter, .5);
+
+    &:hover {
+      background-color: rgba($gray-light, .25);
+      text-decoration: none;
+    }
   }
 
   .active {
     a {
       color: $white;
+      background-color: rgba($gray-light, .5);
     }
   }
 }
