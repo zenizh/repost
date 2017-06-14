@@ -5,3 +5,15 @@
 body {
   overflow: hidden;
 }
+
+.dropdown-toggle {
+  &.btn-block {
+    position: relative;
+
+    &:after {
+      position: absolute;
+      top: calc(50% - 2px);
+      right: 0;
+    }
+  }
+}
