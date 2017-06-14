@@ -8,9 +8,14 @@ const PostContent = (props) => {
   const { post, setStar, unsetStar } = props
   return (
     <div styleName="container">
+      <div styleName="user">
+        <img src={post.user.avatar} />
+        {post.user.name}
+        <span>(@{post.user.screenName})</span>
+      </div>
+      <span styleName="created_on">Posted on {post.createdOn}</span>
+      <p>{post.content}</p>
       <span styleName="created_at">{post.createdAt}</span>
-      <p styleName="content">{post.content}</p>
-      <span>{post.user.name}(@{post.user.screenName})</span>
       <Star post={post} setStar={setStar} unsetStar={unsetStar} />
     </div>
   )

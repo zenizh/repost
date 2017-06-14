@@ -3,14 +3,39 @@
 .container {
   max-width: 580px;
   margin: auto;
+
+  p {
+    margin-bottom: 1.5rem;
+    font-size: $font-size-base;
+  }
 }
 
-.content {
-  font-size: $font-size-base;
+.user {
+  margin-bottom: 1.5rem;
+  line-height: 24px;
+
+  img {
+    width: 24px;
+    height: 24px;
+    margin-right: .5rem;
+    border-radius: 100%;
+    background-color: $gray-lighter;
+    vertical-align: bottom;
+  }
+
+  span {
+    margin-left: .25rem;
+    color: $gray-light;
+    font-size: $small-font-size;
+  }
+}
+
+.created_on {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: $font-size-h4;
 }
 
 .created_at {
-  display: inline-block;
-  margin-bottom: 1.5rem;
-  font-size: $font-size-lg;
+  color: $gray-light;
 }
