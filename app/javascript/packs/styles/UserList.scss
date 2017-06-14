@@ -2,11 +2,9 @@
 @import '~bootstrap/scss/variables';
 
 .container {
-  margin-bottom: 1.5rem;
-
   h3 {
     display: inline-block;
-    margin-bottom: .5rem;
+    margin-bottom: .75rem;
     color: $gray-light;
     font-size: $small-font-size;
     text-transform: uppercase;
@@ -19,16 +17,15 @@
   }
 
   li {
+    display: inline-block;
+    margin-right: .25rem;
     margin-bottom: .25rem;
   }
 
-  a {
-    color: $gray-light;
-  }
-
-  .active {
-    a {
-      color: $white;
-    }
+  img {
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    background-color: $white;
   }
 }

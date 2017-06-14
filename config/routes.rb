@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resource :team, only: [:show, :update]
     resources :services, only: [:index, :create, :show, :update, :destroy]
-    resources :users, only: :create
+    resources :users, only: [:index, :create]
 
     resources :posts, only: [:index, :create] do
       resources :stars, only: :create, controller: 'posts/stars' do
