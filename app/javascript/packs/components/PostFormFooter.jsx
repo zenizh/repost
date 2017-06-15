@@ -7,7 +7,9 @@ import styles from '../styles/PostFormFooter.scss'
 const PostFormFooter = (props) => {
   return (
     <div styleName="container">
-      <Button type="submit" color="success"><Icon name="check" /> Submit</Button>
+      <Button type="submit" color="success" onClick={props.onSubmit}>
+        <Icon name="check" /> Submit
+      </Button>
     </div>
   )
 }

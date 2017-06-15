@@ -1,4 +1,4 @@
-import { SET_POST, UNSET_POST, SET_STAR, UNSET_STAR } from '../actions/postActions'
+import { CREATE_POST, SET_POST, UNSET_POST, SET_STAR, UNSET_STAR } from '../actions/postActions'
 
 const initialState = {
   id: null,

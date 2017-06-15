@@ -16,6 +16,6 @@ class Api::PostsController < Api::ApplicationController
   private
 
   def post_params
-    params.permit(:content, :status)
+    params.permit(:content, :editor_state, :status)
   end
 end
