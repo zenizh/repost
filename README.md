@@ -31,7 +31,7 @@ To develop Repost, you should run servers of Ruby on Rails and Webpack.
 $ git clone git@github.com:kami-zh/repost.git
 $ cd repost
 $ bundle install
-$ bin/rails db:create db:migrate db:seed db:populate
+$ bin/rails db:create db:migrate db:seed_fu db:populate
 $ bin/rails s
 $ bin/webpack-dev-server
 ```
