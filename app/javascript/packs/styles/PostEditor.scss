@@ -1,0 +1,16 @@
+@import '~bootstrap/scss/variables';
+
+.container,
+:global(.DraftEditor-root),
+:global(.DraftEditor-editorContainer) {
+  display: flex;
+  flex: 1;
+}
+
+:global(.public-DraftEditor-content) {
+  flex: 1;
+  overflow: scroll;
+  padding: .5rem;
+  font-size: $font-size-base;
+  line-height: 1.5;
+}

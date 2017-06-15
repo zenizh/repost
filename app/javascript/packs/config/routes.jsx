@@ -6,6 +6,7 @@ import SignUp from '../features/SignUp'
 import Home from '../features/Home'
 import EditAccount from '../features/EditAccount'
 import Channel from '../features/Channel'
+import NewPost from '../features/NewPost'
 import Services from '../features/Services'
 import NewService from '../features/NewService'
 import EditService from '../features/EditService'
@@ -20,6 +21,7 @@ const Routes = (props) => {
       <Route exact path="/" component={Authenticated(Home)} />
       <Route path="/account/edit" component={Authenticated(EditAccount)} />
       <Route path="/channels/:id" component={Authenticated(Channel)} />
+      <Route path="/posts/new" component={Authenticated(NewPost)} />
       <Route path="/team/services/new" component={Authenticated(NewService)} />
       <Route path="/team/services/:id/edit" component={Authenticated(EditService)} />
       <Route path="/team/services" component={Authenticated(Services)} />

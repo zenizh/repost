@@ -1,14 +1,14 @@
 import React from 'react'
-import { Button } from 'reactstrap'
+import { Link } from 'react-router-dom'
 import Icon from 'react-fontawesome'
 import CSSModules from 'react-css-modules'
 import styles from '../styles/NewPostButton.scss'
 
 const NewPostButton = (props) => {
   return (
-    <Button color="primary" styleName="container">
+    <Link to="/posts/new" className="btn btn-primary" styleName="container">
       <Icon name="pencil" /> New Post
-    </Button>
+    </Link>
   )
 }
 

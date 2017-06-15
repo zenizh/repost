@@ -1,0 +1,10 @@
+@import '~bootstrap/scss/variables';
+
+.container {
+  display: flex;
+  flex-basis: 50%;
+  flex-direction: column;
+  border-right: 1px solid $gray-lighter;
+  background-color: $white;
+  padding: 1rem;
+}
