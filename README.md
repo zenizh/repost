@@ -1,24 +1,46 @@
-# README
+# Repost
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Repost is an open source software to communicate with your team members through posting daily reports.
 
-Things you may want to cover:
+This project focuses on a good user interface using Redux and React.
+Ruby on Rails is used for the backend server.
 
-* Ruby version
+**NOTICE**
+Repost is still under development.
+So it may occur breaking changes, and **it's too insecure to use** this.
 
-* System dependencies
+## Screenshot
 
-* Configuration
+## Build with
 
-* Database creation
+Repost is build with following libraries.
+This project is still pre-alpha, so it adopts latest version of each.
 
-* Database initialization
+- Ruby
+- Ruby on Rails
+- Redux
+- React
+- PostgreSQL
+- draft.js
 
-* How to run the test suite
+## Development
 
-* Services (job queues, cache servers, search engines, etc.)
+To develop Repost, you should run servers of Ruby on Rails and Webpack.
+`db:populate` fills your database with example data.
 
-* Deployment instructions
+```
+$ git clone git@github.com:kami-zh/repost.git
+$ cd repost
+$ bundle install
+$ bin/rails db:create db:migrate db:seed db:populate
+$ bin/rails s
+$ bin/webpack-dev-server
+```
 
-* ...
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/kami-zh/repost.
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
