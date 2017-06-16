@@ -3,6 +3,8 @@ import endpoints from '../config/endpoints'
 
 export const CREATE_POST = 'CREATE_POST'
 export const SET_POST = 'SET_POST'
+export const FETCH_POST = 'FETCH_POST'
+export const UPDATE_POST = 'UPDATE_POST'
 export const UNSET_POST = 'UNSET_POST'
 export const SET_STAR = 'SET_STAR'
 export const UNSET_STAR = 'UNSET_STAR'
@@ -28,6 +30,34 @@ export function setPost(post) {
   return {
     type: SET_POST,
     post
+  }
+}
+
+export function fetchPost(url) {
+  return {
+    type: FETCH_POST,
+    payload: {
+      request: {
+        url: url
+      }
+    }
+  }
+}
+
+export function updatePost(url, editorState) {
+  const content = editorState.getCurrentContent()
+  return {
+    type: UPDATE_POST,
+    payload: {
+      request: {
+        url: url,
+        method: 'patch',
+        data: {
+          content: content.getPlainText(),
+          editorState: JSON.stringify(convertToRaw(content))
+        }
+      }
+    }
   }
 }
 

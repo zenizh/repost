@@ -7,16 +7,22 @@ import * as postActions from '../actions/postActions'
 import Nav from '../containers/Nav'
 import PostForm from '../containers/PostForm'
 import PostPreview from '../components/PostPreview'
-import styles from '../styles/NewPost.scss'
+import styles from '../styles/EditPost.scss'
+import endpoints from '../config/endpoints'
 
-class NewPost extends Component {
+class EditPost extends Component {
   constructor(props) {
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  componentWillMount() {
+    this.props.fetchPost(endpoints.mePost(this.props.match.params.id))
+  }
+
   handleSubmit() {
-    this.props.createPost(this.props.editor.state)
+    const { match, editor, updatePost } = this.props
+    updatePost(endpoints.mePost(match.params.id), editor.state)
   }
 
   render() {
@@ -30,9 +36,9 @@ class NewPost extends Component {
   }
 }
 
-NewPost.propTypes = {
+EditPost.propTypes = {
   editor: PropTypes.object.isRequired,
-  createPost: PropTypes.func.isRequired
+  updatePost: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -45,6 +51,6 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(postActions, dispatch)
 }
 
-NewPost = CSSModules(NewPost, styles)
+EditPost = CSSModules(EditPost, styles)
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewPost)
+export default connect(mapStateToProps, mapDispatchToProps)(EditPost)

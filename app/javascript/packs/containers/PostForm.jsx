@@ -10,21 +10,12 @@ import CSSModules from 'react-css-modules'
 import styles from '../styles/PostForm.scss'
 
 class PostForm extends Component {
-  constructor(props) {
-    super(props)
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
-  handleSubmit() {
-    this.props.createPost(this.props.editor.state)
-  }
-
   render() {
-    const { editor, setEditorState } = this.props
+    const { editor, setEditorState, handleSubmit } = this.props
     return (
       <div styleName="container">
         <PostEditor editor={editor} setEditorState={setEditorState} />
-        <PostFormFooter onSubmit={this.handleSubmit} />
+        <PostFormFooter onSubmit={handleSubmit} />
       </div>
     )
   }

@@ -1,0 +1,9 @@
+@import '~bootstrap/scss/variables';
+
+.container {
+  float: right;
+
+  a {
+    color: $gray-light;
+  }
+}

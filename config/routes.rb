@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
     namespace :me do
       resources :channels, only: :index
-      resources :posts, only: :index
+      resources :posts, only: [:index, :show, :update]
     end
   end
 

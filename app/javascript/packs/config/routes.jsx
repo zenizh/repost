@@ -7,6 +7,7 @@ import Home from '../features/Home'
 import EditAccount from '../features/EditAccount'
 import Channel from '../features/Channel'
 import NewPost from '../features/NewPost'
+import EditPost from '../features/EditPost'
 import Services from '../features/Services'
 import NewService from '../features/NewService'
 import EditService from '../features/EditService'
@@ -22,6 +23,7 @@ const Routes = (props) => {
       <Route path="/account/edit" component={Authenticated(EditAccount)} />
       <Route path="/channels/:id" component={Authenticated(Channel)} />
       <Route path="/posts/new" component={Authenticated(NewPost)} />
+      <Route path="/posts/:id/edit" component={Authenticated(EditPost)} />
       <Route path="/team/services/new" component={Authenticated(NewService)} />
       <Route path="/team/services/:id/edit" component={Authenticated(EditService)} />
       <Route path="/team/services" component={Authenticated(Services)} />
