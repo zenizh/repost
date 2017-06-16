@@ -15,7 +15,6 @@ const config = {
           const { currentUser } = getState()
 
           if (currentUser.signedIn) {
-            request.headers['USER_EMAIL'] = currentUser.email
             request.headers['USER_TOKEN'] = currentUser.token
           }
 

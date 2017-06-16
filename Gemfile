@@ -11,6 +11,7 @@ gem 'puma', '~> 3.7'
 gem 'webpacker'
 gem 'jbuilder', '~> 2.5'
 
+gem 'rack-attack'
 gem 'paperclip'
 gem 'faker'
 gem 'validates_email_format_of'

@@ -8,10 +8,7 @@ class Api::ApplicationController < ActionController::API
   private
 
   def current_user
-    @current_user ||= User.find_by(
-      email: request.headers[:HTTP_USER_EMAIL],
-      token: request.headers[:HTTP_USER_TOKEN]
-    )
+    @current_user ||= User.find_by(token: request.headers[:HTTP_USER_TOKEN])
   end
 
   def authenticate

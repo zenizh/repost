@@ -24,5 +24,7 @@ module Repost
     config.autoload_paths += %W(
       #{config.root}/app/models/services
     )
+
+    config.middleware.use Rack::Attack
   end
 end
