@@ -14,3 +14,10 @@ export const NotAuthenticated = UserAuthWrapper({
   predicate: (currentUser) => !currentUser.signedIn,
   redirectAction: routerActions.replace
 })
+
+export const OnlyOwner = UserAuthWrapper({
+  authSelector: (state) => state.currentUser,
+  failureRedirectPath: '/',
+  predicate: (currentUser) => currentUser.role == 'owner',
+  redirectAction: routerActions.replace
+})

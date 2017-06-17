@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router'
-import { Authenticated, NotAuthenticated } from './auth'
+import { Authenticated, NotAuthenticated, OnlyOwner } from './auth'
 import SignIn from '../features/SignIn'
 import SignUp from '../features/SignUp'
 import Home from '../features/Home'
@@ -24,10 +24,10 @@ const Routes = (props) => {
       <Route path="/channels/:id" component={Authenticated(Channel)} />
       <Route path="/posts/new" component={Authenticated(NewPost)} />
       <Route path="/posts/:id/edit" component={Authenticated(EditPost)} />
-      <Route path="/team/services/new" component={Authenticated(NewService)} />
-      <Route path="/team/services/:id/edit" component={Authenticated(EditService)} />
-      <Route path="/team/services" component={Authenticated(Services)} />
-      <Route path="/team/settings" component={Authenticated(TeamSettings)} />
+      <Route path="/team/services/new" component={OnlyOwner(NewService)} />
+      <Route path="/team/services/:id/edit" component={OnlyOwner(EditService)} />
+      <Route path="/team/services" component={OnlyOwner(Services)} />
+      <Route path="/team/settings" component={OnlyOwner(TeamSettings)} />
       <Route path="/sign_out" component={Authenticated(SignOut)} />
     </div>
   )
