@@ -5,3 +5,4 @@ json.screen_name user.screen_name
 json.name user.name
 json.avatar user.avatar
 json.signedIn true
+json.role user.role

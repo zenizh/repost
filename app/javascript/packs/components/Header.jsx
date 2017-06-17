@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 import CSSModules from 'react-css-modules'
+import { Authorization, Unauthorization } from '../containers/Authorization'
 import styles from '../styles/Header.scss'
 
 const Header = (props) => {
@@ -13,7 +14,12 @@ const Header = (props) => {
       </DropdownToggle>
       <DropdownMenu>
         <DropdownItem header>Team Menu</DropdownItem>
-        <Link to="/team/settings" className="dropdown-item">Settings</Link>
+        <Authorization type="owner">
+          <Link to="/team/settings" className="dropdown-item">Settings</Link>
+        </Authorization>
+        <Unauthorization type="owner">
+          <DropdownItem disabled>Settings</DropdownItem>
+        </Unauthorization>
       </DropdownMenu>
     </UncontrolledDropdown>
   )

@@ -8,7 +8,7 @@
   background-color: $black;
   color: $gray-lighter;
 
-  button {
+  [data-toggle=dropdown] {
     padding: 0;
     color: $white;
     line-height: 64px;

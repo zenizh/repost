@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import CSSModules from 'react-css-modules'
 import * as postActions from '../actions/postActions'
+import { Authorization } from './Authorization'
 import PostHeader from '../components/PostHeader'
 import PostContent from '../components/PostContent'
 import endpoints from '../config/endpoints'
@@ -28,7 +29,9 @@ class Post extends Component {
     const { post } = this.props
     return (
       <div styleName="container">
-        {post.authored ? <PostHeader post={post} /> : null}
+        <Authorization type="author" post={post}>
+          <PostHeader post={post} />
+        </Authorization>
         <PostContent
           post={post}
           setStar={this.setStar}
