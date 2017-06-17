@@ -2,17 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-class BaseAuthorization extends Component {
+class AuthorizationComponent extends Component {
   default() {
     return false
-  }
-
-  author(currentUser, props) {
-    return currentUser.id == props.post.user.id
-  }
-
-  owner(currentUser, props) {
-    return currentUser.role == 'owner'
   }
 
   authorize() {
@@ -21,7 +13,17 @@ class BaseAuthorization extends Component {
   }
 }
 
-class Authorization extends BaseAuthorization {
+class AbilityComponent extends AuthorizationComponent {
+  author(currentUser, props) {
+    return currentUser.id == props.post.user.id
+  }
+
+  owner(currentUser, props) {
+    return currentUser.role == 'owner'
+  }
+}
+
+class Authorization extends AbilityComponent {
   render() {
     if (this.authorize()) {
       return this.props.children
@@ -30,7 +32,7 @@ class Authorization extends BaseAuthorization {
   }
 }
 
-class Unauthorization extends BaseAuthorization {
+class Unauthorization extends AbilityComponent {
   render() {
     if (!this.authorize()) {
       return this.props.children
