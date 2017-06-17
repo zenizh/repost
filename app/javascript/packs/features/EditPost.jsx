@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import CSSModules from 'react-css-modules'
+import * as authorizeActions from '../actions/authorizeActions'
 import * as postActions from '../actions/postActions'
 import Nav from '../containers/Nav'
 import PostForm from '../containers/PostForm'
@@ -17,7 +18,14 @@ class EditPost extends Component {
   }
 
   componentWillMount() {
+    this.props.authorizeAuthor(this.props.match.params.id)
     this.props.fetchPost(endpoints.mePost(this.props.match.params.id))
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.redirect.enabled) {
+      this.props.redirectTo(nextProps.redirect.url)
+    }
   }
 
   handleSubmit() {
@@ -38,17 +46,21 @@ class EditPost extends Component {
 
 EditPost.propTypes = {
   editor: PropTypes.object.isRequired,
+  redirect: PropTypes.object.isRequired,
+  authorizeAuthor: PropTypes.func.isRequired,
+  redirectTo: PropTypes.func.isRequired,
   updatePost: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
   return {
-    editor: state.editor
+    editor: state.editor,
+    redirect: state.redirect
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(postActions, dispatch)
+  return bindActionCreators({ ...authorizeActions, ...postActions }, dispatch)
 }
 
 EditPost = CSSModules(EditPost, styles)

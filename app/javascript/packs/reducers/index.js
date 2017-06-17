@@ -6,6 +6,7 @@ import currentUser from './currentUser'
 import editor from './editor'
 import post from './post'
 import posts from './posts'
+import redirect from './redirect'
 import service from './service'
 import services from './services'
 import team from './team'
@@ -18,6 +19,7 @@ const appReducer = combineReducers({
   editor,
   post,
   posts,
+  redirect,
   service,
   services,
   team,
