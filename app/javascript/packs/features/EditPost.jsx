@@ -22,12 +22,6 @@ class EditPost extends Component {
     this.props.fetchPost(endpoints.mePost(this.props.match.params.id))
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.redirect.enabled) {
-      this.props.redirectTo(nextProps.redirect.url)
-    }
-  }
-
   handleSubmit() {
     const { match, editor, updatePost } = this.props
     updatePost(endpoints.mePost(match.params.id), editor.state)
@@ -46,16 +40,13 @@ class EditPost extends Component {
 
 EditPost.propTypes = {
   editor: PropTypes.object.isRequired,
-  redirect: PropTypes.object.isRequired,
   authorizeAuthor: PropTypes.func.isRequired,
-  redirectTo: PropTypes.func.isRequired,
   updatePost: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
   return {
-    editor: state.editor,
-    redirect: state.redirect
+    editor: state.editor
   }
 }
 

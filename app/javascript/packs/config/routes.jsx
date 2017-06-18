@@ -13,10 +13,12 @@ import NewService from '../features/NewService'
 import EditService from '../features/EditService'
 import TeamSettings from '../features/TeamSettings'
 import SignOut from '../features/SignOut'
+import Redirector from '../containers/Redirector'
 
 const Routes = (props) => {
   return (
     <div>
+      <Redirector />
       <Route path="/sign_in" component={NotAuthenticated(SignIn)} />
       <Route path="/sign_up" component={NotAuthenticated(SignUp)} />
       <Route exact path="/" component={Authenticated(Home)} />
