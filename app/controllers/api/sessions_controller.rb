@@ -7,7 +7,7 @@ class Api::SessionsController < Api::ApplicationController
     if current_user
       current_user.set_token
     else
-      head :bad_request
+      render status: :bad_request, json: { errors: ['Email or password is incorrect.'] }
     end
   end
 

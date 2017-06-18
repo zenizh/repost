@@ -1,0 +1,18 @@
+.container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 360px;
+
+  ul {
+    margin-bottom: 0;
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  button {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+  }
+}
