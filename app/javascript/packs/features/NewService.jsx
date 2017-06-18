@@ -15,12 +15,6 @@ class NewService extends Component {
     this.onSubmit = this.onSubmit.bind(this)
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.service.saved) {
-      this.props.history.push('/team/services')
-    }
-  }
-
   onSubmit(values) {
     this.props.createService(values)
   }
