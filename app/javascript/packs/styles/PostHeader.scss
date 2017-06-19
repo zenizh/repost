@@ -4,6 +4,8 @@
   float: right;
 
   a {
-    color: $gray-light;
+    margin-left: .5rem;
+    color: $gray-light !important;
+    cursor: pointer;
   }
 }

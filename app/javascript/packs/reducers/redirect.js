@@ -1,5 +1,5 @@
 import { AUTHORIZE_AUTHOR } from '../actions/authorizeActions'
-import { CREATE_POST, UPDATE_POST } from '../actions/postActions'
+import { CREATE_POST, UPDATE_POST, DELETE_POST } from '../actions/postActions'
 import { CREATE_SERVICE, UPDATE_SERVICE } from '../actions/serviceActions'
 import { REDIRECT } from '../actions/redirectActions'
 
@@ -15,6 +15,8 @@ function redirect(state = initialState, action) {
     case CREATE_POST + '_SUCCESS':
     case UPDATE_POST + '_SUCCESS':
       return { url: '/', enabled: true }
+    case DELETE_POST + '_SUCCESS':
+      return { url: action.pathname, enabled: true }
     case CREATE_SERVICE + '_SUCCESS':
     case UPDATE_SERVICE + '_SUCCESS':
       return { url: '/team/services', enabled: true }

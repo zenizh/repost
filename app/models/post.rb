@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   has_many :comments
+  has_many :stars, dependent: :destroy
 
   belongs_to :user
 

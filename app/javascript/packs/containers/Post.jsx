@@ -9,12 +9,14 @@ import PostHeader from '../components/PostHeader'
 import PostContent from '../components/PostContent'
 import endpoints from '../config/endpoints'
 import styles from '../styles/Post.scss'
+import { withRouter } from 'react-router'
 
 class Post extends Component {
   constructor(props) {
     super(props)
     this.createStar = this.createStar.bind(this)
     this.deleteStar = this.deleteStar.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   createStar(post) {
@@ -25,12 +27,18 @@ class Post extends Component {
     this.props.deleteStar(endpoints.postStars(post.id))
   }
 
+  handleClick(id) {
+    if (window.confirm('Are you sure?')) {
+      this.props.deletePost(endpoints.mePost(id), this.props.location.pathname)
+    }
+  }
+
   render() {
     const { post } = this.props
     return (
       <div styleName="container">
         <Authorization type="author" post={post}>
-          <PostHeader post={post} />
+          <PostHeader post={post} onClick={this.handleClick} />
         </Authorization>
         <PostContent
           post={post}
@@ -44,6 +52,7 @@ class Post extends Component {
 Post.propTypes = {
   post: PropTypes.object.isRequired,
   createStar: PropTypes.func.isRequired,
+  deletePost: PropTypes.func.isRequired,
   deleteStar: PropTypes.func.isRequired
 }
 
@@ -59,4 +68,4 @@ function mapDispatchToProps(dispatch) {
 
 Post = CSSModules(Post, styles)
 
-export default connect(mapStateToProps, mapDispatchToProps)(Post)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Post))

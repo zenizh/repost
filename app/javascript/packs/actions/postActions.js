@@ -4,6 +4,7 @@ import endpoints from '../config/endpoints'
 export const CREATE_POST = 'CREATE_POST'
 export const FETCH_POST = 'FETCH_POST'
 export const UPDATE_POST = 'UPDATE_POST'
+export const DELETE_POST = 'DELETE_POST'
 export const SET_POST = 'SET_POST'
 export const CLEAR_POST = 'CLEAR_POST'
 export const CREATE_STAR = 'CREATE_STAR'
@@ -49,6 +50,19 @@ export function updatePost(url, editorState) {
           content: content.getPlainText(),
           editorState: JSON.stringify(convertToRaw(content))
         }
+      }
+    }
+  }
+}
+
+export function deletePost(url, pathname) {
+  return {
+    type: DELETE_POST,
+    pathname: pathname,
+    payload: {
+      request: {
+        url: url,
+        method: 'delete'
       }
     }
   }

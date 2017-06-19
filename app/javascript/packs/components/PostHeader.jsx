@@ -9,12 +9,14 @@ const PostHeader = (props) => {
   return (
     <div styleName="container">
       <Link to={`/posts/${props.post.id}/edit`}><Icon name="pencil" /></Link>
+      <a onClick={() => props.onClick(props.post.id)}><Icon name="trash" /></a>
     </div>
   )
 }
 
 PostHeader.propTypes = {
-  post: PropTypes.object.isRequired
+  post: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired
 }
 
 export default CSSModules(PostHeader, styles)

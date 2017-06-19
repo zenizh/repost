@@ -1,5 +1,5 @@
 class Api::Me::PostsController < Api::ApplicationController
-  before_action :set_post, only: [:show, :update]
+  before_action :set_post, only: [:show, :update, :destroy]
 
   def index
     @posts = current_user.posts.order(created_at: :desc).limit(10)
@@ -12,6 +12,11 @@ class Api::Me::PostsController < Api::ApplicationController
     unless @post.update(post_params)
       render status: :bad_request, json: { errors: @post.errors.full_messages }
     end
+  end
+
+  def destroy
+    @post.destroy
+    head :ok
   end
 
   private

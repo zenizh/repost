@@ -1,6 +1,6 @@
 import { CLEAR_ALERT } from '../actions/alertActions'
 import { SIGN_UP, SIGN_IN, UPDATE_CURRENT_USER } from '../actions/currentUserActions'
-import { CREATE_POST, UPDATE_POST } from '../actions/postActions'
+import { CREATE_POST, UPDATE_POST, DELETE_POST } from '../actions/postActions'
 import { CREATE_SERVICE, UPDATE_SERVICE, DELETE_SERVICE } from '../actions/serviceActions'
 import { UPDATE_TEAM } from '../actions/teamActions'
 
@@ -34,6 +34,8 @@ function alert(state = initialState, action) {
       return { ...success, messages: ['Created new post.'] }
     case UPDATE_POST + '_SUCCESS':
       return { ...success, messages: ['Updated a post.'] }
+    case DELETE_POST + '_SUCCESS':
+      return { ...success, messages: ['Deleted a post.'] }
     case CREATE_SERVICE + '_SUCCESS':
       return { ...success, messages: ['Created new WebHook.'] }
     case UPDATE_SERVICE + '_SUCCESS':
