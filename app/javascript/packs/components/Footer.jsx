@@ -14,7 +14,7 @@ const Footer = (props) => {
       </DropdownToggle>
       <DropdownMenu>
         <DropdownItem header>User Menu</DropdownItem>
-        <Link to="#" className="dropdown-item">Account</Link>
+        <Link to="/account/edit" className="dropdown-item">Account Settings</Link>
         <DropdownItem divider />
         <Link to="/sign_out" className="dropdown-item">Sign Out</Link>
       </DropdownMenu>

@@ -15,7 +15,7 @@ const Header = (props) => {
       <DropdownMenu>
         <DropdownItem header>Team Menu</DropdownItem>
         <Authorization type="owner">
-          <Link to="/team/settings" className="dropdown-item">Settings</Link>
+          <Link to="/team/settings" className="dropdown-item">Team Settings</Link>
         </Authorization>
         <Unauthorization type="owner">
           <DropdownItem disabled>Settings</DropdownItem>
