@@ -32,6 +32,8 @@ function alert(state = initialState, action) {
       return { ...success, messages: ['Updated user settings.'] }
     case CREATE_POST + '_SUCCESS':
       return { ...success, messages: ['Created new post.'] }
+    case UPDATE_POST + '_SUCCESS':
+      return { ...success, messages: ['Updated a post.'] }
     case CREATE_SERVICE + '_SUCCESS':
       return { ...success, messages: ['Created new WebHook.'] }
     case UPDATE_SERVICE + '_SUCCESS':
