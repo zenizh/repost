@@ -5,7 +5,4 @@ class Post < ApplicationRecord
 
   validates :user, presence: true
   validates :content, presence: true
-  validates :status, presence: true
-
-  enum status: { draft: 0, published: 10 }
 end

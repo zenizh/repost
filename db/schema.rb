@@ -47,10 +47,8 @@ ActiveRecord::Schema.define(version: 20170608011009) do
     t.integer "user_id", null: false
     t.text "content", null: false
     t.text "editor_state"
-    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id", "status"], name: "index_posts_on_user_id_and_status"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
