@@ -31,7 +31,7 @@ class Service < ApplicationRecord
   def content(scope, data)
     case scope
     when :on_post
-      "#{data.user.name}さんが#{data.created_at.to_date}の日報を投稿しました。"
+      "#{data.user.name} posted a daily report of #{data.created_at.to_date}."
     when :on_comment
       'commented'
     end
