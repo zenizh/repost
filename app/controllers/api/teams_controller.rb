@@ -1,5 +1,5 @@
 class Api::TeamsController < Api::ApplicationController
-  before_action :UPDATE_TEAM
+  before_action :set_team
 
   def show
     render status: :ok, json: { name: @team.name }
@@ -15,7 +15,7 @@ class Api::TeamsController < Api::ApplicationController
 
   private
 
-  def UPDATE_TEAM
+  def set_team
     @team = Team.first
   end
 
