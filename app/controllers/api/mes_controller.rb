@@ -1,7 +1,7 @@
 class Api::MesController < Api::ApplicationController
   def update
     unless current_user.update(me_params)
-      head :bad_request
+      render status: :bad_request, json: { errors: current_user.errors.full_messages }
     end
   end
 

@@ -1,6 +1,6 @@
 import { CLEAR_ALERT } from '../actions/alertActions'
 import { FETCH_CURRENT_USER, UPDATE_CURRENT_USER, CREATE_USER } from '../actions/currentUserActions'
-import { CREATE_POST } from '../actions/postActions'
+import { CREATE_POST, UPDATE_POST } from '../actions/postActions'
 import { SET_TEAM } from '../actions/teamActions'
 import { UPDATE_SERVICE, DELETE_SERVICE } from '../actions/serviceActions'
 import { CREATE_SERVICE } from '../actions/servicesActions'
@@ -42,6 +42,13 @@ function alert(state = initialState, action) {
     case DELETE_SERVICE + '_SUCCESS':
       return { ...success, messages: ['Deleted a WebHook.'] }
     case FETCH_CURRENT_USER + '_FAIL':
+    case UPDATE_CURRENT_USER + '_FAIL':
+    case CREATE_USER + '_FAIL':
+    case CREATE_POST + '_FAIL':
+    case UPDATE_POST + '_FAIL':
+    case CREATE_SERVICE + '_FAIL':
+    case UPDATE_SERVICE + '_FAIL':
+    case SET_TEAM + '_FAIL':
       return { ...fail, messages: action.error.response.data.errors }
     case CLEAR_ALERT:
       return initialState

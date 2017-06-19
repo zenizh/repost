@@ -9,7 +9,7 @@ class Api::ServicesController < Api::ApplicationController
     @service = Service.new(service_params)
 
     unless @service.save
-      head :bad_request
+      render status: :bad_request, json: { errors: @service.errors.full_messages }
     end
   end
 
@@ -18,7 +18,7 @@ class Api::ServicesController < Api::ApplicationController
 
   def update
     unless @service.update(service_params)
-      head :bad_request
+      render status: :bad_request, json: { errors: @service.errors.full_messages }
     end
   end
 

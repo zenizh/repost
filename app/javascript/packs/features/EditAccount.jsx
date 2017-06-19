@@ -21,9 +21,10 @@ class EditAccount extends Component {
   onSubmit(values) {
     let data = new FormData()
     Object.keys(values).forEach((key) => {
-      if (values[key]) {
-        data.append(toSnakeCase(key), values[key])
+      if ((key == 'avatar') && !values[key]) {
+        return
       }
+      data.append(toSnakeCase(key), values[key])
     })
     this.props.updateCurrentUser(data)
   }

@@ -9,7 +9,7 @@ class Api::TeamsController < Api::ApplicationController
     if @team.update(team_params)
       render status: :ok, json: { name: @team.name }
     else
-      head :bad_request
+      render status: :bad_request, json: { errors: @team.errors.full_messages }
     end
   end
 

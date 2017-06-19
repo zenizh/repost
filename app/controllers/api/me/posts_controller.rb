@@ -10,7 +10,7 @@ class Api::Me::PostsController < Api::ApplicationController
 
   def update
     unless @post.update(post_params)
-      head :bad_request
+      render status: :bad_request, json: { errors: @post.errors.full_messages }
     end
   end
 

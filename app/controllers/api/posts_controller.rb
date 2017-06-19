@@ -9,7 +9,7 @@ class Api::PostsController < Api::ApplicationController
     if @post.save
       Service.notify(:on_post, @post) if @post.published?
     else
-      head :bad_request
+      render status: :bad_request, json: { errors: @post.errors.full_messages }
     end
   end
 

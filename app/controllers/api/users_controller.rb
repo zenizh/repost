@@ -11,7 +11,7 @@ class Api::UsersController < Api::ApplicationController
     if @user.save
       @user.set_token
     else
-      head :bad_request
+      render status: :bad_request, json: { errors: @user.errors.full_messages }
     end
   end
 
