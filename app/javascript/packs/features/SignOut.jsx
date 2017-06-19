@@ -6,7 +6,7 @@ import * as currentUserActions from '../actions/currentUserActions'
 
 class SignOut extends Component {
   componentWillMount() {
-    this.props.signOutUser()
+    this.props.signOut()
   }
 
   render() {
@@ -15,7 +15,7 @@ class SignOut extends Component {
 }
 
 SignOut.propTypes = {
-  signOutUser: PropTypes.func.isRequired
+  signOut: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {

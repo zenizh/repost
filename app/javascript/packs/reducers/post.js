@@ -1,4 +1,4 @@
-import { CREATE_POST, SET_POST, UNSET_POST, SET_STAR, UNSET_STAR } from '../actions/postActions'
+import { CREATE_POST, SET_POST, CLEAR_POST, CREATE_STAR, DELETE_STAR } from '../actions/postActions'
 
 const initialState = {
   id: null,
@@ -16,11 +16,11 @@ export default function post(state = initialState, action) {
   switch (action.type) {
     case SET_POST:
       return action.post
-    case UNSET_POST:
+    case CLEAR_POST:
       return initialState
-    case SET_STAR + '_SUCCESS':
+    case CREATE_STAR + '_SUCCESS':
       return { ...state, starred: true }
-    case UNSET_STAR + '_SUCCESS':
+    case DELETE_STAR + '_SUCCESS':
       return { ...state, starred: false }
     default:
       return state

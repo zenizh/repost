@@ -1,20 +1,7 @@
 import endpoints from '../config/endpoints'
 
-export const SET_TEAM = 'SET_TEAM'
 export const FETCH_TEAM = 'FETCH_TEAM'
-
-export function setTeam(team) {
-  return {
-    type: SET_TEAM,
-    payload: {
-      request: {
-        url: endpoints.team,
-        method: 'patch',
-        data: team
-      }
-    }
-  }
-}
+export const UPDATE_TEAM = 'UPDATE_TEAM'
 
 export function fetchTeam() {
   return {
@@ -22,6 +9,19 @@ export function fetchTeam() {
     payload: {
       request: {
         url: endpoints.team
+      }
+    }
+  }
+}
+
+export function updateTeam(team) {
+  return {
+    type: UPDATE_TEAM,
+    payload: {
+      request: {
+        url: endpoints.team,
+        method: 'patch',
+        data: team
       }
     }
   }

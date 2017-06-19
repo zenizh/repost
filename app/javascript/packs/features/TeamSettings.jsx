@@ -6,17 +6,17 @@ import CSSModules from 'react-css-modules'
 import * as teamActions from '../actions/teamActions'
 import Nav from '../containers/Nav'
 import SettingsNav from '../components/SettingsNav'
-import GeneralSettings from '../components/GeneralSettings'
+import TeamForm from '../components/TeamForm'
 import styles from '../styles/TeamSettings.scss'
 
 class TeamSettings extends Component {
   constructor(props) {
     super(props)
-    this.onSubmit = this.onSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  onSubmit(values) {
-    this.props.setTeam(values)
+  handleSubmit(values) {
+    this.props.updateTeam(values)
   }
 
   render() {
@@ -24,7 +24,7 @@ class TeamSettings extends Component {
       <div styleName="container">
         <Nav />
         <SettingsNav />
-        <GeneralSettings initialValues={this.props.team} onSubmit={this.onSubmit} />
+        <TeamForm initialValues={this.props.team} onSubmit={this.handleSubmit} />
       </div>
     )
   }
@@ -32,7 +32,7 @@ class TeamSettings extends Component {
 
 TeamSettings.propTypes = {
   team: PropTypes.object.isRequired,
-  setTeam: PropTypes.func.isRequired
+  updateTeam: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {

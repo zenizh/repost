@@ -1,5 +1,4 @@
-import { SET_SERVICE, UPDATE_SERVICE } from '../actions/serviceActions'
-import { CREATE_SERVICE } from '../actions/servicesActions'
+import { CREATE_SERVICE, FETCH_SERVICE, UPDATE_SERVICE } from '../actions/serviceActions'
 
 const initialState = {
   name: null,
@@ -7,17 +6,15 @@ const initialState = {
   webhookUrl: null,
   channel: null,
   onPost: false,
-  onComment: false,
-  saved: false
+  onComment: false
 }
 
 export default function service(state = initialState, action) {
   switch (action.type) {
-    case SET_SERVICE + '_SUCCESS':
-      return action.payload.data
+    case FETCH_SERVICE + '_SUCCESS':
     case UPDATE_SERVICE + '_SUCCESS':
     case CREATE_SERVICE + '_SUCCESS':
-      return { ...action.payload.data, saved: true }
+      return action.payload.data
     default:
       return state
   }

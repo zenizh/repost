@@ -1,4 +1,4 @@
-import { FETCH_CURRENT_USER, CREATE_USER, UPDATE_CURRENT_USER } from '../actions/currentUserActions'
+import { SIGN_UP, SIGN_IN, UPDATE_CURRENT_USER } from '../actions/currentUserActions'
 
 const initialState = {
   id: null,
@@ -12,8 +12,8 @@ const initialState = {
 
 function currentUser(state = initialState, action) {
   switch (action.type) {
-    case FETCH_CURRENT_USER + '_SUCCESS':
-    case CREATE_USER + '_SUCCESS':
+    case SIGN_UP + '_SUCCESS':
+    case SIGN_IN + '_SUCCESS':
     case UPDATE_CURRENT_USER + '_SUCCESS':
       return action.payload.data
     default:

@@ -1,5 +1,5 @@
 class Api::ServicesController < Api::ApplicationController
-  before_action :set_service, only: [:show, :update, :destroy]
+  before_action :FETCH_SERVICE, only: [:show, :update, :destroy]
 
   def index
     @services = Service.all
@@ -33,7 +33,7 @@ class Api::ServicesController < Api::ApplicationController
     params.permit(:type, :webhook_url, :channel, :on_post, :on_comment)
   end
 
-  def set_service
+  def FETCH_SERVICE
     @service = Service.find(params[:id])
   end
 end

@@ -12,7 +12,7 @@ import service from './service'
 import services from './services'
 import team from './team'
 import users from './users'
-import { SIGN_OUT_USER } from '../actions/currentUserActions'
+import { SIGN_OUT } from '../actions/currentUserActions'
 
 const appReducer = combineReducers({
   alert,
@@ -31,7 +31,7 @@ const appReducer = combineReducers({
 })
 
 const rootReducer = (state, action) => {
-  if (action.type === SIGN_OUT_USER) {
+  if (action.type === SIGN_OUT) {
     state = undefined
   }
   return appReducer(state, action)

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import CSSModules from 'react-css-modules'
-import * as servicesActions from '../actions/servicesActions'
+import * as serviceActions from '../actions/serviceActions'
 import Nav from '../containers/Nav'
 import SettingsNav from '../components/SettingsNav'
 import ServiceForm from '../components/ServiceForm'
@@ -12,10 +12,10 @@ import styles from '../styles/NewService.scss'
 class NewService extends Component {
   constructor(props) {
     super(props)
-    this.onSubmit = this.onSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  onSubmit(values) {
+  handleSubmit(values) {
     this.props.createService(values)
   }
 
@@ -25,7 +25,7 @@ class NewService extends Component {
       <div styleName="container">
         <Nav />
         <SettingsNav />
-        <ServiceForm initialValues={initialValues} onSubmit={this.onSubmit} />
+        <ServiceForm initialValues={initialValues} onSubmit={this.handleSubmit} />
       </div>
     )
   }
@@ -42,7 +42,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(servicesActions, dispatch)
+  return bindActionCreators(serviceActions, dispatch)
 }
 
 NewService  = CSSModules(NewService, styles)

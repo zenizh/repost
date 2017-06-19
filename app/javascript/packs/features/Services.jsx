@@ -14,14 +14,14 @@ import endpoints from '../config/endpoints'
 class Services extends Component {
   constructor(props) {
     super(props)
-    this.onClick = this.onClick.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentWillMount() {
     this.props.fetchServices()
   }
 
-  onClick(id) {
+  handleClick(id) {
     if (window.confirm('Are you sure?')) {
       this.props.deleteService(endpoints.service(id))
     }
@@ -32,7 +32,7 @@ class Services extends Component {
       <div styleName="container">
         <Nav />
         <SettingsNav />
-        <ServiceList services={this.props.services} onClick={this.onClick} />
+        <ServiceList services={this.props.services} onClick={this.handleClick} />
       </div>
     )
   }

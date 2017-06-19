@@ -13,16 +13,16 @@ import styles from '../styles/Post.scss'
 class Post extends Component {
   constructor(props) {
     super(props)
-    this.setStar = this.setStar.bind(this)
-    this.unsetStar = this.unsetStar.bind(this)
+    this.createStar = this.createStar.bind(this)
+    this.deleteStar = this.deleteStar.bind(this)
   }
 
-  setStar(post) {
-    this.props.setStar(endpoints.postStars(post.id))
+  createStar(post) {
+    this.props.createStar(endpoints.postStars(post.id))
   }
 
-  unsetStar(post) {
-    this.props.unsetStar(endpoints.postStars(post.id))
+  deleteStar(post) {
+    this.props.deleteStar(endpoints.postStars(post.id))
   }
 
   render() {
@@ -34,8 +34,8 @@ class Post extends Component {
         </Authorization>
         <PostContent
           post={post}
-          setStar={this.setStar}
-          unsetStar={this.unsetStar} />
+          createStar={this.createStar}
+          deleteStar={this.deleteStar} />
       </div>
     )
   }
@@ -43,8 +43,8 @@ class Post extends Component {
 
 Post.propTypes = {
   post: PropTypes.object.isRequired,
-  setStar: PropTypes.func.isRequired,
-  unsetStar: PropTypes.func.isRequired
+  createStar: PropTypes.func.isRequired,
+  deleteStar: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {

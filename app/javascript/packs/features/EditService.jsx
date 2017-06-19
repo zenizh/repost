@@ -13,14 +13,14 @@ import endpoints from '../config/endpoints'
 class EditService extends Component {
   constructor(props) {
     super(props)
-    this.onSubmit = this.onSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentWillMount() {
     this.props.fetchService(endpoints.service(this.props.match.params.id))
   }
 
-  onSubmit(values) {
+  handleSubmit(values) {
     this.props.updateService(endpoints.service(this.props.match.params.id), values)
   }
 
@@ -29,7 +29,7 @@ class EditService extends Component {
       <div styleName="container">
         <Nav />
         <SettingsNav />
-        <ServiceForm initialValues={this.props.service} onSubmit={this.onSubmit} />
+        <ServiceForm initialValues={this.props.service} onSubmit={this.handleSubmit} />
       </div>
     )
   }

@@ -9,7 +9,7 @@ const initialState = {
 function editor(state = initialState, action) {
   switch (action.type) {
     case SET_EDITOR_STATE:
-      return { ...state, state: action.state }
+      return { state: action.state }
     case FETCH_POST + '_SUCCESS':
       const editorState = restoreStateFromJSON(action.payload.data.editorState)
       return { state: editorState }

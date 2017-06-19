@@ -14,11 +14,15 @@ class EditAccount extends Component {
   constructor(props) {
     super(props)
     this.state = { avatar: null }
-    this.onSubmit = this.onSubmit.bind(this)
     this.handleDrop = this.handleDrop.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  onSubmit(values) {
+  handleDrop(files) {
+    this.setState({ avatar: files[0] })
+  }
+
+  handleSubmit(values) {
     let data = new FormData()
     Object.keys(values).forEach((key) => {
       if ((key == 'avatar') && !values[key]) {
@@ -27,10 +31,6 @@ class EditAccount extends Component {
       data.append(toSnakeCase(key), values[key])
     })
     this.props.updateCurrentUser(data)
-  }
-
-  handleDrop(files) {
-    this.setState({ avatar: files[0] })
   }
 
   render() {
@@ -42,7 +42,7 @@ class EditAccount extends Component {
           initialValues={this.props.currentUser}
           avatar={this.state.avatar}
           handleDrop={this.handleDrop}
-          onSubmit={this.onSubmit} />
+          onSubmit={this.handleSubmit} />
       </div>
     )
   }

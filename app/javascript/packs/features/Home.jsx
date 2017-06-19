@@ -14,7 +14,7 @@ import styles from '../styles/Home.scss'
 class Home extends Component {
   componentWillMount() {
     this.props.fetchPosts(endpoints.posts)
-    this.props.unsetPost()
+    this.props.clearPost()
   }
 
   render() {
@@ -29,8 +29,8 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-  fetchPosts: PropTypes.func.isRequired,
-  unsetPost: PropTypes.func.isRequired
+  clearPost: PropTypes.func.isRequired,
+  fetchPosts: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {

@@ -1,9 +1,8 @@
 import { CLEAR_ALERT } from '../actions/alertActions'
-import { FETCH_CURRENT_USER, UPDATE_CURRENT_USER, CREATE_USER } from '../actions/currentUserActions'
+import { SIGN_UP, SIGN_IN, UPDATE_CURRENT_USER } from '../actions/currentUserActions'
 import { CREATE_POST, UPDATE_POST } from '../actions/postActions'
-import { SET_TEAM } from '../actions/teamActions'
-import { UPDATE_SERVICE, DELETE_SERVICE } from '../actions/serviceActions'
-import { CREATE_SERVICE } from '../actions/servicesActions'
+import { CREATE_SERVICE, UPDATE_SERVICE, DELETE_SERVICE } from '../actions/serviceActions'
+import { UPDATE_TEAM } from '../actions/teamActions'
 
 const initialState = {
   type: null,
@@ -25,30 +24,30 @@ const fail = {
 
 function alert(state = initialState, action) {
   switch (action.type) {
-    case FETCH_CURRENT_USER + '_SUCCESS':
+    case SIGN_IN + '_SUCCESS':
       return { ...success, messages: ['Signed in successfully.'] }
+    case SIGN_UP + '_SUCCESS':
+      return { ...success, messages: ['Created your account.'] }
     case UPDATE_CURRENT_USER + '_SUCCESS':
       return { ...success, messages: ['Updated user settings.'] }
-    case CREATE_USER + '_SUCCESS':
-      return { ...success, messages: ['Created your account.'] }
     case CREATE_POST + '_SUCCESS':
       return { ...success, messages: ['Created new post.'] }
-    case SET_TEAM + '_SUCCESS':
-      return { ...success, messages: ['Updated team settings.'] }
-    case UPDATE_SERVICE + '_SUCCESS':
-      return { ...success, messages: ['Updated WebHook settings.'] }
     case CREATE_SERVICE + '_SUCCESS':
       return { ...success, messages: ['Created new WebHook.'] }
+    case UPDATE_SERVICE + '_SUCCESS':
+      return { ...success, messages: ['Updated WebHook settings.'] }
     case DELETE_SERVICE + '_SUCCESS':
       return { ...success, messages: ['Deleted a WebHook.'] }
-    case FETCH_CURRENT_USER + '_FAIL':
+    case UPDATE_TEAM + '_SUCCESS':
+      return { ...success, messages: ['Updated team settings.'] }
+    case SIGN_UP + '_FAIL':
+    case SIGN_IN + '_FAIL':
     case UPDATE_CURRENT_USER + '_FAIL':
-    case CREATE_USER + '_FAIL':
     case CREATE_POST + '_FAIL':
     case UPDATE_POST + '_FAIL':
     case CREATE_SERVICE + '_FAIL':
     case UPDATE_SERVICE + '_FAIL':
-    case SET_TEAM + '_FAIL':
+    case UPDATE_TEAM + '_FAIL':
       return { ...fail, messages: action.error.response.data.errors }
     case CLEAR_ALERT:
       return initialState

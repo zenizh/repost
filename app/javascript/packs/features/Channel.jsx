@@ -14,7 +14,7 @@ import styles from '../styles/Channel.scss'
 class Channel extends Component {
   componentWillMount() {
     this.fetchPosts(this.props)
-    this.props.unsetPost()
+    this.props.clearPost()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -41,8 +41,8 @@ class Channel extends Component {
 
 Channel.propTypes = {
   match: PropTypes.object.isRequired,
-  fetchPosts: PropTypes.func.isRequired,
-  unsetPost: PropTypes.func.isRequired
+  clearPost: PropTypes.func.isRequired,
+  fetchPosts: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {

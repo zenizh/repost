@@ -6,7 +6,7 @@ import Star from './Star'
 import styles from '../styles/PostContent.scss'
 
 const PostContent = (props) => {
-  const { post, setStar, unsetStar } = props
+  const { post, createStar, deleteStar } = props
   return (
     <div styleName="container">
       <div styleName="user">
@@ -17,15 +17,15 @@ const PostContent = (props) => {
       <span styleName="created_on">Posted on {post.createdOn}</span>
       <Markdown content={post.content} />
       <span styleName="created_at">{post.createdAt}</span>
-      <Star post={post} setStar={setStar} unsetStar={unsetStar} />
+      <Star post={post} createStar={createStar} deleteStar={deleteStar} />
     </div>
   )
 }
 
 PostContent.propTypes = {
   post: PropTypes.object.isRequired,
-  setStar: PropTypes.func.isRequired,
-  unsetStar: PropTypes.func.isRequired
+  createStar: PropTypes.func.isRequired,
+  deleteStar: PropTypes.func.isRequired
 }
 
 export default CSSModules(PostContent, styles)

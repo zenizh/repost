@@ -4,9 +4,9 @@ import { Field, reduxForm } from 'redux-form'
 import { Button, Card, CardText, CardBlock, CardFooter, CardTitle, Col, Container, Form, FormGroup, Input, Label, Row } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import CSSModules from 'react-css-modules'
-import styles from '../styles/Entrance.scss'
+import styles from '../styles/SignForm.scss'
 
-let Entrance = (props) => {
+let SignForm = (props) => {
   const { linkText, linkUrl, title,  handleSubmit } = props
   return (
     <Container styleName="container">
@@ -37,14 +37,14 @@ let Entrance = (props) => {
   )
 }
 
-Entrance.propTypes = {
+SignForm.propTypes = {
   linkText: PropTypes.string.isRequired,
   linkUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired
 }
 
-Entrance = CSSModules(Entrance, styles)
-Entrance = reduxForm({ form: 'entrance' })(Entrance)
+SignForm = CSSModules(SignForm, styles)
+SignForm = reduxForm({ form: 'SignForm' })(SignForm)
 
-export default Entrance
+export default SignForm

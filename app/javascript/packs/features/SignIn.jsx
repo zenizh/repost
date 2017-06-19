@@ -3,23 +3,23 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as currentUserActions from '../actions/currentUserActions'
-import Entrance from '../components/Entrance'
+import SignForm from '../components/SignForm'
 
 class SignIn extends Component {
   constructor(props) {
     super(props)
-    this.onSubmit = this.onSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  onSubmit(values) {
-    this.props.fetchCurrentUser(values.email, values.password)
+  handleSubmit(values) {
+    this.props.signIn(values.email, values.password)
   }
 
   render() {
     return (
-      <Entrance
+      <SignForm
         title="Sign In"
-        onSubmit={this.onSubmit}
+        onSubmit={this.handleSubmit}
         linkUrl="/sign_up"
         linkText="Create your account" />
     )
@@ -27,7 +27,7 @@ class SignIn extends Component {
 }
 
 SignIn.propTypes = {
-  fetchCurrentUser: PropTypes.func.isRequired
+  signIn: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {

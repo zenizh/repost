@@ -2,12 +2,12 @@ import { convertToRaw } from 'draft-js'
 import endpoints from '../config/endpoints'
 
 export const CREATE_POST = 'CREATE_POST'
-export const SET_POST = 'SET_POST'
 export const FETCH_POST = 'FETCH_POST'
 export const UPDATE_POST = 'UPDATE_POST'
-export const UNSET_POST = 'UNSET_POST'
-export const SET_STAR = 'SET_STAR'
-export const UNSET_STAR = 'UNSET_STAR'
+export const SET_POST = 'SET_POST'
+export const CLEAR_POST = 'CLEAR_POST'
+export const CREATE_STAR = 'CREATE_STAR'
+export const DELETE_STAR = 'DELETE_STAR'
 
 export function createPost(editorState) {
   const content = editorState.getCurrentContent()
@@ -23,13 +23,6 @@ export function createPost(editorState) {
         }
       }
     }
-  }
-}
-
-export function setPost(post) {
-  return {
-    type: SET_POST,
-    post
   }
 }
 
@@ -61,15 +54,22 @@ export function updatePost(url, editorState) {
   }
 }
 
-export function unsetPost() {
+export function setPost(post) {
   return {
-    type: UNSET_POST
+    type: SET_POST,
+    post
   }
 }
 
-export function setStar(url) {
+export function clearPost() {
   return {
-    type: SET_STAR,
+    type: CLEAR_POST
+  }
+}
+
+export function createStar(url) {
+  return {
+    type: CREATE_STAR,
     payload: {
       request: {
         url: url,
@@ -79,9 +79,9 @@ export function setStar(url) {
   }
 }
 
-export function unsetStar(url) {
+export function deleteStar(url) {
   return {
-    type: UNSET_STAR,
+    type: DELETE_STAR,
     payload: {
       request: {
         url: url,

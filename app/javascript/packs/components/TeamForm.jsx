@@ -4,9 +4,9 @@ import { Field, reduxForm } from 'redux-form'
 import { Button, Form, FormGroup, Label } from 'reactstrap'
 import Icon from 'react-fontawesome'
 import CSSModules from 'react-css-modules'
-import styles from '../styles/GeneralSettings.scss'
+import styles from '../styles/TeamForm.scss'
 
-let GeneralSettings = (props) => {
+let TeamForm = (props) => {
   return (
     <div styleName="container">
       <div>
@@ -23,11 +23,11 @@ let GeneralSettings = (props) => {
   )
 }
 
-GeneralSettings.propTypes = {
+TeamForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired
 }
 
-GeneralSettings = CSSModules(GeneralSettings, styles)
-GeneralSettings = reduxForm({ form: 'team_settings', enableReinitialize: true })(GeneralSettings)
+TeamForm = CSSModules(TeamForm, styles)
+TeamForm = reduxForm({ form: 'team_settings', enableReinitialize: true })(TeamForm)
 
-export default GeneralSettings
+export default TeamForm

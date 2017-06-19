@@ -1,10 +1,26 @@
-export const SET_SERVICE = 'SET_SERVICE'
+import endpoints from '../config/endpoints'
+
+export const CREATE_SERVICE = 'CREATE_SERVICE'
+export const FETCH_SERVICE = 'FETCH_SERVICE'
 export const UPDATE_SERVICE = 'UPDATE_SERVICE'
 export const DELETE_SERVICE = 'DELETE_SERVICE'
 
+export function createService(service) {
+  return {
+    type: CREATE_SERVICE,
+    payload: {
+      request: {
+        url: endpoints.services,
+        method: 'post',
+        data: service
+      }
+    }
+  }
+}
+
 export function fetchService(url) {
   return {
-    type: SET_SERVICE,
+    type: FETCH_SERVICE,
     payload: {
       request: {
         url: url
