@@ -16,10 +16,10 @@ class NavContent extends Component {
   }
 
   render() {
-    const { channels, currentChannel, users } = this.props
+    const { channel, channels, users } = this.props
     return (
       <div styleName="container">
-        <ChannelList channels={channels} currentChannel={currentChannel} />
+        <ChannelList channel={channel} channels={channels} />
         <UserList users={users} />
       </div>
     )
@@ -27,8 +27,8 @@ class NavContent extends Component {
 }
 
 NavContent.propTypes = {
+  channel: PropTypes.object.isRequired,
   channels: PropTypes.array.isRequired,
-  currentChannel: PropTypes.string,
   users: PropTypes.array.isRequired,
   fetchChannels: PropTypes.func.isRequired,
   fetchUsers: PropTypes.func.isRequired
@@ -36,6 +36,7 @@ NavContent.propTypes = {
 
 function mapStateToProps(state) {
   return {
+    channel: state.channel,
     channels: state.channels,
     users: state.users
   }

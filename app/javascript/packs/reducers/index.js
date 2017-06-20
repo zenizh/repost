@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 import { reducer as formReducer } from 'redux-form'
 import alert from './alert'
+import channel from './channel'
 import channels from './channels'
 import currentUser from './currentUser'
 import editor from './editor'
@@ -16,6 +17,7 @@ import { SIGN_OUT } from '../actions/currentUserActions'
 
 const appReducer = combineReducers({
   alert,
+  channel,
   channels,
   currentUser,
   editor,

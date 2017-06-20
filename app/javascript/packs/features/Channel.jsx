@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import CSSModules from 'react-css-modules'
+import * as channelActions from '../actions/channelActions'
 import * as postActions from '../actions/postActions'
 import * as postsActions from '../actions/postsActions'
 import Nav from '../containers/Nav'
@@ -14,6 +15,7 @@ import styles from '../styles/Channel.scss'
 class Channel extends Component {
   componentWillMount() {
     this.fetchPosts(this.props)
+    this.props.fetchChannel(endpoints.channel(this.props.match.params.id))
     this.props.clearPost()
   }
 
@@ -31,7 +33,7 @@ class Channel extends Component {
   render() {
     return (
       <div styleName="container">
-        <Nav currentChannel={this.props.match.params.id} />
+        <Nav />
         <PostList />
         <Post />
       </div>
@@ -42,6 +44,7 @@ class Channel extends Component {
 Channel.propTypes = {
   match: PropTypes.object.isRequired,
   clearPost: PropTypes.func.isRequired,
+  fetchChannel: PropTypes.func.isRequired,
   fetchPosts: PropTypes.func.isRequired
 }
 
@@ -50,7 +53,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ ...postActions, ...postsActions }, dispatch)
+  return bindActionCreators({ ...channelActions, ...postActions, ...postsActions }, dispatch)
 }
 
 Channel = CSSModules(Channel, styles)

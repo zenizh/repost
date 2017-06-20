@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :channels, only: [] do
+    resources :channels, only: :show do
       resources :posts, only: :index, controller: 'channels/posts'
       resources :users, only: :index, controller: 'channels/users'
     end

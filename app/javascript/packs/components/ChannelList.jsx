@@ -9,7 +9,7 @@ import styles from '../styles/ChannelList.scss'
 const Channel = (channel, key, currentChannel) => {
   const to = `/channels/${channel.id}`
   return (
-    <li key={key} styleName={classNames({ active: (channel.id == currentChannel) })}>
+    <li key={key} styleName={classNames({ active: (channel.id == currentChannel.id) })}>
       <Link to={to}><Icon name="tag" /> {channel.name}</Link>
     </li>
   )
@@ -20,11 +20,11 @@ const ChannelList = (props) => {
     <div styleName="container">
       <h3>Channels</h3>
       <ul>
-        <li styleName={classNames({ active: (props.currentChannel == 'all') })}>
+        <li styleName={classNames({ active: (props.channel.name == 'all') })}>
           <Link to="/"><Icon name="bars" /> All</Link>
         </li>
         {props.channels.map((channel, key) => {
-          return Channel(channel, key, props.currentChannel)
+          return Channel(channel, key, props.channel)
         })}
       </ul>
     </div>
@@ -32,7 +32,7 @@ const ChannelList = (props) => {
 }
 
 ChannelList.propTypes = {
-  currentChannel: PropTypes.string,
+  channel: PropTypes.object.isRequired,
   channels: PropTypes.array.isRequired
 }
 
