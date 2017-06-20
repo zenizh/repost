@@ -5,14 +5,14 @@ class Api::SessionsController < Api::ApplicationController
     current_user = login(params[:email], params[:password])
 
     if current_user
-      current_user.set_token
+      current_user.create_token
     else
       render status: :bad_request, json: { errors: ['Email or password is incorrect.'] }
     end
   end
 
   def destroy
-    current_user.unset_token
+    current_user.delete_token
     head :ok
   end
 end

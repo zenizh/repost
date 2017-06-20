@@ -40,11 +40,11 @@ class User < ApplicationRecord
     starred_posts.exists?(id: post)
   end
 
-  def set_token
+  def create_token
     update(token: SecureRandom.hex)
   end
 
-  def unset_token
+  def delete_token
     update(token: nil)
   end
 end

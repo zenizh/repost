@@ -9,7 +9,7 @@ class Api::UsersController < Api::ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      @user.set_token
+      @user.create_token
     else
       render status: :bad_request, json: { errors: @user.errors.full_messages }
     end
