@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import CSSModules from 'react-css-modules'
 import * as channelsActions from '../actions/channelsActions'
+import * as usersActions from '../actions/usersActions'
 import ChannelList from '../components/ChannelList'
 import UserList from '../components/UserList'
 import styles from '../styles/NavContent.scss'
@@ -11,6 +12,10 @@ import styles from '../styles/NavContent.scss'
 class NavContent extends Component {
   componentWillMount() {
     this.props.fetchChannels()
+  }
+
+  componentWillUnmount() {
+    this.props.clearUsers()
   }
 
   render() {
@@ -28,7 +33,8 @@ NavContent.propTypes = {
   channel: PropTypes.object.isRequired,
   channels: PropTypes.array.isRequired,
   users: PropTypes.array.isRequired,
-  fetchChannels: PropTypes.func.isRequired
+  fetchChannels: PropTypes.func.isRequired,
+  clearUsers: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -40,7 +46,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(channelsActions, dispatch)
+  return bindActionCreators({ ...channelsActions, ...usersActions }, dispatch)
 }
 
 NavContent = CSSModules(NavContent, styles)
