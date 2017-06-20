@@ -6,6 +6,7 @@ import CSSModules from 'react-css-modules'
 import * as channelActions from '../actions/channelActions'
 import * as postActions from '../actions/postActions'
 import * as postsActions from '../actions/postsActions'
+import * as usersActions from '../actions/usersActions'
 import Nav from '../containers/Nav'
 import Post from '../containers/Post'
 import PostList from '../containers/PostList'
@@ -16,6 +17,7 @@ class Home extends Component {
   componentWillMount() {
     this.props.setChannel({ name: 'all' })
     this.props.fetchPosts(endpoints.posts)
+    this.props.fetchUsers()
     this.props.clearPost()
   }
 
@@ -33,6 +35,7 @@ class Home extends Component {
 Home.propTypes = {
   clearPost: PropTypes.func.isRequired,
   fetchPosts: PropTypes.func.isRequired,
+  fetchUsers: PropTypes.func.isRequired,
   setChannel: PropTypes.func.isRequired
 }
 
@@ -41,7 +44,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ ...channelActions, ...postActions, ...postsActions }, dispatch)
+  return bindActionCreators({ ...channelActions, ...postActions, ...postsActions, ...usersActions }, dispatch)
 }
 
 Home = CSSModules(Home, styles)

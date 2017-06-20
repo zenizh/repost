@@ -6,6 +6,7 @@ import CSSModules from 'react-css-modules'
 import * as channelActions from '../actions/channelActions'
 import * as postActions from '../actions/postActions'
 import * as postsActions from '../actions/postsActions'
+import * as usersActions from '../actions/usersActions'
 import Nav from '../containers/Nav'
 import Post from '../containers/Post'
 import PostList from '../containers/PostList'
@@ -16,6 +17,7 @@ class Channel extends Component {
   componentWillMount() {
     this.fetchPosts(this.props)
     this.props.fetchChannel(endpoints.channel(this.props.match.params.id))
+    this.props.fetchChannelUsers(endpoints.channelUsers(this.props.match.params.id))
     this.props.clearPost()
   }
 
@@ -45,6 +47,7 @@ Channel.propTypes = {
   match: PropTypes.object.isRequired,
   clearPost: PropTypes.func.isRequired,
   fetchChannel: PropTypes.func.isRequired,
+  fetchChannelUsers: PropTypes.func.isRequired,
   fetchPosts: PropTypes.func.isRequired
 }
 
@@ -53,7 +56,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ ...channelActions, ...postActions, ...postsActions }, dispatch)
+  return bindActionCreators({ ...channelActions, ...postActions, ...postsActions, ...usersActions }, dispatch)
 }
 
 Channel = CSSModules(Channel, styles)

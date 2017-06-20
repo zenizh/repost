@@ -1,1 +1,1 @@
-json.array! @users, :id, :name, :screen_name
+json.array! @users, :id, :name, :screen_name, :avatar
