@@ -20,7 +20,7 @@ const ChannelList = (props) => {
     <div styleName="container">
       <h3>Channels</h3>
       <ul>
-        <li styleName={classNames({ active: (props.channel.name == 'all') })}>
+        <li styleName={classNames({ active: (props.channel.name == 'All') })}>
           <Link to="/"><Icon name="bars" /> All</Link>
         </li>
         {props.channels.map((channel, key) => {

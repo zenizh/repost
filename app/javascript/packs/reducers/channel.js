@@ -1,4 +1,4 @@
-import { FETCH_CHANNEL, SET_CHANNEL } from '../actions/channelActions'
+import { FETCH_CHANNEL, SET_CHANNEL, CLEAR_CHANNEL } from '../actions/channelActions'
 
 const initialState = {
   id: null,
@@ -11,6 +11,8 @@ function channel(state = initialState, action) {
       return action.payload.data
     case SET_CHANNEL:
       return action.channel
+    case CLEAR_CHANNEL:
+      return initialState
     default:
       return state
   }

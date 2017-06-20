@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import CSSModules from 'react-css-modules'
 import * as postActions from '../actions/postActions'
-import PostCard from '../components/PostCard'
+import PostListHeader from '../components/PostListHeader'
+import PostListContent from '../components/PostListContent'
 import styles from '../styles/PostList.scss'
 
 class PostList extends Component {
@@ -14,7 +15,7 @@ class PostList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.props.post.id) {
+    if (!this.props.post.id && (nextProps.posts.length > 0)) {
       this.props.setPost(nextProps.posts[0])
     }
   }
@@ -24,27 +25,29 @@ class PostList extends Component {
   }
 
   render() {
-    const { handleClick } = this
     return (
       <div styleName="container">
-        {this.props.posts.map((post, key) => {
-          return <PostCard key={key} post={post} handleClick={handleClick} />
-        })}
+        <PostListHeader channel={this.props.channel} users={this.props.users} />
+        <PostListContent posts={this.props.posts} handleClick={this.handleClick} />
       </div>
     )
   }
 }
 
 PostList.propTypes = {
+  channel: PropTypes.object.isRequired,
   post: PropTypes.object.isRequired,
   posts: PropTypes.array.isRequired,
+  users: PropTypes.array.isRequired,
   setPost: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
   return {
+    channel: state.channel,
     post: state.post,
-    posts: state.posts
+    posts: state.posts,
+    users: state.users
   }
 }
 

@@ -1,0 +1,13 @@
+@import '~bootstrap/scss/variables';
+
+.container {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  border-bottom: 1px solid rgba($black, .125);
+  color: $gray;
+  line-height: 48px;
+}
+
+.right {
+  float: right;
+}
