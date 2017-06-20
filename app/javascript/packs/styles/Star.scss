@@ -1,9 +1,7 @@
 @import '~bootstrap/scss/variables';
 
 .container {
-  float: right;
   color: $gray-light;
-  line-height: 1.5;
 
   &.active {
     color: $orange;

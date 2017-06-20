@@ -1,11 +1,18 @@
 @import '~bootstrap/scss/variables';
 
 .container {
-  float: right;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  border-bottom: 1px solid rgba($black, .125);
+  line-height: 48px;
 
   a {
-    margin-left: .5rem;
+    margin-left: .75rem;
     color: $gray-light !important;
     cursor: pointer;
   }
+}
+
+.right {
+  float: right;
 }

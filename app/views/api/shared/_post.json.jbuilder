@@ -1,7 +1,6 @@
 json.id post.id
 json.content post.content
 json.created_at l(post.created_at, format: :short)
-json.created_on l(post.created_at.to_date, format: :short)
 json.selected false
 json.starred current_user.starred?(post)
 json.authored post.user == current_user

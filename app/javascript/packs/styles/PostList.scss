@@ -1,6 +1,9 @@
+@import '~bootstrap/scss/variables';
+
 .container {
   display: flex;
   flex-basis: 360px;
   flex-direction: column;
   flex-shrink: 0;
+  border-right: 1px solid rgba($black, .125);
 }

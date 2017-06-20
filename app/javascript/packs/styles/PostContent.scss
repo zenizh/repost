@@ -1,8 +1,9 @@
 @import '~bootstrap/scss/variables';
 
 .container {
+  overflow: scroll;
   max-width: 580px;
-  margin: auto;
+  margin: 3rem auto 0;
 
   p {
     margin-bottom: 1.5rem;
@@ -28,12 +29,6 @@
     color: $gray-light;
     font-size: $small-font-size;
   }
-}
-
-.created_on {
-  display: block;
-  margin-bottom: 1rem;
-  font-size: $font-size-h4;
 }
 
 .created_at {
