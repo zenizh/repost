@@ -59,7 +59,7 @@ Post.propTypes = {
   }).isRequired,
   posts: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired
-  })).isRequired,
+  }).isRequired).isRequired,
   createStar: PropTypes.func.isRequired,
   deletePost: PropTypes.func.isRequired,
   deleteStar: PropTypes.func.isRequired
