@@ -32,7 +32,7 @@ class Services extends Component {
       <div styleName="container">
         <Nav />
         <SettingsNav />
-        <ServiceList services={this.props.services} onClick={this.handleClick} />
+        <ServiceList services={this.props.services} handleClick={this.handleClick} />
       </div>
     )
   }

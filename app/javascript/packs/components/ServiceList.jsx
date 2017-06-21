@@ -30,7 +30,7 @@ class ServiceList extends Component {
         <td>
           <Link to={to}>Edit</Link>
           {' '}
-          <a href="#" onClick={() => this.props.onClick(id)}>Delete</a>
+          <a href="#" onClick={() => this.props.handleClick(id)}>Delete</a>
         </td>
       </tr>
     )
@@ -78,7 +78,7 @@ ServiceList.propTypes = {
     onPost: PropTypes.bool.isRequired,
     onComment: PropTypes.bool.isRequired
   }).isRequired).isRequired,
-  onClick: PropTypes.func.isRequired
+  handleClick: PropTypes.func.isRequired
 }
 
 export default CSSModules(ServiceList, styles)
