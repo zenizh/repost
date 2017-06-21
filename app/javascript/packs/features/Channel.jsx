@@ -14,7 +14,7 @@ import endpoints from '../config/endpoints'
 import styles from '../styles/Channel.scss'
 
 class Channel extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.fetchPosts(this.props)
     this.props.fetchChannel(endpoints.channel(this.props.match.params.id))
     this.props.fetchChannelUsers(endpoints.channelUsers(this.props.match.params.id))

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import * as currentUserActions from '../actions/currentUserActions'
 
 class SignOut extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.signOut()
   }
 

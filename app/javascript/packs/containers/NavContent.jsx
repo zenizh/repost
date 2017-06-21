@@ -11,7 +11,7 @@ import UserList from '../components/UserList'
 import styles from '../styles/NavContent.scss'
 
 class NavContent extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchChannels()
   }
 

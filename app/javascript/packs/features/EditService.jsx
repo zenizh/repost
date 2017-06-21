@@ -16,7 +16,7 @@ class EditService extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchService(endpoints.service(this.props.match.params.id))
   }
 

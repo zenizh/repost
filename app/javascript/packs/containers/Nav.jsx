@@ -11,7 +11,7 @@ import Footer from '../components/Footer'
 import styles from '../styles/Nav.scss'
 
 class Nav extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchTeam()
   }
 

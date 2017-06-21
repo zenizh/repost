@@ -14,7 +14,7 @@ import endpoints from '../config/endpoints'
 import styles from '../styles/Home.scss'
 
 class Home extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.setChannel({ name: 'All' })
     this.props.fetchPosts(endpoints.posts)
     this.props.fetchUsers()

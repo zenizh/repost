@@ -17,7 +17,7 @@ class EditPost extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.authorizeAuthor(this.props.match.params.id)
     this.props.fetchPost(endpoints.mePost(this.props.match.params.id))
   }

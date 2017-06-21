@@ -17,7 +17,7 @@ class Services extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchServices()
   }
 
