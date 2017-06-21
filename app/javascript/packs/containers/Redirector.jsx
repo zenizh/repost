@@ -17,7 +17,10 @@ class Redirector extends Component {
 }
 
 Redirector.propTypes = {
-  redirect: PropTypes.object.isRequired,
+  redirect: PropTypes.shape({
+    url: PropTypes.string,
+    enabled: PropTypes.bool.isRequired
+  }).isRequired,
   redirectTo: PropTypes.func.isRequired
 }
 

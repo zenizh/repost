@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Editor } from 'draft-js'
 import CSSModules from 'react-css-modules'
 import styles from '../styles/PostEditor.scss'
@@ -20,6 +21,13 @@ class PostEditor extends Component {
       </div>
     )
   }
+}
+
+PostEditor.propTypes = {
+  editor: PropTypes.shape({
+    state: PropTypes.object.isRequied
+  }).isRequired,
+  setEditorState: PropTypes.func.isRequired
 }
 
 export default CSSModules(PostEditor, styles)

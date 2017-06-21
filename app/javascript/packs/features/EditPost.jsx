@@ -39,8 +39,14 @@ class EditPost extends Component {
 }
 
 EditPost.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired,
   editor: PropTypes.object.isRequired,
   authorizeAuthor: PropTypes.func.isRequired,
+  fetchPost: PropTypes.func.isRequired,
   updatePost: PropTypes.func.isRequired
 }
 

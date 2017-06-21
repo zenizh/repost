@@ -24,7 +24,10 @@ const Footer = (props) => {
 }
 
 Footer.propTypes = {
-  currentUser: PropTypes.object.isRequired
+  currentUser: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired
+  }).isRequired
 }
 
 export default CSSModules(Footer, styles)

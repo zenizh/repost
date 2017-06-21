@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Button } from 'reactstrap'
 import Icon from 'react-fontawesome'
 import CSSModules from 'react-css-modules'
@@ -12,6 +13,10 @@ const PostFormFooter = (props) => {
       </Button>
     </div>
   )
+}
+
+PostFormFooter.propTypes = {
+  onSubmit: PropTypes.func.isRequired
 }
 
 export default CSSModules(PostFormFooter, styles)

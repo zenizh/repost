@@ -23,7 +23,9 @@ const PostHeader = (props) => {
 }
 
 PostHeader.propTypes = {
-  post: PropTypes.object.isRequired,
+  post: PropTypes.shape({
+    id: PropTypes.number
+  }).isRequired,
   handleClick: PropTypes.func.isRequired,
   createStar: PropTypes.func.isRequired,
   deleteStar: PropTypes.func.isRequired

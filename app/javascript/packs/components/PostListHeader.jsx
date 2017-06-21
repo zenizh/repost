@@ -16,7 +16,9 @@ const PostListHeader = (props) => {
 }
 
 PostListHeader.propTypes = {
-  channel: PropTypes.object.isRequired,
+  channel: PropTypes.shape({
+    name: PropTypes.string
+  }).isRequired,
   users: PropTypes.array.isRequired
 }
 

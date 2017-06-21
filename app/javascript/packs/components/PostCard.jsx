@@ -25,7 +25,17 @@ const PostCard = (props) => {
 }
 
 PostCard.propTypes = {
-  post: PropTypes.object.isRequired,
+  post: PropTypes.shape({
+    content: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
+    selected: PropTypes.bool.isRequired,
+    starred: PropTypes.bool.isRequired,
+    user: PropTypes.shape({
+      screenName: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      avatar: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired,
   handleClick: PropTypes.func.isRequired
 }
 

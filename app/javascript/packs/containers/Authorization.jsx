@@ -42,8 +42,15 @@ class Unauthorization extends AbilityComponent {
 }
 
 const propTypes = {
-  currentUser: PropTypes.object.isRequired,
-  post: PropTypes.object
+  currentUser: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    role: PropTypes.oneOf(['member', 'owner']).isRequired
+  }).isRequired,
+  post: PropTypes.shape({
+    user: PropTypes.shape({
+      id: PropTypes.number
+    })
+  })
 }
 
 Authorization.propTypes = propTypes

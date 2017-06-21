@@ -39,7 +39,9 @@ class Services extends Component {
 }
 
 Services.propTypes = {
-  services: PropTypes.array.isRequired
+  services: PropTypes.array.isRequired,
+  fetchServices: PropTypes.func.isRequired,
+  deleteService: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {

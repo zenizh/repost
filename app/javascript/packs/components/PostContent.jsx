@@ -20,7 +20,15 @@ const PostContent = (props) => {
 }
 
 PostContent.propTypes = {
-  post: PropTypes.object.isRequired
+  post: PropTypes.shape({
+    content: PropTypes.string,
+    createdAt: PropTypes.string,
+    user: PropTypes.shape({
+      screenName: PropTypes.string,
+      name: PropTypes.string,
+      avatar: PropTypes.string
+    }).isRequired
+  }).isRequired
 }
 
 export default CSSModules(PostContent, styles)

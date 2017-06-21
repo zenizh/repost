@@ -33,8 +33,14 @@ const ChannelList = (props) => {
 }
 
 ChannelList.propTypes = {
-  channel: PropTypes.object.isRequired,
-  channels: PropTypes.array.isRequired
+  channel: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string
+  }).isRequired,
+  channels: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired
+  }).isRequired).isRequired
 }
 
 export default CSSModules(ChannelList, styles)

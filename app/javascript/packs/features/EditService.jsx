@@ -36,6 +36,11 @@ class EditService extends Component {
 }
 
 EditService.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired,
   service: PropTypes.object.isRequired,
   fetchService: PropTypes.func.isRequired,
   updateService: PropTypes.func.isRequired

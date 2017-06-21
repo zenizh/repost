@@ -70,7 +70,14 @@ class ServiceList extends Component {
 }
 
 ServiceList.propTypes = {
-  services: PropTypes.array.isRequired,
+  services: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    iconName: PropTypes.string.isRequired,
+    channel: PropTypes.string.isRequired,
+    onPost: PropTypes.bool.isRequired,
+    onComment: PropTypes.bool.isRequired
+  }).isRequired).isRequired,
   onClick: PropTypes.func.isRequired
 }
 

@@ -48,7 +48,11 @@ class Alert extends Component {
 }
 
 Alert.propTypes = {
-  alert: PropTypes.object.isRequired,
+  alert: PropTypes.shape({
+    type: PropTypes.oneOf(['success', 'danger']),
+    messages: PropTypes.arrayOf(PropTypes.string),
+    enabled: PropTypes.bool.isRequired
+  }).isRequired,
   clearAlert: PropTypes.func.isRequired
 }
 

@@ -21,7 +21,9 @@ const UserList = (props) => {
 }
 
 UserList.propTypes = {
-  users: PropTypes.array.isRequired
+  users: PropTypes.arrayOf(PropTypes.shape({
+    avatar: PropTypes.string.isRequired
+  }).isRequired).isRequired
 }
 
 export default CSSModules(UserList, styles)

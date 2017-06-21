@@ -14,7 +14,9 @@ const PostPreview = (props) => {
 }
 
 PostPreview.propTypes = {
-  editor: PropTypes.object.isRequired
+  editor: PropTypes.shape({
+    state: PropTypes.object.isRequired
+  }).isRequired
 }
 
 export default CSSModules(PostPreview, styles)

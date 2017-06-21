@@ -26,7 +26,9 @@ const Header = (props) => {
 }
 
 Header.propTypes = {
-  team: PropTypes.object.isRequired
+  team: PropTypes.shape({
+    name: PropTypes.string
+  }).isRequired
 }
 
 export default CSSModules(Header, styles)

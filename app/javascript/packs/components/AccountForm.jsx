@@ -53,7 +53,9 @@ class AccountForm extends Component {
 }
 
 AccountForm.propTypes = {
-  avatar: PropTypes.object,
+  avatar: PropTypes.shape({
+    preview: PropTypes.string.isRequired
+  }),
   handleSubmit: PropTypes.func.isRequired,
   handleDrop: PropTypes.func.isRequired
 }

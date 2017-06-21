@@ -16,7 +16,9 @@ const Star = (props) => {
 }
 
 Star.propTypes = {
-  post: PropTypes.object.isRequired,
+  post: PropTypes.shape({
+    starred: PropTypes.bool.isRequired
+  }).isRequired,
   createStar: PropTypes.func.isRequired,
   deleteStar: PropTypes.func.isRequired
 }

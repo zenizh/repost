@@ -44,7 +44,11 @@ class Channel extends Component {
 }
 
 Channel.propTypes = {
-  match: PropTypes.object.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired,
   clearPost: PropTypes.func.isRequired,
   fetchChannel: PropTypes.func.isRequired,
   fetchChannelUsers: PropTypes.func.isRequired,

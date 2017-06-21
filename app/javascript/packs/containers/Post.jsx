@@ -54,8 +54,12 @@ class Post extends Component {
 }
 
 Post.propTypes = {
-  post: PropTypes.object.isRequired,
-  posts: PropTypes.array.isRequired,
+  post: PropTypes.shape({
+    id: PropTypes.number
+  }).isRequired,
+  posts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired
+  })).isRequired,
   createStar: PropTypes.func.isRequired,
   deletePost: PropTypes.func.isRequired,
   deleteStar: PropTypes.func.isRequired

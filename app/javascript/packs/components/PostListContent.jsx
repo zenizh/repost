@@ -15,7 +15,7 @@ const PostListContent = (props) => {
 }
 
 PostListContent.propTypes = {
-  posts: PropTypes.array.isRequired,
+  posts: PropTypes.arrayOf(PropTypes.object).isRequired,
   handleClick: PropTypes.func.isRequired
 }
 
