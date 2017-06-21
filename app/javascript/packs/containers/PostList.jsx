@@ -14,12 +14,6 @@ class PostList extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (!this.props.post.id && (nextProps.posts.length > 0)) {
-      this.props.setPost(nextProps.posts[0])
-    }
-  }
-
   handleClick(post) {
     this.props.setPost(post)
   }
@@ -36,7 +30,6 @@ class PostList extends Component {
 
 PostList.propTypes = {
   channel: PropTypes.object.isRequired,
-  post: PropTypes.object.isRequired,
   posts: PropTypes.array.isRequired,
   users: PropTypes.array.isRequired,
   setPost: PropTypes.func.isRequired
@@ -45,7 +38,6 @@ PostList.propTypes = {
 function mapStateToProps(state) {
   return {
     channel: state.channel,
-    post: state.post,
     posts: state.posts,
     users: state.users
   }

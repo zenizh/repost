@@ -18,6 +18,12 @@ class Post extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.post.id && (nextProps.posts.length > 0)) {
+      this.props.setPost(nextProps.posts[0])
+    }
+  }
+
   createStar(post) {
     this.props.createStar(endpoints.postStars(post.id))
   }
@@ -49,6 +55,7 @@ class Post extends Component {
 
 Post.propTypes = {
   post: PropTypes.object.isRequired,
+  posts: PropTypes.array.isRequired,
   createStar: PropTypes.func.isRequired,
   deletePost: PropTypes.func.isRequired,
   deleteStar: PropTypes.func.isRequired
@@ -56,7 +63,8 @@ Post.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    post: state.post
+    post: state.post,
+    posts: state.posts
   }
 }
 
