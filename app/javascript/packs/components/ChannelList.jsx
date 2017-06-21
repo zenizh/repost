@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Icon from 'react-fontawesome'
 import CSSModules from 'react-css-modules'
 import classNames from 'classnames'
+import ChannelListHeader from '../containers/ChannelListHeader'
 import styles from '../styles/ChannelList.scss'
 
 const Channel = (channel, key, currentChannel) => {
@@ -18,7 +19,7 @@ const Channel = (channel, key, currentChannel) => {
 const ChannelList = (props) => {
   return (
     <div styleName="container">
-      <h3>Channels</h3>
+      <ChannelListHeader />
       <ul>
         <li styleName={classNames({ active: (props.channel.name == 'All') })}>
           <Link to="/"><Icon name="bars" /> All</Link>

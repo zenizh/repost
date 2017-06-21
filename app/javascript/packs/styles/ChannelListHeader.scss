@@ -1,0 +1,16 @@
+@import 'variables';
+@import '~bootstrap/scss/variables';
+
+.container {
+  h3 {
+    margin-bottom: .5rem;
+    margin-left: 1rem;
+    color: rgba($gray-lighter, .5);
+    font-size: $small-font-size;
+    text-transform: uppercase;
+
+    span {
+      float: right;
+    }
+  }
+}

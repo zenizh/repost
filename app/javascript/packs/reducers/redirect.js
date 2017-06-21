@@ -1,4 +1,5 @@
 import { AUTHORIZE_AUTHOR } from '../actions/authorizeActions'
+import { CREATE_CHANNEL } from '../actions/channelActions'
 import { CREATE_POST, UPDATE_POST, DELETE_POST } from '../actions/postActions'
 import { CREATE_SERVICE, UPDATE_SERVICE } from '../actions/serviceActions'
 import { REDIRECT } from '../actions/redirectActions'
@@ -12,6 +13,8 @@ function redirect(state = initialState, action) {
   switch (action.type) {
     case AUTHORIZE_AUTHOR + '_FAIL':
       return { url: '/', enabled: true }
+    case CREATE_CHANNEL + '_SUCCESS':
+      return { url: `/channels/${action.payload.data.id}`, enabled: true }
     case CREATE_POST + '_SUCCESS':
     case UPDATE_POST + '_SUCCESS':
       return { url: '/', enabled: true }

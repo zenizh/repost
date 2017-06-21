@@ -47,4 +47,8 @@ class User < ApplicationRecord
   def delete_token
     update(token: nil)
   end
+
+  def subscribe(channel)
+    channel_users.create(channel: channel)
+  end
 end
