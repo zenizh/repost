@@ -1,5 +1,6 @@
 import axios from 'axios'
 import axiosMiddleware from 'redux-axios-middleware'
+import { SIGN_OUT } from '../../actions/currentUserActions'
 
 const client = axios.create({
   headers: {
@@ -19,6 +20,16 @@ const config = {
           }
 
           return request
+        }
+      }
+    ],
+    response: [
+      {
+        error: ({ getState, dispatch, getSourceAction }, error) => {
+          dispatch({
+            type: SIGN_OUT
+          })
+          return error
         }
       }
     ]
