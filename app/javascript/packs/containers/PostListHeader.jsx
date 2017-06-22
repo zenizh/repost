@@ -14,6 +14,7 @@ class PostListHeader extends Component {
   constructor(props) {
     super(props)
     this.state = { isOpen: false }
+    this.handleClick = this.handleClick.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.toggle = this.toggle.bind(this)
   }
@@ -23,6 +24,12 @@ class PostListHeader extends Component {
       return
     }
     this.setState({ isOpen: !this.state.isOpen })
+  }
+
+  handleClick() {
+    if (window.confirm('Are you sure?')) {
+      this.props.deleteChannel(endpoints.meChannel(this.props.channel.id))
+    }
   }
 
   handleSubmit(values) {
@@ -41,6 +48,9 @@ class PostListHeader extends Component {
               label="Edit"
               initialValues={channel}
               onSubmit={this.handleSubmit} />
+            <div styleName="delete">
+              or <a href="#" onClick={this.handleClick}>Delete this channel</a>
+            </div>
           </PopoverContent>
         </Popover>
         <div styleName="right">
@@ -56,6 +66,7 @@ PostListHeader.propTypes = {
     name: PropTypes.string
   }).isRequired,
   users: PropTypes.array.isRequired,
+  deleteChannel: PropTypes.func.isRequired,
   updateChannel: PropTypes.func.isRequired
 }
 

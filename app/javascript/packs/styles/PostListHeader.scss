@@ -1,3 +1,4 @@
+@import 'variables';
 @import '~bootstrap/scss/variables';
 
 .container {
@@ -6,6 +7,12 @@
   border-bottom: 1px solid rgba($black, .125);
   color: $gray;
   line-height: 48px;
+}
+
+.delete {
+  margin-top: .5rem;
+  font-size: $small-font-size;
+  text-align: right;
 }
 
 .right {

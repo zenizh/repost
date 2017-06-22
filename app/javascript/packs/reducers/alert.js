@@ -1,5 +1,5 @@
 import { CLEAR_ALERT } from '../actions/alertActions'
-import { CREATE_CHANNEL, UPDATE_CHANNEL } from '../actions/channelActions'
+import { CREATE_CHANNEL, UPDATE_CHANNEL, DELETE_CHANNEL } from '../actions/channelActions'
 import { SIGN_UP, SIGN_IN, UPDATE_CURRENT_USER } from '../actions/currentUserActions'
 import { CREATE_POST, UPDATE_POST, DELETE_POST } from '../actions/postActions'
 import { CREATE_SERVICE, UPDATE_SERVICE, DELETE_SERVICE } from '../actions/serviceActions'
@@ -35,6 +35,8 @@ function alert(state = initialState, action) {
       return { ...success, messages: ['Created new channel.'] }
     case UPDATE_CHANNEL + '_SUCCESS':
       return { ...success, messages: ['Updated channel.'] }
+    case DELETE_CHANNEL + '_SUCCESS':
+      return { ...success, messages: ['Deleted a channel.'] }
     case CREATE_POST + '_SUCCESS':
       return { ...success, messages: ['Created new post.'] }
     case UPDATE_POST + '_SUCCESS':

@@ -3,6 +3,7 @@ import endpoints from '../config/endpoints'
 export const FETCH_CHANNEL = 'FETCH_CHANNEL'
 export const CREATE_CHANNEL = 'CREATE_CHANNEL'
 export const UPDATE_CHANNEL = 'UPDATE_CHANNEL'
+export const DELETE_CHANNEL = 'DELETE_CHANNEL'
 export const SET_CHANNEL = 'SET_CHANNEL'
 export const CLEAR_CHANNEL = 'CLEAR_CHANNEL'
 
@@ -38,6 +39,18 @@ export function updateChannel(url, data) {
         url: url,
         method: 'patch',
         data: data
+      }
+    }
+  }
+}
+
+export function deleteChannel(url) {
+  return {
+    type: DELETE_CHANNEL,
+    payload: {
+      request: {
+        url: url,
+        method: 'delete'
       }
     }
   }
