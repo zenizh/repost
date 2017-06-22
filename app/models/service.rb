@@ -1,6 +1,6 @@
 class Service < ApplicationRecord
   validates :type, presence: true
-  validates :webhook_url, presence: true
+  validates :webhook_url, presence: true, url: true
   validates :on_post, inclusion: { in: [true, false] }, allow_nil: true
   validates :on_comment, inclusion: { in: [true, false] }, allow_nil: true
 

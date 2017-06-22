@@ -180,6 +180,9 @@ GEM
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
     uniform_notifier (1.10.0)
+    validate_url (1.0.2)
+      activemodel (>= 3.0.0)
+      addressable
     validates_email_format_of (1.6.3)
       i18n
     web-console (3.5.1)
@@ -220,6 +223,7 @@ DEPENDENCIES
   sorcery
   spring
   spring-watcher-listen (~> 2.0.0)
+  validate_url
   validates_email_format_of
   web-console (>= 3.3.0)
   webpacker
