@@ -3,6 +3,7 @@ const endpoints = {
   channels: '/api/channels.json',
   channelPosts: (id) => `/api/channels/${id}/posts.json`,
   channelUsers: (id) => `/api/channels/${id}/users.json`,
+  meChannel: (id) => `/api/me/channels/${id}.json`,
   meChannels: '/api/me/channels.json',
   me: '/api/me.json',
   mePost: (id) => `/api/me/posts/${id}.json`,

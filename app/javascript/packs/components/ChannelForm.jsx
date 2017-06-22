@@ -16,7 +16,7 @@ let ChannelForm = (props) => {
           <Field component="input" type="text" name="name" className="form-control" />
         </InputGroup>
       </FormGroup>
-      <Button type="submit" color="success"><Icon name="check" /> Create</Button>
+      <Button type="submit" color="success"><Icon name="check" /> {props.label}</Button>
     </Form>
   )
 }
@@ -26,6 +26,6 @@ ChannelForm.propTypes = {
 }
 
 ChannelForm = CSSModules(ChannelForm, styles)
-ChannelForm = reduxForm({ form: 'channel' })(ChannelForm)
+ChannelForm = reduxForm({ form: 'channel', enableReinitialize: true })(ChannelForm)
 
 export default ChannelForm

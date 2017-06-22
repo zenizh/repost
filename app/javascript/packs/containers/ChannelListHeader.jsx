@@ -30,12 +30,12 @@ class ChannelListHeader extends Component {
       <div styleName="container">
         <h3>
           Channels
-          <Icon name="plus" id="popover" onClick={this.toggle} />
+          <Icon name="plus" id="create_channel" onClick={this.toggle} />
         </h3>
-        <Popover target="popover" placement="bottom" isOpen={this.state.isOpen} toggle={this.toggle}>
+        <Popover target="create_channel" placement="bottom" isOpen={this.state.isOpen} toggle={this.toggle}>
           <PopoverTitle>Create a channel</PopoverTitle>
           <PopoverContent>
-            <ChannelForm onSubmit={this.handleSubmit} />
+            <ChannelForm label="Create" onSubmit={this.handleSubmit} />
           </PopoverContent>
         </Popover>
       </div>

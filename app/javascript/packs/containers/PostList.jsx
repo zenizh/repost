@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import CSSModules from 'react-css-modules'
 import * as postActions from '../actions/postActions'
-import PostListHeader from '../components/PostListHeader'
+import PostListHeader from './PostListHeader'
 import PostListContent from '../components/PostListContent'
 import styles from '../styles/PostList.scss'
 
@@ -29,17 +29,13 @@ class PostList extends Component {
 }
 
 PostList.propTypes = {
-  channel: PropTypes.object.isRequired,
   posts: PropTypes.array.isRequired,
-  users: PropTypes.array.isRequired,
   setPost: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
   return {
-    channel: state.channel,
-    posts: state.posts,
-    users: state.users
+    posts: state.posts
   }
 }
 
