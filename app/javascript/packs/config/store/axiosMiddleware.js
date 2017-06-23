@@ -12,7 +12,7 @@ const config = {
   interceptors: {
     request: [
       {
-        success: ({ getState, dispatch, getSourceAction }, request) => {
+        success: ({ getState }, request) => {
           const { currentUser } = getState()
 
           if (currentUser.signedIn) {
