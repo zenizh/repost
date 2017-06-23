@@ -9,3 +9,8 @@ other_member:
   email: other_member@example.com
   screen_name: other_member_screen_name
   name: other member name
+
+starred_member:
+  <<: *member
+  email: starred_member@example.com
+  screen_name: starred_member_screen_name

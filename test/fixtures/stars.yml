@@ -1,3 +1,3 @@
 star:
   post: post
-  user: member
+  user: starred_member
