@@ -17,7 +17,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'email uniqueness' do
-    @user.email = @other_user.email
+    @user.email = @other_user.email.upcase
     assert @user.invalid?
   end
 
@@ -51,7 +51,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'screen_name uniqueness' do
-    @user.screen_name = @other_user.screen_name
+    @user.screen_name = @other_user.screen_name.upcase
     assert @user.invalid?
   end
 

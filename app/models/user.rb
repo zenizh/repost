@@ -22,7 +22,7 @@ class User < ApplicationRecord
     format: { with: /\A[a-zA-Z0-9_]+\z/ },
     length: { in: 3..64 },
     presence: true,
-    uniqueness: true
+    uniqueness: { case_sensitive: false }
 
   validates_attachment :avatar,
     content_type: { content_type: ['image/gif', 'image/jpeg', 'image/png'] },
