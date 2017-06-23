@@ -4,7 +4,7 @@ member: &member
   screen_name: member_screen_name
   name: member name
 
-other_member: 
+other_member:
   <<: *member
   email: other_member@example.com
   screen_name: other_member_screen_name
