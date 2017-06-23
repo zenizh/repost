@@ -1,0 +1,5 @@
+member:
+  email: member@example.com
+  crypted_password: <%= BCrypt::Password.create('test1234') %>
+  screen_name: member_screen_name
+  name: member name
