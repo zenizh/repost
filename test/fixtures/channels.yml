@@ -1,2 +1,5 @@
 channel:
   name: channel name
+
+other_channel:
+  name: other channel name
