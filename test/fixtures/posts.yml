@@ -1,3 +1,4 @@
 post:
   user: member
   content: post content
+  created_at: 2017-06-30 23:59:59 UTC

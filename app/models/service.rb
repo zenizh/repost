@@ -1,37 +1,30 @@
 class Service < ApplicationRecord
-  validates :type, presence: true
+  validates :channel, presence: true
+  validates :on_post, allow_nil: true, inclusion: { in: [true, false] }
+  validates :on_comment, allow_nil: true, inclusion: { in: [true, false] }
+  validates :type, inclusion: { in: %w(SlackService) }, presence: true
   validates :webhook_url, presence: true, url: true
-  validates :on_post, inclusion: { in: [true, false] }, allow_nil: true
-  validates :on_comment, inclusion: { in: [true, false] }, allow_nil: true
 
-  attribute :on_post, :boolean, default: true
-  attribute :on_comment, :boolean, default: true
+  attribute :on_post, :boolean, default: false
+  attribute :on_comment, :boolean, default: false
 
   scope :on_post, -> { where(on_post: true) }
   scope :on_comment, -> { where(on_comment: true) }
 
-  def name
-    raise NotImplementedError
+  def self.notify(scope, object)
+    send(scope).each { |service| service.notify(scope, object) }
   end
 
-  def icon_name
+  def notify(scope, object)
     raise NotImplementedError
-  end
-
-  def notify(scope, data)
-    raise NotImplementedError
-  end
-
-  def self.notify(scope, data)
-    send(scope).each { |service| service.notify(scope, data) }
   end
 
   private
 
-  def content(scope, data)
+  def content(scope, object)
     case scope
     when :on_post
-      "#{data.user.name} posted a daily report of #{data.created_at.to_date}."
+      "#{object.user.name} posted a daily report of #{object.created_at.to_date}."
     when :on_comment
       'commented'
     end

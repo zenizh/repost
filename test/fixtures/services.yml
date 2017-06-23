@@ -1,0 +1,16 @@
+service: &service
+  channel: general
+  type: SlackService
+  webhook_url: http://example.com
+
+<% 2.times do |n| %>
+on_post_<%= n %>:
+  <<: *service
+  on_post: true
+<% end %>
+
+<% 3.times do |n| %>
+on_comment_<%= n %>:
+  <<: *service
+  on_comment: true
+<% end %>

@@ -12,6 +12,7 @@ gem 'webpacker'
 gem 'jbuilder', '~> 2.5'
 
 gem 'rack-attack'
+gem 'active_decorator'
 gem 'paperclip'
 gem 'faker'
 gem 'validates_email_format_of'
@@ -33,4 +34,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
+end
+
+group :test do
+  gem 'webmock'
 end
