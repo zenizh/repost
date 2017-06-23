@@ -22,16 +22,6 @@ const config = {
           return request
         }
       }
-    ],
-    response: [
-      {
-        error: ({ getState, dispatch, getSourceAction }, error) => {
-          dispatch({
-            type: SIGN_OUT
-          })
-          return error
-        }
-      }
     ]
   }
 }
