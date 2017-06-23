@@ -15,16 +15,6 @@ ActiveRecord::Schema.define(version: 20170608011009) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "channel_users", id: :serial, force: :cascade do |t|
-    t.integer "channel_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["channel_id", "user_id"], name: "index_channel_users_on_channel_id_and_user_id", unique: true
-    t.index ["channel_id"], name: "index_channel_users_on_channel_id"
-    t.index ["user_id"], name: "index_channel_users_on_user_id"
-  end
-
   create_table "channels", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -84,6 +74,16 @@ ActiveRecord::Schema.define(version: 20170608011009) do
     t.index ["user_id"], name: "index_stars_on_user_id"
   end
 
+  create_table "subscriptions", id: :serial, force: :cascade do |t|
+    t.integer "channel_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id", "user_id"], name: "index_subscriptions_on_channel_id_and_user_id", unique: true
+    t.index ["channel_id"], name: "index_subscriptions_on_channel_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -118,8 +118,6 @@ ActiveRecord::Schema.define(version: 20170608011009) do
     t.index ["screen_name"], name: "index_users_on_screen_name", unique: true
   end
 
-  add_foreign_key "channel_users", "channels"
-  add_foreign_key "channel_users", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "users"
@@ -127,5 +125,7 @@ ActiveRecord::Schema.define(version: 20170608011009) do
   add_foreign_key "reactions", "users"
   add_foreign_key "stars", "posts"
   add_foreign_key "stars", "users"
+  add_foreign_key "subscriptions", "channels"
+  add_foreign_key "subscriptions", "users"
   add_foreign_key "templates", "users"
 end

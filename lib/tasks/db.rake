@@ -12,7 +12,7 @@ namespace :db do
 
       users = User.order('RANDOM()').limit(7)
       users.each do |user|
-        ChannelUser.create(channel: channel, user: user)
+        user.subscribe(channel)
       end
     end
 

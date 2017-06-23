@@ -17,7 +17,7 @@ class Channel extends Component {
   componentDidMount() {
     this.fetchPosts(this.props)
     this.props.fetchChannel(endpoints.channel(this.props.match.params.id))
-    this.props.fetchChannelUsers(endpoints.channelUsers(this.props.match.params.id))
+    this.props.fetchSubscriptions(endpoints.subscriptions(this.props.match.params.id))
     this.props.clearPost()
   }
 
@@ -51,7 +51,7 @@ Channel.propTypes = {
   }).isRequired,
   clearPost: PropTypes.func.isRequired,
   fetchChannel: PropTypes.func.isRequired,
-  fetchChannelUsers: PropTypes.func.isRequired,
+  fetchSubscriptions: PropTypes.func.isRequired,
   fetchPosts: PropTypes.func.isRequired
 }
 

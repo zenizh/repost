@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
-  has_many :channel_users, class_name: 'ChannelUser'
-  has_many :channels, through: :channel_users
+  has_many :subscriptions
+  has_many :channels, through: :subscriptions
   has_many :posts
   has_many :stars
   has_many :starred_posts, through: :stars, source: :post
@@ -49,6 +49,6 @@ class User < ApplicationRecord
   end
 
   def subscribe(channel)
-    channel_users.create(channel: channel)
+    subscriptions.create(channel: channel)
   end
 end

@@ -1,3 +1,3 @@
-channel_user:
+subscription:
   channel: channel
   user: user

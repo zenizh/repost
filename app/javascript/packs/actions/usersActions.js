@@ -1,7 +1,7 @@
 import endpoints from '../config/endpoints'
 
 export const FETCH_USERS = 'FETCH_USERS'
-export const FETCH_CHANNEL_USERS = 'FETCH_CHANNEL_USERS'
+export const FETCH_SUBSCRIPTIONS = 'FETCH_SUBSCRIPTIONS'
 export const CLEAR_USERS = 'CLEAR_USERS'
 
 export function fetchUsers() {
@@ -15,9 +15,9 @@ export function fetchUsers() {
   }
 }
 
-export function fetchChannelUsers(url) {
+export function fetchSubscriptions(url) {
   return {
-    type: FETCH_CHANNEL_USERS,
+    type: FETCH_SUBSCRIPTIONS,
     payload: {
       request: {
         url: url

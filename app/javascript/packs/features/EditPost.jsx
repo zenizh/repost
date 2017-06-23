@@ -4,9 +4,10 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import CSSModules from 'react-css-modules'
 import * as authorizeActions from '../actions/authorizeActions'
+import * as editorActions from '../actions/editorActions'
 import * as postActions from '../actions/postActions'
 import Nav from '../containers/Nav'
-import PostForm from '../containers/PostForm'
+import PostForm from '../components/PostForm'
 import PostPreview from '../components/PostPreview'
 import styles from '../styles/EditPost.scss'
 import endpoints from '../config/endpoints'
@@ -28,11 +29,15 @@ class EditPost extends Component {
   }
 
   render() {
+    const { editor, setEditorState } = this.props
     return (
       <div styleName="container">
         <Nav />
-        <PostForm handleSubmit={this.handleSubmit} />
-        <PostPreview editor={this.props.editor} />
+        <PostForm
+          editor={editor}
+          handleSubmit={this.handleSubmit}
+          setEditorState={setEditorState} />
+        <PostPreview editor={editor} />
       </div>
     )
   }
@@ -47,6 +52,7 @@ EditPost.propTypes = {
   editor: PropTypes.object.isRequired,
   authorizeAuthor: PropTypes.func.isRequired,
   fetchPost: PropTypes.func.isRequired,
+  setEditorState: PropTypes.func.isRequired,
   updatePost: PropTypes.func.isRequired
 }
 
@@ -57,7 +63,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ ...authorizeActions, ...postActions }, dispatch)
+  return bindActionCreators({ ...authorizeActions, ...editorActions, ...postActions }, dispatch)
 }
 
 EditPost = CSSModules(EditPost, styles)
