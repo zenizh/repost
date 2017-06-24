@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router'
-import { OnlyUser, OnlyGuest, OnlyOwner } from './auth'
+import { OnlyUser, OnlyGuest, OnlyAdmin } from './auth'
 import SignIn from '../features/SignIn'
 import SignUp from '../features/SignUp'
 import Home from '../features/Home'
@@ -28,10 +28,10 @@ const Routes = (props) => {
       <Route path="/channels/:id" component={OnlyUser(Channel)} />
       <Route path="/posts/new" component={OnlyUser(NewPost)} />
       <Route path="/posts/:id/edit" component={OnlyUser(EditPost)} />
-      <Route path="/team/services/new" component={OnlyOwner(NewService)} />
-      <Route path="/team/services/:id/edit" component={OnlyOwner(EditService)} />
-      <Route path="/team/services" component={OnlyOwner(Services)} />
-      <Route path="/team/settings" component={OnlyOwner(TeamSettings)} />
+      <Route path="/team/services/new" component={OnlyAdmin(NewService)} />
+      <Route path="/team/services/:id/edit" component={OnlyAdmin(EditService)} />
+      <Route path="/team/services" component={OnlyAdmin(Services)} />
+      <Route path="/team/settings" component={OnlyAdmin(TeamSettings)} />
       <Route path="/sign_out" component={OnlyUser(SignOut)} />
     </div>
   )

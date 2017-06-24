@@ -15,9 +15,9 @@ export const OnlyGuest = UserAuthWrapper({
   redirectAction: routerActions.replace
 })
 
-export const OnlyOwner = UserAuthWrapper({
+export const OnlyAdmin = UserAuthWrapper({
   authSelector: (state) => state.currentUser,
   failureRedirectPath: '/',
-  predicate: (currentUser) => currentUser.role == 'owner',
+  predicate: (currentUser) => currentUser.role == 'admin',
   redirectAction: routerActions.replace
 })

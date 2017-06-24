@@ -30,7 +30,7 @@ class User < ApplicationRecord
 
   attribute :screen_name, :string, default: -> { SecureRandom.hex(3) }
 
-  enum role: { member: 0, owner: 10 }
+  enum role: { member: 0, admin: 10 }
 
   def name
     super.presence || screen_name

@@ -14,10 +14,10 @@ const Header = (props) => {
       </DropdownToggle>
       <DropdownMenu>
         <DropdownItem header>Team Menu</DropdownItem>
-        <Authorization type="owner">
+        <Authorization type="admin">
           <Link to="/team/settings" className="dropdown-item">Team Settings</Link>
         </Authorization>
-        <Unauthorization type="owner">
+        <Unauthorization type="admin">
           <DropdownItem disabled>Settings</DropdownItem>
         </Unauthorization>
       </DropdownMenu>

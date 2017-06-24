@@ -18,8 +18,8 @@ class AbilityComponent extends AuthorizationComponent {
     return currentUser.id == props.post.user.id
   }
 
-  owner(currentUser, props) {
-    return currentUser.role == 'owner'
+  admin(currentUser, props) {
+    return currentUser.role == 'admin'
   }
 }
 
@@ -44,7 +44,7 @@ class Unauthorization extends AbilityComponent {
 const propTypes = {
   currentUser: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    role: PropTypes.oneOf(['member', 'owner']).isRequired
+    role: PropTypes.oneOf(['member', 'admin']).isRequired
   }).isRequired,
   post: PropTypes.shape({
     user: PropTypes.shape({

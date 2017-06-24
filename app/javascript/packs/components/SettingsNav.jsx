@@ -11,7 +11,7 @@ const SettingsNav = (props) => {
       <ul>
         <li><Link to="/account/edit">Profile</Link></li>
       </ul>
-      <Authorization type="owner">
+      <Authorization type="admin">
         <div>
           <h3>Team Settings</h3>
           <ul>
