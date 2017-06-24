@@ -3,7 +3,7 @@ require 'test_helper'
 class Api::MesControllerTest < ActionController::TestCase
   def setup
     @user = users(:member)
-    set_member_token
+    sign_in_as(@user)
   end
 
   test '#update success' do

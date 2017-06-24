@@ -12,12 +12,8 @@ class ActiveSupport::TestCase
 end
 
 class ActionController::TestCase
-  def set_member_token
-    request.env['HTTP_USER_TOKEN'] = 'member_token'
-  end
-
-  def set_admin_token
-    request.env['HTTP_USER_TOKEN'] = 'admin_token'
+  def sign_in_as(user)
+    request.env['HTTP_USER_TOKEN'] = user.token
   end
 
   def response_body

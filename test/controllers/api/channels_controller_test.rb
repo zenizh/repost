@@ -4,7 +4,7 @@ class Api::ChannelsControllerTest < ActionController::TestCase
   def setup
     @admin = users(:admin)
     @channel = channels(:channel)
-    set_admin_token
+    sign_in_as(@admin)
   end
 
   test '#create success' do
@@ -24,7 +24,7 @@ class Api::ChannelsControllerTest < ActionController::TestCase
   end
 
   test '#create failure with user role' do
-    set_member_token
+    sign_in_as(users(:member))
     post :create, params: { name: 'new channel name' }
     assert_response :forbidden
     assert_not Channel.exists?(name: 'new channel name')
