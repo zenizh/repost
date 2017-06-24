@@ -1,4 +1,6 @@
 class Api::ChannelsController < Api::ApplicationController
+  before_action :authorize_user
+
   def create
     channel = Channel.new(channel_params)
 
@@ -18,5 +20,9 @@ class Api::ChannelsController < Api::ApplicationController
 
   def channel_params
     params.permit(:name)
+  end
+
+  def authorize_user
+    authorize Channel
   end
 end

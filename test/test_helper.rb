@@ -10,3 +10,17 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+class ActionController::TestCase
+  def set_member_token
+    request.env['HTTP_USER_TOKEN'] = 'member_token'
+  end
+
+  def set_admin_token
+    request.env['HTTP_USER_TOKEN'] = 'admin_token'
+  end
+
+  def response_body
+    @response_body ||= JSON.parse(response.body)
+  end
+end

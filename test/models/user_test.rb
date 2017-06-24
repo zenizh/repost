@@ -80,7 +80,6 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test '#create_token' do
-    assert_nil @user.token
     @user.create_token
     assert_not_nil @user.token
     assert_equal 32, @user.token.length
