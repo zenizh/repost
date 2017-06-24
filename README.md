@@ -1,5 +1,7 @@
 # Repost
 
+[![Join the chat at https://gitter.im/repostapp/Lobby](https://badges.gitter.im/repostapp/Lobby.svg)](https://gitter.im/repostapp/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![CircleCI](https://circleci.com/gh/kami-zh/repost.svg?style=svg)](https://circleci.com/gh/kami-zh/repost)
 
 Repost is an open source software to communicate with your team members through posting daily reports.
