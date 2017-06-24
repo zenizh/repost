@@ -1,5 +1,5 @@
 class Api::UsersController < Api::ApplicationController
-  skip_before_action :authenticate, only: :create
+  skip_before_action :authenticate_user, only: :create
 
   def index
     @users = User.all

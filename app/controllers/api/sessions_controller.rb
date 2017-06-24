@@ -1,5 +1,5 @@
 class Api::SessionsController < Api::ApplicationController
-  skip_before_action :authenticate, only: :create
+  skip_before_action :authenticate_user, only: :create
 
   def create
     @user = login(params[:email], params[:password])

@@ -2,7 +2,7 @@ class Api::ApplicationController < ActionController::API
   include Pundit
   include Sorcery::Controller
 
-  before_action :authenticate
+  before_action :authenticate_user
 
   rescue_from Pundit::NotAuthorizedError do
     head :forbidden
@@ -12,7 +12,7 @@ class Api::ApplicationController < ActionController::API
 
   private
 
-  def authenticate
+  def authenticate_user
     head :bad_request unless current_user
   end
 
