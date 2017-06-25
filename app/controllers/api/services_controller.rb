@@ -1,4 +1,5 @@
 class Api::ServicesController < Api::ApplicationController
+  before_action :authorize_user
   before_action :set_service, only: [:show, :update, :destroy]
 
   def index
@@ -31,6 +32,10 @@ class Api::ServicesController < Api::ApplicationController
 
   def service_params
     params.permit(:type, :webhook_url, :channel, :on_post, :on_comment)
+  end
+
+  def authorize_user
+    authorize Service
   end
 
   def set_service
