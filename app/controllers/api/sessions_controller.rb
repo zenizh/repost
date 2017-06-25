@@ -5,7 +5,7 @@ class Api::SessionsController < Api::ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
-      @user.create_token
+      @user.update_token
     else
       render status: :bad_request, json: { errors: ['Email or password is incorrect.'] }
     end

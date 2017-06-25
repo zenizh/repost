@@ -40,7 +40,7 @@ class User < ApplicationRecord
     starred_posts.exists?(id: post)
   end
 
-  def create_token
+  def update_token
     update(token: SecureRandom.hex)
   end
 

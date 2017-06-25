@@ -79,18 +79,18 @@ class UserTest < ActiveSupport::TestCase
     assert @user.starred?(post)
   end
 
-  test '#create_token' do
-    @user.create_token
+  test '#update_token' do
+    @user.update_token
     assert_not_nil @user.token
     assert_equal 32, @user.token.length
     token = @user.token
-    @user.create_token
+    @user.update_token
     assert_not_nil @user.token
     assert_not_equal token, @user.token
   end
 
   test '#delete_token' do
-    @user.create_token
+    @user.update_token
     assert_not_nil @user.token
     @user.delete_token
     assert_nil @user.token
