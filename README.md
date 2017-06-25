@@ -2,6 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/kami-zh/repost.svg?style=svg)](https://circleci.com/gh/kami-zh/repost)
 [![Gitter](https://badges.gitter.im/repostapp/Lobby.svg)](https://gitter.im/repostapp/Lobby)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Repost is an open source software to communicate with your team members through posting daily reports.
 This project focuses on a good user interface using Redux and React.
