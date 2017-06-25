@@ -1,4 +1,5 @@
 class Api::TeamsController < Api::ApplicationController
+  before_action :authorize_user
   before_action :set_team
 
   def show
@@ -15,11 +16,15 @@ class Api::TeamsController < Api::ApplicationController
 
   private
 
-  def set_team
-    @team = Team.first
-  end
-
   def team_params
     params.permit(:name)
+  end
+
+  def authorize_user
+    authorize Team
+  end
+
+  def set_team
+    @team = Team.first
   end
 end
