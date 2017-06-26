@@ -28,12 +28,12 @@ class PostListHeader extends Component {
 
   handleClick() {
     if (window.confirm('Are you sure?')) {
-      this.props.deleteChannel(endpoints.meChannel(this.props.channel.id))
+      this.props.deleteChannel(endpoints.channel(this.props.channel.id))
     }
   }
 
   handleSubmit(values) {
-    this.props.updateChannel(endpoints.meChannel(this.props.channel.id), values)
+    this.props.updateChannel(endpoints.channel(this.props.channel.id), values)
   }
 
   render() {

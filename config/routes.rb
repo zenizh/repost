@@ -12,13 +12,13 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :channels, only: [:create, :show] do
+    resources :channels, only: [:create, :show, :update, :destroy] do
       resources :posts, only: :index, controller: 'channels/posts'
       resources :users, only: :index, controller: 'channels/users'
     end
 
     namespace :me do
-      resources :channels, only: [:index, :update, :destroy]
+      resources :channels, only: :index
       resources :posts, only: [:index, :show, :update, :destroy]
     end
   end
