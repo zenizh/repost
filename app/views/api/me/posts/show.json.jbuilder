@@ -1,1 +1,1 @@
-json.editor_state @post.editor_state
+json.extract! @post, :id, :editor_state
