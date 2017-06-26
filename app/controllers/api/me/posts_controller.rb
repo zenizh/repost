@@ -1,5 +1,6 @@
 class Api::Me::PostsController < Api::ApplicationController
   before_action :set_post, only: [:show, :update, :destroy]
+  before_action :authorize_user, only: [:update, :destroy]
 
   def index
     @posts = current_user.posts.order(created_at: :desc).limit(10)
@@ -27,5 +28,9 @@ class Api::Me::PostsController < Api::ApplicationController
 
   def set_post
     @post = current_user.posts.find(params[:id])
+  end
+
+  def authorize_user
+    authorize @post
   end
 end
