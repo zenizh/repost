@@ -11,6 +11,11 @@
 
     span {
       float: right;
+      cursor: pointer;
+
+      &:hover {
+        color: rgba($gray-lighter, .75);
+      }
     }
   }
 }

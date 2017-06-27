@@ -7,11 +7,18 @@
   padding-left: 1rem;
   background-color: $black;
   color: $gray-lighter;
+  transition: $transition-base;
+
+  &:hover {
+    background-color: rgba($black, .25);
+  }
 
   [data-toggle=dropdown] {
     padding: 0;
     color: $white;
     line-height: 64px;
     text-align: left;
+    text-decoration: none;
+    cursor: pointer;
   }
 }

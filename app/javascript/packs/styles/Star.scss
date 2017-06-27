@@ -2,7 +2,9 @@
 
 .container {
   color: $gray-light;
+  cursor: pointer;
 
+  &:hover,
   &.active {
     color: $orange;
   }

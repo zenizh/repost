@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Popover, PopoverTitle, PopoverContent } from 'reactstrap'
 import Icon from 'react-fontawesome'
 import CSSModules from 'react-css-modules'
+import classNames from 'classnames'
 import * as channelActions from '../actions/channelActions'
 import ChannelForm from '../components/ChannelForm'
 import styles from '../styles/PostListHeader.scss'
@@ -38,9 +39,10 @@ class PostListHeader extends Component {
 
   render() {
     const { channel, users } = this.props
+    const styleName = classNames('channel', { editable: (channel.name != 'All') })
     return (
       <div styleName="container">
-        <span id="edit_channel" onClick={this.toggle}>#{channel.name}</span>
+        <span id="edit_channel" onClick={this.toggle} styleName={styleName}><span>#</span> {channel.name}</span>
         <Popover target="edit_channel" placement="bottom" isOpen={this.state.isOpen} toggle={this.toggle}>
           <PopoverTitle>Edit channel</PopoverTitle>
           <PopoverContent>
@@ -81,6 +83,6 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(channelActions, dispatch)
 }
 
-PostListHeader = CSSModules(PostListHeader, styles)
+PostListHeader = CSSModules(PostListHeader, styles, { allowMultiple: true })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostListHeader)

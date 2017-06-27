@@ -9,6 +9,26 @@
   line-height: 48px;
 }
 
+.channel {
+  font-weight: bold;
+
+  span {
+    color: rgba($gray, .75);
+  }
+
+  &.editable {
+    cursor: pointer;
+
+    &:hover {
+      color: $link-hover-color;
+
+      span {
+        color: rgba($link-hover-color, .75);
+      }
+    }
+  }
+}
+
 .delete {
   margin-top: .5rem;
   font-size: $small-font-size;
@@ -17,4 +37,8 @@
 
 .right {
   float: right;
+
+  span {
+    color: rgba($gray, .75);
+  }
 }

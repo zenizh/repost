@@ -21,12 +21,20 @@
       background-color: rgba($gray-light, .25);
       text-decoration: none;
     }
+
+    span {
+      color: rgba($gray-lighter, .25);
+    }
   }
 
   .active {
     a {
       color: $white;
       background-color: rgba($gray-light, .5);
+
+      span {
+        color: rgba($gray-lighter, .75);
+      }
     }
   }
 }

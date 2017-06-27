@@ -11,7 +11,7 @@ const Channel = (channel, key, currentChannel) => {
   const to = `/channels/${channel.id}`
   return (
     <li key={key} styleName={classNames({ active: (channel.id == currentChannel.id) })}>
-      <Link to={to}><Icon name="tag" /> {channel.name}</Link>
+      <Link to={to}><span>#</span> {channel.name}</Link>
     </li>
   )
 }
