@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Popover, PopoverTitle, PopoverContent } from 'reactstrap'
+import { Popover, PopoverTitle, PopoverContent, UncontrolledTooltip } from 'reactstrap'
 import Icon from 'react-fontawesome'
 import CSSModules from 'react-css-modules'
 import classNames from 'classnames'
@@ -43,6 +43,9 @@ class PostListHeader extends Component {
     return (
       <div styleName="container">
         <span id="edit_channel" onClick={this.toggle} styleName={styleName}><span>#</span> {channel.name}</span>
+        <UncontrolledTooltip placement="bottom" target="edit_channel">
+          Edit channel
+        </UncontrolledTooltip>
         <Popover target="edit_channel" placement="bottom" isOpen={this.state.isOpen} toggle={this.toggle}>
           <PopoverTitle>Edit channel</PopoverTitle>
           <PopoverContent>

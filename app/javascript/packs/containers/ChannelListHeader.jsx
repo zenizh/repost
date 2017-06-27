@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Popover, PopoverTitle, PopoverContent } from 'reactstrap'
+import { Popover, PopoverTitle, PopoverContent, UncontrolledTooltip } from 'reactstrap'
 import CSSModules from 'react-css-modules'
 import Icon from 'react-fontawesome'
 import * as channelActions from '../actions/channelActions'
@@ -32,6 +32,9 @@ class ChannelListHeader extends Component {
           Channels
           <Icon name="plus" id="create_channel" onClick={this.toggle} />
         </h3>
+        <UncontrolledTooltip placement="bottom" target="create_channel">
+          Create a channel
+        </UncontrolledTooltip>
         <Popover target="create_channel" placement="bottom" isOpen={this.state.isOpen} toggle={this.toggle}>
           <PopoverTitle>Create a channel</PopoverTitle>
           <PopoverContent>
