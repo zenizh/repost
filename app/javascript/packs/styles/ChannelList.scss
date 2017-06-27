@@ -18,7 +18,7 @@
     color: rgba($gray-lighter, .5);
 
     &:hover {
-      background-color: rgba($gray-light, .25);
+      background-color: rgba($gray-light, .5);
       text-decoration: none;
     }
 
@@ -30,7 +30,7 @@
   .active {
     a {
       color: $white;
-      background-color: rgba($gray-light, .5);
+      background-color: rgba($gray-light, .75);
 
       span {
         color: rgba($gray-lighter, .75);

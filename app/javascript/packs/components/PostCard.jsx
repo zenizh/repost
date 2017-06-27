@@ -4,11 +4,12 @@ import { Card, CardBlock } from 'reactstrap'
 import classNames from 'classnames'
 import Truncate from 'react-truncate'
 import CSSModules from 'react-css-modules'
+import Icon from 'react-fontawesome'
 import styles from '../styles/PostCard.scss'
 
 const PostCard = (props) => {
   const { post, handleClick } = props
-  const styleName = classNames('card', { selected: post.selected, starred: post.starred })
+  const styleName = classNames('card', { selected: post.selected })
   return (
     <Card onClick={() => handleClick(post)} styleName={styleName}>
       <CardBlock styleName="block">
@@ -19,6 +20,9 @@ const PostCard = (props) => {
         </div>
         <p><Truncate lines={2}>{post.content}</Truncate></p>
         <span styleName="created_at">{post.createdAt}</span>
+        <div styleName="icons">
+          {(post.starred ? <Icon name="star-o" /> : null)}
+        </div>
       </CardBlock>
     </Card>
   )

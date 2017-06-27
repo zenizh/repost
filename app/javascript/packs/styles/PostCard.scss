@@ -5,6 +5,7 @@
   overflow: hidden;
   height: 130px;
   margin: 0 1rem .5rem;
+  background-color: $white;
   cursor: pointer;
   transition: $transition-base;
 
@@ -13,17 +14,13 @@
     color: $gray;
   }
 
-  &:hover {
-    background-color: transparent;
-  }
-
+  &:hover,
   &.selected{
-    border-color: rgba($black, .25);
-    background-color: transparent;
-  }
+    border: 1px solid rgba($blue, .25);
 
-  &.starred {
-    border-left: 2px solid $orange;
+    .block {
+      background-color: rgba($blue, .05);
+    }
   }
 }
 
@@ -54,4 +51,14 @@
 .created_at {
   color: $gray-light;
   font-size: $small-font-size;
+}
+
+.icons {
+  float: right;
+  color: $orange;
+  font-size: $small-font-size;
+
+  span {
+    vertical-align: middle;
+  }
 }
