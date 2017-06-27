@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Field, reduxForm } from 'redux-form'
-import { Button, Form, FormGroup, InputGroup, InputGroupAddon, Label } from 'reactstrap'
+import { Button, Col, Form, FormGroup, InputGroup, InputGroupAddon, Label } from 'reactstrap'
 import DropZone from 'react-dropzone'
 import Icon from 'react-fontawesome'
 import CSSModules from 'react-css-modules'
@@ -19,32 +19,44 @@ class AccountForm extends Component {
         <div>
           <h2>Profile</h2>
           <Form onSubmit={handleSubmit}>
-            <FormGroup>
-              <Label>Email</Label>
-              <Field component="input" type="email" name="email" className="form-control" />
+            <FormGroup row>
+              <Label sm={3}>Email</Label>
+              <Col sm={9}>
+                <Field component="input" type="email" name="email" className="form-control" />
+              </Col>
             </FormGroup>
-            <FormGroup>
-              <Label>Screen Name</Label>
-              <InputGroup>
-                <InputGroupAddon>@</InputGroupAddon>
-                <Field component="input" type="text" name="screenName" className="form-control" />
-              </InputGroup>
+            <FormGroup row>
+              <Label sm={3}>Screen Name</Label>
+              <Col sm={9}>
+                <InputGroup>
+                  <InputGroupAddon>@</InputGroupAddon>
+                  <Field component="input" type="text" name="screenName" className="form-control" />
+                </InputGroup>
+              </Col>
             </FormGroup>
-            <FormGroup>
-              <Label>Name</Label>
-              <Field component="input" type="text" name="name" className="form-control" />
+            <FormGroup row>
+              <Label sm={3}>Name</Label>
+              <Col sm={9}>
+                <Field component="input" type="text" name="name" className="form-control" />
+              </Col>
             </FormGroup>
-            <FormGroup>
-              <Label>Avatar</Label>
-              <DropZone name="avatar" accept="image/*" multiple={false} onDrop={handleDrop} styleName="dropzone">
-                {(avatar) ? (
-                  <img src={avatar.preview} />
-                ) : (
-                  <p>Try dropping your avatar here, or click to select file to upload.</p>
-                )}
-              </DropZone>
+            <FormGroup row>
+              <Label sm={3}>Avatar</Label>
+              <Col sm={9}>
+                <DropZone name="avatar" accept="image/*" multiple={false} onDrop={handleDrop} styleName="dropzone">
+                  {(avatar) ? (
+                    <img src={avatar.preview} />
+                  ) : (
+                    <p>Try dropping your avatar here, or click to select file to upload.</p>
+                  )}
+                </DropZone>
+              </Col>
             </FormGroup>
-            <Button type="submit" color="success"><Icon name="check" /> Save</Button>
+            <FormGroup row>
+              <Col sm={{ size: 9, offset: 3 }}>
+                <Button type="submit" color="success"><Icon name="check" /> Save</Button>
+              </Col>
+            </FormGroup>
           </Form>
         </div>
       </div>

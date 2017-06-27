@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Field, reduxForm } from 'redux-form'
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Button, Col, Form, FormGroup, Label, Input } from 'reactstrap'
 import Icon from 'react-fontawesome'
 import CSSModules from 'react-css-modules'
 import styles from '../styles/ServiceForm.scss'
@@ -12,30 +12,38 @@ let ServiceForm = (props) => {
       <div>
         <h2>WebHook</h2>
         <Form onSubmit={props.handleSubmit}>
-          <FormGroup disabled>
-            <Label>Service</Label>
-            <Field component="input" type="text" name="name" disabled className="form-control" />
+          <FormGroup row disabled>
+            <Label sm={3}>Service</Label>
+            <Col sm={9}>
+              <Field component="input" type="text" name="name" disabled className="form-control" />
+            </Col>
           </FormGroup>
-          <FormGroup>
-            <Label>WebHook URL</Label>
-            <Field component="input" type="text" name="webhookUrl" className="form-control" />
+          <FormGroup row>
+            <Label sm={3}>WebHook URL</Label>
+            <Col sm={9}>
+              <Field component="input" type="text" name="webhookUrl" className="form-control" />
+            </Col>
           </FormGroup>
-          <FormGroup>
-            <Label>Channel</Label>
-            <Field component="input" type="text" name="channel" className="form-control" />
+          <FormGroup row>
+            <Label sm={3}>Channel</Label>
+            <Col sm={9}>
+              <Field component="input" type="text" name="channel" className="form-control" />
+            </Col>
           </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Field component="input" type="checkbox" name="onPost" className="form-check-input" /> On Post
+          <FormGroup row>
+            <Label sm={{ size: 9, offset: 3 }} check>
+              <Field component="input" type="checkbox" name="onPost" /> On Post
             </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Field component="input" type="checkbox" name="onComment" className="form-check-input" /> On Comment
+            <Label sm={{ size: 9, offset: 3 }} check>
+              <Field component="input" type="checkbox" name="onComment" /> On Comment
             </Label>
           </FormGroup>
           <Field component="input" type="hidden" name="type" />
-          <Button type="submit" color="success"><Icon name="check" /> Save</Button>
+          <FormGroup row>
+            <Col sm={{ size: 9, offset: 3 }}>
+              <Button type="submit" color="success"><Icon name="check" /> Save</Button>
+            </Col>
+          </FormGroup>
         </Form>
       </div>
     </div>
