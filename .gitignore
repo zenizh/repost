@@ -14,6 +14,7 @@
 !/tmp/.keep
 
 .byebug_history
+/config/unicorn.rb
 /public/packs
 /public/packs-test
 /public/system

@@ -7,7 +7,6 @@ end
 
 gem 'rails', '~> 5.1.2'
 gem 'pg', '~> 0.18'
-gem 'puma', '~> 3.7'
 gem 'webpacker'
 gem 'jbuilder', '~> 2.5'
 
@@ -32,6 +31,7 @@ end
 group :development do
   gem 'bullet'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'puma', '~> 3.7'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
@@ -39,4 +39,8 @@ end
 
 group :test do
   gem 'webmock'
+end
+
+group :production do
+  gem 'unicorn'
 end
