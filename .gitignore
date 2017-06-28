@@ -15,8 +15,8 @@
 
 .byebug_history
 /config/unicorn.rb
+/node_modules
 /public/packs
 /public/packs-test
 /public/system
-/node_modules
 /yarn-error.log
