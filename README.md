@@ -42,6 +42,23 @@ $ bin/rails s
 $ bin/webpack-dev-server
 ```
 
+## Deployment
+
+To start Repost on production, you should compile webpacker before running server of Ruby on Rails.
+
+```
+$ git clone git@github.com:kami-zh/repost.git
+$ cd repost
+$ vi config/database.yml
+$ cp config/unicorn.rb.example config/unicorn.rb
+$ vi config/unicorn.rb
+$ bundle install --without development test
+$ bin/yarn install --production
+$ RAILS_ENV=production bundle exec rails webpacker:compile
+$ RAILS_ENV=production bundle exec rails db:create db:migrate db:seed_fu
+$ bundle exec unicorn -c config/unicorn.rb -E production
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/kami-zh/repost.
