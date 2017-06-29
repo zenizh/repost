@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     resource :me, only: :update
-    resource :session, only: [:create, :destroy]
+    resource :session, only: :create
     resource :team, only: [:show, :update]
     resources :services, only: [:index, :create, :show, :update, :destroy]
     resources :users, only: [:index, :create]
