@@ -18,7 +18,7 @@ const UserList = (props) => {
           return (
             <li key={key} id={id}>
               <img src={user.avatar} />
-              <UncontrolledTooltip placement="bottom" target={id}>
+              <UncontrolledTooltip placement="bottom" target={id} delay={{ hide: 0 }}>
                 {user.name}
               </UncontrolledTooltip>
             </li>
