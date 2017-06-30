@@ -26,32 +26,44 @@ class ChannelListHeader extends Component {
   }
 
   render() {
+    const creatable = this.props.currentUser.role == 'admin'
     return (
       <div styleName="container">
         <h3>
           Channels
-          <Icon name="plus" id="create_channel" onClick={this.toggle} />
+          {creatable ? (
+            <Icon name="plus" id="create_channel" onClick={this.toggle} />
+          ) : null}
         </h3>
-        <UncontrolledTooltip placement="bottom" target="create_channel">
-          Create a channel
-        </UncontrolledTooltip>
-        <Popover target="create_channel" placement="bottom" isOpen={this.state.isOpen} toggle={this.toggle}>
-          <PopoverTitle>Create a channel</PopoverTitle>
-          <PopoverContent>
-            <ChannelForm label="Create" onSubmit={this.handleSubmit} />
-          </PopoverContent>
-        </Popover>
+        {creatable ? (
+          <UncontrolledTooltip placement="bottom" target="create_channel">
+            Create a channel
+          </UncontrolledTooltip>
+        ) : null}
+        {creatable ? (
+          <Popover target="create_channel" placement="bottom" isOpen={this.state.isOpen} toggle={this.toggle}>
+            <PopoverTitle>Create a channel</PopoverTitle>
+            <PopoverContent>
+              <ChannelForm label="Create" onSubmit={this.handleSubmit} />
+            </PopoverContent>
+          </Popover>
+        ) : null}
       </div>
     )
   }
 }
 
 ChannelListHeader.propTypes = {
+  currentUser: PropTypes.shape({
+    role: PropTypes.oneOf(['member', 'admin']).isRequired
+  }).isRequired,
   createChannel: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
-  return {}
+  return {
+    currentUser: state.currentUser
+  }
 }
 
 function mapDispatchToProps(dispatch) {

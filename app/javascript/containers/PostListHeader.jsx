@@ -38,26 +38,30 @@ class PostListHeader extends Component {
   }
 
   render() {
-    const { channel, users } = this.props
-    const styleName = classNames('channel', { editable: (channel.name != 'All') })
+    const { channel, currentUser, users } = this.props
+    const editable = (channel.name != 'All') && (currentUser.role == 'admin')
     return (
       <div styleName="container">
-        <span id="edit_channel" onClick={this.toggle} styleName={styleName}><span>#</span> {channel.name}</span>
-        <UncontrolledTooltip placement="bottom" target="edit_channel">
-          Edit channel
-        </UncontrolledTooltip>
-        <Popover target="edit_channel" placement="bottom" isOpen={this.state.isOpen} toggle={this.toggle}>
-          <PopoverTitle>Edit channel</PopoverTitle>
-          <PopoverContent>
-            <ChannelForm
-              label="Edit"
-              initialValues={channel}
-              onSubmit={this.handleSubmit} />
-            <div styleName="delete">
-              or <a href="#" onClick={this.handleClick}>Delete this channel</a>
-            </div>
-          </PopoverContent>
-        </Popover>
+        <span id="edit_channel" onClick={this.toggle} styleName={classNames('channel', { editable: editable })}><span>#</span> {channel.name}</span>
+        {editable ? (
+          <UncontrolledTooltip placement="bottom" target="edit_channel">
+            Edit channel
+          </UncontrolledTooltip>
+        ) : null}
+        {editable ? (
+          <Popover target="edit_channel" placement="bottom" isOpen={this.state.isOpen} toggle={this.toggle}>
+            <PopoverTitle>Edit channel</PopoverTitle>
+            <PopoverContent>
+              <ChannelForm
+                label="Edit"
+                initialValues={channel}
+                onSubmit={this.handleSubmit} />
+              <div styleName="delete">
+                or <a href="#" onClick={this.handleClick}>Delete this channel</a>
+              </div>
+            </PopoverContent>
+          </Popover>
+        ) : null}
         <div styleName="right">
           <Icon name="user" /> {(users.length > 0) ? users.length : null}
         </div>
@@ -70,6 +74,9 @@ PostListHeader.propTypes = {
   channel: PropTypes.shape({
     name: PropTypes.string
   }).isRequired,
+  currentUser: PropTypes.shape({
+    role: PropTypes.oneOf(['member', 'admin']).isRequired
+  }).isRequired,
   users: PropTypes.array.isRequired,
   deleteChannel: PropTypes.func.isRequired,
   updateChannel: PropTypes.func.isRequired
@@ -78,6 +85,7 @@ PostListHeader.propTypes = {
 function mapStateToProps(state) {
   return {
     channel: state.channel,
+    currentUser: state.currentUser,
     users: state.users
   }
 }
