@@ -7,9 +7,15 @@ import styles from '../styles/Star.scss'
 
 const Star = (props) => {
   const { post, createStar, deleteStar } = props
+
+  if (!post.id) {
+    return null
+  }
+
   return (
     <Icon
       name="star-o"
+      id="star_post"
       onClick={post.starred ? (() => deleteStar(post)) : (() => createStar(post))}
       styleName={classNames('container', { active: post.starred })} />
   )
@@ -17,6 +23,7 @@ const Star = (props) => {
 
 Star.propTypes = {
   post: PropTypes.shape({
+    id: PropTypes.number,
     starred: PropTypes.bool.isRequired
   }).isRequired,
   createStar: PropTypes.func.isRequired,

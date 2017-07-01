@@ -29,4 +29,18 @@ class PostsTest < ApplicationSystemTestCase
     assert_content 'Updated a post.'
     assert_content 'updated post content'
   end
+
+  test 'star post' do
+    visit '/'
+
+    find('#star_post').click
+    within '.card:first-child' do
+      assert_selector '.fa-star-o'
+    end
+
+    find('#star_post').click
+    within '.card:first-child' do
+      assert_no_selector '.fa-star-o'
+    end
+  end
 end

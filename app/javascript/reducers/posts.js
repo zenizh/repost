@@ -1,5 +1,5 @@
 import { FETCH_POSTS } from '../actions/postsActions'
-import { CREATE_POST, SET_POST, CREATE_STAR, DELETE_STAR } from '../actions/postActions'
+import { SET_POST, CREATE_STAR, DELETE_STAR } from '../actions/postActions'
 
 const initialState = []
 
@@ -7,8 +7,6 @@ function posts(state = initialState, action) {
   switch (action.type) {
     case FETCH_POSTS + '_SUCCESS':
       return action.payload.data
-    case CREATE_POST + '_SUCCESS':
-      return [action.payload.data, ...state]
     case SET_POST:
       return state.map((post) => {
         if (post.id == action.post.id) {
