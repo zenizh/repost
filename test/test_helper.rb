@@ -20,3 +20,16 @@ class ActionController::TestCase
     @response_body ||= JSON.parse(response.body)
   end
 end
+
+class ActionDispatch::SystemTestCase
+  def teardown
+    page.execute_script('localStorage.clear()')
+  end
+
+  def sign_in_as(user)
+    visit '/sign_in'
+    fill_in 'email', with: user.email
+    fill_in 'password', with: 'test1234'
+    click_on 'Submit'
+  end
+end
