@@ -22,7 +22,8 @@ class ActionController::TestCase
 end
 
 class ActionDispatch::SystemTestCase
-  def teardown
+  def setup
+    visit '/'
     page.execute_script('localStorage.clear()')
   end
 

@@ -2,6 +2,7 @@ require 'application_system_test_case'
 
 class PostsTest < ApplicationSystemTestCase
   def setup
+    super
     @user = users(:member)
     sign_in_as(@user)
     stub_request(:post, 'http://example.com')
