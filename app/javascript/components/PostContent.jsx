@@ -7,7 +7,7 @@ import styles from '../styles/PostContent.scss'
 const PostContent = (props) => {
   const { post } = props
   return (
-    <div styleName="container">
+    <div id="post_content" styleName="container">
       <div styleName="user">
         <img src={post.user.avatar} />
         {post.user.name}

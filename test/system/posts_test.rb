@@ -58,4 +58,16 @@ class PostsTest < ApplicationSystemTestCase
       assert_no_selector '.fa-star-o'
     end
   end
+
+  test 'select post' do
+    visit '/'
+    within '#post_content' do
+      assert_content 'post content 0'
+    end
+
+    find('.card:nth-child(2)').click
+    within '#post_content' do
+      assert_content 'post content 1'
+    end
+  end
 end

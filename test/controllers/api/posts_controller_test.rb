@@ -11,7 +11,7 @@ class Api::PostsControllerTest < ActionController::TestCase
     post = response_body.first
     assert_response :success
     assert_equal 3, response_body.count
-    assert_equal 'post content', post['content']
+    assert_equal 'post content 0', post['content']
     assert_equal @member.id, post['user']['id']
   end
 
