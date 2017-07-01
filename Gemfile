@@ -38,6 +38,7 @@ group :development do
 end
 
 group :test do
+  gem 'minitest-retry'
   gem 'webmock'
 end
 

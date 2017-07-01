@@ -94,6 +94,8 @@ GEM
     mimemagic (0.3.2)
     mini_portile2 (2.2.0)
     minitest (5.10.2)
+    minitest-retry (0.1.9)
+      minitest (>= 5.0)
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
@@ -228,6 +230,7 @@ DEPENDENCIES
   faker
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
+  minitest-retry
   paperclip
   pg (~> 0.18)
   pry-rails

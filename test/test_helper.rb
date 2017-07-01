@@ -1,7 +1,9 @@
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
+require 'minitest/retry'
 require 'webmock/minitest'
 
+Minitest::Retry.use!
 WebMock.disable_net_connect!(allow_localhost: true)
 
 class ActiveSupport::TestCase
