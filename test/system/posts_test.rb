@@ -71,4 +71,11 @@ class PostsTest < ApplicationSystemTestCase
       assert_content 'post content 1'
     end
   end
+
+  test 'with no post' do
+    Post.destroy_all
+    visit '/'
+    assert_current_path '/'
+    assert_content 'No post found.'
+  end
 end

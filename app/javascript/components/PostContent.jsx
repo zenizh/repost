@@ -6,6 +6,15 @@ import styles from '../styles/PostContent.scss'
 
 const PostContent = (props) => {
   const { post } = props
+
+  if (!post.content) {
+    return (
+      <div styleName="container">
+        <p>No post found.</p>
+      </div>
+    )
+  }
+
   return (
     <div id="post_content" styleName="container">
       <div styleName="user">
