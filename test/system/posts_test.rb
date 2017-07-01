@@ -7,7 +7,7 @@ class PostsTest < ApplicationSystemTestCase
     stub_request(:post, 'http://example.com')
   end
 
-  test 'create and update post' do
+  test 'create, update and destroy post' do
     visit '/posts/new'
     assert_current_path '/posts/new'
 
@@ -28,6 +28,13 @@ class PostsTest < ApplicationSystemTestCase
     click_on 'Submit'
     assert_content 'Updated a post.'
     assert_content 'updated post content'
+
+    find('.close').click
+    accept_alert do
+      find('#delete_post').click
+    end
+    assert_content 'Deleted a post.'
+    assert_no_content 'updated post content'
   end
 
   test 'star post' do

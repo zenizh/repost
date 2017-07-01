@@ -15,7 +15,7 @@ const PostHeader = (props) => {
       <Authorization type="author" post={post}>
         <div styleName="right">
           <Link to={`/posts/${post.id}/edit`}><Icon name="pencil" /></Link>
-          <a onClick={() => handleClick(post.id)}><Icon name="trash" /></a>
+          <a id="delete_post" onClick={() => handleClick(post.id)}><Icon name="trash" /></a>
         </div>
       </Authorization>
     </div>
