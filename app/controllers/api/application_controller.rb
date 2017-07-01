@@ -4,6 +4,10 @@ class Api::ApplicationController < ActionController::API
 
   before_action :authenticate_user
 
+  rescue_from ActiveRecord::RecordNotFound do
+    head :bad_request
+  end
+
   rescue_from Pundit::NotAuthorizedError do
     head :forbidden
   end

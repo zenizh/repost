@@ -1,5 +1,5 @@
 import { AUTHORIZE_AUTHOR } from '../actions/authorizeActions'
-import { CREATE_CHANNEL, UPDATE_CHANNEL, DELETE_CHANNEL } from '../actions/channelActions'
+import { FETCH_CHANNEL, CREATE_CHANNEL, UPDATE_CHANNEL, DELETE_CHANNEL } from '../actions/channelActions'
 import { CREATE_POST, UPDATE_POST, DELETE_POST } from '../actions/postActions'
 import { CREATE_SERVICE, UPDATE_SERVICE } from '../actions/serviceActions'
 import { REDIRECT } from '../actions/redirectActions'
@@ -12,6 +12,7 @@ const initialState = {
 function redirect(state = initialState, action) {
   switch (action.type) {
     case AUTHORIZE_AUTHOR + '_FAIL':
+    case FETCH_CHANNEL + '_FAIL':
       return { url: '/', enabled: true }
     case CREATE_CHANNEL + '_SUCCESS':
     case UPDATE_CHANNEL + '_SUCCESS':
