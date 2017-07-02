@@ -15,7 +15,7 @@ const NavMenu = (props) => {
           <Link to="/"><Icon name="bars" /> All</Link>
         </li>
         <li styleName={classNames({ active: (props.channel.name == 'Starred') })}>
-          <Link to="/"><Icon name="star" /> Starred</Link>
+          <Link to="/starred"><Icon name="star" /> Starred</Link>
         </li>
       </ul>
     </div>

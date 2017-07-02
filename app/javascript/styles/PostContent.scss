@@ -2,8 +2,11 @@
 
 .container {
   overflow: scroll;
-  max-width: 580px;
-  margin: 3rem auto 0;
+}
+
+.content {
+  width: 580px;
+  margin: 3rem auto;
 
   p {
     margin-bottom: 1.5rem;

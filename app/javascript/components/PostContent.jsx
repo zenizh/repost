@@ -9,7 +9,7 @@ const PostContent = (props) => {
 
   if (!post.content) {
     return (
-      <div styleName="container">
+      <div styleName="content">
         <p>No post found.</p>
       </div>
     )
@@ -17,13 +17,15 @@ const PostContent = (props) => {
 
   return (
     <div id="post_content" styleName="container">
-      <div styleName="user">
-        <img src={post.user.avatar} />
-        {post.user.name}
-        <span>(@{post.user.screenName})</span>
+      <div styleName="content">
+        <div styleName="user">
+          <img src={post.user.avatar} />
+          {post.user.name}
+          <span>(@{post.user.screenName})</span>
+        </div>
+        <Markdown content={post.content} />
+        <span styleName="created_at">{post.createdAt}</span>
       </div>
-      <Markdown content={post.content} />
-      <span styleName="created_at">{post.createdAt}</span>
     </div>
   )
 }

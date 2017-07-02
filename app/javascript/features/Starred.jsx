@@ -6,18 +6,16 @@ import CSSModules from 'react-css-modules'
 import * as channelActions from '../actions/channelActions'
 import * as postActions from '../actions/postActions'
 import * as postsActions from '../actions/postsActions'
-import * as usersActions from '../actions/usersActions'
 import Nav from '../containers/Nav'
 import Post from '../containers/Post'
 import PostList from '../containers/PostList'
 import endpoints from '../config/endpoints'
-import styles from '../styles/Home.scss'
+import styles from '../styles/Starred.scss'
 
-class Home extends Component {
+class Starred extends Component {
   componentDidMount() {
-    this.props.setChannel({ name: 'All', icon: 'bars' })
-    this.props.fetchPosts(endpoints.posts)
-    this.props.fetchUsers()
+    this.props.setChannel({ name: 'Starred', icon: 'star' })
+    this.props.fetchPosts(endpoints.mePostsStarred)
     this.props.clearPost()
   }
 
@@ -32,10 +30,9 @@ class Home extends Component {
   }
 }
 
-Home.propTypes = {
+Starred.propTypes = {
   clearPost: PropTypes.func.isRequired,
   fetchPosts: PropTypes.func.isRequired,
-  fetchUsers: PropTypes.func.isRequired,
   setChannel: PropTypes.func.isRequired
 }
 
@@ -44,9 +41,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ ...channelActions, ...postActions, ...postsActions, ...usersActions }, dispatch)
+  return bindActionCreators({ ...channelActions, ...postActions, ...postsActions }, dispatch)
 }
 
-Home = CSSModules(Home, styles)
+Starred = CSSModules(Starred, styles)
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Starred)

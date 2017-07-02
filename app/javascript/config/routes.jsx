@@ -13,6 +13,7 @@ import NewService from '../features/NewService'
 import EditService from '../features/EditService'
 import TeamSettings from '../features/TeamSettings'
 import SignOut from '../features/SignOut'
+import Starred from '../features/Starred'
 import Alert from '../containers/Alert'
 import Redirector from '../containers/Redirector'
 
@@ -28,6 +29,7 @@ const Routes = (props) => {
       <Route path="/channels/:id" component={OnlyUser(Channel)} />
       <Route path="/posts/new" component={OnlyUser(NewPost)} />
       <Route path="/posts/:id/edit" component={OnlyUser(EditPost)} />
+      <Route path="/starred" component={OnlyUser(Starred)} />
       <Route path="/team/services/new" component={OnlyAdmin(NewService)} />
       <Route path="/team/services/:id/edit" component={OnlyAdmin(EditService)} />
       <Route path="/team/services" component={OnlyAdmin(Services)} />

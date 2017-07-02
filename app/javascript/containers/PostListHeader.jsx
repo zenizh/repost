@@ -39,15 +39,15 @@ class PostListHeader extends Component {
 
   render() {
     const { channel, currentUser, users } = this.props
-    const editable = (channel.name != 'All') && (currentUser.role == 'admin')
+    const editable = (!['All', 'Starred'].includes(channel.name)) && (currentUser.role == 'admin')
 
     if (!channel.name) {
-      return null
+      return <div styleName="container" />
     }
 
     return (
       <div id="post_list_header" styleName="container">
-        <span id="edit_channel" onClick={this.toggle} styleName={classNames('channel', { editable: editable })}><span>#</span> {channel.name}</span>
+        <span id="edit_channel" onClick={this.toggle} styleName={classNames('channel', { editable: editable })}><Icon name={channel.icon} /> {channel.name}</span>
         {editable ? (
           <UncontrolledTooltip placement="bottom" target="edit_channel">
             Edit channel
@@ -68,7 +68,9 @@ class PostListHeader extends Component {
           </Popover>
         ) : null}
         <div styleName="right">
-          <Icon name="user" /> {(users.length > 0) ? users.length : null}
+          {(users.length > 0) ? (
+            <span><Icon name="user" /> {users.length}</span>
+          ) : null}
         </div>
       </div>
     )

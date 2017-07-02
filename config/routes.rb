@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     end
 
     namespace :me do
+      namespace :posts do
+        resources :starred, only: :index
+      end
+
       resources :channels, only: :index
       resources :posts, only: [:index, :show, :update, :destroy]
     end

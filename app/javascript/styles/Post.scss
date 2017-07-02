@@ -1,8 +1,8 @@
 @import '~bootstrap/scss/variables';
 
 .container {
+  display: flex;
   flex-direction: column;
   flex-grow: 1;
-  overflow: scroll;
   background-color: $white;
 }
