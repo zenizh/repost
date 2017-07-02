@@ -40,8 +40,13 @@ class PostListHeader extends Component {
   render() {
     const { channel, currentUser, users } = this.props
     const editable = (channel.name != 'All') && (currentUser.role == 'admin')
+
+    if (!channel.name) {
+      return null
+    }
+
     return (
-      <div styleName="container">
+      <div id="post_list_header" styleName="container">
         <span id="edit_channel" onClick={this.toggle} styleName={classNames('channel', { editable: editable })}><span>#</span> {channel.name}</span>
         {editable ? (
           <UncontrolledTooltip placement="bottom" target="edit_channel">
@@ -57,7 +62,7 @@ class PostListHeader extends Component {
                 initialValues={channel}
                 onSubmit={this.handleSubmit} />
               <div styleName="delete">
-                or <a href="#" onClick={this.handleClick}>Delete this channel</a>
+                or <a id="delete_channel" onClick={this.handleClick}>Delete this channel</a>
               </div>
             </PopoverContent>
           </Popover>
