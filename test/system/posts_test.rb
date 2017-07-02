@@ -20,6 +20,7 @@ class PostsTest < ApplicationSystemTestCase
     assert_content 'Created new post.'
     assert_content 'new post content'
 
+    # Assert after create to set editor state
     post = Post.last
     visit "/posts/#{post.id}/edit"
     assert_current_path "/posts/#{post.id}/edit"
