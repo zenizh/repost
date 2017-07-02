@@ -7,7 +7,7 @@ import styles from '../styles/Footer.scss'
 
 const Footer = (props) => {
   return (
-    <UncontrolledDropdown dropup styleName="container">
+    <UncontrolledDropdown dropup id="footer" styleName="container">
       <DropdownToggle caret color="link" className="btn-block">
         <img src={props.currentUser.avatar} />
         {props.currentUser.name}
