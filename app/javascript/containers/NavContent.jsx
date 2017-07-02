@@ -7,6 +7,7 @@ import * as channelActions from '../actions/channelActions'
 import * as channelsActions from '../actions/channelsActions'
 import * as usersActions from '../actions/usersActions'
 import ChannelList from '../components/ChannelList'
+import NavMenu from '../components/NavMenu'
 import UserList from '../components/UserList'
 import styles from '../styles/NavContent.scss'
 
@@ -24,6 +25,7 @@ class NavContent extends Component {
     const { channel, channels, users } = this.props
     return (
       <div styleName="container">
+        <NavMenu channel={channel} />
         <ChannelList channel={channel} channels={channels} />
         <UserList users={users} />
       </div>
