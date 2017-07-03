@@ -9,7 +9,6 @@ import styles from '../styles/NavMenu.scss'
 const NavMenu = (props) => {
   return (
     <div styleName="container">
-      <h3>Menu</h3>
       <ul>
         <li styleName={classNames({ active: (props.channel.name == 'All') })}>
           <Link to="/"><Icon name="bars" /> All</Link>
