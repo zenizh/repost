@@ -6,7 +6,7 @@ import styles from '../styles/PostListContent.scss'
 
 const PostListContent = (props) => {
   return (
-    <div styleName="container">
+    <div id="post_list_content" styleName="container">
       {props.posts.map((post, key) => {
         return <PostCard key={key} post={post} handleClick={props.handleClick} />
       })}
