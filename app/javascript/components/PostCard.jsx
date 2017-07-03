@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Card, CardBlock } from 'reactstrap'
 import classNames from 'classnames'
-import Truncate from 'react-truncate'
+import Truncate from 'react-text-truncate'
 import CSSModules from 'react-css-modules'
 import Icon from 'react-fontawesome'
 import styles from '../styles/PostCard.scss'
@@ -18,7 +18,7 @@ const PostCard = (props) => {
           {post.user.name}
           <span>(@{post.user.screenName})</span>
         </div>
-        <p><Truncate lines={2}>{post.content}</Truncate></p>
+        <p><Truncate line={2} text={post.content} /></p>
         <span styleName="created_at">{post.createdAt}</span>
         <div styleName="icons">
           {(post.starred ? <Icon name="star-o" /> : null)}
