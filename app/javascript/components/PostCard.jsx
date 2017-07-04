@@ -18,7 +18,7 @@ const PostCard = (props) => {
           {post.user.name}
           <span>(@{post.user.screenName})</span>
         </div>
-        <p><Truncate line={2} text={post.content} /></p>
+        <Truncate line={2} text={post.content} />
         <span styleName="created_at">{post.createdAt}</span>
         <div styleName="icons">
           {(post.starred ? <Icon name="star-o" /> : null)}
