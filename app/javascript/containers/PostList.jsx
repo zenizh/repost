@@ -19,22 +19,34 @@ class PostList extends Component {
   }
 
   render() {
+    const { app, channel, posts, users, loadMore } = this.props
     return (
       <div styleName="container">
-        <PostListHeader channel={this.props.channel} users={this.props.users} />
-        <PostListContent posts={this.props.posts} handleClick={this.handleClick} />
+        <PostListHeader channel={channel} users={users} />
+        <PostListContent
+          posts={posts}
+          handleClick={this.handleClick}
+          hasMore={app.hasMore}
+          loadMore={loadMore} />
       </div>
     )
   }
 }
 
 PostList.propTypes = {
+  app: PropTypes.shape({
+    hasMore: PropTypes.bool.isRequired
+  }).isRequired,
+  channel: PropTypes.object,
   posts: PropTypes.array.isRequired,
+  users: PropTypes.array,
+  loadMore: PropTypes.func.isRequired,
   setPost: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
   return {
+    app: state.app,
     posts: state.posts
   }
 }

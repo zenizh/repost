@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'rack-attack'
 gem 'active_decorator'
+gem 'kaminari'
 gem 'paperclip'
 gem 'pundit'
 gem 'faker'

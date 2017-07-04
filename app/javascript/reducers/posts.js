@@ -1,4 +1,4 @@
-import { FETCH_POSTS } from '../actions/postsActions'
+import { FETCH_POSTS, CLEAR_POSTS } from '../actions/postsActions'
 import { SET_POST, CREATE_STAR, DELETE_STAR } from '../actions/postActions'
 
 const initialState = []
@@ -6,7 +6,9 @@ const initialState = []
 function posts(state = initialState, action) {
   switch (action.type) {
     case FETCH_POSTS + '_SUCCESS':
-      return action.payload.data
+      return [...state, ...action.payload.data]
+    case CLEAR_POSTS:
+      return initialState
     case SET_POST:
       return state.map((post) => {
         if (post.id == action.post.id) {

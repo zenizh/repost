@@ -1,5 +1,12 @@
+@import '~bootstrap/scss/variables';
+
 .container {
   overflow: scroll;
   padding-top: 1rem;
   padding-bottom: .5rem;
+}
+
+:global(.loader) {
+  color: $gray;
+  text-align: center;
 }

@@ -14,18 +14,28 @@ import endpoints from '../config/endpoints'
 import styles from '../styles/Home.scss'
 
 class Home extends Component {
+  constructor(props) {
+    super(props)
+    this.loadMore = this.loadMore.bind(this)
+  }
+
   componentDidMount() {
     this.props.setChannel({ name: 'All', icon: 'bars' })
-    this.props.fetchPosts(endpoints.posts)
     this.props.fetchUsers()
     this.props.clearPost()
+    this.props.clearPosts()
+    this.props.enableFetchPosts()
+  }
+
+  loadMore(page) {
+    this.props.fetchPosts(endpoints.posts, page)
   }
 
   render() {
     return (
       <div styleName="container">
         <Nav />
-        <PostList />
+        <PostList loadMore={this.loadMore} />
         <Post />
       </div>
     )
@@ -34,6 +44,8 @@ class Home extends Component {
 
 Home.propTypes = {
   clearPost: PropTypes.func.isRequired,
+  clearPosts: PropTypes.func.isRequired,
+  enableFetchPosts: PropTypes.func.isRequired,
   fetchPosts: PropTypes.func.isRequired,
   fetchUsers: PropTypes.func.isRequired,
   setChannel: PropTypes.func.isRequired
