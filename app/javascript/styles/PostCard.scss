@@ -9,11 +9,6 @@
   cursor: pointer;
   transition: $transition-base;
 
-  p {
-    margin-bottom: .25rem;
-    color: $gray;
-  }
-
   &:hover,
   &.selected{
     border: 1px solid rgba($blue, .25);
@@ -46,6 +41,11 @@
     color: $gray-light;
     font-size: $small-font-size;
   }
+}
+
+.content {
+  margin-bottom: .25rem;
+  color: $gray;
 }
 
 .created_at {
