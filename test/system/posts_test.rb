@@ -8,6 +8,17 @@ class PostsTest < ApplicationSystemTestCase
     stub_request(:post, 'http://example.com')
   end
 
+  test 'index posts' do
+    11.times { |n| @user.posts.create(content: "post content #{n}") }
+
+    visit '/'
+    assert_content 'post content 10'
+    assert_no_content 'post content 0'
+
+    page.execute_script("document.getElementById('post_list_content').scrollTop = 99999")
+    assert_content 'post content 0'
+  end
+
   test 'create and update post' do
     visit '/posts/new'
     assert_current_path '/posts/new'
