@@ -13,17 +13,27 @@ import endpoints from '../config/endpoints'
 import styles from '../styles/Starred.scss'
 
 class Starred extends Component {
+  constructor(props) {
+    super(props)
+    this.loadMore = this.loadMore.bind(this)
+  }
+
   componentDidMount() {
     this.props.setChannel({ name: 'Starred', icon: 'star' })
-    this.props.fetchPosts(endpoints.mePostsStarred)
     this.props.clearPost()
+    this.props.clearPosts()
+    this.props.enableFetchPosts()
+  }
+
+  loadMore(page) {
+    this.props.fetchPosts(endpoints.mePostsStarred, page)
   }
 
   render() {
     return (
       <div styleName="container">
         <Nav />
-        <PostList />
+        <PostList loadMore={this.loadMore} />
         <Post />
       </div>
     )
@@ -32,6 +42,8 @@ class Starred extends Component {
 
 Starred.propTypes = {
   clearPost: PropTypes.func.isRequired,
+  clearPosts: PropTypes.func.isRequired,
+  enableFetchPosts: PropTypes.func.isRequired,
   fetchPosts: PropTypes.func.isRequired,
   setChannel: PropTypes.func.isRequired
 }
