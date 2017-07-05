@@ -14,29 +14,28 @@ import endpoints from '../config/endpoints'
 import styles from '../styles/Channel.scss'
 
 class Channel extends Component {
+  constructor(props) {
+    super(props)
+    this.loadMore = this.loadMore.bind(this)
+  }
+
   componentDidMount() {
-    this.fetchPosts(this.props)
     this.props.fetchChannel(endpoints.channel(this.props.match.params.id))
     this.props.fetchSubscriptions(endpoints.subscriptions(this.props.match.params.id))
     this.props.clearPost()
+    this.props.clearPosts()
+    this.props.enableFetchPosts()
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.id == nextProps.match.params.id) {
-      return
-    }
-    this.fetchPosts(nextProps)
-  }
-
-  fetchPosts(props) {
-    this.props.fetchPosts(endpoints.channelPosts(props.match.params.id))
+  loadMore(page) {
+    this.props.fetchPosts(endpoints.channelPosts(this.props.match.params.id), page)
   }
 
   render() {
     return (
       <div styleName="container">
         <Nav />
-        <PostList />
+        <PostList loadMore={this.loadMore} />
         <Post />
       </div>
     )
@@ -50,6 +49,8 @@ Channel.propTypes = {
     }).isRequired
   }).isRequired,
   clearPost: PropTypes.func.isRequired,
+  clearPosts: PropTypes.func.isRequired,
+  enableFetchPosts: PropTypes.func.isRequired,
   fetchChannel: PropTypes.func.isRequired,
   fetchSubscriptions: PropTypes.func.isRequired,
   fetchPosts: PropTypes.func.isRequired
