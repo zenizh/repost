@@ -20,7 +20,7 @@ gem 'validates_email_format_of'
 gem 'validate_url'
 gem 'seed-fu'
 gem 'sorcery'
-gem 'slack-notifier', '= 2.1.0'
+gem 'slack-notifier', '= 2.2.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
