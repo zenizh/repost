@@ -75,8 +75,8 @@ GEM
       activesupport (>= 4.2.0)
     hashdiff (0.3.4)
     i18n (0.8.4)
-    jbuilder (2.6.4)
-      activesupport (>= 3.0.0)
+    jbuilder (2.7.0)
+      activesupport (>= 4.2.0)
       multi_json (>= 1.2)
     jwt (1.5.6)
     kaminari (1.0.1)
@@ -240,7 +240,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   faker
-  jbuilder (~> 2.5)
+  jbuilder (~> 2.7)
   kaminari
   listen (>= 3.0.5, < 3.2)
   minitest-retry

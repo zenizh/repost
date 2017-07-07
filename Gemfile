@@ -8,7 +8,7 @@ end
 gem 'rails', '~> 5.1.2'
 gem 'pg', '~> 0.21'
 gem 'webpacker'
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder', '~> 2.7'
 
 gem 'rack-attack'
 gem 'active_decorator'
