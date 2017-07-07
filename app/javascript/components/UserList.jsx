@@ -5,7 +5,7 @@ import CSSModules from 'react-css-modules'
 import styles from '../styles/UserList.scss'
 
 const UserList = (props) => {
-  if (props.users.length == 0) {
+  if (props.channelUsers.length == 0) {
     return null
   }
 
@@ -13,7 +13,7 @@ const UserList = (props) => {
     <div styleName="container">
       <h3>Users</h3>
       <ul>
-        {props.users.map((user, key) => {
+        {props.channelUsers.map((user, key) => {
           const id = `user_${user.id}`
           return (
             <li key={key} id={id}>
@@ -30,7 +30,7 @@ const UserList = (props) => {
 }
 
 UserList.propTypes = {
-  users: PropTypes.arrayOf(PropTypes.shape({
+  channelUsers: PropTypes.arrayOf(PropTypes.shape({
     avatar: PropTypes.string.isRequired
   }).isRequired).isRequired
 }

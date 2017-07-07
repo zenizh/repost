@@ -1,0 +1,26 @@
+@import 'variables';
+@import '~bootstrap/scss/variables';
+
+.container {
+  display: inline-block;
+}
+
+.users {
+  font-weight: bold;
+
+  span {
+    color: rgba($gray, .75);
+  }
+
+  &.editable {
+    cursor: pointer;
+
+    &:hover {
+      color: $link-hover-color;
+
+      span {
+        color: rgba($link-hover-color, .75);
+      }
+    }
+  }
+}

@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import CSSModules from 'react-css-modules'
 import * as postActions from '../actions/postActions'
-import PostListHeader from './PostListHeader'
+import PostListHeader from '../components/PostListHeader'
 import PostListContent from '../components/PostListContent'
 import styles from '../styles/PostList.scss'
 
@@ -19,10 +19,10 @@ class PostList extends Component {
   }
 
   render() {
-    const { app, channel, posts, users, loadMore } = this.props
+    const { app, channel, channelUsers, posts, loadMore } = this.props
     return (
       <div styleName="container">
-        <PostListHeader channel={channel} users={users} />
+        <PostListHeader channel={channel} channelUsers={channelUsers} />
         <PostListContent
           posts={posts}
           handleClick={this.handleClick}
@@ -38,8 +38,8 @@ PostList.propTypes = {
     hasMore: PropTypes.bool.isRequired
   }).isRequired,
   channel: PropTypes.object,
+  channelUsers: PropTypes.array,
   posts: PropTypes.array.isRequired,
-  users: PropTypes.array,
   loadMore: PropTypes.func.isRequired,
   setPost: PropTypes.func.isRequired
 }

@@ -4,7 +4,12 @@ Rails.application.routes.draw do
     resource :session, only: :create
     resource :team, only: [:show, :update]
     resources :services, only: [:index, :create, :show, :update, :destroy]
-    resources :users, only: [:index, :create]
+
+    resources :users, only: [:index, :create] do
+      resources :channels, only: [] do
+        resource :subscription, only: [:create, :destroy], controller: 'users/channels/subscriptions'
+      end
+    end
 
     resources :posts, only: [:index, :create] do
       resources :stars, only: :create, controller: 'posts/stars' do

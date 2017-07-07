@@ -31,7 +31,8 @@ export function createChannel(data) {
   }
 }
 
-export function updateChannel(url, data) {
+export function updateChannel(id, data) {
+  const url = endpoints.channel(id)
   return {
     type: UPDATE_CHANNEL,
     payload: {
@@ -44,7 +45,8 @@ export function updateChannel(url, data) {
   }
 }
 
-export function deleteChannel(url) {
+export function deleteChannel(id) {
+  const url = endpoints.channel(id)
   return {
     type: DELETE_CHANNEL,
     payload: {
