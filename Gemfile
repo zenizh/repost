@@ -6,9 +6,9 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.1.2'
-gem 'pg', '~> 0.18'
+gem 'pg', '~> 0.21'
 gem 'webpacker'
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder', '~> 2.7'
 
 gem 'rack-attack'
 gem 'active_decorator'
@@ -20,11 +20,11 @@ gem 'validates_email_format_of'
 gem 'validate_url'
 gem 'seed-fu'
 gem 'sorcery'
-gem 'slack-notifier', '= 2.1.0'
+gem 'slack-notifier', '= 2.2.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'capybara', '~> 2.13'
+  gem 'capybara', '~> 2.14'
   gem 'pry-rails'
   gem 'selenium-webdriver'
 end
