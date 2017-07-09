@@ -96,10 +96,14 @@ class UserTest < ActiveSupport::TestCase
     assert_nil @user.token
   end
 
-  test '#subscribe' do
+  test '#subscribe and #unsubscribe' do
     channel = channels(:channel)
     assert_not @user.channels.exists?(id: channel)
+
     @user.subscribe(channel)
     assert @user.channels.exists?(id: channel)
+
+    @user.unsubscribe(channel)
+    assert_not @user.channels.exists?(id: channel)
   end
 end
