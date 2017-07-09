@@ -34,5 +34,9 @@ class ActionDispatch::SystemTestCase
     fill_in 'email', with: user.email
     fill_in 'password', with: 'test1234'
     click_on 'Submit'
+  rescue Capybara::ElementNotFound => e
+    puts e.message
+    page.execute_script('localStorage.clear()')
+    retry
   end
 end
