@@ -1,0 +1,26 @@
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins/clearfix';
+
+.row {
+  @include clearfix();
+  margin-bottom: .5rem;
+}
+
+.user {
+  float: left;
+  margin-right: .5rem;
+  line-height: 24px;
+
+  img {
+    width: 24px;
+    height: 24px;
+    margin-right: .5rem;
+    border-radius: 100%;
+    background-color: $gray-lighter;
+    vertical-align: bottom;
+  }
+}
+
+.button {
+  float: right;
+}

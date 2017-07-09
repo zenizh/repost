@@ -9,7 +9,8 @@ export function createSubscription(userId, channelId) {
     type: CREATE_SUBSCRIPTION,
     payload: {
       request: {
-        url: url
+        url: url,
+        method: 'post'
       }
     }
   }
@@ -21,7 +22,8 @@ export function deleteSubscription(userId, channelId) {
     type: DELETE_SUBSCRIPTION,
     payload: {
       request: {
-        url: url
+        url: url,
+        method: 'delete'
       }
     }
   }

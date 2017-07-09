@@ -5,12 +5,11 @@ class Api::Users::Channels::SubscriptionsController < Api::ApplicationController
 
   def create
     @user.subscribe(@channel)
-    head :ok
   end
 
   def destroy
     @user.unsubscribe(@channel)
-    head :ok
+    render status: :ok, json: { id: @user.id }
   end
 
   private

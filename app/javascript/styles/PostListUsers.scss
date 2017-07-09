@@ -5,6 +5,11 @@
   display: inline-block;
 }
 
+.content {
+  overflow: scroll;
+  max-height: 360px;
+}
+
 .users {
   font-weight: bold;
 
