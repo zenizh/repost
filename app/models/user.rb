@@ -51,4 +51,8 @@ class User < ApplicationRecord
   def subscribe(channel)
     subscriptions.create(channel: channel)
   end
+
+  def unsubscribe(channel)
+    subscriptions.find_by(channel: channel).destroy
+  end
 end

@@ -2,16 +2,16 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Popover, PopoverTitle, PopoverContent, UncontrolledTooltip } from 'reactstrap'
-import Icon from 'react-fontawesome'
 import CSSModules from 'react-css-modules'
+import Icon from 'react-fontawesome'
+import { Popover, PopoverTitle, PopoverContent, UncontrolledTooltip } from 'reactstrap'
 import classNames from 'classnames'
 import * as channelActions from '../actions/channelActions'
 import ChannelForm from '../components/ChannelForm'
-import styles from '../styles/PostListHeader.scss'
+import styles from '../styles/PostListChannel.scss'
 import endpoints from '../config/endpoints'
 
-class PostListHeader extends Component {
+class PostListChannel extends Component {
   constructor(props) {
     super(props)
     this.state = { isOpen: false }
@@ -20,36 +20,33 @@ class PostListHeader extends Component {
     this.toggle = this.toggle.bind(this)
   }
 
-  toggle() {
-    if (this.props.channel.name == 'All') {
-      return
-    }
-    this.setState({ isOpen: !this.state.isOpen })
-  }
-
   handleClick() {
     if (window.confirm('Are you sure?')) {
-      this.props.deleteChannel(endpoints.channel(this.props.channel.id))
+      this.props.deleteChannel(this.props.channel.id)
     }
   }
 
   handleSubmit(values) {
-    this.props.updateChannel(endpoints.channel(this.props.channel.id), values)
+    this.props.updateChannel(this.props.channel.id, values)
+  }
+
+  toggle() {
+    this.setState({ isOpen: !this.state.isOpen })
   }
 
   render() {
-    const { channel, currentUser, users } = this.props
-    const editable = (!['All', 'Starred'].includes(channel.name)) && (currentUser.role == 'admin')
+    const { channel, currentUser } = this.props
+    const editable = channel.editable && (currentUser.role == 'admin')
 
     if (!channel.name) {
-      return <div styleName="container" />
+      return null
     }
 
     return (
-      <div id="post_list_header" styleName="container">
+      <div styleName="container">
         <span id="edit_channel" onClick={this.toggle} styleName={classNames('channel', { editable: editable })}><Icon name={channel.icon} /> {channel.name}</span>
         {editable ? (
-          <UncontrolledTooltip placement="bottom" target="edit_channel">
+          <UncontrolledTooltip target="edit_channel" placement="bottom">
             Edit channel
           </UncontrolledTooltip>
         ) : null}
@@ -67,24 +64,20 @@ class PostListHeader extends Component {
             </PopoverContent>
           </Popover>
         ) : null}
-        <div styleName="right">
-          {(users.length > 0) ? (
-            <span><Icon name="user" /> {users.length}</span>
-          ) : null}
-        </div>
       </div>
     )
   }
 }
 
-PostListHeader.propTypes = {
+PostListChannel.propTypes = {
   channel: PropTypes.shape({
-    name: PropTypes.string
+    name: PropTypes.string,
+    editable: PropTypes.bool.isRequired,
+    icon: PropTypes.string.isRequired
   }).isRequired,
   currentUser: PropTypes.shape({
     role: PropTypes.oneOf(['member', 'admin']).isRequired
   }).isRequired,
-  users: PropTypes.array.isRequired,
   deleteChannel: PropTypes.func.isRequired,
   updateChannel: PropTypes.func.isRequired
 }
@@ -92,8 +85,7 @@ PostListHeader.propTypes = {
 function mapStateToProps(state) {
   return {
     channel: state.channel,
-    currentUser: state.currentUser,
-    users: state.users
+    currentUser: state.currentUser
   }
 }
 
@@ -101,6 +93,6 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(channelActions, dispatch)
 }
 
-PostListHeader = CSSModules(PostListHeader, styles, { allowMultiple: true })
+PostListChannel = CSSModules(PostListChannel, styles, { allowMultiple: true })
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostListHeader)
+export default connect(mapStateToProps, mapDispatchToProps)(PostListChannel)

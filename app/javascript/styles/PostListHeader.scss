@@ -1,4 +1,3 @@
-@import 'variables';
 @import '~bootstrap/scss/variables';
 
 .container {
@@ -7,50 +6,9 @@
   padding-right: 1rem;
   padding-left: 1rem;
   border-bottom: 1px solid rgba($black, .125);
-  color: $gray;
   line-height: 48px;
-}
-
-.channel {
-  font-weight: bold;
-
-  span {
-    color: rgba($gray, .75);
-  }
-
-  &.editable {
-    cursor: pointer;
-
-    &:hover {
-      color: $link-hover-color;
-
-      span {
-        color: rgba($link-hover-color, .75);
-      }
-    }
-  }
-}
-
-.delete {
-  margin-top: .5rem;
-  font-size: $small-font-size;
-  text-align: right;
-
-  a {
-    color: $link-color !important;
-    cursor: pointer;
-
-    &:hover {
-      color: $link-hover-color !important;
-      text-decoration: $link-hover-decoration !important;
-    }
-  }
 }
 
 .right {
   float: right;
-
-  span {
-    color: rgba($gray, .75);
-  }
 }

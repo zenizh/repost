@@ -5,6 +5,7 @@ import app from './app'
 import alert from './alert'
 import channel from './channel'
 import channels from './channels'
+import channelUsers from './channelUsers'
 import currentUser from './currentUser'
 import editor from './editor'
 import post from './post'
@@ -21,6 +22,7 @@ const appReducer = combineReducers({
   alert,
   channel,
   channels,
+  channelUsers,
   currentUser,
   editor,
   post,
