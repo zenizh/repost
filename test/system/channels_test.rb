@@ -57,6 +57,32 @@ class ChannelsTest < ApplicationSystemTestCase
     assert_no_content 'old channel name'
   end
 
+  test 'update channel users' do
+    sign_in_as(@admin)
+
+    visit "/channels/#{@channel.id}"
+    assert_current_path "/channels/#{@channel.id}"
+
+    within '#post_list_header' do
+      assert_content 2
+    end
+
+    find('#edit_channel_users').click
+    assert_content 'Edit channel users'
+
+    first('button', text: 'Join').click
+
+    within '#post_list_header' do
+      assert_content 3
+    end
+
+    first('button', text: 'Leave').click
+
+    within '#post_list_header' do
+      assert_content 2
+    end
+  end
+
   test 'destroy channel' do
     sign_in_as(@admin)
 
@@ -110,5 +136,7 @@ class ChannelsTest < ApplicationSystemTestCase
     visit "/channels/#{@channel.id}"
     find('#edit_channel').click
     assert_no_content 'Edit channel'
+    find('#edit_channel_users').click
+    assert_no_content 'Edit channel users'
   end
 end
