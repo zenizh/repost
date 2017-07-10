@@ -14,6 +14,7 @@ const Footer = (props) => {
       </DropdownToggle>
       <DropdownMenu>
         <DropdownItem header>User Menu</DropdownItem>
+        <Link to={'/users/' + props.currentUser.id} className="dropdown-item">My Posts</Link>
         <Link to="/account/edit" className="dropdown-item">Account Settings</Link>
         <a href="https://github.com/kami-zh/repost/issues/new" target="_blank" className="dropdown-item">Feedback</a>
         <DropdownItem divider />
@@ -25,6 +26,7 @@ const Footer = (props) => {
 
 Footer.propTypes = {
   currentUser: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     avatar: PropTypes.string.isRequired
   }).isRequired

@@ -5,10 +5,11 @@ Rails.application.routes.draw do
     resource :team, only: [:show, :update]
     resources :services, only: [:index, :create, :show, :update, :destroy]
 
-    resources :users, only: [:index, :create] do
+    resources :users, only: [:index, :create, :show] do
       resources :channels, only: [] do
         resource :subscription, only: [:create, :destroy], controller: 'users/channels/subscriptions'
       end
+      resources :posts, only: :index, controller: 'users/posts'
     end
 
     resources :posts, only: [:index, :create] do

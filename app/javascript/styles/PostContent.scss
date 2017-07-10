@@ -15,7 +15,9 @@
 }
 
 .user {
+  display: inline-block;
   margin-bottom: 1.5rem;
+  color: $gray-dark;
   line-height: 24px;
 
   img {
@@ -31,6 +33,10 @@
     margin-left: .25rem;
     color: $gray-light;
     font-size: $small-font-size;
+
+    &:hover {
+      color: $link-hover-color;
+    }
   }
 }
 

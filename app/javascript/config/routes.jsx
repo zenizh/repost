@@ -14,6 +14,7 @@ import EditService from '../features/EditService'
 import TeamSettings from '../features/TeamSettings'
 import SignOut from '../features/SignOut'
 import Starred from '../features/Starred'
+import User from '../features/User'
 import Alert from '../containers/Alert'
 import Redirector from '../containers/Redirector'
 
@@ -34,6 +35,7 @@ const Routes = (props) => {
       <Route path="/team/services/:id/edit" component={OnlyAdmin(EditService)} />
       <Route path="/team/services" component={OnlyAdmin(Services)} />
       <Route path="/team/settings" component={OnlyAdmin(TeamSettings)} />
+      <Route path="/users/:id" component={OnlyUser(User)} />
       <Route path="/sign_out" component={OnlyUser(SignOut)} />
     </div>
   )

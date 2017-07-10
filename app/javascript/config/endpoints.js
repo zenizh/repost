@@ -14,9 +14,11 @@ const endpoints = {
   services: '/api/services.json',
   session: '/api/session.json',
   team: '/api/team.json',
+  user: (id) => `/api/users/${id}.json`,
   userChannelSubscription: (userId, channelId) => {
     return `/api/users/${userId}/channels/${channelId}/subscription.json`
   },
+  userPosts: (id) => `/api/users/${id}/posts.json`,
   users: '/api/users.json'
 }
 

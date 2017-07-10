@@ -25,4 +25,14 @@ class Api::UsersControllerTest < ActionController::TestCase
     assert_includes response_body['errors'], 'Password is too short (minimum is 8 characters)'
     assert_not User.exists?(email: 'new@example.com')
   end
+
+  test '#show' do
+    user = users(:member)
+    other_user = users(:other_member)
+    sign_in_as(user)
+
+    get :show, params: { id: other_user.id }, format: :json
+    assert_response :success
+    assert_equal other_user.id, response_body['id']
+  end
 end

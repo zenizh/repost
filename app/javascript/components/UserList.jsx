@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import { UncontrolledTooltip } from 'reactstrap'
 import CSSModules from 'react-css-modules'
 import styles from '../styles/UserList.scss'
@@ -17,7 +18,7 @@ const UserList = (props) => {
           const id = `user_${user.id}`
           return (
             <li key={key} id={id}>
-              <img src={user.avatar} />
+              <Link to={'/users/' + user.id}><img src={user.avatar} /></Link>
               <UncontrolledTooltip placement="bottom" target={id} delay={{ hide: 0 }}>
                 {user.name}
               </UncontrolledTooltip>
@@ -31,6 +32,7 @@ const UserList = (props) => {
 
 UserList.propTypes = {
   channelUsers: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
     avatar: PropTypes.string.isRequired
   }).isRequired).isRequired
 }
