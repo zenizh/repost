@@ -14,6 +14,7 @@ import redirect from './redirect'
 import service from './service'
 import services from './services'
 import team from './team'
+import user from './user'
 import users from './users'
 import { SIGN_OUT } from '../actions/currentUserActions'
 
@@ -31,6 +32,7 @@ const appReducer = combineReducers({
   service,
   services,
   team,
+  user,
   users,
   form: formReducer,
   router: routerReducer

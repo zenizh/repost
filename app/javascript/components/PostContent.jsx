@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import CSSModules from 'react-css-modules'
+import { Link } from 'react-router-dom'
 import Markdown from './Markdown'
 import styles from '../styles/PostContent.scss'
 
@@ -18,11 +19,11 @@ const PostContent = (props) => {
   return (
     <div id="post_content" styleName="container">
       <div styleName="content">
-        <div styleName="user">
+        <Link to={'/users/' + post.user.id} styleName="user">
           <img src={post.user.avatar} />
           {post.user.name}
           <span>(@{post.user.screenName})</span>
-        </div>
+        </Link>
         <Markdown content={post.content} />
         <span styleName="created_at">{post.createdAt}</span>
       </div>
@@ -35,6 +36,7 @@ PostContent.propTypes = {
     content: PropTypes.string,
     createdAt: PropTypes.string,
     user: PropTypes.shape({
+      id: PropTypes.number,
       screenName: PropTypes.string,
       name: PropTypes.string,
       avatar: PropTypes.string
