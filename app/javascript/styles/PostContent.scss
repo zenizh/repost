@@ -43,3 +43,17 @@
 .created_at {
   color: $gray-light;
 }
+
+.reactions {
+  float: right;
+}
+
+.reaction {
+  margin-left: .25rem;
+  padding: 4px 6px;
+
+  span {
+    top: 0 !important;
+    margin-right: 4px !important;
+  }
+}

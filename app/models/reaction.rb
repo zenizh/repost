@@ -5,4 +5,6 @@ class Reaction < ApplicationRecord
   validates :post, presence: true
   validates :user, presence: true
   validates :name, presence: true, uniqueness: { scope: [:post, :user] }
+
+  scope :named, ->(name) { where(name: name) }
 end

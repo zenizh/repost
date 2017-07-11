@@ -1,7 +1,10 @@
 @import '~bootstrap/scss/variables';
 
 .container {
-  margin-right: .75rem;
+  display: inline-block;
+}
+
+.icon {
   color: $gray-light;
   cursor: pointer;
 
@@ -9,4 +12,8 @@
   &.active {
     color: $orange;
   }
+}
+
+.popover {
+  border: none;
 }

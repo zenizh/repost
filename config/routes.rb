@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     end
 
     resources :posts, only: [:index, :create] do
+      resources :reactions, only: :create, controller: 'posts/reactions'
       resources :stars, only: :create, controller: 'posts/stars' do
         delete :destroy, on: :collection
       end

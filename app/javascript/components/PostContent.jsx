@@ -1,12 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 import CSSModules from 'react-css-modules'
 import { Link } from 'react-router-dom'
+import { emojify } from 'react-emojione'
 import Markdown from './Markdown'
 import styles from '../styles/PostContent.scss'
 
 const PostContent = (props) => {
-  const { post } = props
+  const { post, reactions } = props
 
   if (!post.content) {
     return (
@@ -26,6 +28,20 @@ const PostContent = (props) => {
         </Link>
         <Markdown content={post.content} />
         <span styleName="created_at">{post.createdAt}</span>
+        <div styleName="reactions">
+          {reactions.map((reaction, key) => {
+            const color = reaction.isReacted ? 'warning' : 'secondary'
+            return (
+              <span
+                key={key}
+                className={classNames('btn', `btn-outline-${color}`)}
+                styleName="reaction">
+                {emojify(reaction.name, { style: { height: 18 } })}
+                {reaction.count}
+              </span>
+            )
+          })}
+        </div>
       </div>
     </div>
   )
@@ -41,7 +57,12 @@ PostContent.propTypes = {
       name: PropTypes.string,
       avatar: PropTypes.string
     }).isRequired
-  }).isRequired
+  }).isRequired,
+  reactions: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    count: PropTypes.number.isRequired,
+    isReacted: PropTypes.bool.isReacted
+  })).isRequired
 }
 
-export default CSSModules(PostContent, styles)
+export default CSSModules(PostContent, styles, { allowMultiple: true })
