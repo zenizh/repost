@@ -1,1 +1,1 @@
-json.partial! 'reaction', reaction: @reaction
+json.partial! 'reaction', post: @post, reaction: @reaction

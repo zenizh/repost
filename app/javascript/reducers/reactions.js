@@ -8,8 +8,11 @@ function reactions(state = initialState, action) {
     case FETCH_REACTIONS + '_SUCCESS':
       return action.payload.data
     case CREATE_REACTION + '_SUCCESS':
-      // TODO: Count up existing emoji
-      return [...state, action.payload.data]
+      return [...state.filter((reaction) => {
+        if (reaction.name != action.payload.data.name) {
+          return true
+        }
+      }), action.payload.data]
     case SET_POST:
       return initialState
     default:
