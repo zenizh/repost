@@ -1,3 +1,4 @@
+@import 'variables';
 @import '~bootstrap/scss/variables';
 
 .container {
@@ -9,8 +10,7 @@
   margin: 3rem auto;
 
   p {
-    margin-bottom: 1.5rem;
-    font-size: $font-size-base;
+    font-size: $font-size-lg;
   }
 }
 
@@ -45,12 +45,13 @@
 }
 
 .reactions {
-  float: right;
+  margin-top: 1rem;
 }
 
 .reaction {
-  margin-left: .25rem;
-  padding: 4px 6px;
+  margin-right: .25rem;
+  margin-bottom: .25rem;
+  font-size: $small-font-size;
 
   span {
     top: 0 !important;

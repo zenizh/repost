@@ -1,6 +1,10 @@
 class Api::Posts::ReactionsController < Api::ApplicationController
   before_action :set_post
 
+  def index
+    @reactions = @post.reactions.includes(:user)
+  end
+
   def create
     @reaction = @post.reactions.new(reaction_params)
     @reaction.user = current_user

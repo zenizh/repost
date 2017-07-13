@@ -1,17 +1,17 @@
 @import '~bootstrap/scss/variables';
 
 .container {
-  display: inline-block;
+  margin-right: .25rem;
+}
+
+.button {
+  padding-right: .6rem;
+  padding-left: .6rem;
+  vertical-align: top;
 }
 
 .icon {
-  color: $gray-light;
-  cursor: pointer;
-
-  &:hover,
-  &.active {
-    color: $orange;
-  }
+  margin-right: .25rem;
 }
 
 .popover {

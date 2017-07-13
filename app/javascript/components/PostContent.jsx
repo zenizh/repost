@@ -4,7 +4,9 @@ import classNames from 'classnames'
 import CSSModules from 'react-css-modules'
 import { Link } from 'react-router-dom'
 import { emojify } from 'react-emojione'
+import { Button } from 'reactstrap'
 import Markdown from './Markdown'
+import Reaction from './Reaction'
 import styles from '../styles/PostContent.scss'
 
 const PostContent = (props) => {
@@ -29,16 +31,18 @@ const PostContent = (props) => {
         <Markdown content={post.content} />
         <span styleName="created_at">{post.createdAt}</span>
         <div styleName="reactions">
+          <Reaction post={post} handleChange={props.handleChange} />
           {reactions.map((reaction, key) => {
             const color = reaction.isReacted ? 'warning' : 'secondary'
             return (
-              <span
+              <Button
                 key={key}
-                className={classNames('btn', `btn-outline-${color}`)}
+                color={`outline-${color}`}
+                size="sm"
                 styleName="reaction">
                 {emojify(reaction.name, { style: { height: 18 } })}
                 {reaction.count}
-              </span>
+              </Button>
             )
           })}
         </div>

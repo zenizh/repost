@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :subscriptions
   has_many :channels, through: :subscriptions
   has_many :posts
+  has_many :reactions
   has_many :stars
   has_many :starred_posts, through: :stars, source: :post
   has_many :templates

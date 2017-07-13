@@ -22,6 +22,7 @@ class Post extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (!this.props.post.id && (nextProps.posts.length > 0)) {
+      this.props.fetchReactions(nextProps.posts[0].id)
       this.props.setPost(nextProps.posts[0])
     }
   }
@@ -50,11 +51,13 @@ class Post extends Component {
       <div styleName="container">
         <PostHeader
           post={post}
-          handleChange={this.handleChange}
           handleClick={this.handleClick}
           createStar={this.createStar}
           deleteStar={this.deleteStar} />
-        <PostContent post={post} reactions={reactions} />
+        <PostContent
+          post={post}
+          reactions={reactions}
+          handleChange={this.handleChange} />
       </div>
     )
   }

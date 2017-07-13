@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import CSSModules from 'react-css-modules'
 import Icon from 'react-fontawesome'
-import { Popover, PopoverContent } from 'reactstrap'
+import { Button, Popover, PopoverContent } from 'reactstrap'
 import EmojiPicker from 'emojione-picker'
 import styles from '../styles/Reaction.scss'
 
@@ -20,12 +20,16 @@ class Reaction extends Component {
 
   render() {
     return (
-      <div styleName="container">
-        <Icon
-          name="smile-o"
+      <span styleName="container">
+        <Button
+          color="outline-secondary"
+          size="sm"
           onClick={this.toggle}
           id="reaction"
-          styleName={classNames('icon', { active: this.props.post.isReacted })} />
+          styleName="button">
+          <Icon name="smile-o" styleName="icon" />
+          <Icon name="plus" />
+        </Button>
         <Popover
           placement="bottom"
           target="reaction"
@@ -36,7 +40,7 @@ class Reaction extends Component {
             <EmojiPicker search={true} onChange={this.props.handleChange} />
           </PopoverContent>
         </Popover>
-      </div>
+      </span>
     )
   }
 }
@@ -45,4 +49,4 @@ Reaction.propTypes = {
   handleChange: PropTypes.func.isRequired
 }
 
-export default CSSModules(Reaction, styles, { allowMultiple: true })
+export default CSSModules(Reaction, styles)

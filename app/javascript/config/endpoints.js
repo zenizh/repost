@@ -9,7 +9,7 @@ const endpoints = {
   mePosts: '/api/me/posts.json',
   mePostsStarred: '/api/me/posts/starred.json',
   posts: '/api/posts.json',
-  postReaction: (id) => `/api/posts/${id}/reactions.json`,
+  postReactions: (id) => `/api/posts/${id}/reactions.json`,
   postStars: (id) => `/api/posts/${id}/stars`,
   service: (id) => `/api/services/${id}.json`,
   services: '/api/services.json',
