@@ -55,10 +55,19 @@
 
 .icons {
   float: right;
-  color: $orange;
+  color: $gray-light;
   font-size: $small-font-size;
+  vertical-align: middle;
+}
 
-  span {
-    vertical-align: middle;
+.star {
+  color: $orange;
+}
+
+.reaction {
+  margin-left: .25rem;
+
+  &.active {
+    color: $orange;
   }
 }
