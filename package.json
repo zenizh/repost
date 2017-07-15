@@ -1,6 +1,9 @@
 {
   "name": "repost",
   "private": true,
+  "scripts": {
+    "postinstall": "npm rebuild node-sass"
+  },
   "dependencies": {
     "autoprefixer": "^7.1.1",
     "axios": "^0.16.2",
