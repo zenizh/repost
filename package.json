@@ -1,6 +1,9 @@
 {
   "name": "repost",
   "private": true,
+  "scripts": {
+    "postinstall": "npm rebuild node-sass"
+  },
   "dependencies": {
     "autoprefixer": "^7.1.1",
     "axios": "^0.16.2",
@@ -19,6 +22,7 @@
     "compression-webpack-plugin": "^0.4.0",
     "css-loader": "^0.28.3",
     "draft-js": "^0.10.1",
+    "emojione-picker": "^2.2.1",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
     "font-awesome": "^4.7.0",
@@ -36,6 +40,7 @@
     "react-css-modules": "^4.3.0",
     "react-dom": "^15.5.4",
     "react-dropzone": "^3.13.2",
+    "react-emojione": "^3.1.10",
     "react-fontawesome": "^1.6.1",
     "react-infinite-scroller": "^1.0.13",
     "react-redux": "^5.0.5",
@@ -54,6 +59,7 @@
     "remark-react": "^4.0.0",
     "resolve-url-loader": "^2.0.2",
     "sass-loader": "^6.0.5",
+    "store": "^2.0.12",
     "style-loader": "^0.18.1",
     "to-snake-case": "^1.0.0",
     "webpack": "^2.6.1",

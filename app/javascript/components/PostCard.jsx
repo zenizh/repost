@@ -23,7 +23,12 @@ const PostCard = (props) => {
         </div>
         <span styleName="created_at">{post.createdAt}</span>
         <div styleName="icons">
-          {(post.starred ? <Icon name="star-o" /> : null)}
+          {post.starred ? <Icon name="star-o" styleName="star" /> : null}
+          {post.reactionsCount > 0 ? (
+            <span styleName={classNames('reaction', { active: post.isReacted })}>
+              <Icon name="smile-o" /> {post.reactionsCount}
+            </span>
+          ) : null}
         </div>
       </CardBlock>
     </Card>
@@ -35,6 +40,7 @@ PostCard.propTypes = {
     content: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
     selected: PropTypes.bool.isRequired,
+    reactionsCount: PropTypes.number.isRequired,
     starred: PropTypes.bool.isRequired,
     user: PropTypes.shape({
       screenName: PropTypes.string.isRequired,

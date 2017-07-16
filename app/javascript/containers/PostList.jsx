@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import CSSModules from 'react-css-modules'
 import * as postActions from '../actions/postActions'
+import * as reactionsActions from '../actions/reactionsActions'
 import PostListHeader from '../components/PostListHeader'
 import PostListContent from '../components/PostListContent'
 import styles from '../styles/PostList.scss'
@@ -15,6 +16,7 @@ class PostList extends Component {
   }
 
   handleClick(post) {
+    this.props.fetchReactions(post.id)
     this.props.setPost(post)
   }
 
@@ -41,6 +43,7 @@ PostList.propTypes = {
   channelUsers: PropTypes.array,
   posts: PropTypes.array.isRequired,
   loadMore: PropTypes.func.isRequired,
+  fetchReactions: PropTypes.func.isRequired,
   setPost: PropTypes.func.isRequired
 }
 
@@ -52,7 +55,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(postActions, dispatch)
+  return bindActionCreators({ ...postActions, ...reactionsActions }, dispatch)
 }
 
 PostList = CSSModules(PostList, styles)
