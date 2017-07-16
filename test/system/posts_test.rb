@@ -72,6 +72,23 @@ class PostsTest < ApplicationSystemTestCase
     end
   end
 
+  test 'create reaction' do
+    visit '/'
+    assert_no_selector '#reactions > button'
+    within '.card:first-child' do
+      assert_no_selector '.fa-smile-o'
+    end
+
+    find('#reaction').click
+    first('.emoji-categories-wrapper .emoji').click
+    assert_selector '#reactions > button', count: 1
+
+    visit current_path
+    within '.card:first-child' do
+      assert_selector '.fa-smile-o'
+    end
+  end
+
   test 'select post' do
     visit '/'
     within '#post_content' do

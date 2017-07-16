@@ -29,7 +29,7 @@ const PostContent = (props) => {
         </Link>
         <Markdown content={post.content} />
         <span styleName="created_at">{post.createdAt}</span>
-        <div styleName="reactions">
+        <div id="reactions" styleName="reactions">
           <Reaction post={post} handleChange={props.handleChange} />
           {reactions.map((reaction, key) => {
             const color = reaction.isReacted ? 'warning' : 'secondary'
