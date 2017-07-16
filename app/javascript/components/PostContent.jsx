@@ -68,4 +68,4 @@ PostContent.propTypes = {
   })).isRequired
 }
 
-export default CSSModules(PostContent, styles, { allowMultiple: true })
+export default CSSModules(PostContent, styles)
