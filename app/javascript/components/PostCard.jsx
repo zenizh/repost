@@ -40,6 +40,7 @@ PostCard.propTypes = {
     content: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
     selected: PropTypes.bool.isRequired,
+    reactionsCount: PropTypes.number.isRequired,
     starred: PropTypes.bool.isRequired,
     user: PropTypes.shape({
       screenName: PropTypes.string.isRequired,

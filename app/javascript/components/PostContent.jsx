@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
 import CSSModules from 'react-css-modules'
 import { Link } from 'react-router-dom'
 import { emojify } from 'react-emojione'
