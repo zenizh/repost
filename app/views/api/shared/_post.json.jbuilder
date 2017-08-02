@@ -2,9 +2,9 @@ json.id post.id
 json.content post.content
 json.created_at l(post.created_at, format: :short)
 json.selected false
-json.starred current_user.starred?(post)
+json.starred post.starred rescue false
 json.authored post.user == current_user
-json.is_reacted post.reactions.exists?(user: current_user)
+json.is_reacted post.reacted rescue false
 json.reactions_count post.reactions_count
 json.user do
   json.id post.user.id
