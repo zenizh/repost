@@ -1,6 +1,7 @@
 class Api::PostsController < Api::ApplicationController
   def index
     @posts = Post.includes(:user)
+      .with_action_by(current_user)
       .order(created_at: :desc)
       .page(params[:page])
       .per(10)

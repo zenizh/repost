@@ -7,13 +7,6 @@ class Api::Me::PostsControllerTest < ActionController::TestCase
     sign_in_as(@user)
   end
 
-  test '#index' do
-    get :index, format: :json
-    assert_response :success
-    assert_equal 3, response_body.count
-    assert @user.posts.exists?(id: response_body.first['id'])
-  end
-
   test '#show' do
     get :show, params: { id: @post.id }, format: :json
     assert_response :success
