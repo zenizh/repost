@@ -2,7 +2,7 @@ class Api::Posts::ReactionsController < Api::ApplicationController
   before_action :set_post
 
   def index
-    @reactions = @post.reactions.group(:name).count
+    @reactions = ReactionFinder.new(@post, current_user).find
   end
 
   def create
@@ -10,7 +10,14 @@ class Api::Posts::ReactionsController < Api::ApplicationController
     reaction.user = current_user
 
     if reaction.save
-      @reaction = @post.reactions.named(reaction.name).group(:name).count.first
+      reactions = @post.reactions.named(params[:name])
+
+      @reaction = ReactionFinder::Reaction.new(
+        name: params[:name],
+        count: reactions.count,
+        is_reacted: true,
+        user_names: reactions.map(&:user).pluck(:name)
+      )
     else
       head :bad_request
     end
