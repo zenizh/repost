@@ -24,7 +24,7 @@ class ReactionFinder
   attr_reader :post, :current_user
 
   def reaction_counts
-    post.reactions.group(:name).count
+    post.reactions.group(:name).order('count_all DESC').count
   end
 
   def reacted_names
