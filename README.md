@@ -36,22 +36,19 @@ To develop Repost, you should run servers of Ruby on Rails and Webpack.
 ```
 $ git clone git@github.com:kami-zh/repost.git
 $ cd repost
-$ bundle install
-$ bin/rails db:create db:migrate db:seed_fu db:populate
+$ bin/setup
+$ bin/rails db:populate # If needed
 $ bin/rails s
 $ bin/webpack-dev-server
 ```
+
+To update the application you just run `bin/update`.
 
 ## Deployment
 
 To start Repost on production, you should compile webpacker before running server of Ruby on Rails.
 
 ```
-$ git clone git@github.com:kami-zh/repost.git
-$ cd repost
-$ vi config/database.yml
-$ cp config/unicorn.rb.example config/unicorn.rb
-$ vi config/unicorn.rb
 $ bundle install --without development test
 $ bin/yarn install --production
 $ RAILS_ENV=production bundle exec rails webpacker:compile
