@@ -3,7 +3,6 @@
 
 .container {
   margin-bottom: 1.5rem;
-  margin-right: 1rem;
 
   ul {
     list-style: none;
@@ -13,27 +12,25 @@
   a {
     display: block;
     padding: .25rem 0 .25rem 1rem;
-    border-top-right-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
-    color: rgba($gray-lighter, .5);
+    color: rgba($white, .5);
 
     &:hover {
-      background-color: rgba($gray-light, .5);
+      background-color: rgba($gray, .25);
       text-decoration: none;
     }
 
     span {
-      color: rgba($gray-lighter, .25);
+      color: rgba($white, .25);
     }
   }
 
   .active {
     a {
       color: $white;
-      background-color: rgba($gray-light, .75);
+      background-color: rgba($gray, .5);
 
       span {
-        color: rgba($gray-lighter, .75);
+        color: rgba($white, .5);
       }
     }
   }

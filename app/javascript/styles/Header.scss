@@ -5,12 +5,12 @@
   margin-bottom: 1.5rem;
   padding-right: 1rem;
   padding-left: 1rem;
-  background-color: rgba($gray-dark, .75);
+  background-color: rgba($black, .25);
   color: $gray-lighter;
   transition: $transition-base;
 
   &:hover {
-    background-color: $gray-dark;
+    background-color: $black;
   }
 
   [data-toggle=dropdown] {

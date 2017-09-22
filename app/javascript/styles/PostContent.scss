@@ -9,8 +9,26 @@
   width: 580px;
   margin: 3rem auto;
 
-  p {
+  p,
+  ul,
+  ol {
     font-size: $font-size-lg;
+  }
+
+  ul,
+  ol {
+    padding-left: 1.5rem;
+  }
+
+  blockquote {
+    padding: .75rem 1.25rem;
+    border-radius: $border-radius;
+    background-color: $gray-lightest;
+    color: $gray;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 

@@ -4,11 +4,10 @@
   flex-basis: 48px;
   padding-right: 1rem;
   padding-left: 1rem;
-  background-color: rgba($gray-dark, .5);
   transition: $transition-base;
 
   &:hover {
-    background-color: rgba($gray-dark, .75);
+    background-color: rgba($black, .25);
   }
 
   img {
