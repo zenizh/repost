@@ -18,12 +18,17 @@ chdir APP_ROOT do
   system('bundle check') || system!('bundle install')
 
   # Install JavaScript dependencies if using Yarn
-  # system('bin/yarn')
+  system('bin/yarn')
 
-  # puts "\n== Copying sample files =="
-  # unless File.exist?('config/database.yml')
-  #   cp 'config/database.yml.sample', 'config/database.yml'
-  # end
+  puts "\n== Copying sample files =="
+  %w(
+    config/database.yml
+    config/storage.yml
+  ).each do |file|
+    unless File.exists?(file)
+      cp "#{file}.sample", file
+    end
+  end
 
   puts "\n== Preparing database =="
   system! 'bin/rails db:setup'
