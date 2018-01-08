@@ -1,5 +1,7 @@
 <h1>Teams::Invitations#new</h1>
 
+<%= render 'shared/errors', object: @user %>
+
 <%= form_with model: @user, url: teams_invitations_path, local: true do |f| %>
   <%= f.label :email %>
   <%= f.email_field :email, required: true %>

@@ -18,6 +18,7 @@ class Teams::UsersController < ApplicationController
     if @user.destroy
       redirect_to teams_users_path, notice: 'User has been destroyed'
     else
+      flash.now[:alert] = 'At least one user must be an admin'
       render :index
     end
   end

@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
   before_save do
     if last_admin? && !admin?
-      errors.add(:role, 'must have at least one admin')
+      errors.add(:base, 'At least one user must be an admin')
       throw(:abort)
     end
   end

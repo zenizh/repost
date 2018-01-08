@@ -1,5 +1,7 @@
 <h1>Accounts#new</h1>
 
+<%= render 'shared/errors', object: current_user %>
+
 <%= form_with model: current_user, url: account_path, local: true do |f| %>
   <%= f.label :email %>
   <%= f.email_field :email, required: true %>
