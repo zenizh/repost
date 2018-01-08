@@ -9,7 +9,7 @@
   </tr>
   <% @users.each do |user| %>
     <tr>
-      <td><%= user.name %> (@<%= user.screen_name %>)</td>
+      <td><%= user.name_with_default %> (@<%= user.screen_name %>)</td>
       <td><%= user.email %></td>
       <td><%= user.role %></td>
       <td>
