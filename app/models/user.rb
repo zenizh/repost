@@ -39,10 +39,6 @@ class User < ApplicationRecord
     exists?(screen_name: screen_name) ? default_screen_name : screen_name
   end
 
-  def name
-    super.presence || screen_name
-  end
-
   def password_changed?
     # crypted_password is created before validation
     valid?

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :passwords, only: :update
   end
 
+  resource :account, only: [:edit, :update]
   resources :sessions, only: :create
 
   get '/users/passwords/edit', to: 'users/passwords#edit', as: :edit_users_password

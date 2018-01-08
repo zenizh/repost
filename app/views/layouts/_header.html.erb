@@ -6,6 +6,7 @@
 <% end %>
 
 <% if current_user %>
+  <%= link_to 'Account', edit_account_path %>
   <%= link_to 'Sign out', sign_out_path, method: :delete %>
   <%= current_user.email %>
 <% else %>

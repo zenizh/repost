@@ -1,0 +1,13 @@
+<h1>Accounts#new</h1>
+
+<%= form_with model: current_user, url: account_path, local: true do |f| %>
+  <%= f.label :email %>
+  <%= f.email_field :email, required: true %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :screen_name %>
+  <%= f.text_field :screen_name, required: true %>
+  <%= f.submit %>
+<% end %>
