@@ -21,6 +21,7 @@ class Teams::InvitationsController < ApplicationController
   end
 
   def update
+    # Set updated_at to current time which has a role as invited_at
     @user.touch
     @user.send(:send_activation_needed_email!)
     redirect_to teams_invitations_path, notice: 'Invitation has been resent'
