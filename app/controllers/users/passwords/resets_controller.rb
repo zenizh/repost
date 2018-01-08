@@ -8,6 +8,7 @@ class Users::Passwords::ResetsController < ApplicationController
     user = User.find_by(email: params[:email])
 
     if user
+      # The mail will not be resent when reset_password_email_sent_at is set
       user.update(reset_password_email_sent_at: nil)
       user.deliver_reset_password_instructions!
     end
