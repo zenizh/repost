@@ -1,0 +1,11 @@
+<h1>Sessions#new</h1>
+
+<%= form_with url: sessions_path, local: true do |f| %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to 'Forgot password?', new_users_passwords_resets_path %>

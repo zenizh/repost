@@ -1,0 +1,7 @@
+<h1>Users::Passwords::Resets#new</h1>
+
+<%= form_with url: users_passwords_resets_path, local: true do |f| %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+  <%= f.submit %>
+<% end %>

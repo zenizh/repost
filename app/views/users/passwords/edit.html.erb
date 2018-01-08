@@ -1,0 +1,10 @@
+<h1>Users::Passwords#edit</h1>
+
+<%= form_with model: @user, url: users_password_path(@user), local: true do |f| %>
+  <%= f.label :email %>
+  <%= f.email_field :email, disabled: true %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= hidden_field_tag :token, @token %>
+  <%= f.submit %>
+<% end %>

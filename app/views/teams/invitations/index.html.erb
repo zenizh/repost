@@ -1,0 +1,23 @@
+<h1>Teams::Invitations#index</h1>
+
+<%= link_to 'New Invitation', new_teams_invitation_path %>
+
+<table>
+  <tr>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Invited At</th>
+    <th></th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.role %></td>
+      <td><%= user.updated_at %></td>
+      <td>
+        <%= link_to 'Resend', teams_invitation_path(user), method: :patch %>
+        <%= link_to 'Delete', teams_invitation_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>

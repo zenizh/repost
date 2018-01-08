@@ -1,0 +1,10 @@
+<h1>Teams::Invitations#new</h1>
+
+<%= form_with model: @user, url: teams_invitations_path, local: true do |f| %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+  <%= f.label :role %>
+  <%= f.select :role, User.roles.keys %>
+  <%= f.hidden_field :password %>
+  <%= f.submit %>
+<% end %>

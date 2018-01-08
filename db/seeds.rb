@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+ActionMailer::Base.perform_deliveries = false
+
+unless User.active.admin.exists?
+  user = User.create!(email: 'test@example.com', password: 'test1234', role: :admin)
+  user.activate!
+end

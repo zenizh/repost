@@ -1,0 +1,13 @@
+<%= link_to 'Home', root_path %>
+
+<% if current_user&.admin? %>
+  <%= link_to 'Users', teams_users_path %>
+  <%= link_to 'Invitations', teams_invitations_path %>
+<% end %>
+
+<% if current_user %>
+  <%= link_to 'Sign out', sign_out_path, method: :delete %>
+  <%= current_user.email %>
+<% else %>
+  <%= link_to 'Sign in', sign_in_path %>
+<% end %>

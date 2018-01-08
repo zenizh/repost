@@ -1,0 +1,24 @@
+<h1>Teams::Users#index</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th></th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %> (@<%= user.screen_name %>)</td>
+      <td><%= user.email %></td>
+      <td><%= user.role %></td>
+      <td>
+        <%= form_with model: user, url: teams_user_path(user), local: true do |f| %>
+          <%= f.hidden_field :role, value: user.role_value_for_change %>
+          <%= f.submit user.role_label_for_change %>
+        <% end %>
+        <%= link_to 'Delete', teams_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>
