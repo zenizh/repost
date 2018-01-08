@@ -2,6 +2,6 @@
 
 <%= form_with url: users_passwords_resets_path, local: true do |f| %>
   <%= f.label :email %>
-  <%= f.email_field :email %>
+  <%= f.email_field :email, required: true %>
   <%= f.submit %>
 <% end %>

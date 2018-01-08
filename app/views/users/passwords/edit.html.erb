@@ -4,7 +4,7 @@
   <%= f.label :email %>
   <%= f.email_field :email, disabled: true %>
   <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.password_field :password, required: true %>
   <%= hidden_field_tag :token, @token %>
   <%= f.submit %>
 <% end %>
