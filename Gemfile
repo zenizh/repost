@@ -10,6 +10,7 @@ gem 'active_decorator'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'email_validator'
 gem 'jbuilder', '~> 2.5'
+gem 'mini_magick'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'

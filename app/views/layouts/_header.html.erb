@@ -8,6 +8,7 @@
 <% if current_user %>
   <%= link_to 'Account', edit_account_path %>
   <%= link_to 'Sign out', sign_out_path, method: :delete %>
+  <%= image_tag current_user.avatar_with_default('24x24') %>
   <%= current_user.email %>
 <% else %>
   <%= link_to 'Sign in', sign_in_path %>

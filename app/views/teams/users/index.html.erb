@@ -11,7 +11,11 @@
   </tr>
   <% @users.each do |user| %>
     <tr>
-      <td><%= user.name_with_default %> (@<%= user.screen_name %>)</td>
+      <td>
+        <%= image_tag user.avatar_with_default('24x24') %>
+        <%= user.name_with_default %>
+        (@<%= user.screen_name %>)
+      </td>
       <td><%= user.email %></td>
       <td><%= user.role %></td>
       <td>
