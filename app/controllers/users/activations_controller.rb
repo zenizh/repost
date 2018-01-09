@@ -1,6 +1,7 @@
 class Users::ActivationsController < ApplicationController
   skip_before_action :require_login
 
+  before_action :require_no_login
   before_action :set_token
   before_action :set_user
   before_action :require_user
@@ -14,6 +15,7 @@ class Users::ActivationsController < ApplicationController
     ActiveRecord::Base.transaction do
       if @user.password_changed? && @user.save
         @user.activate!
+        auto_login(@user)
         redirect_to root_path, notice: 'You have been activated'
       else
         render :new
@@ -29,6 +31,12 @@ class Users::ActivationsController < ApplicationController
 
   def set_user
     @user = User.load_from_activation_token(@token)
+  end
+
+  def require_no_login
+    if logged_in?
+      redirect_to root_path, alert: 'You are already signed in'
+    end
   end
 
   def require_user
