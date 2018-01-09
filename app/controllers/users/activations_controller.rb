@@ -33,12 +33,6 @@ class Users::ActivationsController < ApplicationController
     @user = User.load_from_activation_token(@token)
   end
 
-  def require_no_login
-    if logged_in?
-      redirect_to root_path, alert: 'You are already signed in'
-    end
-  end
-
   def require_user
     unless @user
       redirect_to sign_in_path, alert: 'Invalid activation token'

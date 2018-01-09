@@ -14,4 +14,10 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, alert: 'You are not authorized'
     end
   end
+
+  def require_no_login
+    if logged_in?
+      redirect_to root_path, alert: 'You are already signed in'
+    end
+  end
 end

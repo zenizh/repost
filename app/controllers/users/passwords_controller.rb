@@ -1,6 +1,7 @@
 class Users::PasswordsController < ApplicationController
   skip_before_action :require_login
 
+  before_action :require_no_login
   before_action :set_token
   before_action :set_user
   before_action :require_user
