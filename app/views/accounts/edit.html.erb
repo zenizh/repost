@@ -11,7 +11,7 @@
   <%= f.text_field :name %>
   <%= f.label :screen_name %>
   <%= f.text_field :screen_name, required: true %>
-  <%= image_tag current_user.avatar_with_default %>
+  <%= image_tag current_user.avatar_with_default(size: 128), width: 64 %>
   <%= f.label :avatar %>
   <%= f.file_field :avatar %>
   <%= f.submit %>

@@ -12,7 +12,7 @@
   <% @users.each do |user| %>
     <tr>
       <td>
-        <%= image_tag user.avatar_with_default('24x24') %>
+        <%= image_tag user.avatar_with_default, width: 24 %>
         <%= user.name_with_default %>
         (@<%= user.screen_name %>)
       </td>
