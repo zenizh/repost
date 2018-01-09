@@ -1,0 +1,9 @@
+<%= render 'shared/errors', object: @post %>
+
+<%= form_with model: @post, local: true do |f| %>
+  <%= f.label :posted_on %>
+  <%= f.date_field :posted_on, required: true %>
+  <%= f.label :content %>
+  <%= f.text_area :content, required: true %>
+  <%= f.submit %>
+<% end %>

@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
+  has_many :posts, dependent: :destroy
+
   has_one_attached :avatar
 
   enum role: { member: 0, admin: 10 }

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   resource :account, only: [:edit, :update]
+  resources :posts
   resources :sessions, only: :create
 
   get '/users/passwords/edit', to: 'users/passwords#edit', as: :edit_users_password

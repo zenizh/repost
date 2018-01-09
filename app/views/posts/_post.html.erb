@@ -1,0 +1,17 @@
+<div>
+  <span>
+    <%= image_tag post.user.avatar_with_default, width: 24 %>
+    <%= post.user.name_with_default %>
+    (@<%= post.user.screen_name %>)
+  </span>
+  <%= link_to post.posted_on, post %>
+  <div>
+    <%= post.content %>
+  </div>
+  <% if post.user == current_user %>
+    <span>
+      <%= link_to 'Edit', edit_post_path(post) %>
+      <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </span>
+  <% end %>
+</div>
