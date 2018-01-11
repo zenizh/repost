@@ -1,9 +1,10 @@
-<%= render 'shared/errors', object: @post %>
+<%= render 'shared/errors', object: @form %>
 
-<%= form_with model: @post, local: true do |f| %>
+<%= form_with model: @form, url: polymorphic_path(@form.post), local: true do |f| %>
   <%= f.label :posted_on %>
   <%= f.date_field :posted_on, required: true %>
   <%= f.label :content %>
   <%= f.text_area :content, required: true %>
+  <%= render 'tags/form', post: @form.post %>
   <%= f.submit %>
 <% end %>

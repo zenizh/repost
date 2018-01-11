@@ -6,14 +6,14 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = current_user.posts.new
+    @form = PostForm.new(current_user.posts.new)
   end
 
   def create
-    @post = current_user.posts.new(post_params)
+    @form = PostForm.new(current_user.posts.new, post_form_params)
 
-    if @post.save
-      redirect_to @post, notice: 'Post has been created'
+    if @form.save
+      redirect_to @form.post, notice: 'Post has been created'
     else
       render :new
     end
@@ -24,11 +24,14 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @form = PostForm.new(@post)
   end
 
   def update
-    if @post.update(post_params)
-      redirect_to @post, notice: 'Post has been updated'
+    @form = PostForm.new(@post, post_form_params)
+
+    if @form.save
+      redirect_to @form.post, notice: 'Post has been updated'
     else
       render :edit
     end
@@ -41,8 +44,8 @@ class PostsController < ApplicationController
 
   private
 
-  def post_params
-    params.require(:post).permit(:content, :posted_on)
+  def post_form_params
+    params.require(:post_form).permit(:content, :posted_on, tag_list: [])
   end
 
   def set_post
