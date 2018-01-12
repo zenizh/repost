@@ -1,10 +1,13 @@
 <%= render 'shared/errors', object: @form %>
 
-<%= form_with model: @form, url: polymorphic_path(@form.post), local: true do |f| %>
+<%= form_with model: @form, url: polymorphic_path(@form.post), local: true, data: { controller: 'post-form' } do |f| %>
   <%= f.label :posted_on %>
   <%= f.date_field :posted_on, required: true %>
   <%= f.label :content %>
-  <%= f.text_area :content, required: true %>
+  <%= f.text_area :content, required: true, data: { action: 'input->post-form#input' } %>
   <%= render 'tags/form', post: @form.post %>
   <%= f.submit %>
+  <div data-target="post-form.preview">
+    <%= sanitize(markdown(@form.post.content)) %>
+  </div>
 <% end %>

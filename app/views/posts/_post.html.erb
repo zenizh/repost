@@ -6,7 +6,7 @@
   </span>
   <%= link_to post.posted_on, post %>
   <div>
-    <%= post.content %>
+    <%= sanitize(markdown(post.content)) %>
   </div>
   <% if post.user == current_user %>
     <span>

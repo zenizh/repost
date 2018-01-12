@@ -6,7 +6,7 @@ class PostForm
 
   attribute :content
   attribute :posted_on, :date
-  attribute :tag_list
+  attribute :tag_list, default: []
 
   validates :content, presence: true
   validates :posted_on, presence: true

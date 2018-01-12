@@ -116,6 +116,8 @@ GEM
     nio4r (2.2.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
+    nokogumbo (1.4.13)
+      nokogiri
     oauth (0.5.4)
     oauth2 (1.4.0)
       faraday (>= 0.8, < 0.13)
@@ -164,8 +166,13 @@ GEM
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    redcarpet (3.4.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
+    sanitize (4.5.0)
+      crass (~> 1.0.2)
+      nokogiri (>= 1.4.4)
+      nokogumbo (~> 1.4.1)
     sass (3.5.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -240,6 +247,8 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.0.beta2)
+  redcarpet
+  sanitize
   sass-rails (~> 5.0)
   selenium-webdriver
   sorcery
