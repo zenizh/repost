@@ -3,8 +3,18 @@ import marked from 'marked'
 import sanitizeHtml from 'sanitize-html'
 
 export default class extends Controller {
+  connect() {
+    this.render()
+  }
+
   input() {
-    this.preview.innerHTML = sanitizeHtml(marked(this.content.value), { allowedTags: this.allowedTags })
+    this.render()
+  }
+
+  render() {
+    this.preview.innerHTML = sanitizeHtml(marked(this.content.value), {
+      allowedTags: sanitizeHtml.defaults.allowedTags.concat(['h1', 'h2', 'del'])
+    })
   }
 
   get preview() {
@@ -13,9 +23,5 @@ export default class extends Controller {
 
   get content() {
     return this.element.querySelector('textarea')
-  }
-
-  get allowedTags() {
-    return sanitizeHtml.defaults.allowedTags.concat(['h1', 'h2', 'del'])
   }
 }

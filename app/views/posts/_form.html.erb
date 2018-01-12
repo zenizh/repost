@@ -8,6 +8,5 @@
   <%= render 'tags/form', post: @form.post %>
   <%= f.submit %>
   <div data-target="post-form.preview">
-    <%= sanitize(markdown(@form.post.content)) %>
   </div>
 <% end %>
