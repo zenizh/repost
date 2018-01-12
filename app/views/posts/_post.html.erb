@@ -8,6 +8,13 @@
   <div>
     <%= sanitize(markdown(post.content)) %>
   </div>
+  <% if post.tags.exists? %>
+    <div>
+      <% post.tags.each do |tag| %>
+        <span>#<%= tag.name %></span>
+      <% end %>
+    </div>
+  <% end %>
   <% if post.user == current_user %>
     <span>
       <%= link_to 'Edit', edit_post_path(post) %>
