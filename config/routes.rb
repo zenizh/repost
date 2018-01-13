@@ -5,6 +5,14 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end
 
+  namespace :api do
+    resources :posts, only: [] do
+      resources :stars, only: :create, controller: 'posts/stars' do
+        delete :destroy, on: :collection
+      end
+    end
+  end
+
   namespace :teams do
     resources :users, only: [:index, :update, :destroy]
     resources :invitations, only: [:index, :new, :create, :update, :destroy]

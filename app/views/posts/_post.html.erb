@@ -9,6 +9,7 @@
     <%= sanitize(markdown(post.content)) %>
   </div>
   <span>Comments: <%= post.comments_count %></span>
+  <%= render 'stars/form', post: post %>
   <% if post.tags.exists? %>
     <div>
       <% post.tags.each do |tag| %>
