@@ -1,6 +1,10 @@
 class Posts::CommentsController < ApplicationController
-  before_action :set_post, only: :create
+  before_action :set_post, only: [:new, :create]
   before_action :set_comment, only: [:edit, :update, :destroy]
+
+  def new
+    @comment = @post.comments.new
+  end
 
   def create
     @comment = @post.comments.new(comment_params)
@@ -9,7 +13,7 @@ class Posts::CommentsController < ApplicationController
     if @comment.save
       redirect_to @post, notice: 'Comment has been created'
     else
-      render 'posts#show'
+      render :new
     end
   end
 
