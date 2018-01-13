@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.order(posted_on: :desc, created_at: :desc)
+    @posts = Post.includes(:tags, user: :avatar_attachment)
+      .order(posted_on: :desc, created_at: :desc)
   end
 
   def new
