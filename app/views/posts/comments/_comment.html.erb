@@ -1,0 +1,17 @@
+<div>
+  <span>
+    <%= image_tag comment.user.avatar_with_default, width: 24 %>
+    <%= comment.user.name_with_default %>
+    (@<%= comment.user.screen_name %>)
+  </span>
+  <div>
+    <%= sanitize(markdown(comment.content)) %>
+  </div>
+  <span><%= comment.created_at %></span>
+  <% if comment.user == current_user %>
+    <span>
+      <%= link_to 'Edit', edit_post_comment_path(comment) %>
+      <%= link_to 'Delete', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+    </span>
+  <% end %>
+</div>

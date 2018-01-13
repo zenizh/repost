@@ -20,7 +20,9 @@ Rails.application.routes.draw do
   end
 
   resource :account, only: [:edit, :update]
-  resources :posts
+  resources :posts do
+    resources :comments, only: [:create, :edit, :update, :destroy], controller: 'posts/comments'
+  end
   resources :sessions, only: :create
 
   get '/users/passwords/edit', to: 'users/passwords#edit', as: :edit_users_password

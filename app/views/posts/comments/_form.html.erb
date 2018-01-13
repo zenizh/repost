@@ -1,0 +1,7 @@
+<%= render 'shared/errors', object: comment %>
+
+<%= form_with model: [comment.post, comment], local: true do |f| %>
+  <%= f.label :content %>
+  <%= f.text_area :content, required: true %>
+  <%= f.submit %>
+<% end %>

@@ -8,6 +8,7 @@
   <div>
     <%= sanitize(markdown(post.content)) %>
   </div>
+  <span>Comments: <%= post.comments_count %></span>
   <% if post.tags.exists? %>
     <div>
       <% post.tags.each do |tag| %>

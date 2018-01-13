@@ -1,3 +1,8 @@
 <h1>Posts#show</h1>
 
 <%= render @post %>
+
+<h2>Comments</h2>
+
+<%= render partial: 'posts/comments/comment', collection: @post.comments %>
+<%= render 'posts/comments/form', comment: @post.comments.new %>
