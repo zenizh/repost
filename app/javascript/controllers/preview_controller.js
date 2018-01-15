@@ -12,16 +12,16 @@ export default class extends Controller {
   }
 
   render() {
-    this.preview.innerHTML = sanitizeHtml(marked(this.content.value), {
+    this.body.innerHTML = sanitizeHtml(marked(this.textarea.value), {
       allowedTags: sanitizeHtml.defaults.allowedTags.concat(['h1', 'h2', 'del'])
     })
   }
 
-  get preview() {
-    return this.targets.find('preview')
+  get body() {
+    return this.targets.find('body')
   }
 
-  get content() {
-    return this.element.querySelector('textarea')
+  get textarea() {
+    return this.targets.find('textarea')
   }
 }

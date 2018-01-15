@@ -1,12 +1,12 @@
 <%= render 'shared/errors', object: @form %>
 
-<%= form_with model: @form, url: polymorphic_path(@form.post), local: true, data: { controller: 'post-form' } do |f| %>
+<%= form_with model: @form, url: polymorphic_path(@form.post), local: true, data: { controller: 'preview' } do |f| %>
   <%= f.label :posted_on %>
   <%= f.date_field :posted_on, required: true %>
   <%= f.label :content %>
-  <%= f.text_area :content, required: true, data: { action: 'input->post-form#input' } %>
+  <%= f.text_area :content, required: true, data: { action: 'input->preview#input', target: 'preview.textarea' } %>
   <%= render 'tags/form', post: @form.post %>
   <%= f.submit %>
-  <div data-target="post-form.preview">
+  <div data-target="preview.body">
   </div>
 <% end %>
