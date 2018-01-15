@@ -5,7 +5,7 @@
   <%= f.date_field :posted_on, required: true %>
   <%= f.label :content %>
   <%= f.text_area :content, required: true, data: { action: 'input->preview#input', target: 'preview.textarea' } %>
-  <%= render 'tags/form', post: @form.post %>
+  <%= render 'tags/form', post: @form.post, name: 'post_form[tag_list][]' %>
   <%= f.submit %>
   <div data-target="preview.body">
   </div>

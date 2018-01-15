@@ -1,11 +1,11 @@
-<div data-controller="tags">
+<div data-controller="tags" data-tags-default="<%= post.tags.pluck(:name) %>">
   <template>
-    <%= render 'tags/item', name: nil %>
+    <span>
+      <%= text_field_tag name, nil, readonly: true %>
+      <span data-action="click->tags#remove">&times;</span>
+    </span>
   </template>
   <div data-target="tags.list">
-    <% post.tags.each do |tag| %>
-      <%= render 'tags/item', name: tag.name %>
-    <% end %>
   </div>
   <input data-action="keypress->tags#keypress" data-target="tags.input" />
 </div>

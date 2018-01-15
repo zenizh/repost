@@ -1,13 +1,17 @@
 import { Controller } from 'stimulus'
 
 export default class extends Controller {
+  connect() {
+    this.default.forEach(name => this.add(name))
+  }
+
   keypress(e) {
     if (e.key == 'Enter') {
       if (this.input.value == '') {
         return e.preventDefault()
       }
 
-      if (this.isExists) {
+      if (this.isExists()) {
         this.clear()
         return e.preventDefault()
       }
@@ -34,8 +38,21 @@ export default class extends Controller {
     this.input.value = ''
   }
 
+  isExists() {
+    for (let input of this.list.querySelectorAll('input')) {
+      if (input.value == this.input.value) {
+        return true
+      }
+    }
+    return false
+  }
+
   get template() {
     return this.element.querySelector('template')
+  }
+
+  get default() {
+    return JSON.parse(this.data.get('default'))
   }
 
   get list() {
@@ -44,13 +61,5 @@ export default class extends Controller {
 
   get input() {
     return this.targets.find('input')
-  }
-
-  get isExists() {
-    for (let input of this.list.querySelectorAll('input')) {
-      if (input.value == this.input.value) {
-        return true
-      }
-    }
   }
 }
