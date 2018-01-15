@@ -1,7 +1,9 @@
 <%= render 'shared/errors', object: comment %>
 
-<%= form_with model: [comment.post, comment], local: true do |f| %>
+<%= form_with model: [comment.post, comment], local: true, data: { controller: 'preview' } do |f| %>
   <%= f.label :content %>
-  <%= f.text_area :content, required: true %>
+  <%= f.text_area :content, required: true, data: { action: 'input->preview#input', target: 'preview.textarea' } %>
   <%= f.submit %>
+  <div data-target="preview.body">
+  </div>
 <% end %>
