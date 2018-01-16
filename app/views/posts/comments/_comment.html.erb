@@ -8,6 +8,8 @@
     <%= sanitize(markdown(comment.content)) %>
   </div>
   <span><%= comment.created_at %></span>
+  <span>Likes: <%= comment.likes_count %></span>
+  <%= render 'likes/form', likable: comment, url: api_comment_likes_path(comment) %>
   <% if comment.user == current_user %>
     <span>
       <%= link_to 'Edit', edit_post_comment_path(comment) %>

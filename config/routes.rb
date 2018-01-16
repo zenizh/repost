@@ -6,7 +6,15 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
+    resources :comments, only: [] do
+      resources :likes, only: :create, controller: 'comments/likes' do
+        delete :destroy, on: :collection
+      end
+    end
     resources :posts, only: [] do
+      resources :likes, only: :create, controller: 'posts/likes' do
+        delete :destroy, on: :collection
+      end
       resources :stars, only: :create, controller: 'posts/stars' do
         delete :destroy, on: :collection
       end
