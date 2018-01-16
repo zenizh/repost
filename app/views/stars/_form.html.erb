@@ -1,8 +1,8 @@
 <span data-controller="button" data-button-is-pressed="<%= current_user.stars.exists?(post: post) %>">
   <%= form_with url: api_post_stars_path(post), data: { target: 'button.press' } do |f| %>
-    <%= f.submit '&#9733;'.html_safe, data: { action: 'click->button#click' } %>
+    <%= f.submit '&#9734;'.html_safe, data: { action: 'click->button#click' } %>
   <% end %>
   <%= form_with url: api_post_stars_path(post), method: :delete, data: { target: 'button.unpress' } do |f| %>
-    <%= f.submit '&#9734;'.html_safe, data: { action: 'click->button#click' } %>
+    <%= f.submit '&#9733;'.html_safe, data: { action: 'click->button#click' } %>
   <% end %>
 </span>
