@@ -1,0 +1,18 @@
+<%= render 'posts/nav' %>
+
+<h1>Posts::Calendars#show</h1>
+
+<div>
+  <%= link_to '&laquo;'.html_safe, posts_calendar_path(year: @date.prev_month.year, month: @date.prev_month.month) %>
+  <%= @date.strftime('%B %Y') %>
+  <%= link_to '&raquo;'.html_safe, posts_calendar_path(year: @date.next_month.year, month: @date.next_month.month) %>
+</div>
+
+<%= carender collection: @posts, column: :posted_on do |date, posts| %>
+  <%= date.day %>
+  <% posts.each do |post| %>
+    <%= link_to post do %>
+      <%= image_tag post.user.avatar_with_default, width: 24 %>
+    <% end %>
+  <% end %>
+<% end %>

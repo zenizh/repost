@@ -8,6 +8,7 @@ gem 'rails', '~> 5.2.0.beta2'
 
 gem 'active_decorator'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'carender'
 gem 'email_validator'
 gem 'identicon'
 gem 'jbuilder', '~> 2.5'

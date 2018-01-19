@@ -63,6 +63,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (>= 2.0, < 4.0)
+    carender (1.0.0)
+      activesupport
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (1.1.0)
@@ -241,6 +243,7 @@ DEPENDENCIES
   bullet
   byebug
   capybara (~> 2.15)
+  carender
   chromedriver-helper
   email_validator
   identicon

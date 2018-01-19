@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   end
   resources :sessions, only: :create
 
+  get '/posts/calendars/:year/:month', to: 'posts/calendars#show', year: /\d{4}/, month: /\d{1,2}/, as: :posts_calendar
   get '/users/passwords/edit', to: 'users/passwords#edit', as: :edit_users_password
   get :sign_in, to: 'sessions#new'
   delete :sign_out, to: 'sessions#destroy'
