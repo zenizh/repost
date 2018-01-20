@@ -36,15 +36,18 @@ Rails.application.routes.draw do
   end
 
   resource :account, only: [:edit, :update]
-  resources :posts do
-    resources :comments, only: [:create, :edit, :update, :destroy], controller: 'posts/comments'
-  end
   resources :sessions, only: :create
 
   get '/posts/calendars/:year/:month', to: 'posts/calendars#show', year: /\d{4}/, month: /\d{1,2}/, as: :posts_calendar
+  get '/posts/lists', to: 'posts/lists#index', as: :posts_lists
   get '/users/passwords/edit', to: 'users/passwords#edit', as: :edit_users_password
   get :sign_in, to: 'sessions#new'
   delete :sign_out, to: 'sessions#destroy'
+
+  # posts#show has to define after posts/lists#index
+  resources :posts do
+    resources :comments, only: [:create, :edit, :update, :destroy], controller: 'posts/comments'
+  end
 
   root 'posts#index'
 end

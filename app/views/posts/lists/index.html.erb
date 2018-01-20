@@ -1,0 +1,17 @@
+<%= render 'posts/nav' %>
+
+<h1>Posts::Lists#index</h1>
+
+<% @posts.each do |post| %>
+  <div>
+    <span>
+      <%= image_tag post.user.avatar_with_default, width: 24 %>
+      <%= post.user.name_with_default %>
+    </span>
+    <%= link_to post.posted_on, post %>
+    <span>Comments: <%= post.comments_count %></span>
+    <span>Likes: <%= post.likes_count %></span>
+  </div>
+<% end %>
+
+<%= paginate(@posts) %>
