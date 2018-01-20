@@ -11,7 +11,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carender'
 gem 'email_validator'
 gem 'identicon'
-gem 'jbuilder', '~> 2.5'
 gem 'kaminari'
 gem 'mini_magick'
 gem 'pg', '~> 0.18'

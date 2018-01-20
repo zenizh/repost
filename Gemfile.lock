@@ -88,9 +88,6 @@ GEM
     identicon (0.0.5)
       chunky_png
     io-like (0.3.0)
-    jbuilder (2.7.0)
-      activesupport (>= 4.2.0)
-      multi_json (>= 1.2)
     jwt (1.5.6)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
@@ -259,7 +256,6 @@ DEPENDENCIES
   chromedriver-helper
   email_validator
   identicon
-  jbuilder (~> 2.5)
   kaminari
   letter_opener_web
   listen (>= 3.0.5, < 3.2)
