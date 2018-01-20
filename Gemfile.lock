@@ -51,6 +51,7 @@ GEM
     bindex (0.5.0)
     bootsnap (1.1.7)
       msgpack (~> 1.0)
+    brakeman (4.1.1)
     builder (3.2.3)
     bullet (5.7.1)
       activesupport (>= 3.0.0)
@@ -249,6 +250,7 @@ PLATFORMS
 DEPENDENCIES
   active_decorator
   bootsnap (>= 1.1.0)
+  brakeman
   bullet
   byebug
   capybara (~> 2.15)
