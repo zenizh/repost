@@ -3,7 +3,7 @@ class Teams::InvitationsController < ApplicationController
   before_action :set_user, only: [:update, :destroy]
 
   def index
-    @users = User.pending
+    @users = User.pending.page(params[:page]).per(100)
   end
 
   def new

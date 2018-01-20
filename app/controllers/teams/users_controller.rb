@@ -30,7 +30,10 @@ class Teams::UsersController < ApplicationController
   end
 
   def set_users
-    @users = User.active.includes(:avatar_attachment)
+    @users = User.active
+      .includes(:avatar_attachment)
+      .page(params[:page])
+      .per(100)
   end
 
   def set_user

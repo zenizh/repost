@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.includes(:tags, user: :avatar_attachment)
       .order(posted_on: :desc, created_at: :desc)
+      .page(params[:page])
   end
 
   def new
