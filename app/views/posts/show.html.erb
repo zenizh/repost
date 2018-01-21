@@ -4,5 +4,5 @@
 
 <h2>Comments</h2>
 
-<%= render partial: 'posts/comments/comment', collection: @post.comments.includes(:user) %>
+<%= render partial: 'posts/comments/comment', collection: @post.comments %>
 <%= render 'posts/comments/form', comment: @post.comments.new %>
