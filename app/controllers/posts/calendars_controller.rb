@@ -2,7 +2,8 @@ class Posts::CalendarsController < ApplicationController
   before_action :set_date
 
   def show
-    @posts = Post.includes(user: :avatar_attachment).where(posted_on: @date..@date.end_of_month)
+    @posts = Post.includes(user: { avatar_attachment: :blob })
+      .where(posted_on: @date..@date.end_of_month)
   end
 
   private
