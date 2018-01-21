@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(comments: { user: :avatar_attachment }).find(params[:id])
   end
 
   def edit
