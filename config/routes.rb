@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   end
 
   resource :account, only: [:edit, :update]
+  resources :notifications, only: :index
   resources :sessions, only: :create
 
   get '/posts/calendars/:year/:month', to: 'posts/calendars#show', year: /\d{4}/, month: /\d{1,2}/, as: :posts_calendar

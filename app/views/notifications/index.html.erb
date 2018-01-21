@@ -1,0 +1,11 @@
+<h1>Notifications#index</h1>
+
+<% @notifications.each do |notification| %>
+  <%= link_to notification.url do %>
+    <%= image_tag notification.image, width: 24 %>
+    <%= notification.content %>
+    <%= time_ago_in_words(notification.created_at) %> ago
+  <% end %>
+<% end %>
+
+<%= paginate(@notifications) %>

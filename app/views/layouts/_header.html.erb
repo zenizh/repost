@@ -10,6 +10,7 @@
   <%= link_to 'Account', edit_account_path %>
   <%= link_to 'Sign out', sign_out_path, method: :delete %>
   <%= image_tag current_user.avatar_with_default, width: 24 %>
+  <%= link_to current_user.notifications.unread.count, notifications_path %>
   <%= current_user.email %>
 <% else %>
   <%= link_to 'Sign in', sign_in_path %>
