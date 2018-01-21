@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.includes(:tags, user: :avatar_attachment)
+    @posts = Post.includes(:tags, user: { avatar_attachment: :blob })
       .order(posted_on: :desc, created_at: :desc)
       .page(params[:page])
   end
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.includes(comments: { user: :avatar_attachment }).find(params[:id])
+    @post = Post.includes(comments: { user: { avatar_attachment: :blob } }).find(params[:id])
   end
 
   def edit
