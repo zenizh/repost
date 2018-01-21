@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   include Likable
 
   has_many :comments, dependent: :destroy
+  has_many :stars, dependent: :destroy
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
 
