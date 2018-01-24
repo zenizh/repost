@@ -3,7 +3,7 @@ class Teams::WebhooksController < ApplicationController
   before_action :set_webhook, only: [:edit, :update, :destroy]
 
   def index
-    @webhooks = Webhook.all
+    @webhooks = Webhook.includes(:tag)
   end
 
   def new
