@@ -12,7 +12,7 @@
   <span>Likes: <%= post.likes_count %></span>
   <%= render 'stars/form', post: post %>
   <%= render 'likes/form', likable: post, url: api_post_likes_path(post) %>
-  <% if post.tags.exists? %>
+  <% if post.tags.any? %>
     <div>
       <% post.tags.each do |tag| %>
         <span>#<%= tag.name %></span>
