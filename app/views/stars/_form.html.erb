@@ -1,4 +1,4 @@
-<span data-controller="button" data-button-is-pressed="<%= current_user.stars.exists?(post: post) %>">
+<span data-controller="button" data-button-is-pressed="<%= post.starred_by?(current_user) %>">
   <%= form_with url: api_post_stars_path(post), data: { target: 'button.press' } do |f| %>
     <%= f.submit '&#9734;'.html_safe, data: { action: 'click->button#click' } %>
   <% end %>

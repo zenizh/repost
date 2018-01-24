@@ -15,4 +15,8 @@ class Post < ApplicationRecord
   validates :posted_on, presence: true
 
   attribute :posted_on, :date, default: -> { Date.current }
+
+  def starred_by?(user)
+    stars.pluck(:user_id).include?(user.id)
+  end
 end

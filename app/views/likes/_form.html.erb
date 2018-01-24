@@ -1,4 +1,4 @@
-<span data-controller="button" data-button-is-pressed="<%= current_user.likes.exists?(likable: likable) %>">
+<span data-controller="button" data-button-is-pressed="<%= likable.liked_by?(current_user) %>">
   <%= form_with url: url, data: { target: 'button.press' } do |f| %>
     <%= f.submit '&#9825;'.html_safe, data: { action: 'click->button#click' } %>
   <% end %>
