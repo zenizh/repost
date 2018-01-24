@@ -15,7 +15,15 @@ class PostForm
 
   def initialize(post, attributes = {})
     @post = post
-    super(post.slice(:content, :posted_on).merge(attributes))
+
+    attributes = post.slice(
+      :content,
+      :posted_on
+    ).merge(attributes)
+
+    attributes[:tag_list] ||= post.tags.pluck(:name)
+
+    super(attributes)
   end
 
   def save
