@@ -1,0 +1,19 @@
+<%= render 'shared/errors', object: @form %>
+
+<%= form_with model: @form, scope: :webhook, url: polymorphic_path([:teams, @form.webhook.becomes(Webhook)]), local: true do |f| %>
+  <%= f.label :type %>
+  <%= f.select :type, webhook_types_for_select %>
+  <%= f.label :tag_name %>
+  <%= f.text_field :tag_name %>
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+  <%= f.label :channel %>
+  <%= f.text_field :channel %>
+  <%= f.label :active %>
+  <%= f.check_box :active %>
+  <%= f.label :on_post %>
+  <%= f.check_box :on_post %>
+  <%= f.label :on_comment %>
+  <%= f.check_box :on_comment %>
+  <%= f.submit %>
+<% end %>

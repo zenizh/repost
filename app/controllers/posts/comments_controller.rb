@@ -11,9 +11,8 @@ class Posts::CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      unless @post.user == current_user
-        CommentNotification.create(@comment)
-      end
+      CommentNotification.create(@comment)
+      Webhooks::CommentService.new(@comment).notify # TODO Execute as job
       redirect_to @post, notice: 'Comment has been created'
     else
       render :new

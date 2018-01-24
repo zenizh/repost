@@ -24,8 +24,10 @@ class PostForm
         post.assign_attributes(content: content, posted_on: posted_on)
         post.save!
         post.taggings.destroy_all
+
         tag_list.each do |name|
-          post.tags.create!(name: name)
+          tag = Tag.find_or_create_by!(name: name)
+          post.taggings.create!(tag: tag)
         end
       end
     end

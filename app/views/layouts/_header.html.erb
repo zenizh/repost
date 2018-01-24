@@ -3,6 +3,7 @@
 <% if current_user&.admin? %>
   <%= link_to 'Users', teams_users_path %>
   <%= link_to 'Invitations', teams_invitations_path %>
+  <%= link_to 'Webhooks', teams_webhooks_path %>
 <% end %>
 
 <% if current_user %>

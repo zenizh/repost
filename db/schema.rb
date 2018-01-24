@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_01_20_211606) do
+ActiveRecord::Schema.define(version: 2018_01_22_094720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 2018_01_20_211606) do
     t.integer "taggings_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_tags_on_name"
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -135,6 +135,21 @@ ActiveRecord::Schema.define(version: 2018_01_20_211606) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token"
   end
 
+  create_table "webhooks", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.string "type", null: false
+    t.string "url", null: false
+    t.string "channel", null: false
+    t.boolean "active", default: true, null: false
+    t.boolean "on_post", default: false, null: false
+    t.boolean "on_comment", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["active", "on_comment"], name: "index_webhooks_on_active_and_on_comment"
+    t.index ["active", "on_post"], name: "index_webhooks_on_active_and_on_post"
+    t.index ["tag_id"], name: "index_webhooks_on_tag_id"
+  end
+
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "users"
@@ -144,4 +159,5 @@ ActiveRecord::Schema.define(version: 2018_01_20_211606) do
   add_foreign_key "stars", "users"
   add_foreign_key "taggings", "posts"
   add_foreign_key "taggings", "tags"
+  add_foreign_key "webhooks", "tags"
 end

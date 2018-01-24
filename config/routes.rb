@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   namespace :teams do
     resources :users, only: [:index, :update, :destroy]
     resources :invitations, only: [:index, :new, :create, :update, :destroy]
+    resources :webhooks, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
   namespace :users do

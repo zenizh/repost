@@ -1,0 +1,29 @@
+<h1>Teams::Webhooks#index</h1>
+
+<%= link_to 'New Webhook', new_teams_webhook_path %>
+
+<table>
+  <tr>
+    <th>Service</th>
+    <th>Tag</th>
+    <th>Channel</th>
+    <th>Active</th>
+    <th>On Post</th>
+    <th>On Comment</th>
+    <th></th>
+  </tr>
+  <% @webhooks.each do |webhook| %>
+    <tr>
+      <td><%= webhook.service %></td>
+      <td><% if webhook.tag %>#<%= webhook.tag.name %><% end %></td>
+      <td>#<%= webhook.channel %></td>
+      <td><% if webhook.active %>&check;<% end %></td>
+      <td><% if webhook.on_post %>&check;<% end %></td>
+      <td><% if webhook.on_comment %>&check;<% end %></td>
+      <td>
+        <%= link_to 'Edit', edit_teams_webhook_path(webhook) %>
+        <%= link_to 'Delete', teams_webhook_path(webhook), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>

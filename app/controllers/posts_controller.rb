@@ -15,6 +15,7 @@ class PostsController < ApplicationController
     @form = PostForm.new(current_user.posts.new, post_form_params)
 
     if @form.save
+      Webhooks::PostService.new(@form.post).notify # TODO Execute as job
       redirect_to @form.post, notice: 'Post has been created'
     else
       render :new
