@@ -1,8 +1,12 @@
 class PostsController < ApplicationController
+  include Searchable
+
+  before_action :set_search, only: :index
   before_action :set_post, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.includes(:likes, :stars, :tags, user: { avatar_attachment: :blob })
+    @posts = @form.search
+      .includes(:likes, :stars, :tags, user: { avatar_attachment: :blob })
       .order(posted_on: :desc, created_at: :desc)
       .page(params[:page])
   end

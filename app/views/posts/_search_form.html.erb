@@ -1,0 +1,31 @@
+<% if search_params.present? %>
+  <%= link_to 'Clear conditions', url_for %>
+<% end %>
+
+<%= form_tag url_for, method: :get do %>
+  <%= text_field_tag :text, @form.text %>
+  <% @form.users.each do |user| %>
+    <%= hidden_field_tag 'users[]', user %>
+  <% end %>
+  <% @form.tags.each do |tag| %>
+    <%= hidden_field_tag 'tags[]', tag %>
+  <% end %>
+  <%= hidden_field_tag 'starred', @form.starred %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+<% @users.each do |user| %>
+  <%= link_to_search_by :users, :array, user.screen_name  do %>
+    <%= image_tag user.avatar_with_default, width: 24 %>
+  <% end %>
+<% end %>
+
+<% @tags.each do |tag| %>
+  <%= link_to_search_by :tags, :array, tag.name do %>
+    #<%= tag.name %>
+  <% end %>
+<% end %>
+
+<%= link_to_search_by :starred, :boolean do %>
+  Starred
+<% end %>

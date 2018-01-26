@@ -1,8 +1,12 @@
 class Posts::CalendarsController < ApplicationController
+  include Searchable
+
+  before_action :set_search
   before_action :set_date
 
   def show
-    @posts = Post.includes(user: { avatar_attachment: :blob })
+    @posts = @form.search
+      .includes(user: { avatar_attachment: :blob })
       .where(posted_on: @date..@date.end_of_month)
   end
 
