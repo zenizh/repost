@@ -44,7 +44,7 @@ export default class extends Controller {
     this.hideMenu()
   }
 
-  click(e) {
+  mousedown(e) {
     this.selectItem(e.target.textContent)
   }
 

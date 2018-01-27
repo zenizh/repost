@@ -9,7 +9,7 @@
   </div>
   <div data-controller="typeahead" data-typeahead-items="<%= typeahead_tags %>">
     <template data-target="typeahead.template">
-      <li data-action="click->typeahead#click"></li>
+      <li data-action="mousedown->typeahead#mousedown"></li>
     </template>
     <input data-action="keypress->tags#keypress keydown->typeahead#keydown keyup->typeahead#keyup blur->typeahead#blur" data-target="tags.input typeahead.input" />
     <ul data-target="typeahead.menu">
