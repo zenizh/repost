@@ -4,7 +4,10 @@
   <%= f.label :type %>
   <%= f.select :type, webhook_types_for_select %>
   <%= f.label :tag_name %>
-  <%= f.text_field :tag_name %>
+  <%= f.text_field :tag_name, autocomplete: 'off',
+    'data-controller': 'autocomplete-tag',
+    'data-target': 'autocomplete-tag.textarea',
+    'data-autocomplete-tag-tag-names': autocomplete_tag_names.to_s %>
   <%= f.label :url %>
   <%= f.text_field :url %>
   <%= f.label :channel %>

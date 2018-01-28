@@ -7,12 +7,10 @@
   </template>
   <div data-target="tags.list">
   </div>
-  <div data-controller="typeahead" data-typeahead-items="<%= typeahead_tags %>">
-    <template data-target="typeahead.template">
-      <li data-action="mousedown->typeahead#mousedown"></li>
-    </template>
-    <input data-action="keypress->tags#keypress keydown->typeahead#keydown keyup->typeahead#keyup blur->typeahead#blur" data-target="tags.input typeahead.input" />
-    <ul data-target="typeahead.menu">
-    </ul>
-  </div>
+  <input autocomplete="off"
+    data-controller="autocomplete-tag"
+    data-action="keypress->tags#keypress"
+    data-target="tags.input autocomplete-tag.textarea"
+    data-autocomplete-tag-tag-names="<%= autocomplete_tag_names%>"
+    placeholder="Press Enter to add tag" />
 </div>

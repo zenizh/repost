@@ -6,7 +6,8 @@
     "coffeescript": "1.12.7",
     "marked": "^0.3.12",
     "sanitize-html": "^1.16.3",
-    "stimulus": "^0.9.0"
+    "stimulus": "^0.9.0",
+    "textcomplete": "^0.16.0"
   },
   "devDependencies": {
     "webpack-dev-server": "^2.9.7"

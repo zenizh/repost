@@ -4,7 +4,12 @@
   <%= f.label :posted_on %>
   <%= f.date_field :posted_on, required: true %>
   <%= f.label :content %>
-  <%= f.text_area :content, required: true, data: { action: 'input->preview#input', target: 'preview.textarea' } %>
+  <%= f.text_area :content, required: true,
+    'data-controller': 'autocomplete-content',
+    'data-action': 'input->preview#input',
+    'data-target': 'autocomplete-content.textarea preview.textarea',
+    'data-autocomplete-content-tag-names': autocomplete_tag_names.to_s,
+    'data-autocomplete-content-user-screen-names': autocomplete_user_screen_names.to_s %>
   <%= render 'tags/form', tag_list: @form.tag_list, name: 'post_form[tag_list][]' %>
   <%= f.submit %>
   <div data-target="preview.body">
