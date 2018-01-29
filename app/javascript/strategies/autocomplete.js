@@ -1,3 +1,5 @@
+import sanitizeHtml from 'sanitize-html'
+
 const mentionStrategy = (screenNames) => {
   return {
     match: /(^|\s)@([0-9_a-zA-Z]+)$/,
@@ -7,7 +9,7 @@ const mentionStrategy = (screenNames) => {
       }))
     },
     template: (name) => {
-      return `@${name}`
+      return `@${sanitizeHtml(name, { allowedTags: [] })}`
     },
     replace: (name) => {
       return `$1@${name} `
@@ -24,7 +26,7 @@ const tagStrategy = (tagNames) => {
       }))
     },
     template: (name) => {
-      return `#${name}`
+      return `#${sanitizeHtml(name, { allowedTags: [] })}`
     },
     replace: (name) => {
       return `$1#${name} `
