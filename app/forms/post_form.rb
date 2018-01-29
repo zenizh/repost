@@ -6,11 +6,11 @@ class PostForm
 
   attribute :content
   attribute :posted_on, :date
-  attribute :tag_list, default: []
+  attribute :tag_names, default: []
 
   validates :content, presence: true
   validates :posted_on, presence: true
-  validate :tag_format
+  validate :tag_name_format
 
   delegate :persisted?, to: :post
 
@@ -22,7 +22,7 @@ class PostForm
       :posted_on
     ).merge(attributes)
 
-    attributes[:tag_list] ||= post.tags.pluck(:name)
+    attributes[:tag_names] ||= post.tags.pluck(:name)
 
     super(attributes)
   end
@@ -34,7 +34,7 @@ class PostForm
         post.save!
         post.taggings.destroy_all
 
-        tag_list.each do |name|
+        tag_names.each do |name|
           tag = Tag.find_or_create_by!(name: name)
           post.taggings.create!(tag: tag)
         end
@@ -44,10 +44,10 @@ class PostForm
 
   private
 
-  def tag_format
-    tag_list.each do |tag|
-      if tag !~ Tag::NAME_FORMAT
-        errors.add(:tag_list, 'contains invalid name')
+  def tag_name_format
+    tag_names.each do |name|
+      if name !~ Tag::NAME_FORMAT
+        errors.add(:tag_names, 'contains invalid name')
         break
       end
     end

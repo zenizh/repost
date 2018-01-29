@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   private
 
   def post_form_params
-    params.require(:post_form).permit(:content, :posted_on, tag_list: [])
+    params.require(:post_form).permit(:content, :posted_on, tag_names: [])
   end
 
   def set_post
