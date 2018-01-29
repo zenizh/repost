@@ -10,6 +10,7 @@ class PostForm
 
   validates :content, presence: true
   validates :posted_on, presence: true
+  validate :tag_format
 
   delegate :persisted?, to: :post
 
@@ -37,6 +38,17 @@ class PostForm
           tag = Tag.find_or_create_by!(name: name)
           post.taggings.create!(tag: tag)
         end
+      end
+    end
+  end
+
+  private
+
+  def tag_format
+    tag_list.each do |tag|
+      if tag !~ Tag::NAME_FORMAT
+        errors.add(:tag_list, 'contains invalid name')
+        break
       end
     end
   end

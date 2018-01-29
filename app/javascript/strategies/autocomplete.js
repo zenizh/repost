@@ -1,3 +1,4 @@
+import escapeStringRegexp from 'escape-string-regexp'
 import sanitizeHtml from 'sanitize-html'
 
 const mentionStrategy = (screenNames) => {
@@ -5,7 +6,7 @@ const mentionStrategy = (screenNames) => {
     match: /(^|\s)@([0-9_a-zA-Z]+)$/,
     search: (term, callback) => {
       callback(screenNames.filter((name) => {
-        return name.match(new RegExp(term, 'i'))
+        return name.match(new RegExp(escapeStringRegexp(term), 'i'))
       }))
     },
     template: (name) => {
@@ -22,7 +23,7 @@ const tagStrategy = (tagNames) => {
     match: /(^|\s)#(.+)$/,
     search: (term, callback) => {
       callback(tagNames.filter((name) => {
-        return name.match(new RegExp(term, 'i'))
+        return name.match(new RegExp(escapeStringRegexp(term), 'i'))
       }))
     },
     template: (name) => {
