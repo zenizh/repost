@@ -4,9 +4,9 @@
 <h1>Posts::Calendars#show</h1>
 
 <div>
-  <%= link_to '&laquo;'.html_safe, posts_calendar_path(year: @date.prev_month.year, month: @date.prev_month.month) %>
+  <%= link_to '&laquo;'.html_safe, posts_calendar_path({ year: @date.prev_month.year, month: @date.prev_month.month }.merge(search_params)) %>
   <%= @date.strftime('%B %Y') %>
-  <%= link_to '&raquo;'.html_safe, posts_calendar_path(year: @date.next_month.year, month: @date.next_month.month) %>
+  <%= link_to '&raquo;'.html_safe, posts_calendar_path({ year: @date.next_month.year, month: @date.next_month.month }.merge(search_params)) %>
 </div>
 
 <%= carender collection: @posts, column: :posted_on do |date, posts| %>
