@@ -1,4 +1,8 @@
-default_url_options = { host: ENV['REPOST_URL_HOST'], port: ENV['REPOST_URL_PORT'] }
+default_url_options = {
+  protocol: ENV['REPOST_URL_PROTOCOL'],
+  host:     ENV['REPOST_URL_HOST'],
+  port:     ENV['REPOST_URL_PORT']
+}
 
 Rails.application.configure do
   # Verifies that versions and hashed value of the package contents in the project's package.json
