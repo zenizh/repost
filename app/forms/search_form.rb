@@ -28,7 +28,7 @@ class SearchForm
     end
 
     if starred
-      self.posts = posts.includes(:taggings).where(stars: { user: user })
+      self.posts = posts.includes(:stars, :taggings).where(stars: { user: user })
     end
 
     posts.distinct
