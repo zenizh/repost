@@ -1,0 +1,31 @@
+{
+    "name": "Repost",
+    "description": "An open source software to communicate with your team members through posting daily reports",
+    "website": "https://github.com/kami-zh/repost",
+    "repository": "https://github.com/kami-zh/repost",
+    "addons": [
+        "sendgrid:starter"
+    ],
+    "env": {
+        "REPOST_SMTP_ADDRESS": "smtp.sendgrid.net",
+        "REPOST_SMTP_PORT": "587",
+        "REPOST_SMTP_DOMAIN": "herokuapp.com",
+        "REPOST_URL_PROTOCOL": "https",
+        "REPOST_URL_PORT": "443",
+        "REPOST_URL_HOST": {
+            "description": "The URL of your application (e.g. {App name}.herokuapp.com)",
+            "required": false
+        },
+        "REPOST_SMTP_USER_NAME": {
+            "description": "The username of SendGrid (SENDGRID_USERNAME) generating after deployed",
+            "required": false
+        },
+        "REPOST_SMTP_PASSWORD": {
+            "description": "The password of SendGrid (SENDGRID_PASSWORD) generating after deployed",
+            "required": false
+        }
+    },
+    "scripts": {
+        "postdeploy": "bundle exec rake db:migrate db:seed"
+    }
+}
