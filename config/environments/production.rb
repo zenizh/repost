@@ -96,6 +96,16 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = default_url_options
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:   ENV['REPOST_SMTP_ADDRESS'],
+    port:      ENV['REPOST_SMTP_PORT'],
+    domain:    ENV['REPOST_SMTP_DOMAIN'],
+    user_name: ENV['REPOST_SMTP_USER_NAME'],
+    password:  ENV['REPOST_SMTP_PASSWORD'],
+    authentication: 'plain',
+    emable_starttls_auto: true
+  }
 end
 
 Rails.application.routes.default_url_options = default_url_options
