@@ -13,6 +13,6 @@ class Users::Passwords::ResetsController < ApplicationController
       user.deliver_reset_password_instructions!
     end
 
-    redirect_to root_path, notice: 'Email has been sent to your email'
+    redirect_to sign_in_path, notice: 'Email has been sent to your email'
   end
 end
