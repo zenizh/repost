@@ -1,0 +1,32 @@
+test:
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>
+
+local:
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
+
+amazon:
+  service: S3
+  access_key_id: <%= ENV['REPOST_S3_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['REPOST_S3_SECRET_ACCESS_KEY'] %>
+  region: <%= ENV['REPOST_S3_REGION'] %>
+  bucket: <%= ENV['REPOST_S3_BUCKET'] %>
+
+google:
+  service: GCS
+  project: <%= ENV['REPOST_GCS_PROJECT'] %>
+  keyfile: <%= ENV['REPOST_GCS_KEYFILE'] %>
+  bucket: <%= ENV['REPOST_GCS_BUCKET'] %>
+
+microsoft:
+  service: AzureStorage
+  path: <%= ENV['REPOST_AZURE_STORAGE_PATH'] %>
+  storage_account_name: <%= ENV['REPOST_AZURE_STORAGE_STORAGE_ACCOUNT_NAME'] %>
+  storage_access_key: <%= ENV['REPOST_AZURE_STORAGE_STORAGE_ACCESS_KEY'] %>
+  container: <%= ENV['REPOST_AZURE_STORAGE_CONTAINER'] %>
+
+mirror:
+  service: Mirror
+  primary: local
+  mirrors: [ amazon, google, microsoft ]
