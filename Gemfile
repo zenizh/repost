@@ -43,3 +43,9 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
 end
+
+group :production do
+  gem 'google-cloud-storage', require: false
+  gem 'aws-sdk-s3', require: false
+  gem 'azure-storage', require: false
+end
