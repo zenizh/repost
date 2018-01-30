@@ -18,7 +18,8 @@ module Searchable
   end
 
   def set_users
-    @users = User.includes(:posts, avatar_attachment: :blob)
+    @users = User.active
+      .includes(:posts, avatar_attachment: :blob)
       .order('posts.created_at DESC NULLS LAST')
   end
 
