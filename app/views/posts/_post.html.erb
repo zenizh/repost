@@ -1,10 +1,10 @@
-<div class="clearfix">
-  <div class="float-left">
+<div class="d-flex justify-content-between">
+  <div>
     <%= render 'shared/user', user: post.user %>
   </div>
 
   <% if post.user == current_user %>
-    <div class="float-right">
+    <div>
       <%= link_to mi.mode_edit, edit_post_path(post), class: 'label-muted label-hover' %>
       <%= link_to mi.delete, post,
             method: :delete,
@@ -32,11 +32,15 @@
   </div>
 <% end %>
 
-<%= render 'likes/form', likable: post, url: api_post_likes_path(post) %>
-<span class="small text-muted"><%= post.likes_count %></span>
+<div class="d-flex justify-content-between">
+  <div>
+    <%= render 'likes/form', likable: post, url: api_post_likes_path(post) %>
+    <span class="small text-muted"><%= post.likes_count %></span>
+  </div>
 
-<div class="float-right small text-muted">
-  <%= render 'stars/form', post: post %>
-  <span class="label-muted ml-1"><%= mi.textsms %> <%= post.comments_count %></span>
-  <span class="ml-1"><%= l(post.created_at, format: :short) %></span>
+  <div class="align-self-end small text-muted">
+    <%= render 'stars/form', post: post %>
+    <span class="label-muted ml-1"><%= mi.textsms %> <%= post.comments_count %></span>
+    <span class="ml-1"><%= l(post.created_at, format: :short) %></span>
+  </div>
 </div>

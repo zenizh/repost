@@ -5,19 +5,21 @@
 
       <div class="list-group small">
         <% @posts.each do |post| %>
-          <%= link_to post, class: 'list-group-item list-group-item-action' do %>
-            <span class="mr-1"><%= l(post.posted_on, format: :long) %></span>
+          <%= link_to post, class: 'list-group-item list-group-item-action d-flex justify-content-between' do %>
+            <div>
+              <span class="mr-1"><%= l(post.posted_on, format: :long) %></span>
 
-            <%= image_tag post.user.avatar_with_default, width: 24, class: 'rounded-circle' %>
-            <%= post.user.name_with_default %>
+              <%= image_tag post.user.avatar_with_default, width: 24, class: 'rounded-circle' %>
+              <%= post.user.name_with_default %>
+            </div>
 
-            <span class="float-right small">
+            <div class="align-self-center small">
               <% if post.starred_by?(current_user) %>
                 <span class="text-warning"><%= mi.star %></span>
               <% end %>
               <span class="label ml-1"><%= mi.textsms %> <%= post.comments_count %></span>
               <span class="label ml-1"><%= mi.thumb_up %> <%= post.likes_count %></span>
-            </span>
+            </div>
           <% end %>
         <% end %>
       </div>

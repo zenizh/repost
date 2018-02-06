@@ -1,11 +1,11 @@
 <div class="list-group-item py-3">
-  <div class="clearfix mb-3">
-    <div class="float-left">
+  <div class="d-flex justify-content-between mb-3">
+    <div>
       <%= render 'shared/user', user: comment.user %>
     </div>
 
     <% if comment.user == current_user %>
-      <div class="float-right">
+      <div>
         <%= link_to mi.mode_edit, edit_post_comment_path(comment.post, comment), class: 'label-muted label-hover' %>
         <%= link_to mi.delete, [comment.post, comment],
               method: :delete,
@@ -19,10 +19,14 @@
     <%= sanitize(markdown(comment.content)) %>
   </div>
 
-  <%= render 'likes/form', likable: comment, url: api_comment_likes_path(comment) %>
-  <span class="small text-muted"><%= comment.likes_count %></span>
+  <div class="d-flex justify-content-between">
+    <div>
+      <%= render 'likes/form', likable: comment, url: api_comment_likes_path(comment) %>
+      <span class="small text-muted"><%= comment.likes_count %></span>
+    </div>
 
-  <div class="float-right text-muted small">
-    <%= l(comment.created_at, format: :long) %>
+    <div class="align-self-end text-muted small">
+      <%= l(comment.created_at, format: :long) %>
+    </div>
   </div>
 </div>
