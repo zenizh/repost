@@ -1,35 +1,33 @@
-<div class="container container-sm">
-  <%= render 'shared/errors', object: comment %>
+<%= render 'shared/errors', object: comment %>
 
-  <%= form_with model: [comment.post, comment], local: true, data: { controller: 'preview' } do |f| %>
-    <ul class="nav nav-tabs mb-2">
-      <li class="nav-item"><a href="#write" data-toggle="tab" class="nav-link active">Write</a></li>
-      <li class="nav-item"><a href="#preview" data-toggle="tab" class="nav-link">Preview</a></li>
-    </ul>
+<%= form_with model: [comment.post, comment], local: true, data: { controller: 'preview' } do |f| %>
+  <ul class="nav nav-tabs mb-2">
+    <li class="nav-item"><a href="#write" data-toggle="tab" class="nav-link active">Write</a></li>
+    <li class="nav-item"><a href="#preview" data-toggle="tab" class="nav-link">Preview</a></li>
+  </ul>
 
-    <div class="tab-content">
-      <div id="write" class="tab-pane active">
-        <div class="form-group">
-          <%= f.label :content %>
-          <%= f.text_area :content,
-                required: true,
-                rows: 5,
-                placeholder: 'Write a comment...',
-                class: 'form-control',
-                'data-controller': 'autocomplete-content',
-                'data-action': 'input->preview#input',
-                'data-target': 'autocomplete-content.textarea preview.textarea',
-                'data-autocomplete-content-tag-names': autocomplete_tag_names.to_s,
-                'data-autocomplete-content-user-screen-names': autocomplete_user_screen_names.to_s %>
-        </div>
-      </div>
-
-      <div id="preview" class="tab-pane">
-        <div data-target="preview.body" class="content mt-3">
-        </div>
+  <div class="tab-content">
+    <div id="write" class="tab-pane active">
+      <div class="form-group">
+        <%= f.label :content %>
+        <%= f.text_area :content,
+              required: true,
+              rows: 5,
+              placeholder: 'Write a comment...',
+              class: 'form-control',
+              'data-controller': 'autocomplete-content',
+              'data-action': 'input->preview#input',
+              'data-target': 'autocomplete-content.textarea preview.textarea',
+              'data-autocomplete-content-tag-names': autocomplete_tag_names.to_s,
+              'data-autocomplete-content-user-screen-names': autocomplete_user_screen_names.to_s %>
       </div>
     </div>
 
-    <%= f.submit class: 'btn btn-success' %>
-  <% end %>
-</div>
+    <div id="preview" class="tab-pane">
+      <div data-target="preview.body" class="content mt-3">
+      </div>
+    </div>
+  </div>
+
+  <%= f.submit class: 'btn btn-success' %>
+<% end %>
