@@ -1,14 +1,14 @@
-<span data-controller="button" data-button-is-pressed="<%= post.starred_by?(current_user) %>">
-  <%= form_with url: api_post_stars_path(post), data: { target: 'button.press' } do |f| %>
+<span data-controller="star" data-star-is-starred="<%= post.starred_by?(current_user) %>">
+  <%= form_with url: api_post_stars_path(post), data: { target: 'star.inactive' } do |f| %>
     <%= f.button mi.star_border,
           type: :submit,
-          data: { action: 'click->button#click' },
+          data: { action: 'click->star#click' },
           class: 'btn btn-text label' %>
   <% end %>
-  <%= form_with url: api_post_stars_path(post), method: :delete, data: { target: 'button.unpress' } do |f| %>
+  <%= form_with url: api_post_stars_path(post), method: :delete, data: { target: 'star.active' } do |f| %>
     <%= f.button mi.star,
           type: :submit,
-          data: { action: 'click->button#click' },
+          data: { action: 'click->star#click' },
           class: 'btn btn-text text-warning' %>
   <% end %>
 </span>

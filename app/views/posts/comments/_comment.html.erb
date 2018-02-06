@@ -22,7 +22,6 @@
   <div class="d-flex justify-content-between">
     <div>
       <%= render 'likes/form', likable: comment, url: api_comment_likes_path(comment) %>
-      <span class="small text-muted"><%= comment.likes_count %></span>
     </div>
 
     <div class="align-self-end text-muted small">

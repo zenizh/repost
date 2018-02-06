@@ -1,12 +1,15 @@
-<span data-controller="button" data-button-is-pressed="<%= likable.liked_by?(current_user) %>">
-  <%= form_with url: url, data: { target: 'button.press' } do |f| %>
+<span data-controller="like" data-like-is-liked="<%= likable.liked_by?(current_user) %>" data-like-count="<%= likable.likes_count %>">
+  <%= form_with url: url, data: { target: 'like.inactive' } do |f| %>
     <%= f.button mi.thumb_up,
-          data: { action: 'click->button#click' },
+          data: { action: 'click->like#click' },
           class: 'btn btn-outline-like rounded-circle' %>
   <% end %>
-  <%= form_with url: url, method: :delete, data: { target: 'button.unpress' } do |f| %>
+
+  <%= form_with url: url, method: :delete, data: { target: 'like.active' } do |f| %>
     <%= f.button mi.thumb_up,
-          data: { action: 'click->button#click' },
+          data: { action: 'click->like#click' },
           class: 'btn btn-outline-like active rounded-circle' %>
   <% end %>
+
+  <span data-target="like.count" class="small text-muted"></span>
 </span>
