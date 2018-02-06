@@ -3,16 +3,16 @@
     <div class="col">
       <%= render 'posts/nav' %>
 
-      <div class="mb-3 text-center">
+      <div class="d-flex justify-content-between mb-3">
         <%= link_to mi.navigate_before,
               posts_calendar_path({ year: @date.prev_month.year, month: @date.prev_month.month }.merge(search_params)),
-              class: 'btn btn-outline-primary rounded-circle' %>
+              class: 'btn btn-outline-primary btn-sm rounded-circle' %>
 
-        <%= @date.strftime('%B %Y') %>
+        <span class="align-self-center"><%= @date.strftime('%B %Y') %></span>
 
         <%= link_to mi.navigate_next,
               posts_calendar_path({ year: @date.next_month.year, month: @date.next_month.month }.merge(search_params)),
-              class: 'btn btn-outline-primary rounded-circle' %>
+              class: 'btn btn-outline-primary btn-sm rounded-circle' %>
       </div>
 
       <div class="calendar">
