@@ -2,11 +2,11 @@
   <%= form_with url: url, data: { target: 'button.press' } do |f| %>
     <%= f.button mi.thumb_up,
           data: { action: 'click->button#click' },
-          class: 'btn btn-outline-warning rounded-circle' %>
+          class: 'btn btn-outline-like rounded-circle' %>
   <% end %>
   <%= form_with url: url, method: :delete, data: { target: 'button.unpress' } do |f| %>
     <%= f.button mi.thumb_up,
           data: { action: 'click->button#click' },
-          class: 'btn btn-warning rounded-circle' %>
+          class: 'btn btn-outline-like active rounded-circle' %>
   <% end %>
 </span>

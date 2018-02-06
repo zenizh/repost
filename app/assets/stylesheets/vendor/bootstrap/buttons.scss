@@ -1,3 +1,18 @@
+.btn-outline-like {
+  @include button-outline-variant($orange);
+  border-color: $border-color;
+  color: $white;
+  -webkit-text-stroke: 1px $orange;
+
+  &:hover,
+  &:not(:disabled):not(.disabled).active {
+    background-color: transparent;
+    border-color: $orange;
+    color: $orange;
+    -webkit-text-stroke: unset;
+  }
+}
+
 .btn-text {
   padding: 0;
   background: none;
