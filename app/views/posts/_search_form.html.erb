@@ -18,15 +18,15 @@
   <%= hidden_field_tag 'starred', @form.starred %>
 <% end %>
 
-<div class="search-form">
-  <ul class="list-unstyled">
+<div class="search">
+  <ul class="list-unstyled search-labels">
     <li>
-      <%= link_to_search_by :users, :array, current_user.screen_name do %>
+      <%= link_to_search_by_user current_user do %>
         <%= mi.person %> My Posts
       <% end %>
     </li>
     <li>
-      <%= link_to_search_by :starred, :boolean do %>
+      <%= link_to_search_by_starred do %>
         <%= mi.star %> Only Starred Posts
       <% end %>
     </li>
@@ -34,9 +34,9 @@
 
   <span class="d-block mb-2 small text-uppercase">Tags</span>
 
-  <div class="row two-column">
+  <div class="row search-labels">
     <% @tags.each do |tag| %>
-      <%= link_to_search_by :tags, :array, tag.name do %>
+      <%= link_to_search_by_tag tag do %>
         <%= mi.local_offer %> <%= tag.name %>
       <% end %>
     <% end %>
@@ -45,7 +45,7 @@
   <span class="d-block mt-3 mb-2 small text-uppercase">Users</span>
 
   <% @users.each do |user| %>
-    <%= link_to_search_by :users, :array, user.screen_name  do %>
+    <%= link_to_search_by_user user do %>
       <%= image_tag user.avatar_with_default, width: 24, class: 'rounded-circle' %>
     <% end %>
   <% end %>

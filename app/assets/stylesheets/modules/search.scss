@@ -1,4 +1,4 @@
-.search-form {
+.search {
   a {
     @extend .mb-1;
 
@@ -14,14 +14,19 @@
     }
   }
 
-  .label-light {
-    &:hover,
-    &.active {
-      @extend .label;
+  &-labels {
+    a {
+      @extend .label-light;
+      @extend .small;
+
+      &:hover,
+      &.active {
+        @extend .label;
+      }
     }
   }
 
-  .two-column {
+  .row {
     a {
       @extend .col-6;
       display: inline-block !important;
