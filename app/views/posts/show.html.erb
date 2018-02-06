@@ -4,7 +4,7 @@
   </div>
 
   <div class="list-group mb-4">
-    <%= render partial: 'posts/comments/comment', collection: @post.comments %>
+    <%= render partial: 'posts/comments/comment', collection: @comments %>
 
     <div class="list-group-item py-3">
       <%= render 'posts/comments/form', comment: @post.comments.new %>

@@ -27,7 +27,10 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.includes(comments: [:likes, { user: { avatar_attachment: :blob } }]).find(params[:id])
+    @post = Post.find(params[:id])
+    @comments = @post.comments
+      .includes(:likes, user: { avatar_attachment: :blob })
+      .order(created_at: :asc)
   end
 
   def edit
