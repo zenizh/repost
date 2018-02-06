@@ -34,25 +34,25 @@
   version "0.16.0"
   resolved "https://registry.yarnpkg.com/@std/esm/-/esm-0.16.0.tgz#2a7a33ecb7f1701cebd4c87df6d0d945ed51f730"
 
-"@stimulus/core@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@stimulus/core/-/core-0.9.0.tgz#b6a0e7836b6e88fe6ea0c2055cc10b47f3a2b2ee"
+"@stimulus/core@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@stimulus/core/-/core-1.0.1.tgz#76e2c9e007df8a89dd5f8f707c63a64e1c6afef0"
   dependencies:
-    "@stimulus/mutation-observers" "^0.9.0"
+    "@stimulus/mutation-observers" "^1.0.0"
 
 "@stimulus/multimap@^0.9.0":
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/@stimulus/multimap/-/multimap-0.9.0.tgz#ed63699b3efb273411c118a50955569b2565a6e8"
 
-"@stimulus/mutation-observers@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@stimulus/mutation-observers/-/mutation-observers-0.9.0.tgz#f2249b660d9c3c8a4a43bc2c66dcb8b18d2c8f0c"
+"@stimulus/mutation-observers@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@stimulus/mutation-observers/-/mutation-observers-1.0.0.tgz#5a54cf78ce697b72f47a7c4f4594c024a7c2656e"
   dependencies:
     "@stimulus/multimap" "^0.9.0"
 
-"@stimulus/webpack-helpers@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@stimulus/webpack-helpers/-/webpack-helpers-0.9.0.tgz#b655c233015bea0d02b66ec709ef15b4b0060a57"
+"@stimulus/webpack-helpers@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@stimulus/webpack-helpers/-/webpack-helpers-1.0.0.tgz#f38b8281182436085d3472dc963dcbd81d731141"
 
 abbrev@1:
   version "1.1.1"
@@ -4965,12 +4965,12 @@ stdout-stream@^1.4.0:
   dependencies:
     readable-stream "^2.0.1"
 
-stimulus@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/stimulus/-/stimulus-0.9.0.tgz#4e9f994fdf6df261913221b149451d6ad1a54b30"
+stimulus@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/stimulus/-/stimulus-1.0.1.tgz#34418d9e05039920359c02590841147bce78b555"
   dependencies:
-    "@stimulus/core" "^0.9.0"
-    "@stimulus/webpack-helpers" "^0.9.0"
+    "@stimulus/core" "^1.0.1"
+    "@stimulus/webpack-helpers" "^1.0.0"
 
 stream-browserify@^2.0.1:
   version "2.0.1"
