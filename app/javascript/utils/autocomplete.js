@@ -35,4 +35,12 @@ const tagStrategy = (tagNames) => {
   }
 }
 
-export { mentionStrategy, tagStrategy }
+const textcompleteOptions = {
+  dropdown: {
+    item: {
+      className: 'dropdown-item'
+    }
+  }
+}
+
+export { mentionStrategy, tagStrategy, textcompleteOptions }

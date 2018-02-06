@@ -20,11 +20,11 @@
                 rows: 16,
                 required: true,
                 class: 'form-control',
-                'data-controller': 'autocomplete-content',
+                'data-controller': 'autocomplete--content',
                 'data-action': 'input->preview#input',
-                'data-target': 'autocomplete-content.textarea preview.textarea',
-                'data-autocomplete-content-tag-names': autocomplete_tag_names.to_s,
-                'data-autocomplete-content-user-screen-names': autocomplete_user_screen_names.to_s %>
+                'data-target': 'autocomplete--content.textarea preview.textarea',
+                'data-autocomplete--content-tag-names': autocomplete_tag_names.to_s,
+                'data-autocomplete--content-user-screen-names': autocomplete_user_screen_names.to_s %>
         </div>
       </div>
 
@@ -37,7 +37,7 @@
     <div class="form-group">
       <%= render 'tags/form', tag_names: @form.tag_names, name: 'post_form[tag_names][]' %>
     </div>
-    
+
     <%= f.submit class: 'btn btn-success' %>
   <% end %>
 </div>
