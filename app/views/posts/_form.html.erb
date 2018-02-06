@@ -1,4 +1,4 @@
-<div class="container container-sm">
+<div class="container container-sm mb-3">
   <%= render 'shared/errors', object: @form %>
 
   <%= form_with model: @form, url: polymorphic_path(@form.post), local: true, data: { controller: 'preview' } do |f| %>

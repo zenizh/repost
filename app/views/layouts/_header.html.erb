@@ -1,6 +1,6 @@
-<nav class="navbar mb-3">
-  <div class="container">
-    <div class="w-25">
+<div class="container py-3">
+  <div class="row align-items-center">
+    <div class="col-4">
       <% if current_user %>
         <%= link_to new_post_path, class: 'btn btn-primary' do %>
           <%= mi.mode_edit %> New Post
@@ -8,9 +8,9 @@
       <% end %>
     </div>
 
-    <%= link_to 'Repost', root_path, class: 'navbar-brand mr-0 text-dark' %>
+    <%= link_to 'Repost', root_path, class: 'col-4 text-center text-dark brand' %>
 
-    <div class="text-right w-25">
+    <div class="col-4 text-right">
       <% if current_user %>
         <%= link_to current_user.unread_notifications_count,
               notifications_path,
@@ -22,7 +22,7 @@
                 data: { toggle: 'dropdown' },
                 class: 'rounded-circle' %>
 
-          <div class="dropdown-menu">
+          <div class="dropdown-menu dropdown-menu-right">
             <%= link_to 'Account', edit_account_path, class: 'dropdown-item' %>
 
             <% if current_user.admin? %>
@@ -41,4 +41,4 @@
       <% end %>
     </div>
   </div>
-</nav>
+</div>

@@ -3,28 +3,30 @@
 
   <%= link_to 'New Invitation', new_teams_invitation_path, class: 'btn btn-outline-primary' %>
 
-  <table class="table table-bordered mt-3">
-    <tr>
-      <th>Email</th>
-      <th>Role</th>
-      <th>Invited At</th>
-      <th></th>
-    </tr>
-    <% @users.each do |user| %>
+  <div class="table-responsive">
+    <table class="table table-bordered mt-3">
       <tr>
-        <td><%= user.email %></td>
-        <td class="text-capitalize"><%= user.role %></td>
-        <td><%= l(user.updated_at, format: :short) %></td>
-        <td>
-          <%= link_to 'Resend', teams_invitation_path(user), method: :patch, class: 'btn btn-outline-success btn-sm' %>
-          <%= link_to 'Delete', teams_invitation_path(user),
-                method: :delete,
-                data: { confirm: 'Are you sure?' },
-                class: 'btn btn-outline-danger btn-sm' %>
-        </td>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Invited At</th>
+        <th></th>
       </tr>
-    <% end %>
-  </table>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.email %></td>
+          <td class="text-capitalize"><%= user.role %></td>
+          <td><%= l(user.updated_at, format: :short) %></td>
+          <td>
+            <%= link_to 'Resend', teams_invitation_path(user), method: :patch, class: 'btn btn-outline-success btn-sm' %>
+            <%= link_to 'Delete', teams_invitation_path(user),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' },
+                  class: 'btn btn-outline-danger btn-sm' %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 
   <%= paginate(@users) %>
 </div>

@@ -12,3 +12,14 @@
     @extend .small;
   }
 }
+
+@include media-breakpoint-down(sm) {
+  .calendar {
+    table {
+      th,
+      td {
+        padding: .5rem;
+      }
+    }
+  }
+}
