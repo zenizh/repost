@@ -16,7 +16,7 @@
               notifications_path,
               class: ['btn', current_user.unread_notifications_count == 0 ? 'btn-light' : 'btn-info'] %>
 
-        <div class="dropdown d-inline-block">
+        <div class="dropdown d-inline-block ml-1">
           <%= image_tag current_user.avatar_with_default(size: 72),
                 width: 36,
                 data: { toggle: 'dropdown' },
