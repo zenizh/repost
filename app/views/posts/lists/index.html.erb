@@ -1,18 +1,34 @@
-<%= render 'posts/nav' %>
-<%= render 'posts/search_form' %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= render 'posts/nav' %>
 
-<h1>Posts::Lists#index</h1>
+      <div class="list-group small">
+        <% @posts.each do |post| %>
+          <%= link_to post, class: 'list-group-item list-group-item-action' do %>
+            <span class="mr-1"><%= l(post.posted_on, format: :long) %></span>
 
-<% @posts.each do |post| %>
-  <div>
-    <span>
-      <%= image_tag post.user.avatar_with_default, width: 24 %>
-      <%= post.user.name_with_default %>
-    </span>
-    <%= link_to post.posted_on, post %>
-    <span>Comments: <%= post.comments_count %></span>
-    <span>Likes: <%= post.likes_count %></span>
+            <%= image_tag post.user.avatar_with_default, width: 24, class: 'rounded-circle' %>
+            <%= post.user.name_with_default %>
+
+            <span class="float-right small">
+              <% if post.starred_by?(current_user) %>
+                <span class="text-warning"><%= mi.star %></span>
+              <% end %>
+              <span class="label ml-1"><%= mi.textsms %> <%= post.comments_count %></span>
+              <span class="label ml-1"><%= mi.thumb_up %> <%= post.likes_count %></span>
+            </span>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="mt-3 mb-4">
+        <%= paginate(@posts) %>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <%= render 'posts/search_form' %>
+    </div>
   </div>
-<% end %>
-
-<%= paginate(@posts) %>
+</div>

@@ -1,19 +1,35 @@
-<%= render 'posts/nav' %>
-<%= render 'posts/search_form' %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= render 'posts/nav' %>
 
-<h1>Posts::Calendars#show</h1>
+      <div class="mb-3 text-center">
+        <%= link_to mi.navigate_before,
+              posts_calendar_path({ year: @date.prev_month.year, month: @date.prev_month.month }.merge(search_params)),
+              class: 'btn btn-outline-primary rounded-circle' %>
 
-<div>
-  <%= link_to '&laquo;'.html_safe, posts_calendar_path({ year: @date.prev_month.year, month: @date.prev_month.month }.merge(search_params)) %>
-  <%= @date.strftime('%B %Y') %>
-  <%= link_to '&raquo;'.html_safe, posts_calendar_path({ year: @date.next_month.year, month: @date.next_month.month }.merge(search_params)) %>
+        <%= @date.strftime('%B %Y') %>
+
+        <%= link_to mi.navigate_next,
+              posts_calendar_path({ year: @date.next_month.year, month: @date.next_month.month }.merge(search_params)),
+              class: 'btn btn-outline-primary rounded-circle' %>
+      </div>
+
+      <div class="calendar">
+        <%= carender collection: @posts, column: :posted_on do |date, posts| %>
+          <div class="mb-1"><%= date.day %></div>
+
+          <% posts.each do |post| %>
+            <%= link_to post do %>
+              <%= image_tag post.user.avatar_with_default, width: 18, class: 'rounded-circle' %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <%= render 'posts/search_form' %>
+    </div>
+  </div>
 </div>
-
-<%= carender collection: @posts, column: :posted_on do |date, posts| %>
-  <%= date.day %>
-  <% posts.each do |post| %>
-    <%= link_to post do %>
-      <%= image_tag post.user.avatar_with_default, width: 24 %>
-    <% end %>
-  <% end %>
-<% end %>

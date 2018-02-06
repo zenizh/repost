@@ -18,4 +18,8 @@ module UserDecorator
   def role_label_for_update
     admin? ? 'Remove Admin' : 'Make Admin'
   end
+
+  def unread_notifications_count
+    @count ||= notifications.unread.count
+  end
 end

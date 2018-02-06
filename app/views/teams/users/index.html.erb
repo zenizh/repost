@@ -1,32 +1,33 @@
-<h1>Teams::Users#index</h1>
+<div class="container">
+  <%= render 'teams/nav' %>
+  <%= render 'shared/errors', object: @user %>
 
-<%= render 'shared/errors', object: @user %>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Role</th>
-    <th></th>
-  </tr>
-  <% @users.each do |user| %>
+  <table class="table table-bordered">
     <tr>
-      <td>
-        <%= image_tag user.avatar_with_default, width: 24 %>
-        <%= user.name_with_default %>
-        (@<%= user.screen_name %>)
-      </td>
-      <td><%= user.email %></td>
-      <td><%= user.role %></td>
-      <td>
-        <%= form_with model: user, url: teams_user_path(user), local: true do |f| %>
-          <%= f.hidden_field :role, value: user.role_value_for_update %>
-          <%= f.submit user.role_label_for_update %>
-        <% end %>
-        <%= link_to 'Delete', teams_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %>
-      </td>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th></th>
     </tr>
-  <% end %>
-</table>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= render 'shared/user', user: user %></td>
+        <td><%= user.email %></td>
+        <td class="text-capitalize"><%= user.role %></td>
+        <td>
+          <%= form_with model: user, url: teams_user_path(user), local: true, class: 'd-inline-block' do |f| %>
+            <%= f.hidden_field :role, value: user.role_value_for_update %>
+            <%= f.submit user.role_label_for_update, class: 'btn btn-outline-success btn-sm' %>
+          <% end %>
 
-<%= paginate(@users) %>
+          <%= link_to 'Delete', teams_user_path(user),
+                method: :delete,
+                data: { confirm: 'Are you sure?' },
+                class: 'btn btn-outline-danger btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= paginate(@users) %>
+</div>

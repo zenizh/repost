@@ -1,29 +1,33 @@
-<h1>Teams::Webhooks#index</h1>
+<div class="container">
+  <%= render 'teams/nav' %>
+  <%= link_to 'New Webhook', new_teams_webhook_path, class: 'btn btn-outline-primary' %>
 
-<%= link_to 'New Webhook', new_teams_webhook_path %>
-
-<table>
-  <tr>
-    <th>Service</th>
-    <th>Tag</th>
-    <th>Channel</th>
-    <th>Active</th>
-    <th>On Post</th>
-    <th>On Comment</th>
-    <th></th>
-  </tr>
-  <% @webhooks.each do |webhook| %>
+  <table class="table table-bordered mt-3 webhooks">
     <tr>
-      <td><%= webhook.service %></td>
-      <td><% if webhook.tag %>#<%= webhook.tag.name %><% end %></td>
-      <td>#<%= webhook.channel %></td>
-      <td><% if webhook.active %>&check;<% end %></td>
-      <td><% if webhook.on_post %>&check;<% end %></td>
-      <td><% if webhook.on_comment %>&check;<% end %></td>
-      <td>
-        <%= link_to 'Edit', edit_teams_webhook_path(webhook) %>
-        <%= link_to 'Delete', teams_webhook_path(webhook), method: :delete, data: { confirm: 'Are you sure?' } %>
-      </td>
+      <th>Service</th>
+      <th>Tag</th>
+      <th>Channel</th>
+      <th>Active</th>
+      <th>On Post</th>
+      <th>On Comment</th>
+      <th></th>
     </tr>
-  <% end %>
-</table>
+    <% @webhooks.each do |webhook| %>
+      <tr class="<%= 'bg-light text-muted' unless webhook.active %>">
+        <td><%= webhook.service %></td>
+        <td><% if webhook.tag %><span class="label"><%= mi.local_offer %> <%= webhook.tag.name %></span><% end %></td>
+        <td><span class="label"><span class="label-icon">#</span> <%= webhook.channel %></span></td>
+        <td class="text-center"><%= mi.check if webhook.active %></td>
+        <td class="text-center"><%= mi.check if webhook.on_post %></td>
+        <td class="text-center"><%= mi.check if webhook.on_comment %></td>
+        <td>
+          <%= link_to 'Edit', edit_teams_webhook_path(webhook), class: 'btn btn-outline-primary btn-sm' %>
+          <%= link_to 'Delete', teams_webhook_path(webhook),
+                method: :delete,
+                data: { confirm: 'Are you sure?' },
+                class: 'btn btn-outline-danger btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

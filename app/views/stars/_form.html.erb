@@ -1,8 +1,14 @@
 <span data-controller="button" data-button-is-pressed="<%= post.starred_by?(current_user) %>">
   <%= form_with url: api_post_stars_path(post), data: { target: 'button.press' } do |f| %>
-    <%= f.submit '&#9734;'.html_safe, data: { action: 'click->button#click' } %>
+    <%= f.button mi.star_border,
+          type: :submit,
+          data: { action: 'click->button#click' },
+          class: 'btn btn-text label' %>
   <% end %>
   <%= form_with url: api_post_stars_path(post), method: :delete, data: { target: 'button.unpress' } do |f| %>
-    <%= f.submit '&#9733;'.html_safe, data: { action: 'click->button#click' } %>
+    <%= f.button mi.star,
+          type: :submit,
+          data: { action: 'click->button#click' },
+          class: 'btn btn-text text-warning' %>
   <% end %>
 </span>

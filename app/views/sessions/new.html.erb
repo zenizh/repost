@@ -1,11 +1,23 @@
-<h1>Sessions#new</h1>
+<div class="container container-sm">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Sign in</h4>
 
-<%= form_with url: sessions_path, local: true do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email, required: true %>
-  <%= f.label :password %>
-  <%= f.password_field :password, required: true %>
-  <%= f.submit %>
-<% end %>
+      <%= form_with url: sessions_path, local: true, class: 'mb-2' do |f| %>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, required: true, class: 'form-control' %>
+        </div>
 
-<%= link_to 'Forgot password?', new_users_passwords_resets_path %>
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, required: true, class: 'form-control' %>
+        </div>
+
+        <%= f.submit 'Sign in', class: 'btn btn-success' %>
+      <% end %>
+
+      <%= link_to 'Forgot password?', new_users_passwords_resets_path, class: 'card-text small text-muted' %>
+    </div>
+  </div>
+</div>

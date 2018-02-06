@@ -10,7 +10,7 @@ const mentionStrategy = (screenNames) => {
       }))
     },
     template: (name) => {
-      return `@${sanitizeHtml(name, { allowedTags: [] })}`
+      return `<span class="label"><span class="label-icon">@</span> ${sanitizeHtml(name, { allowedTags: [] })}</span>`
     },
     replace: (name) => {
       return `$1@${name} `
@@ -27,7 +27,7 @@ const tagStrategy = (tagNames) => {
       }))
     },
     template: (name) => {
-      return `#${sanitizeHtml(name, { allowedTags: [] })}`
+      return `<span class="label"><i class="material-icons">local_offer</i> ${sanitizeHtml(name, { allowedTags: [] })}</span>`
     },
     replace: (name) => {
       return `$1#${name} `

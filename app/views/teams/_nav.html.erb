@@ -1,0 +1,5 @@
+<ul class="nav nav-tabs mb-3">
+  <li class="nav-item"><%= link_to 'Users', teams_users_path, class: ['nav-link', ('active' if controller_name == 'users')] %></li>
+  <li class="nav-item"><%= link_to 'Invitations', teams_invitations_path, class: ['nav-link', ('active' if controller_name == 'invitations')] %></li>
+  <li class="nav-item"><%= link_to 'Webhooks', teams_webhooks_path, class: ['nav-link', ('active' if controller_name == 'webhooks')] %></li>
+</ul>

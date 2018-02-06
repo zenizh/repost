@@ -1,0 +1,7 @@
+.webhooks {
+  tr.text-muted {
+    .label {
+      @extend .label-muted;
+    }
+  }
+}

@@ -1,5 +1,17 @@
-<div>
-  <%= link_to 'Post View', posts_path(search_params) %>
-  <%= link_to 'List View', posts_lists_path(search_params) %>
-  <%= link_to 'Calendar View', posts_calendar_path({ year: Date.today.year, month: Date.today.month }.merge(search_params)) %>
-</div>
+<ul class="nav nav-tabs mb-3">
+  <li class="nav-item">
+    <%= link_to posts_path(search_params), class: ['nav-link', ('active' if controller_name == 'posts')] do %>
+      <%= mi.view_stream %> Timeline
+    <% end %>
+  </li>
+  <li class="nav-item">
+    <%= link_to posts_lists_path(search_params), class: ['nav-link', ('active' if controller_name == 'lists')] do %>
+      <%= mi.view_headline %> List
+    <% end %>
+  </li>
+  <li class="nav-item">
+    <%= link_to posts_calendar_path({ year: Date.today.year, month: Date.today.month }.merge(search_params)), class: ['nav-link', ('active' if controller_name == 'calendars')] do %>
+      <%= mi.view_module %> Calendar
+    <% end %>
+  </li>
+</ul>

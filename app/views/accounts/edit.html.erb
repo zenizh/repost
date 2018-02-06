@@ -1,18 +1,41 @@
-<h1>Accounts#new</h1>
+<div class="container container-sm">
+  <h3 class="mb-3">Edit Account</h3>
 
-<%= render 'shared/errors', object: current_user %>
+  <%= render 'shared/errors', object: current_user %>
 
-<%= form_with model: current_user, url: account_path, local: true do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email, required: true %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :screen_name %>
-  <%= f.text_field :screen_name, required: true %>
-  <%= image_tag current_user.avatar_with_default(size: 128), width: 64 %>
-  <%= f.label :avatar %>
-  <%= f.file_field :avatar %>
-  <%= f.submit %>
-<% end %>
+  <%= form_with model: current_user, url: account_path, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.email_field :email, required: true, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :screen_name %>
+      <%= f.text_field :screen_name, required: true, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :avatar, class: 'd-block' %>
+      <%= image_tag current_user.avatar_with_default(size: 128),
+            width: 64,
+            class: 'mb-2 rounded' %>
+
+      <div class="custom-file">
+        <%= f.file_field :avatar, class: 'custom-file-input' %>
+        <span class="custom-file-label">Choose avatar...</span>
+      </div>
+    </div>
+
+    <%= f.submit class: 'btn btn-success' %>
+  <% end %>
+</div>

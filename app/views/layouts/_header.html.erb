@@ -1,18 +1,44 @@
-<%= link_to 'Home', root_path %>
+<nav class="navbar mb-3">
+  <div class="container">
+    <div class="w-25">
+      <% if current_user %>
+        <%= link_to new_post_path, class: 'btn btn-primary' do %>
+          <%= mi.mode_edit %> New Post
+        <% end %>
+      <% end %>
+    </div>
 
-<% if current_user&.admin? %>
-  <%= link_to 'Users', teams_users_path %>
-  <%= link_to 'Invitations', teams_invitations_path %>
-  <%= link_to 'Webhooks', teams_webhooks_path %>
-<% end %>
+    <%= link_to 'Repost', root_path, class: 'navbar-brand mr-0 text-dark' %>
 
-<% if current_user %>
-  <%= link_to 'New Post', new_post_path %>
-  <%= link_to 'Account', edit_account_path %>
-  <%= link_to 'Sign out', sign_out_path, method: :delete %>
-  <%= image_tag current_user.avatar_with_default, width: 24 %>
-  <%= link_to current_user.notifications.unread.count, notifications_path %>
-  <%= current_user.email %>
-<% else %>
-  <%= link_to 'Sign in', sign_in_path %>
-<% end %>
+    <div class="text-right w-25">
+      <% if current_user %>
+        <%= link_to current_user.unread_notifications_count,
+              notifications_path,
+              class: ['btn', current_user.unread_notifications_count == 0 ? 'btn-light' : 'btn-info'] %>
+
+        <div class="dropdown d-inline-block">
+          <%= image_tag current_user.avatar_with_default(size: 72),
+                width: 36,
+                data: { toggle: 'dropdown' },
+                class: 'rounded-circle' %>
+
+          <div class="dropdown-menu">
+            <%= link_to 'Account', edit_account_path, class: 'dropdown-item' %>
+
+            <% if current_user.admin? %>
+              <div class="dropdown-divider"></div>
+              <%= link_to 'Users', teams_users_path, class: 'dropdown-item' %>
+              <%= link_to 'Invitations', teams_invitations_path, class: 'dropdown-item' %>
+              <%= link_to 'Webhooks', teams_webhooks_path, class: 'dropdown-item' %>
+            <% end %>
+
+            <div class="dropdown-divider"></div>
+            <%= link_to 'Sign out', sign_out_path, method: :delete, class: 'dropdown-item' %>
+          </div>
+        </div>
+      <% else %>
+        <%= link_to 'Sign in', sign_in_path, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</nav>

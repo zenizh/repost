@@ -1,0 +1,10 @@
+.content {
+  line-height: 1.8;
+
+  h2 {
+    @extend .mt-4;
+    @extend .mb-2;
+    font-size: $h5-font-size;
+    font-weight: normal;
+  }
+}

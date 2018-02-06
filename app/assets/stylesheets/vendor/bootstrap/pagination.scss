@@ -1,0 +1,40 @@
+.pagination {
+  @extend .justify-content-center;
+
+  a {
+    @extend .page-link;
+  }
+
+  span {
+    @extend .page-item;
+  }
+
+  .current {
+    @extend .page-link;
+    z-index: 1;
+    background-color: $pagination-active-bg;
+    border-color: $pagination-active-border-color;
+    color: $pagination-active-color;
+    cursor: default !important;
+
+    &:hover {
+      background-color: $pagination-active-bg;
+      border-color: $pagination-active-border-color;
+      color: $pagination-active-color;
+    }
+  }
+
+  .gap {
+    @extend .page-link;
+    background-color: $pagination-disabled-bg;
+    border-color: $pagination-disabled-border-color;
+    color: $pagination-disabled-color;
+    cursor: default !important;
+
+    &:hover {
+      background-color: $pagination-disabled-bg;
+      border-color: $pagination-disabled-border-color;
+      color: $pagination-disabled-color;
+    }
+  }
+}

@@ -5,7 +5,13 @@ import { mentionStrategy, tagStrategy } from '../strategies/autocomplete'
 export default class extends Controller {
   connect() {
     const editor = new Textarea(this.textarea)
-    const textcomplete = new Textcomplete(editor)
+    const textcomplete = new Textcomplete(editor, {
+      dropdown: {
+        item: {
+          className: 'dropdown-item'
+        }
+      }
+    })
 
     textcomplete.register([
       mentionStrategy(this.userScreenNames),

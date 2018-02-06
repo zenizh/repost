@@ -1,0 +1,20 @@
+$display5-size: 2.5rem;
+$display6-size: 1.5rem;
+$display5-weight: 300;
+$display6-weight: 300;
+
+.display-5 {
+  font-size: $display5-size;
+  font-weight: $display5-weight;
+  line-height: $display-line-height;
+}
+
+.display-6 {
+  font-size: $display6-size;
+  font-weight: $display6-weight;
+  line-height: $display-line-height;
+}
+
+.lead-sm {
+  font-size: $font-size-base;
+}

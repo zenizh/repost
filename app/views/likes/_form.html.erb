@@ -1,8 +1,12 @@
 <span data-controller="button" data-button-is-pressed="<%= likable.liked_by?(current_user) %>">
   <%= form_with url: url, data: { target: 'button.press' } do |f| %>
-    <%= f.submit '&#9825;'.html_safe, data: { action: 'click->button#click' } %>
+    <%= f.button mi.thumb_up,
+          data: { action: 'click->button#click' },
+          class: 'btn btn-outline-warning rounded-circle' %>
   <% end %>
   <%= form_with url: url, method: :delete, data: { target: 'button.unpress' } do |f| %>
-    <%= f.submit '&#9829;'.html_safe, data: { action: 'click->button#click' } %>
+    <%= f.button mi.thumb_up,
+          data: { action: 'click->button#click' },
+          class: 'btn btn-warning rounded-circle' %>
   <% end %>
 </span>

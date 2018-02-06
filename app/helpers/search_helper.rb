@@ -10,6 +10,7 @@ module SearchHelper
         params[attribute].delete(value)
         active = true
       else
+        active = true if params[attribute].empty?
         params[attribute] << value
       end
     when :boolean
@@ -21,7 +22,7 @@ module SearchHelper
       end
     end
 
-    link_to url_for(params), class: ('active' if active) do
+    link_to url_for(params), class: ['label-light small', ('active' if active)] do
       block.call
     end
   end

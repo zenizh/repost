@@ -1,11 +1,17 @@
-<h1>Notifications#index</h1>
+<div class="container container-sm">
+  <h3 class="mb-3">Notifications</h3>
 
-<% @notifications.each do |notification| %>
-  <%= link_to notification.url do %>
-    <%= image_tag notification.image, width: 24 %>
-    <%= notification.content %>
-    <%= time_ago_in_words(notification.created_at) %> ago
-  <% end %>
-<% end %>
+  <div class="list-group mb-3">
+    <% @notifications.each do |notification| %>
+      <%= link_to notification.url, class: 'list-group-item list-group-item-action' do %>
+        <%= image_tag notification.image, width: 24, class: 'rounded-circle' %>
+        <%= notification.content %>
+        <div class="small text-muted text-right">
+          <%= time_ago_in_words(notification.created_at) %> ago
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 
-<%= paginate(@notifications) %>
+  <%= paginate(@notifications) %>
+</div>

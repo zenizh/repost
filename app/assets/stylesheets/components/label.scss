@@ -1,0 +1,37 @@
+.label {
+  color: $gray-700;
+
+  &-icon,
+  .material-icons {
+    color: $gray-600;
+  }
+
+  &-muted {
+    color: $gray-600;
+
+    .label-icon,
+    .material-icons {
+      color: $gray-500;
+    }
+  }
+
+  &-light {
+    color: $gray-500;
+
+    .label-icon,
+    .material-icons {
+      color: $gray-400;
+    }
+  }
+
+  &-hover {
+    &:hover {
+      color: $gray-700;
+
+      .label-icon,
+      .material-icons {
+        color: $gray-600;
+      }
+    }
+  }
+}

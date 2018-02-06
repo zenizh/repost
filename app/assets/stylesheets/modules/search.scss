@@ -1,0 +1,30 @@
+.search-form {
+  a {
+    @extend .mb-1;
+
+    img {
+      opacity: .5;
+    }
+
+    &.active,
+    &:hover {
+      img {
+        opacity: 1;
+      }
+    }
+  }
+
+  .label-light {
+    &:hover,
+    &.active {
+      @extend .label;
+    }
+  }
+
+  .two-column {
+    a {
+      @extend .col-6;
+      display: inline-block !important;
+    }
+  }
+}

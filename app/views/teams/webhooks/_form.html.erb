@@ -1,22 +1,71 @@
-<%= render 'shared/errors', object: @form %>
+<div class="container">
+  <%= render 'teams/nav' %>
 
-<%= form_with model: @form, scope: :webhook, url: polymorphic_path([:teams, @form.webhook.becomes(Webhook)]), local: true do |f| %>
-  <%= f.label :type %>
-  <%= f.select :type, webhook_types_for_select %>
-  <%= f.label :tag_name %>
-  <%= f.text_field :tag_name, autocomplete: 'off',
-    'data-controller': 'autocomplete-tag',
-    'data-target': 'autocomplete-tag.textarea',
-    'data-autocomplete-tag-tag-names': autocomplete_tag_names.to_s %>
-  <%= f.label :url %>
-  <%= f.text_field :url %>
-  <%= f.label :channel %>
-  <%= f.text_field :channel %>
-  <%= f.label :active %>
-  <%= f.check_box :active %>
-  <%= f.label :on_post %>
-  <%= f.check_box :on_post %>
-  <%= f.label :on_comment %>
-  <%= f.check_box :on_comment %>
-  <%= f.submit %>
-<% end %>
+  <div class="container container-sm">
+    <%= render 'shared/errors', object: @form %>
+
+    <%= form_with model: @form, scope: :webhook, url: polymorphic_path([:teams, @form.webhook.becomes(Webhook)]), local: true do |f| %>
+      <div class="form-group">
+        <%= f.label :type %>
+        <%= f.select :type, webhook_types_for_select, {}, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :url %>
+        <%= f.text_field :url, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :tag_name %>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><%= mi.local_offer %></span>
+          </div>
+
+          <%= f.text_field :tag_name,
+                autocomplete: 'off',
+                class: 'form-control',
+                'data-controller': 'autocomplete-tag',
+                'data-target': 'autocomplete-tag.textarea',
+                'data-autocomplete-tag-tag-names': autocomplete_tag_names.to_s %>
+        </div>
+
+        <p class="form-text small text-muted">
+          Posts with the tag specified here will be notified, otherwise all posts will be notified.
+        </p>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :channel %>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">#</span>
+          </div>
+
+          <%= f.text_field :channel, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-check">
+          <%= f.check_box :active, class: 'form-check-input' %>
+          <%= f.label :active, class: 'form-check-label' %>
+        </div>
+
+        <div class="form-check">
+          <%= f.check_box :on_post, class: 'form-check-input' %>
+          <%= f.label :on_post, class: 'form-check-label' %>
+        </div>
+
+        <div class="form-check">
+          <%= f.check_box :on_comment, class: 'form-check-input' %>
+          <%= f.label :on_comment, class: 'form-check-label' %>
+        </div>
+      </div>
+
+      <%= f.submit class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>

@@ -1,17 +1,43 @@
-<%= render 'shared/errors', object: @form %>
+<div class="container container-sm">
+  <%= render 'shared/errors', object: @form %>
 
-<%= form_with model: @form, url: polymorphic_path(@form.post), local: true, data: { controller: 'preview' } do |f| %>
-  <%= f.label :posted_on %>
-  <%= f.date_field :posted_on, required: true %>
-  <%= f.label :content %>
-  <%= f.text_area :content, required: true,
-    'data-controller': 'autocomplete-content',
-    'data-action': 'input->preview#input',
-    'data-target': 'autocomplete-content.textarea preview.textarea',
-    'data-autocomplete-content-tag-names': autocomplete_tag_names.to_s,
-    'data-autocomplete-content-user-screen-names': autocomplete_user_screen_names.to_s %>
-  <%= render 'tags/form', tag_names: @form.tag_names, name: 'post_form[tag_names][]' %>
-  <%= f.submit %>
-  <div data-target="preview.body">
-  </div>
-<% end %>
+  <%= form_with model: @form, url: polymorphic_path(@form.post), local: true, data: { controller: 'preview' } do |f| %>
+    <div class="form-group">
+      <%= f.label :posted_on %>
+      <%= f.date_field :posted_on, required: true, class: 'form-control' %>
+    </div>
+
+    <ul class="nav nav-tabs mb-2">
+      <li class="nav-item"><a href="#write" data-toggle="tab" class="nav-link active">Write</a></li>
+      <li class="nav-item"><a href="#preview" data-toggle="tab" class="nav-link">Preview</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="write" class="tab-pane active">
+        <div class="form-group">
+          <%= f.label :content %>
+          <%= f.text_area :content,
+                rows: 16,
+                required: true,
+                class: 'form-control',
+                'data-controller': 'autocomplete-content',
+                'data-action': 'input->preview#input',
+                'data-target': 'autocomplete-content.textarea preview.textarea',
+                'data-autocomplete-content-tag-names': autocomplete_tag_names.to_s,
+                'data-autocomplete-content-user-screen-names': autocomplete_user_screen_names.to_s %>
+        </div>
+      </div>
+
+      <div id="preview" class="tab-pane">
+        <div data-target="preview.body" class="content mt-3">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= render 'tags/form', tag_names: @form.tag_names, name: 'post_form[tag_names][]' %>
+    </div>
+    
+    <%= f.submit class: 'btn btn-success' %>
+  <% end %>
+</div>

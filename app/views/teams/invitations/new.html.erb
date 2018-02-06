@@ -1,12 +1,23 @@
-<h1>Teams::Invitations#new</h1>
+<div class="container">
+  <%= render 'teams/nav' %>
 
-<%= render 'shared/errors', object: @user %>
+  <div class="container container-sm">
+    <%= render 'shared/errors', object: @user %>
 
-<%= form_with model: @user, url: teams_invitations_path, local: true do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email, required: true %>
-  <%= f.label :role %>
-  <%= f.select :role, User.roles.keys %>
-  <%= f.hidden_field :password %>
-  <%= f.submit %>
-<% end %>
+    <%= form_with model: @user, url: teams_invitations_path, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, required: true, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :role %>
+        <%= f.select :role, User.roles.keys, {}, class: 'form-control' %>
+      </div>
+
+      <%= f.hidden_field :password %>
+
+      <%= f.submit class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>

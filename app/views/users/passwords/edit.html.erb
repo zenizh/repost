@@ -1,10 +1,23 @@
-<h1>Users::Passwords#edit</h1>
+<div class="container container-sm">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Edit password</h4>
 
-<%= form_with model: @user, url: users_password_path(@user), local: true do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email, disabled: true %>
-  <%= f.label :password %>
-  <%= f.password_field :password, required: true %>
-  <%= hidden_field_tag :token, @token %>
-  <%= f.submit %>
-<% end %>
+      <%= form_with model: @user, url: users_password_path(@user), local: true do |f| %>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, disabled: true, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, required: true, class: 'form-control' %>
+        </div>
+
+        <%= hidden_field_tag :token, @token %>
+
+        <%= f.submit class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
+</div>

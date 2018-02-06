@@ -1,0 +1,11 @@
+.btn-text {
+  padding: 0;
+  background: none;
+  border: none;
+  line-height: inherit;
+  vertical-align: baseline;
+
+  &:focus {
+    outline: none;
+  }
+}

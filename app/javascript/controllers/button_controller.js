@@ -13,9 +13,9 @@ export default class extends Controller {
   render() {
     if (this.isPressed) {
       this.press.style.display = 'none'
-      this.unpress.style.display = 'block'
+      this.unpress.style.display = 'inline'
     } else {
-      this.press.style.display = 'block'
+      this.press.style.display = 'inline'
       this.unpress.style.display = 'none'
     }
   }

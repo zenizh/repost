@@ -1,0 +1,14 @@
+.calendar {
+  table {
+    @extend .table;
+    @extend .table-bordered;
+  }
+
+  th {
+    width: 14.3%;
+  }
+
+  td {
+    @extend .small;
+  }
+}

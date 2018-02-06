@@ -5,7 +5,7 @@ class Posts::ListsController < ApplicationController
 
   def index
     @posts = @form.search
-      .includes(user: { avatar_attachment: :blob })
+      .includes(:stars, user: { avatar_attachment: :blob })
       .order(posted_on: :desc, created_at: :desc)
       .page(params[:page])
       .per(100)

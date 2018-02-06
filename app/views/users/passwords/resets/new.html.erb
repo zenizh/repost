@@ -1,7 +1,16 @@
-<h1>Users::Passwords::Resets#new</h1>
+<div class="container container-sm">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Reset password</h4>
 
-<%= form_with url: users_passwords_resets_path, local: true do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email, required: true %>
-  <%= f.submit %>
-<% end %>
+      <%= form_with url: users_passwords_resets_path, local: true do |f| %>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, required: true, class: 'form-control' %>
+        </div>
+
+        <%= f.submit class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 class Tag < ApplicationRecord
+  has_many :taggings, dependent: :destroy
+
   NAME_FORMAT = /\A\w+\z/
 
   validates :name, presence: true, format: { with: NAME_FORMAT }

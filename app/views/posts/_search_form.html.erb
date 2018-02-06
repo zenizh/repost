@@ -1,31 +1,52 @@
 <% if search_params.present? %>
-  <%= link_to 'Clear conditions', url_for %>
+  <%= link_to url_for, class: 'btn btn-info btn-block mb-3' do %>
+    <%= mi.clear %> Clear Conditions
+  <% end %>
 <% end %>
 
-<%= form_tag url_for, method: :get do %>
-  <%= text_field_tag :text, @form.text %>
+<%= form_tag url_for, method: :get, class: 'mb-3' do %>
+  <%= text_field_tag :text, @form.text, class: 'form-control', placeholder: 'Search Repost...' %>
+
   <% @form.users.each do |user| %>
     <%= hidden_field_tag 'users[]', user %>
   <% end %>
+
   <% @form.tags.each do |tag| %>
     <%= hidden_field_tag 'tags[]', tag %>
   <% end %>
+
   <%= hidden_field_tag 'starred', @form.starred %>
-  <%= submit_tag 'Search' %>
 <% end %>
 
-<% @users.each do |user| %>
-  <%= link_to_search_by :users, :array, user.screen_name  do %>
-    <%= image_tag user.avatar_with_default, width: 24 %>
+<div class="search-form">
+  <ul class="list-unstyled">
+    <li>
+      <%= link_to_search_by :users, :array, current_user.screen_name do %>
+        <%= mi.person %> My Posts
+      <% end %>
+    </li>
+    <li>
+      <%= link_to_search_by :starred, :boolean do %>
+        <%= mi.star %> Only Starred Posts
+      <% end %>
+    </li>
+  </ul>
+
+  <span class="d-block mb-2 small text-uppercase">Tags</span>
+
+  <div class="row two-column">
+    <% @tags.each do |tag| %>
+      <%= link_to_search_by :tags, :array, tag.name do %>
+        <%= mi.local_offer %> <%= tag.name %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <span class="d-block mt-3 mb-2 small text-uppercase">Users</span>
+
+  <% @users.each do |user| %>
+    <%= link_to_search_by :users, :array, user.screen_name  do %>
+      <%= image_tag user.avatar_with_default, width: 24, class: 'rounded-circle' %>
+    <% end %>
   <% end %>
-<% end %>
-
-<% @tags.each do |tag| %>
-  <%= link_to_search_by :tags, :array, tag.name do %>
-    #<%= tag.name %>
-  <% end %>
-<% end %>
-
-<%= link_to_search_by :starred, :boolean do %>
-  Starred
-<% end %>
+</div>

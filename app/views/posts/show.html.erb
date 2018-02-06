@@ -1,8 +1,13 @@
-<h1>Posts#show</h1>
+<div class="container container-sm">
+  <div class="mt-4 mb-5 show-post">
+    <%= render @post %>
+  </div>
 
-<%= render @post %>
+  <div class="list-group mb-4">
+    <%= render partial: 'posts/comments/comment', collection: @post.comments %>
 
-<h2>Comments</h2>
-
-<%= render partial: 'posts/comments/comment', collection: @post.comments %>
-<%= render 'posts/comments/form', comment: @post.comments.new %>
+    <div class="list-group-item py-3">
+      <%= render 'posts/comments/form', comment: @post.comments.new %>
+    </div>
+  </div>
+</div>

@@ -1,28 +1,42 @@
-<div>
-  <span>
-    <%= image_tag post.user.avatar_with_default, width: 24 %>
-    <%= post.user.name_with_default %>
-    (@<%= post.user.screen_name %>)
-  </span>
-  <%= link_to post.posted_on, post %>
-  <div>
-    <%= sanitize(markdown(post.content)) %>
+<div class="clearfix">
+  <div class="float-left">
+    <%= render 'shared/user', user: post.user %>
   </div>
-  <span>Comments: <%= post.comments_count %></span>
-  <span>Likes: <%= post.likes_count %></span>
-  <%= render 'stars/form', post: post %>
-  <%= render 'likes/form', likable: post, url: api_post_likes_path(post) %>
-  <% if post.tags.any? %>
-    <div>
-      <% post.tags.each do |tag| %>
-        <span>#<%= tag.name %></span>
-      <% end %>
+
+  <% if post.user == current_user %>
+    <div class="float-right">
+      <%= link_to mi.mode_edit, edit_post_path(post), class: 'label-muted label-hover' %>
+      <%= link_to mi.delete, post,
+            method: :delete,
+            data: { confirm: 'Are you sure?' },
+            class: 'label-muted label-hover' %>
     </div>
   <% end %>
-  <% if post.user == current_user %>
-    <span>
-      <%= link_to 'Edit', edit_post_path(post) %>
-      <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </span>
-  <% end %>
+</div>
+
+<h5 class="card-title mt-3 mb-4">
+  <%= link_to l(post.posted_on, format: :long), post, class: 'text-dark' %>
+</h5>
+
+<div class="card-text content">
+  <%= sanitize(markdown(post.content)) %>
+</div>
+
+<% if post.tags.any? %>
+  <div class="mt-3 mb-4">
+    <% post.tags.each do |tag| %>
+      <%= link_to posts_path(tags: [tag.name]), class: 'btn btn-light btn-sm label-muted' do %>
+        <%= mi.local_offer %> <%= tag.name %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render 'likes/form', likable: post, url: api_post_likes_path(post) %>
+<span class="small text-muted"><%= post.likes_count %></span>
+
+<div class="float-right small text-muted">
+  <%= render 'stars/form', post: post %>
+  <span class="label-muted ml-1"><%= mi.textsms %> <%= post.comments_count %></span>
+  <span class="ml-1"><%= l(post.created_at, format: :short) %></span>
 </div>

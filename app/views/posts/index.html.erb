@@ -1,7 +1,34 @@
-<%= render 'nav' %>
-<%= render 'search_form' %>
+<div class="container">
+  <% if search_params.empty? && !current_user.posts.exists?(posted_on: Date.current) %>
+    <div class="jumbotron">
+      <h2 class="display-6">How's your day?</h2>
+      <p class="lead lead-sm">
+        You haven't posted a today's daily report yet.
+        Post a daily report and make opportunities to better understand each other with team members.
+      </p>
+      <%= link_to 'New Post', new_post_path, class: 'btn btn-outline-primary' %>
+    </div>
+  <% end %>
 
-<h1>Posts#index</h1>
+  <div class="row">
+    <div class="col">
+      <%= render 'nav' %>
 
-<%= render @posts %>
-<%= paginate(@posts) %>
+      <% @posts.each do |post| %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <%= render post %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="mb-4">
+        <%= paginate(@posts) %>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <%= render 'search_form' %>
+    </div>
+  </div>
+</div>
