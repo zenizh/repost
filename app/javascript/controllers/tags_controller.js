@@ -1,13 +1,15 @@
 import { Controller } from 'stimulus'
 
 export default class extends Controller {
-  connect() {
-    this.default.forEach(name => this.add(name))
+  static targets = ['input', 'names', 'template']
+
+  initialize() {
+    this.defaultNames.forEach(name => this.add(name))
   }
 
   keypress(e) {
     if (e.key == 'Enter') {
-      if (this.input.value == '') {
+      if (this.inputTarget.value == '') {
         return e.preventDefault()
       }
 
@@ -16,7 +18,7 @@ export default class extends Controller {
         return e.preventDefault()
       }
 
-      this.add(this.input.value)
+      this.add(this.inputTarget.value)
       this.clear()
 
       e.preventDefault()
@@ -24,42 +26,30 @@ export default class extends Controller {
   }
 
   add(name) {
-    const tag = document.importNode(this.template, true)
+    const tag = document.importNode(this.templateTarget, true)
     const input = tag.content.querySelector('input')
     input.value = name
-    this.list.appendChild(tag.content)
+    this.namesTarget.appendChild(tag.content)
   }
 
   remove(e) {
-    this.list.removeChild(e.target.parentNode)
+    this.namesTarget.removeChild(e.target.parentNode)
   }
 
   clear() {
-    this.input.value = ''
+    this.inputTarget.value = ''
   }
 
   isExists() {
-    for (let input of this.list.querySelectorAll('input')) {
-      if (input.value == this.input.value) {
+    for (let input of this.namesTarget.querySelectorAll('input')) {
+      if (input.value == this.inputTarget.value) {
         return true
       }
     }
     return false
   }
 
-  get template() {
-    return this.element.querySelector('template')
-  }
-
-  get default() {
-    return JSON.parse(this.data.get('default'))
-  }
-
-  get list() {
-    return this.targets.find('list')
-  }
-
-  get input() {
-    return this.targets.find('input')
+  get defaultNames() {
+    return JSON.parse(this.data.get('defaultNames'))
   }
 }
