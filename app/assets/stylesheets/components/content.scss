@@ -1,10 +1,39 @@
 .content {
   line-height: 1.8;
 
+  blockquote {
+    @extend .bg-light;
+    @extend .pt-3;
+    @extend .px-3;
+    @extend .rounded;
+    padding-bottom: .001rem;
+  }
+
+  h1 {
+    @extend .border-bottom;
+    @extend .mt-4;
+    @extend .mb-3;
+    @extend .pb-1;
+    font-size: $h4-font-size;
+    font-weight: normal;
+  }
+
   h2 {
     @extend .mt-4;
     @extend .mb-2;
     font-size: $h5-font-size;
     font-weight: normal;
+  }
+
+  h3 {
+    @extend .mt-4;
+    @extend .mb-2;
+    font-size: $h6-font-size;
+    font-weight: bold;
+  }
+
+  ol,
+  ul {
+    padding-left: 1.75rem;
   }
 }
