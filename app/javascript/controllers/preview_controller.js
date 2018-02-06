@@ -3,7 +3,9 @@ import marked from 'marked'
 import sanitizeHtml from 'sanitize-html'
 
 export default class extends Controller {
-  connect() {
+  static targets = ['body', 'textarea']
+
+  initialize() {
     this.render()
   }
 
@@ -12,16 +14,8 @@ export default class extends Controller {
   }
 
   render() {
-    this.body.innerHTML = sanitizeHtml(marked(this.textarea.value), {
+    this.bodyTarget.innerHTML = sanitizeHtml(marked(this.textareaTarget.value), {
       allowedTags: sanitizeHtml.defaults.allowedTags.concat(['h1', 'h2', 'del'])
     })
-  }
-
-  get body() {
-    return this.targets.find('body')
-  }
-
-  get textarea() {
-    return this.targets.find('textarea')
   }
 }
