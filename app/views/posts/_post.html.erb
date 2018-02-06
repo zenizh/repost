@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-between mb-4">
   <div>
     <%= render 'shared/user', user: post.user %>
   </div>
@@ -14,16 +14,16 @@
   <% end %>
 </div>
 
-<h5 class="card-title mt-3 mb-4">
+<h4 class="card-title mb-4">
   <%= link_to l(post.posted_on, format: :long), post, class: 'text-dark' %>
-</h5>
+</h4>
 
-<div class="card-text content">
+<div class="card-text content mb-4">
   <%= sanitize(markdown(post.content)) %>
 </div>
 
 <% if post.tags.any? %>
-  <div class="mt-3 mb-4">
+  <div class="mb-3">
     <% post.tags.each do |tag| %>
       <%= link_to posts_path(tags: [tag.name]), class: 'btn btn-light btn-sm label-muted' do %>
         <%= mi.local_offer %> <%= tag.name %>

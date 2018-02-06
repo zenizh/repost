@@ -1,11 +1,5 @@
 .show-post {
-  .card-title {
-    @extend .mb-5;
-    font-size: $h4-font-size;
-  }
-
   .content {
-    @extend .mb-5;
-    font-size: 1rem;
+    font-size: $font-size-base * 1.05;
   }
 }
