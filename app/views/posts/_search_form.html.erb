@@ -1,11 +1,18 @@
 <% if search_params.present? %>
-  <%= link_to url_for, class: 'btn btn-info btn-block mb-3' do %>
-    <%= mi.clear %> Clear Conditions
-  <% end %>
+  <div class="form-group">
+    <%= link_to url_for, class: 'btn btn-info btn-block' do %>
+      <%= mi.clear %> Clear Conditions
+    <% end %>
+  </div>
 <% end %>
 
 <%= form_tag url_for, method: :get, class: 'mb-3' do %>
-  <%= text_field_tag :text, @form.text, class: 'form-control', placeholder: 'Search Repost...' %>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><%= mi.search %></span>
+    </div>
+    <%= search_field_tag :text, @form.text, class: 'form-control', placeholder: 'Search Repost...' %>
+  </div>
 
   <% @form.users.each do |user| %>
     <%= hidden_field_tag 'users[]', user %>
@@ -18,8 +25,8 @@
   <%= hidden_field_tag 'starred', @form.starred %>
 <% end %>
 
-<div class="search mb-4">
-  <ul class="list-unstyled search-labels">
+<div class="form-group search-labels">
+  <ul class="list-unstyled">
     <li>
       <%= link_to_search_by_user current_user do %>
         <%= mi.person %> My Posts
@@ -31,19 +38,23 @@
       <% end %>
     </li>
   </ul>
+</div>
 
-  <span class="d-block mb-2 small text-uppercase">Tags</span>
-
-  <div class="row search-labels">
+<div class="border-top form-group pt-3 search-labels">
+  <label class="d-block small text-muted text-uppercase">Tags</label>
+  <div class="row">
     <% @tags.each do |tag| %>
-      <%= link_to_search_by_tag tag do %>
-        <%= mi.local_offer %> <%= tag.name %>
-      <% end %>
+      <div class="col-6">
+        <%= link_to_search_by_tag tag do %>
+          <%= mi.local_offer %> <%= tag.name %>
+        <% end %>
+      </div>
     <% end %>
   </div>
+</div>
 
-  <span class="d-block mt-3 mb-2 small text-uppercase">Users</span>
-
+<div class="border-top form-group pt-3 search-images">
+  <label class="d-block small text-muted text-uppercase">Users</label>
   <% @users.each do |user| %>
     <%= link_to_search_by_user user do %>
       <%= image_tag user.avatar_with_default, width: 24, class: 'rounded-circle' %>

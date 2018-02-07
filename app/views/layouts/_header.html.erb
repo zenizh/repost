@@ -1,47 +1,49 @@
-<div class="container py-3">
-  <div class="row align-items-center">
-    <div class="col-4">
-      <% if current_user %>
-        <%= link_to new_post_path, class: 'btn btn-primary' do %>
-          <%= mi.mode_edit %> New Post
+<div class="border-bottom py-3">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-4">
+        <% if current_user %>
+          <%= link_to new_post_path, class: 'btn btn-primary' do %>
+            <%= mi.mode_edit %> New Post
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
 
-    <%= link_to 'Repost', root_path, class: 'col-4 text-center text-dark brand' %>
+      <%= link_to 'Repost', root_path, class: 'col-4 text-center text-dark brand' %>
 
-    <div class="col-4 text-right">
-      <% if current_user %>
-        <%= link_to current_user.unread_notifications_count,
-              notifications_path,
-              class: ['btn', current_user.unread_notifications_count == 0 ? 'btn-light' : 'btn-info'] %>
+      <div class="col-4 text-right">
+        <% if current_user %>
+          <%= link_to current_user.unread_notifications_count,
+                notifications_path,
+                class: ['btn', current_user.unread_notifications_count == 0 ? 'btn-light' : 'btn-info'] %>
 
-        <div class="dropdown d-inline-block ml-1">
-          <%= image_tag current_user.avatar_with_default(size: 72),
-                width: 36,
-                data: { toggle: 'dropdown' },
-                class: 'rounded-circle' %>
+          <div class="dropdown d-inline-block ml-1">
+            <%= image_tag current_user.avatar_with_default(size: 72),
+                  width: 36,
+                  data: { toggle: 'dropdown' },
+                  class: 'rounded-circle' %>
 
-          <div class="dropdown-menu dropdown-menu-right">
-            <%= link_to 'Account', edit_account_path, class: 'dropdown-item' %>
+            <div class="dropdown-menu dropdown-menu-right">
+              <%= link_to 'Account', edit_account_path, class: 'dropdown-item' %>
 
-            <% if current_user.admin? %>
+              <% if current_user.admin? %>
+                <div class="dropdown-divider"></div>
+                <%= link_to 'Users', teams_users_path, class: 'dropdown-item' %>
+                <%= link_to 'Invitations', teams_invitations_path, class: 'dropdown-item' %>
+                <%= link_to 'Webhooks', teams_webhooks_path, class: 'dropdown-item' %>
+              <% end %>
+
               <div class="dropdown-divider"></div>
-              <%= link_to 'Users', teams_users_path, class: 'dropdown-item' %>
-              <%= link_to 'Invitations', teams_invitations_path, class: 'dropdown-item' %>
-              <%= link_to 'Webhooks', teams_webhooks_path, class: 'dropdown-item' %>
-            <% end %>
-
-            <div class="dropdown-divider"></div>
-            <%= link_to 'https://github.com/kami-zh/repost/issues/new', target: :blank, class: 'dropdown-item' do %>
-              Feedback <span class="text-muted"><%= mi.open_in_new %></span>
-            <% end %>
-            <%= link_to 'Sign out', sign_out_path, method: :delete, class: 'dropdown-item' %>
+              <%= link_to 'https://github.com/kami-zh/repost/issues/new', target: :blank, class: 'dropdown-item' do %>
+                Feedback <span class="text-muted"><%= mi.open_in_new %></span>
+              <% end %>
+              <%= link_to 'Sign out', sign_out_path, method: :delete, class: 'dropdown-item' %>
+            </div>
           </div>
-        </div>
-      <% else %>
-        <%= link_to 'Sign in', sign_in_path, class: 'btn btn-primary' %>
-      <% end %>
+        <% else %>
+          <%= link_to 'Sign in', sign_in_path, class: 'btn btn-primary' %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

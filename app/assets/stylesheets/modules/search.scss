@@ -1,14 +1,11 @@
 .search {
-  a {
-    @extend .mb-1;
-
-    img {
+  &-images {
+    a {
+      @extend .mb-1;
       opacity: .5;
-    }
 
-    &.active,
-    &:hover {
-      img {
+      &.active,
+      &:hover {
         opacity: 1;
       }
     }
@@ -23,13 +20,6 @@
       &.active {
         @extend .label;
       }
-    }
-  }
-
-  .row {
-    a {
-      @extend .col-6;
-      display: inline-block !important;
     }
   }
 }

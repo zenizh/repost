@@ -9,6 +9,7 @@ class PostsController < ApplicationController
       .includes(:likes, :stars, :tags, user: { avatar_attachment: :blob })
       .order(posted_on: :desc, created_at: :desc)
       .page(params[:page])
+      .per(10)
   end
 
   def new
