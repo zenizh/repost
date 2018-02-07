@@ -1,7 +1,7 @@
 module UserDecorator
   def avatar_with_default(size: 48)
     if avatar.attached?
-      avatar.variant(resize: "#{size}x#{size}")
+      avatar.variant(gravity: 'center', resize: "#{size}x#{size}^", crop: "#{size}x#{size}+0+0")
     else
       Identicon.data_url_for(id, size)
     end
