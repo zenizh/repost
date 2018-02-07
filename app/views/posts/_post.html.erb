@@ -18,7 +18,7 @@
   <%= link_to l(post.posted_on, format: :long), post, class: 'text-dark' %>
 </h4>
 
-<div class="card-text content mb-4">
+<div data-controller="highlight" class="card-text content mb-4">
   <%= sanitize(markdown(post.content)) %>
 </div>
 

@@ -3,6 +3,7 @@ module MarkdownHelper
     unless @markdown
       extentions = {
         autolink: true,
+        fenced_code_blocks: true,
         strikethrough: true,
         tables: true
       }
