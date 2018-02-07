@@ -33,6 +33,9 @@
             <% end %>
 
             <div class="dropdown-divider"></div>
+            <%= link_to 'https://github.com/kami-zh/repost/issues/new', target: :blank, class: 'dropdown-item' do %>
+              Feedback <span class="text-muted"><%= mi.open_in_new %></span>
+            <% end %>
             <%= link_to 'Sign out', sign_out_path, method: :delete, class: 'dropdown-item' %>
           </div>
         </div>
