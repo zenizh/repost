@@ -41,4 +41,10 @@
     font-size: .75rem;
     line-height: $line-height-base;
   }
+
+  table {
+    @extend .table;
+    @extend .table-bordered;
+    width: auto;
+  }
 }
