@@ -9,7 +9,7 @@
   <div class="tab-content">
     <div id="write" class="tab-pane active">
       <div class="form-group">
-        <%= f.label :content %>
+        <%= f.label :content %> <%= required_mark %>
         <%= f.text_area :content,
               required: true,
               rows: 5,
