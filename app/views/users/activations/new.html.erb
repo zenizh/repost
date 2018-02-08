@@ -3,6 +3,14 @@
     <div class="card-body">
       <h4 class="card-title">Activation</h4>
 
+      <p>
+        Welcome to Repost!
+        You need to set a new password to sign up.
+        Please fill in the password.
+      </p>
+
+      <%= render 'shared/errors', object: @user %>
+
       <%= form_with model: @user, url: users_activations_path, method: :post, local: true do |f| %>
         <div class="form-group">
           <%= f.label :email %>
@@ -10,13 +18,16 @@
         </div>
 
         <div class="form-group">
-          <%= f.label :password %>
+          <%= f.label :password %> <%= required_mark %>
           <%= f.password_field :password, required: true, class: 'form-control' %>
+          <p class="form-text small text-muted">
+            Minimum is 8 characters
+          </p>
         </div>
 
         <%= hidden_field_tag :token, @token %>
 
-        <%= f.submit class: 'btn btn-success' %>
+        <%= f.submit 'Activate', class: 'btn btn-success' %>
       <% end %>
     </div>
   </div>
