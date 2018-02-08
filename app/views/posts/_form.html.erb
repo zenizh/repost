@@ -38,6 +38,9 @@
     <div class="form-group">
       <%= f.label :tag_names %>
       <%= render 'tags/form', tag_names: @form.tag_names, name: 'post_form[tag_names][]' %>
+      <p class="form-text small text-muted">
+        Tag name may only contain alphanumeric characters or underscores.
+      </p>
     </div>
 
     <%= f.submit class: 'btn btn-success' %>
