@@ -2,11 +2,9 @@
   line-height: 1.8;
 
   blockquote {
-    @extend .bg-light;
-    @extend .pt-3;
-    @extend .px-3;
-    @extend .rounded;
-    padding-bottom: .001rem;
+    @extend .pl-3;
+    @extend .text-muted;
+    border-left: .25rem solid $border-color;
   }
 
   h1 {
