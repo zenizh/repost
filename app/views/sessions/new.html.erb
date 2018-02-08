@@ -5,12 +5,12 @@
 
       <%= form_with url: sessions_path, local: true, class: 'mb-2' do |f| %>
         <div class="form-group">
-          <%= f.label :email %>
+          <%= f.label :email %> <%= required_mark %>
           <%= f.email_field :email, required: true, class: 'form-control' %>
         </div>
 
         <div class="form-group">
-          <%= f.label :password %>
+          <%= f.label :password %> <%= required_mark %>
           <%= f.password_field :password, required: true, class: 'form-control' %>
         </div>
 
