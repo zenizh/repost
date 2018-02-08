@@ -35,14 +35,15 @@
       </p>
     </div>
 
-    <div class="form-group">
+    <div data-controller="preview--avatar" class="form-group">
       <%= f.label :avatar, class: 'd-block' %>
       <%= image_tag current_user.avatar_with_default(size: 128),
+            data: { target: 'preview--avatar.image' },
             width: 64,
             class: 'mb-2 rounded' %>
 
       <div class="custom-file">
-        <%= f.file_field :avatar, class: 'custom-file-input' %>
+        <%= f.file_field :avatar, data: { action: 'change->preview--avatar#change' }, class: 'custom-file-input' %>
         <span class="custom-file-label">Choose avatar...</span>
       </div>
     </div>
