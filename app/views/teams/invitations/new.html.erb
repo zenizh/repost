@@ -6,7 +6,7 @@
 
     <%= form_with model: @user, url: teams_invitations_path, local: true do |f| %>
       <div class="form-group">
-        <%= f.label :email %>
+        <%= f.label :email %> <%= required_mark %>
         <%= f.email_field :email, required: true, class: 'form-control' %>
       </div>
 
