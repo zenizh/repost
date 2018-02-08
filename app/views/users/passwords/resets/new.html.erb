@@ -5,7 +5,7 @@
 
       <%= form_with url: users_passwords_resets_path, local: true do |f| %>
         <div class="form-group">
-          <%= f.label :email %>
+          <%= f.label :email %> <%= required_mark %>
           <%= f.email_field :email, required: true, class: 'form-control' %>
         </div>
 
