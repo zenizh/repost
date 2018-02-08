@@ -1,6 +1,6 @@
 <%= render 'shared/errors', object: comment %>
 
-<%= form_with model: [comment.post, comment], local: true, data: { controller: 'preview' } do |f| %>
+<%= form_with model: [comment.post, comment], local: true, data: { controller: 'preview--content' } do |f| %>
   <ul class="nav nav-tabs mb-2">
     <li class="nav-item"><a href="#write" data-toggle="tab" class="nav-link active">Write</a></li>
     <li class="nav-item"><a href="#preview" data-toggle="tab" class="nav-link">Preview</a></li>
@@ -16,8 +16,8 @@
               placeholder: 'Write a comment...',
               class: 'form-control',
               'data-controller': 'autocomplete--content',
-              'data-action': 'input->preview#input',
-              'data-target': 'autocomplete--content.textarea preview.textarea',
+              'data-action': 'input->preview--content#input',
+              'data-target': 'autocomplete--content.textarea preview--content.textarea',
               'data-autocomplete--content-tag-names': autocomplete_tag_names.to_s,
               'data-autocomplete--content-user-screen-names': autocomplete_user_screen_names.to_s %>
         <%= render 'shared/markdown_help' %>
@@ -25,7 +25,7 @@
     </div>
 
     <div id="preview" class="tab-pane">
-      <div data-target="preview.body" class="content mt-3">
+      <div data-target="preview--content.body" class="content mt-3">
       </div>
     </div>
   </div>

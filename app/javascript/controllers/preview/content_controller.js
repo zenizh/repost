@@ -1,7 +1,7 @@
 import { Controller } from 'stimulus'
 import marked from 'marked'
 import sanitizeHtml from 'sanitize-html'
-import highlight from '../utils/highlight'
+import highlight from '../../utils/highlight'
 
 export default class extends Controller {
   static targets = ['body', 'textarea']
