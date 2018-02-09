@@ -11,6 +11,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
 gem 'carender'
 gem 'email_validator'
+gem 'gemoji'
 gem 'identicon'
 gem 'jquery-rails'
 gem 'kaminari'

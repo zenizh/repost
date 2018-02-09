@@ -114,6 +114,7 @@ GEM
     faraday_middleware (0.12.2)
       faraday (>= 0.7.4, < 1.0)
     ffi (1.9.18)
+    gemoji (3.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     google-api-client (0.17.3)
@@ -351,6 +352,7 @@ DEPENDENCIES
   carender
   chromedriver-helper
   email_validator
+  gemoji
   google-cloud-storage
   identicon
   jquery-rails

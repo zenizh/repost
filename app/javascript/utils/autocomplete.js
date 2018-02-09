@@ -1,5 +1,21 @@
 import escapeStringRegexp from 'escape-string-regexp'
 import sanitizeHtml from 'sanitize-html'
+import emojis from './emojis.json'
+
+const emojiStrategy = {
+  match: /(^|\s):([\w+-]+)$/,
+  search: (term, callback) => {
+    callback(Object.keys(emojis).filter((name) => {
+      return name.startsWith(term)
+    }))
+  },
+  template: (name) => {
+    return `<img src="${emojis[name]}" width="20" height="20" class="text-middle" /> ${name}`
+  },
+  replace: (name) => {
+    return `$1:${name}: `
+  }
+}
 
 const mentionStrategy = (screenNames) => {
   return {
@@ -43,4 +59,4 @@ const textcompleteOptions = {
   }
 }
 
-export { mentionStrategy, tagStrategy, textcompleteOptions }
+export { emojiStrategy, mentionStrategy, tagStrategy, textcompleteOptions }

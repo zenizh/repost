@@ -19,7 +19,7 @@
 </h4>
 
 <div data-controller="highlight" class="card-text content mb-4">
-  <%= sanitize(markdown(post.content)) %>
+  <%= sanitize(emojify(markdown(post.content))) %>
 </div>
 
 <% if post.tags.any? %>

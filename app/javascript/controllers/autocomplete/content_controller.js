@@ -1,6 +1,6 @@
 import { Controller } from 'stimulus'
 import { Textarea, Textcomplete } from 'textcomplete'
-import { mentionStrategy, tagStrategy, textcompleteOptions } from '../../utils/autocomplete'
+import { emojiStrategy, mentionStrategy, tagStrategy, textcompleteOptions } from '../../utils/autocomplete'
 
 export default class extends Controller {
   static targets = ['textarea']
@@ -10,6 +10,7 @@ export default class extends Controller {
     const textcomplete = new Textcomplete(editor, textcompleteOptions)
 
     textcomplete.register([
+      emojiStrategy,
       mentionStrategy(this.userScreenNames),
       tagStrategy(this.tagNames)
     ])
