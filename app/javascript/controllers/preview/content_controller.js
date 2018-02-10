@@ -7,7 +7,7 @@ import emojis from '../../utils/emojis.json'
 export default class extends Controller {
   static targets = ['body', 'textarea']
 
-  initialize() {
+  connect() {
     this.render()
   }
 

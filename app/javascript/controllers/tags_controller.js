@@ -3,7 +3,7 @@ import { Controller } from 'stimulus'
 export default class extends Controller {
   static targets = ['input', 'names', 'template']
 
-  initialize() {
+  connect() {
     this.defaultNames.forEach(name => this.add(name))
   }
 
