@@ -1,8 +1,8 @@
 <div data-controller="tags" data-tags-default-names="<%= tag_names %>">
   <template data-target="tags.template">
     <span class="mr-1">
-      <%= text_field_tag name, nil, readonly: true, class: 'form-control d-inline-block mb-2 mr-1 w-25' %>
-      <span data-action="click->tags#remove">&times;</span>
+      <%= text_field_tag name, nil, readonly: true, class: 'form-control d-inline-block mb-2 w-25' %>
+      <span data-action="click->tags#remove" class="cursor-pointer p-1">&times;</span>
     </span>
   </template>
 
