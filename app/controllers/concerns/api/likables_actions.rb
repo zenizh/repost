@@ -9,6 +9,7 @@ module Api::LikablesActions
     like = current_user.likes.new(likable: @likable)
 
     if like.save
+      LikeNotification.create(like)
       head :ok
     else
       head :bad_request
