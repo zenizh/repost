@@ -17,7 +17,7 @@ export default class extends Controller {
 
   render() {
     this.bodyTarget.innerHTML = sanitizeHtml(marked(this.textareaTarget.value), {
-      allowedTags: sanitizeHtml.defaults.allowedTags.concat(['h1', 'h2', 'del'])
+      allowedTags: sanitizeHtml.defaults.allowedTags.concat(['h1', 'h2', 'img', 'del'])
     })
 
     this.bodyTarget.innerHTML = this.bodyTarget.innerHTML.replace(/:([\w+-]+):/g, (match, name) => {

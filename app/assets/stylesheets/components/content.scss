@@ -30,6 +30,12 @@
     font-weight: bold;
   }
 
+  img {
+    @extend .rounded;
+    max-width: 100%;
+    max-height: 320px;
+  }
+
   ol,
   ul {
     padding-left: 1.75rem;
